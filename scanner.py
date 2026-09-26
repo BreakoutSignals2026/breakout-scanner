@@ -12,10 +12,10 @@ from statistics import median
 # ------------------------------------------------------------
 # TAJNE ÚDAJE
 # ------------------------------------------------------------
-TWELVE_API_KEY = "SEM_DAJ_SVOJ_TWELVE_DATA_API_KEY"
-TELEGRAM_TOKEN = "SEM_DAJ_SVOJ_TELEGRAM_TOKEN"
+TWELVE_API_KEY = os.getenv("TWELVE_API_KEY")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 
-CHAT_ID = "8950231945"
+CHAT_ID = os.getenv("CHAT_ID", "8950231945")
 
 
 # ------------------------------------------------------------
