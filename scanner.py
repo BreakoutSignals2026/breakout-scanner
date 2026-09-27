@@ -27,7 +27,12 @@ SYMBOLS = [
     "AMD",
     "NVDA",
     "MRVL",
-    "AAPL"
+    "AAPL",
+    "TSLA",
+    "META",
+    "AMZN",
+    "MSFT",
+    "GOOGL"
 ]
 
 INTERVAL = "5min"
