@@ -5,16 +5,21 @@ on:
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   scan:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -23,6 +28,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
+      - name: Restore scanner state
+        uses: actions/cache/restore@v4
+        with:
+          path: breakout_state_v24.txt
+          key: scanner-state-${{ github.run_id }}
+          restore-keys: |
+            scanner-state-
+
       - name: Run breakout scanner
         env:
           TWELVE_API_KEY: ${{ secrets.TWELVE_API_KEY }}
@@ -30,3 +43,10 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           python scanner.py
+
+      - name: Save scanner state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: breakout_state_v24.txt
+          key: scanner-state-${{ github.run_id }}
