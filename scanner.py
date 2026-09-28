@@ -115,11 +115,13 @@ def get_data(symbol):
     }
 
     try:
-        response = requests.get(
-            url,
-            params=params,
-            timeout=20
-        )
+    time.sleep(API_REQUEST_DELAY)
+
+    response = requests.get(
+        url,
+        params=params,
+        timeout=20
+    )
 
         response.raise_for_status()
 
