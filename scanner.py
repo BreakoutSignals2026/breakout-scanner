@@ -116,7 +116,7 @@ def get_data(symbol):
     }
 
     try:
-        time.sleep(API_REQUEST_DELAY)
+        time_module.sleep(API_REQUEST_DELAY)
 
         response = requests.get(
             url,
