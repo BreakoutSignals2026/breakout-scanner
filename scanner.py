@@ -76,6 +76,8 @@ US_TZ = ZoneInfo("America/New_York")
 MARKET_OPEN = time(9, 30)
 MARKET_CLOSE = time(16, 0)
 
+# Pauza medzi požiadavkami na Twelve Data
+API_REQUEST_DELAY = 8
 
 # ============================================================
 # POMOCNÉ FUNKCIE
