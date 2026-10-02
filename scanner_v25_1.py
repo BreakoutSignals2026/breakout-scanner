@@ -68,7 +68,7 @@ RISK_REWARD = 2.0
 COOLDOWN_MINUTES = 30
 
 # Stavový súbor
-STATE_FILE = "breakout_state_v24.txt"
+STATE_FILE = "breakout_state_v25.txt"
 
 # V2.5 - sledovanie výsledkov signálov
 TRADE_STATE_FILE = "breakout_trades_v25.txt"
