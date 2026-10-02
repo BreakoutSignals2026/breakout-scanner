@@ -38,7 +38,7 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
-          python scanner_v25_1.py
+          python scanner_v25.py
 
       - name: Save scanner state
         if: always()
