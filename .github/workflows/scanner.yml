@@ -46,6 +46,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          touch breakout_trades_v25.txt
+
           git add breakout_state_v24.txt breakout_trades_v25.txt breakout_results_v25.csv 2>/dev/null || true
 
           if git diff --cached --quiet; then
