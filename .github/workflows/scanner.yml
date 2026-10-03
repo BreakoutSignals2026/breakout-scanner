@@ -46,26 +46,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "=== FILE CHECK ==="
-          ls -la
-          echo "=== TRADES FILE ==="
-          ls -l breakout_trades_v25.txt || true
-          echo "=== GIT STATUS ==="
-          git status --short
-          echo "=== GIT TRACKED ==="
-          git ls-files breakout_trades_v25.txt
+          touch breakout_trades_v25.txt
 
-          echo "TEST LINE $(date -u)" > breakout_trades_v25.txt
+          git add breakout_state_v24.txt breakout_trades_v25.txt breakout_results_v25.csv 2>/dev/null || true
 
-          echo "=== AFTER WRITE ==="
-          ls -l breakout_trades_v25.txt
-          cat breakout_trades_v25.txt
-
-          git add -f breakout_trades_v25.txt
-
-          echo "=== AFTER GIT ADD ==="
-          git status --short
-
-          git commit -m "Test save breakout trades" || true
-          git push
+          if git diff --cached --quiet; then
+            echo "No state changes."
+          else
+            git commit -m "Update scanner state"
+            git push
+          fi
           
