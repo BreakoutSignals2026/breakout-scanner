@@ -2,7 +2,10 @@ name: Breakout Scanner
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    # Weekdays, around US market hours.
+    # The script itself checks the exact New York market time.
+    - cron: "*/5 13-21 * * 1-5"
+
   workflow_dispatch:
 
 permissions:
@@ -14,7 +17,7 @@ concurrency:
 
 jobs:
   scan:
-    runs-on: ubuntu-24.04 
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -32,7 +35,33 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run breakout scanner
+      - name: Check US market time
+        id: market_time
+        run: |
+          NY_TIME=$(TZ=America/New_York date '+%H:%M')
+          NY_DAY=$(TZ=America/New_York date '+%u')
+
+          echo "New York time: $NY_TIME"
+          echo "New York weekday: $NY_DAY"
+
+          if [ "$NY_DAY" -ge 6 ]; then
+            echo "Weekend - US market closed."
+            echo "market_open=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          MINUTES=$((10#${NY_TIME:0:2} * 60 + 10#${NY_TIME:3:2}))
+
+          if [ "$MINUTES" -ge 570 ] && [ "$MINUTES" -lt 960 ]; then
+            echo "US regular session is open."
+            echo "market_open=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Outside US regular session."
+            echo "market_open=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run breakout scanner V2.5-1
+        if: steps.market_time.outputs.market_open == 'true'
         env:
           TWELVE_API_KEY: ${{ secrets.TWELVE_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -56,4 +85,3 @@ jobs:
             git commit -m "Update scanner state"
             git push
           fi
-          
