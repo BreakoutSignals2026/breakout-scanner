@@ -2,9 +2,10 @@ name: Breakout Scanner
 
 on:
   schedule:
-    # Weekdays, around US market hours.
-    # The script itself checks the exact New York market time.
-    - cron: "*/5 13-21 * * 1-5"
+    # Start around the beginning of the US session.
+    # One of these starts is valid depending on US daylight-saving time.
+    - cron: "25 13 * * 1-5"
+    - cron: "25 14 * * 1-5"
 
   workflow_dispatch:
 
@@ -18,6 +19,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
 
     steps:
       - name: Checkout repository
@@ -35,53 +37,63 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Check US market time
-        id: market_time
-        run: |
-          NY_TIME=$(TZ=America/New_York date '+%H:%M')
-          NY_DAY=$(TZ=America/New_York date '+%u')
-
-          echo "New York time: $NY_TIME"
-          echo "New York weekday: $NY_DAY"
-
-          if [ "$NY_DAY" -ge 6 ]; then
-            echo "Weekend - US market closed."
-            echo "market_open=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          MINUTES=$((10#${NY_TIME:0:2} * 60 + 10#${NY_TIME:3:2}))
-
-          if [ "$MINUTES" -ge 570 ] && [ "$MINUTES" -lt 960 ]; then
-            echo "US regular session is open."
-            echo "market_open=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Outside US regular session."
-            echo "market_open=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Run breakout scanner V2.5-1
-        if: steps.market_time.outputs.market_open == 'true'
+      - name: Run V2.5-1 scanner every 5 minutes
         env:
           TWELVE_API_KEY: ${{ secrets.TWELVE_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
-          python scanner_v25_1.py
+          while true
+          do
+            NY_TIME=$(TZ=America/New_York date '+%H:%M')
+            NY_DAY=$(TZ=America/New_York date '+%u')
+            NY_MINUTES=$((10#${NY_TIME:0:2} * 60 + 10#${NY_TIME:3:2}))
 
-      - name: Save scanner state
-        if: always()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            echo "New York time: $NY_TIME"
 
-          touch breakout_trades_v25.txt
+            # Weekend
+            if [ "$NY_DAY" -ge 6 ]; then
+              echo "Weekend - US market closed."
+              break
+            fi
 
-          git add breakout_state_v24.txt breakout_trades_v25.txt breakout_results_v25.csv 2>/dev/null || true
+            # Before 09:30
+            if [ "$NY_MINUTES" -lt 570 ]; then
+              echo "Before US market open."
+              sleep 60
+              continue
+            fi
 
-          if git diff --cached --quiet; then
-            echo "No state changes."
-          else
-            git commit -m "Update scanner state"
-            git push
-          fi
+            # At or after 16:00
+            if [ "$NY_MINUTES" -ge 960 ]; then
+              echo "US market closed."
+              break
+            fi
+
+            echo "======================================"
+            echo "Running BREAKOUT SCANNER V2.5-1"
+            echo "New York time: $NY_TIME"
+            echo "======================================"
+
+            python scanner_v25_1.py
+
+            echo "Scanner finished."
+
+            # Save scanner files after every scan
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            touch breakout_trades_v25.txt
+
+            git add breakout_state_v24.txt breakout_trades_v25.txt breakout_results_v25.csv 2>/dev/null || true
+
+            if git diff --cached --quiet; then
+              echo "No state changes."
+            else
+              git commit -m "Update scanner state"
+              git push
+            fi
+
+            echo "Waiting 5 minutes until next scan..."
+            sleep 300
+          done
