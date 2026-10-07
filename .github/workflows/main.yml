@@ -1,0 +1,49 @@
+name: Alpaca Paper Connection Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-alpaca:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Test Alpaca Paper API
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import requests
+
+          url = "https://paper-api.alpaca.markets/v2/account"
+
+          headers = {
+              "APCA-API-KEY-ID": os.environ["ALPACA_API_KEY"],
+              "APCA-API-SECRET-KEY": os.environ["ALPACA_SECRET_KEY"]
+          }
+
+          response = requests.get(url, headers=headers, timeout=20)
+
+          print("HTTP status:", response.status_code)
+
+          if response.status_code != 200:
+              print("Alpaca API connection FAILED")
+              print(response.text)
+              raise SystemExit(1)
+
+          account = response.json()
+
+          print("Alpaca Paper API: OK")
+          print("Account status:", account.get("status"))
+          print("Currency:", account.get("currency"))
+          print("Buying power:", account.get("buying_power"))
+          print("Trading blocked:", account.get("trading_blocked"))
+
+          print("")
+          print("NO ORDER WAS SENT.")
+          PY
