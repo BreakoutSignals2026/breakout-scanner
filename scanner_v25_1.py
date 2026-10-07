@@ -1143,6 +1143,31 @@ def main():
                         f"{symbol}: Alpaca už má otvorenú objednávku – SKIP."
                     )
                     continue
+
+                # ==================================================
+                # ALPACA PAPER – AUTOMATICKÝ OBCHOD
+                # ==================================================
+
+                try:
+                    alpaca_order = place_bracket_order(
+                        symbol=result["symbol"],
+                        side=result["signal"],
+                        qty=1,
+                        take_profit=result["tp"],
+                        stop_loss=result["sl"],
+                    )
+
+                    print(
+                        f"{result['symbol']}: "
+                        f"ALPACA PAPER ORDER ÚSPEŠNÝ."
+                    )
+
+                except Exception as e:
+                    print(
+                        f"{result['symbol']}: "
+                        f"ALPACA ORDER ZLYHAL: {e}"
+                    )
+                    continue
                   
                 message = create_telegram_message(result)
                 telegram_ok = send_telegram(message)
