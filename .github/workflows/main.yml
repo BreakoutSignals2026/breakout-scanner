@@ -40,7 +40,7 @@ jobs:
           }
 
           # Najprv získame aktuálnu cenu AAPL
-          quote_url = f"{BASE_URL}/v2/stocks/AAPL/quotes/latest"
+          quote_url = "https://data.alpaca.markets/v2/stocks/AAPL/quotes/latest"
 
           r = requests.get(
               quote_url,
