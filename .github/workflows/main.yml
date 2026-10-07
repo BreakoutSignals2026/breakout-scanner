@@ -1,4 +1,4 @@
-name: Alpaca Paper Connection Test
+name: Alpaca Paper Test Order
 
 on:
   workflow_dispatch:
@@ -7,43 +7,117 @@ permissions:
   contents: read
 
 jobs:
-  test-alpaca:
+  paper-test-order:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Test Alpaca Paper API
+      - name: Send 1-share AAPL bracket order
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: |
+          echo "======================================"
+          echo "ALPACA PAPER TEST ORDER"
+          echo "======================================"
+          echo "Symbol: AAPL"
+          echo "Quantity: 1 share"
+          echo "Side: BUY"
+          echo "TP: +2%"
+          echo "SL: -1%"
+          echo "======================================"
+
           python - <<'PY'
           import os
+          import json
           import requests
 
-          url = "https://paper-api.alpaca.markets/v2/account"
+          BASE_URL = "https://paper-api.alpaca.markets"
 
           headers = {
               "APCA-API-KEY-ID": os.environ["ALPACA_API_KEY"],
-              "APCA-API-SECRET-KEY": os.environ["ALPACA_SECRET_KEY"]
+              "APCA-API-SECRET-KEY": os.environ["ALPACA_SECRET_KEY"],
+              "Content-Type": "application/json",
           }
 
-          response = requests.get(url, headers=headers, timeout=20)
+          # Najprv získame aktuálnu cenu AAPL
+          quote_url = f"{BASE_URL}/v2/stocks/AAPL/quotes/latest"
 
-          print("HTTP status:", response.status_code)
+          r = requests.get(
+              quote_url,
+              headers=headers,
+              timeout=20
+          )
 
-          if response.status_code != 200:
-              print("Alpaca API connection FAILED")
-              print(response.text)
-              raise SystemExit(1)
+          print("Quote HTTP status:", r.status_code)
 
-          account = response.json()
+          if r.status_code != 200:
+              print(r.text)
+              raise SystemExit("Nepodarilo sa získať cenu AAPL.")
 
-          print("Alpaca Paper API: OK")
-          print("Account status:", account.get("status"))
-          print("Currency:", account.get("currency"))
-          print("Buying power:", account.get("buying_power"))
-          print("Trading blocked:", account.get("trading_blocked"))
+          quote = r.json()
+
+          ask = float(quote["quote"]["ap"])
+          bid = float(quote["quote"]["bp"])
+
+          # Použijeme aktuálny ask ako približnú vstupnú cenu
+          entry = ask
+
+          # Testovací SL -1 %
+          stop_loss = round(entry * 0.99, 2)
+
+          # Testovací TP +2 %
+          take_profit = round(entry * 1.02, 2)
+
+          print(f"AAPL bid: {bid}")
+          print(f"AAPL ask: {ask}")
+          print(f"Test entry reference: {entry}")
+          print(f"Stop Loss: {stop_loss}")
+          print(f"Take Profit: {take_profit}")
+
+          order = {
+              "symbol": "AAPL",
+              "qty": "1",
+              "side": "buy",
+              "type": "market",
+              "time_in_force": "day",
+              "order_class": "bracket",
+              "take_profit": {
+                  "limit_price": str(take_profit)
+              },
+              "stop_loss": {
+                  "stop_price": str(stop_loss)
+              }
+          }
 
           print("")
-          print("NO ORDER WAS SENT.")
+          print("Odosielam PAPER objednávku...")
+          print(json.dumps(order, indent=2))
+
+          order_url = f"{BASE_URL}/v2/orders"
+
+          response = requests.post(
+              order_url,
+              headers=headers,
+              json=order,
+              timeout=20
+          )
+
+          print("")
+          print("Order HTTP status:", response.status_code)
+          print("Response:")
+
+          try:
+              data = response.json()
+              print(json.dumps(data, indent=2))
+          except Exception:
+              print(response.text)
+
+          if response.status_code not in (200, 201):
+              raise SystemExit("ALPACA ORDER FAILED")
+
+          print("")
+          print("======================================")
+          print("PAPER ORDER SENT SUCCESSFULLY")
+          print("======================================")
+          print("NO REAL MONEY WAS USED.")
           PY
