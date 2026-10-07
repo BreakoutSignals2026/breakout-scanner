@@ -1125,6 +1125,25 @@ def main():
             print(f"RelVol: {result['rel_volume']:.2f}x")
 
             if can_send_signal(result, state):
+                
+                # ==================================================
+                # ALPACA PAPER – ochrana pred duplicitnou pozíciou
+                # ==================================================
+
+                symbol = result["symbol"]
+
+                if has_open_position(symbol):
+                    print(
+                        f"{symbol}: Alpaca už má otvorenú pozíciu – SKIP."
+                    )
+                    continue
+
+                if has_open_order(symbol):
+                    print(
+                        f"{symbol}: Alpaca už má otvorenú objednávku – SKIP."
+                    )
+                    continue
+                  
                 message = create_telegram_message(result)
                 telegram_ok = send_telegram(message)
 
