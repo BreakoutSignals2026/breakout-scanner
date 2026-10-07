@@ -184,9 +184,7 @@ def get_data(symbol):
 # ============================================================
 
 def get_closed_candles(candles):
-    """
-    Vráti iba sviečky, ktoré už sú úplne uzavreté.
-    """
+    """ Vráti iba sviečky, ktoré už sú úplne uzavreté. """
 
     now = now_us()
 
@@ -244,18 +242,8 @@ def calculate_atr(candles, period=14):
 # INTRADAY RELATIVE VOLUME
 # ============================================================
 
-def calculate_intraday_relative_volume(
-    closed_candles,
-    current_candle
-):
-    """
-    V2.4
-
-    Porovnáva aktuálnu uzavretú 5-minútovú sviečku
-    s mediánom predchádzajúcich 12 sviečok V TEN ISTÝ DEŇ.
-
-    Neporovnávame objem s predchádzajúcimi dňami.
-    """
+def calculate_intraday_relative_volume( closed_candles, current_candle ):
+    """ V2.4 Porovnáva aktuálnu uzavretú 5-minútovú sviečku s mediánom predchádzajúcich 12 sviečok V TEN ISTÝ DEŇ. Neporovnávame objem s predchádzajúcimi dňami. """
 
     current_date = current_candle["datetime"].date()
     current_time = current_candle["datetime"]
@@ -307,12 +295,7 @@ def calculate_intraday_relative_volume(
 # ============================================================
 
 def get_current_session_closed_candles(candles):
-    """
-    V2.5.1: Pre nové breakout signály používame iba uzavreté sviečky
-    z aktuálneho kalendárneho dňa a pravidelnej US seansy 09:30-16:00 NY.
-
-    Staré sviečky z predchádzajúceho dňa sa nesmú použiť ako nový signál.
-    """
+    """ V2.5.1: Pre nové breakout signály používame iba uzavreté sviečky z aktuálneho kalendárneho dňa a pravidelnej US seansy 09:30-16:00 NY. Staré sviečky z predchádzajúceho dňa sa nesmú použiť ako nový signál. """
     now = now_us()
     today = now.date()
 
@@ -682,10 +665,7 @@ def save_state(state):
         )
 
 
-def can_send_signal(
-    signal,
-    state
-):
+def can_send_signal( signal, state ):
 
     symbol = signal["symbol"]
     direction = signal["signal"]
@@ -1125,7 +1105,7 @@ def main():
             print(f"RelVol: {result['rel_volume']:.2f}x")
 
             if can_send_signal(result, state):
-                
+
                 # ==================================================
                 # ALPACA PAPER – ochrana pred duplicitnou pozíciou
                 # ==================================================
@@ -1168,61 +1148,66 @@ def main():
                         f"ALPACA ORDER ZLYHAL: {e}"
                     )
                     continue
-                  
+
+                # ==================================================
+                # ALPACA OBCHOD JE ÚSPEŠNÝ
+                # – najprv zapíšeme obchod do scanner state
+                # a trade tracking.
+                # – nezávisle od Telegramu.
+                # ==================================================
+
+                state_key = (
+                    result["symbol"],
+                    result["signal"]
+                )
+
+                state[state_key] = result["candle_time"].isoformat()
+                save_state(state)
+
+                signal_time = result["candle_time"].isoformat()
+                trade_key = (
+                    result["symbol"],
+                    result["signal"],
+                    signal_time
+                )
+
+                trades[trade_key] = {
+                    "symbol": result["symbol"],
+                    "direction": result["signal"],
+                    "signal_time": signal_time,
+                    "entry": result["entry"],
+                    "sl": result["sl"],
+                    "tp": result["tp"],
+                    "last_checked": signal_time,
+                    "max_favorable": 0.0,
+                    "max_adverse": 0.0
+                }
+
+                save_trade_tracking(trades)
+
+                print(
+                    "ALPACA OBCHOD ZAPÍSANÝ DO "
+                    "SCANNER STATE A TRADE TRACKING."
+                )
+
+                # ==================================================
+                # TELEGRAM – až po úspešnom Alpaca obchode
+                # ==================================================
+
                 message = create_telegram_message(result)
                 telegram_ok = send_telegram(message)
 
                 if telegram_ok:
-                    state_key = (
-                        result["symbol"],
-                        result["signal"]
+                    print(
+                        "SIGNÁL ODOSLANÝ DO TELEGRAMU."
                     )
-                    state[state_key] = result["candle_time"].isoformat()
-                    save_state(state)
-
-                    signal_time = result["candle_time"].isoformat()
-                    trade_key = (
-                        result["symbol"],
-                        result["signal"],
-                        signal_time
-                    )
-
-                    trades[trade_key] = {
-                        "symbol": result["symbol"],
-                        "direction": result["signal"],
-                        "signal_time": signal_time,
-                        "entry": result["entry"],
-                        "sl": result["sl"],
-                        "tp": result["tp"],
-                        "last_checked": signal_time,
-                        "max_favorable": 0.0,
-                        "max_adverse": 0.0
-                    }
-
-                    save_trade_tracking(trades)
-                    print("SIGNÁL ODOSLANÝ DO TELEGRAMU A ZAPÍSANÝ NA SLEDOVANIE.")
                 else:
-                    print("Telegram správu neodoslal.")
+                    print(
+                        "ALPACA OBCHOD JE ÚSPEŠNÝ, "
+                        "ALE TELEGRAM SPRÁVU SA NEPODARILO ODOSLAŤ."
+                    )
             else:
                 print("Signál zablokovaný (duplicitný/cooldown).")
-
-            print()
-
-        else:
-            if "price" in result:
-                print(
-                    f"{symbol}: NO BREAKOUT | "
-                    f"Cena {result['price']:.2f} | "
-                    f"High {result['high']:.2f} | "
-                    f"Low {result['low']:.2f} | "
-                    f"CurrentVol {result['current_volume']:.0f} | "
-                    f"RefVol {result['reference_volume']:.0f} | "
-                    f"RelVol {result['rel_volume']:.2f}x | "
-                    f"ATR {result['atr']:.2f} | "
-                    f"čas {result['candle_time'].strftime('%H:%M')}"
-                )
-            else:
-                print(result.get("message", f"{symbol}: bez signálu"))
 
     save_trade_tracking(trades)
 
