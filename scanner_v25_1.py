@@ -5,6 +5,12 @@ import time as time_module
 from zoneinfo import ZoneInfo
 from statistics import median
 
+from alpaca_executor import (
+    has_open_position,
+    has_open_order,
+    place_bracket_order,
+)
+
 
 # ============================================================
 # V2.5.1 - BREAKOUT SCANNER + TRACKING
