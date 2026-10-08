@@ -32,8 +32,6 @@ SYMBOLS = [
     "T",
     "PFE",
     "BAC",
-    "INTC",
-    "AMD",
     "MU",
     "AAL",
     "UBER",
