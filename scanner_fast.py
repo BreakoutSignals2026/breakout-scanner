@@ -1,28 +1,25 @@
 import os
-import csv
+import requests
 import math
-import time
-from datetime import datetime, timedelta, timezone
+import csv
+from datetime import datetime, time
 from zoneinfo import ZoneInfo
 
-import requests
-
-
 # ============================================================
-# FAST BREAKOUT SCANNER + ALPACA PAPER TRADING
+# FAST BREAKOUT SCANNER
+# Alpaca PAPER Trading
 # ============================================================
 
-ALPACA_KEY = os.getenv("ALPACA_API_KEY", "")
-ALPACA_SECRET = os.getenv("ALPACA_SECRET_KEY", "")
+ALPACA_BASE_URL = "https://paper-api.alpaca.markets/v2"
 
-TRADING_URL = "https://paper-api.alpaca.markets"
-DATA_URL = "https://data.alpaca.markets"
+ALPACA_API_KEY = os.getenv("ALPACA_API_KEY")
+ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
 
-# Free Alpaca market data is normally IEX.
-DATA_FEED = "iex"
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
 # ------------------------------------------------------------
-# FAST SETTINGS
+# FAST WATCHLIST
 # ------------------------------------------------------------
 
 SYMBOLS = [
@@ -43,10 +40,14 @@ SYMBOLS = [
     "DKNG",
 ]
 
-MIN_PRICE = 10.0
-MAX_PRICE = 50.0
+# ------------------------------------------------------------
+# STRATEGY SETTINGS
+# ------------------------------------------------------------
 
-TIMEFRAME = "5Min"
+MIN_PRICE = 10.00
+MAX_PRICE = 50.00
+
+INTERVAL = "5Min"
 
 BREAKOUT_LOOKBACK = 12
 MIN_BREAKOUT_PERCENT = 0.15
@@ -57,172 +58,213 @@ MIN_REL_VOLUME = 1.80
 ATR_PERIOD = 14
 ATR_MULTIPLIER = 1.50
 
-MAX_SL_PERCENT = 1.00
-RR = 2.0
+MAX_STOP_PERCENT = 1.00
 
-MAX_RISK_USD = 10.00
-MAX_POSITION_NOTIONAL = 500.00
-
-MAX_OPEN_FAST_POSITIONS = 1
+RISK_PER_TRADE = 10.00
+RISK_REWARD = 2.0
 
 COOLDOWN_MINUTES = 20
+
+MAX_FAST_POSITIONS = 1
 
 STATE_FILE = "breakout_state_fast.txt"
 TRADES_FILE = "breakout_trades_fast.txt"
 RESULTS_FILE = "breakout_results_fast.csv"
 
+
+# ============================================================
+# TIME
+# ============================================================
+
 NY = ZoneInfo("America/New_York")
 
 
+def now_ny():
+    return datetime.now(NY)
+
+
+def market_is_open():
+    now = now_ny()
+
+    if now.weekday() >= 5:
+        return False
+
+    current = now.time()
+
+    return time(9, 30) <= current < time(16, 0)
+
+
 # ============================================================
-# HTTP
+# ALPACA HEADERS
 # ============================================================
 
-def trading_headers():
+def alpaca_headers():
     return {
-        "APCA-API-KEY-ID": ALPACA_KEY,
-        "APCA-API-SECRET-KEY": ALPACA_SECRET,
+        "APCA-API-KEY-ID": ALPACA_API_KEY,
+        "APCA-API-SECRET-KEY": ALPACA_SECRET_KEY,
         "Content-Type": "application/json",
     }
 
 
-def data_headers():
-    return {
-        "APCA-API-KEY-ID": ALPACA_KEY,
-        "APCA-API-SECRET-KEY": ALPACA_SECRET,
+# ============================================================
+# TELEGRAM
+# ============================================================
+
+def send_telegram(message):
+    if not TELEGRAM_TOKEN or not CHAT_ID:
+        print("Telegram secrets not configured.")
+        return
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": message,
     }
 
-
-def alpaca_get(url, params=None):
-    r = requests.get(
-        url,
-        headers=trading_headers(),
-        params=params,
-        timeout=20,
-    )
-
-    if not r.ok:
-        raise RuntimeError(
-            f"GET {url} -> {r.status_code}: {r.text}"
-        )
-
-    return r.json()
-
-
-def alpaca_data_get(url, params=None):
-    r = requests.get(
-        url,
-        headers=data_headers(),
-        params=params,
-        timeout=20,
-    )
-
-    if not r.ok:
-        raise RuntimeError(
-            f"DATA GET {url} -> {r.status_code}: {r.text}"
-        )
-
-    return r.json()
-
-
-def alpaca_post(url, payload):
-    r = requests.post(
-        url,
-        headers=trading_headers(),
-        json=payload,
-        timeout=20,
-    )
-
-    if not r.ok:
-        raise RuntimeError(
-            f"POST {url} -> {r.status_code}: {r.text}"
-        )
-
-    return r.json()
-
-
-# ============================================================
-# TIME / MARKET
-# ============================================================
-
-def now_ny():
-    return datetime.now(timezone.utc).astimezone(NY)
-
-
-def market_is_open():
     try:
-        clock = alpaca_get(f"{TRADING_URL}/v2/clock")
-        return bool(clock.get("is_open", False))
+        response = requests.post(
+            url,
+            json=payload,
+            timeout=15
+        )
+
+        if response.status_code != 200:
+            print("Telegram error:", response.text)
+
     except Exception as e:
-        print(f"Clock error: {e}")
-        return False
+        print("Telegram exception:", e)
 
 
 # ============================================================
-# ACCOUNT / POSITIONS
+# ALPACA ACCOUNT
 # ============================================================
 
 def get_account():
-    return alpaca_get(f"{TRADING_URL}/v2/account")
+    url = f"{ALPACA_BASE_URL}/account"
 
-
-def get_positions():
-    return alpaca_get(f"{TRADING_URL}/v2/positions")
-
-
-def get_open_orders():
-    return alpaca_get(
-        f"{TRADING_URL}/v2/orders",
-        params={
-            "status": "open",
-            "limit": 100,
-            "nested": "true",
-        },
+    response = requests.get(
+        url,
+        headers=alpaca_headers(),
+        timeout=20
     )
 
+    response.raise_for_status()
 
-def fast_position_count():
-    """
-    FAST uses one position at a time.
-    We count any current position because FAST is intentionally
-    isolated to one active position.
-    """
-    positions = get_positions()
-    return len(positions)
+    return response.json()
 
 
 # ============================================================
-# MARKET DATA
+# ALPACA POSITIONS
 # ============================================================
 
-def get_bars(symbol):
-    """
-    Get recent 5-minute bars from Alpaca.
+def get_all_positions():
+    url = f"{ALPACA_BASE_URL}/positions"
 
-    We request enough history for:
-      - breakout lookback
-      - volume lookback
-      - ATR
+    response = requests.get(
+        url,
+        headers=alpaca_headers(),
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+    return response.json()
+
+
+def get_fast_positions():
+    """
+    IMPORTANT:
+    Only positions belonging to FAST SYMBOLS are considered.
+
+    An unrelated position such as AAPL does NOT block FAST.
     """
 
-    end = datetime.now(timezone.utc)
-    start = end - timedelta(hours=6)
+    positions = get_all_positions()
+
+    fast_positions = []
+
+    for position in positions:
+        symbol = position.get("symbol", "").upper()
+
+        if symbol in SYMBOLS:
+            fast_positions.append(position)
+
+    return fast_positions
+
+
+# ============================================================
+# ALPACA OPEN ORDERS
+# ============================================================
+
+def get_open_orders_for_fast():
+    url = f"{ALPACA_BASE_URL}/orders"
 
     params = {
-        "timeframe": TIMEFRAME,
-        "start": start.isoformat(),
-        "end": end.isoformat(),
+        "status": "open",
         "limit": 500,
-        "feed": DATA_FEED,
-        "sort": "asc",
     }
 
-    data = alpaca_data_get(
-        f"{DATA_URL}/v2/stocks/{symbol}/bars",
+    response = requests.get(
+        url,
+        headers=alpaca_headers(),
         params=params,
+        timeout=20
     )
 
-    return data.get("bars", [])
+    response.raise_for_status()
+
+    orders = response.json()
+
+    fast_orders = []
+
+    for order in orders:
+        symbol = order.get("symbol", "").upper()
+
+        if symbol in SYMBOLS:
+            fast_orders.append(order)
+
+    return fast_orders
+
+
+# ============================================================
+# ALPACA MARKET DATA
+# ============================================================
+
+def get_bars(symbol, limit=100):
+    """
+    Gets 5-minute historical bars from Alpaca.
+    """
+
+    url = "https://data.alpaca.markets/v2/stocks/bars"
+
+    params = {
+        "symbols": symbol,
+        "timeframe": INTERVAL,
+        "limit": limit,
+        "feed": "iex",
+        "adjustment": "raw",
+    }
+
+    headers = {
+        "APCA-API-KEY-ID": ALPACA_API_KEY,
+        "APCA-API-SECRET-KEY": ALPACA_SECRET_KEY,
+    }
+
+    response = requests.get(
+        url,
+        headers=headers,
+        params=params,
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    bars = data.get("bars", {}).get(symbol, [])
+
+    return bars
 
 
 # ============================================================
@@ -233,470 +275,389 @@ def calculate_atr(bars, period=14):
     if len(bars) < period + 1:
         return None
 
-    trs = []
+    true_ranges = []
 
     for i in range(1, len(bars)):
         high = float(bars[i]["h"])
         low = float(bars[i]["l"])
-        prev_close = float(bars[i - 1]["c"])
+        previous_close = float(bars[i - 1]["c"])
 
         tr = max(
             high - low,
-            abs(high - prev_close),
-            abs(low - prev_close),
+            abs(high - previous_close),
+            abs(low - previous_close)
         )
 
-        trs.append(tr)
+        true_ranges.append(tr)
 
-    if len(trs) < period:
+    if len(true_ranges) < period:
         return None
 
-    return sum(trs[-period:]) / period
+    return sum(true_ranges[-period:]) / period
 
 
-def median(values):
-    values = sorted(values)
+def calculate_relative_volume(bars, lookback=12):
+    if len(bars) < lookback + 1:
+        return None
 
-    if not values:
-        return 0
+    current_volume = float(bars[-1]["v"])
 
-    n = len(values)
+    previous_volumes = [
+        float(bar["v"])
+        for bar in bars[-lookback-1:-1]
+    ]
 
-    if n % 2 == 1:
-        return values[n // 2]
+    if not previous_volumes:
+        return None
 
-    return (values[n // 2 - 1] + values[n // 2]) / 2
+    average_volume = sum(previous_volumes) / len(previous_volumes)
+
+    if average_volume <= 0:
+        return None
+
+    return current_volume / average_volume
 
 
 # ============================================================
-# SIGNAL
+# BREAKOUT DETECTION
 # ============================================================
 
 def analyze_symbol(symbol):
-    bars = get_bars(symbol)
+    bars = get_bars(symbol, 100)
 
-    # Need:
-    # previous 12 breakout bars
-    # 12 volume bars
-    # 14 ATR bars
-    if len(bars) < 40:
+    if len(bars) < max(
+        BREAKOUT_LOOKBACK + 2,
+        ATR_PERIOD + 2,
+        VOLUME_LOOKBACK + 2
+    ):
         return None
 
-    # Use the latest CLOSED 5-minute candle.
-    # Alpaca can return the currently forming bar.
-    # We therefore remove it if its timestamp is still inside
-    # the current 5-minute interval.
-    now = datetime.now(timezone.utc)
+    # Ignore currently forming candle.
+    closed_bars = bars[:-1]
 
-    cleaned = []
-
-    for bar in bars:
-        ts = datetime.fromisoformat(
-            bar["t"].replace("Z", "+00:00")
-        )
-
-        bar_end = ts + timedelta(minutes=5)
-
-        if bar_end <= now:
-            cleaned.append(bar)
-
-    bars = cleaned
-
-    if len(bars) < 40:
+    if len(closed_bars) < BREAKOUT_LOOKBACK + 1:
         return None
 
-    current = bars[-1]
+    latest = closed_bars[-1]
 
-    close = float(current["c"])
-    high = float(current["h"])
-    low = float(current["l"])
-    volume = float(current["v"])
+    entry_price = float(latest["c"])
+    candle_high = float(latest["h"])
+    candle_low = float(latest["l"])
 
     # --------------------------------------------------------
     # PRICE FILTER
     # --------------------------------------------------------
 
-    if close < MIN_PRICE or close > MAX_PRICE:
+    if entry_price < MIN_PRICE or entry_price > MAX_PRICE:
         return None
 
     # --------------------------------------------------------
-    # BREAKOUT LEVEL
+    # PREVIOUS RANGE
     # --------------------------------------------------------
 
-    if len(bars) < BREAKOUT_LOOKBACK + 2:
-        return None
+    previous = closed_bars[-BREAKOUT_LOOKBACK-1:-1]
 
-    previous = bars[-BREAKOUT_LOOKBACK - 1:-1]
-
-    highest = max(float(x["h"]) for x in previous)
-    lowest = min(float(x["l"]) for x in previous)
-
-    breakout_up = (
-        close > highest
-        and close >= highest * (1 + MIN_BREAKOUT_PERCENT / 100)
+    previous_high = max(
+        float(bar["h"])
+        for bar in previous
     )
 
-    breakout_down = (
-        close < lowest
-        and close <= lowest * (1 - MIN_BREAKOUT_PERCENT / 100)
+    previous_low = min(
+        float(bar["l"])
+        for bar in previous
     )
 
-    if not breakout_up and not breakout_down:
+    # --------------------------------------------------------
+    # ATR
+    # --------------------------------------------------------
+
+    atr = calculate_atr(
+        closed_bars,
+        ATR_PERIOD
+    )
+
+    if atr is None or atr <= 0:
         return None
 
     # --------------------------------------------------------
     # RELATIVE VOLUME
     # --------------------------------------------------------
 
-    volume_bars = bars[-VOLUME_LOOKBACK - 1:-1]
+    rel_volume = calculate_relative_volume(
+        closed_bars,
+        VOLUME_LOOKBACK
+    )
 
-    historical_volumes = [
-        float(x["v"])
-        for x in volume_bars
-        if float(x["v"]) > 0
-    ]
-
-    if not historical_volumes:
+    if rel_volume is None:
         return None
-
-    median_volume = median(historical_volumes)
-
-    if median_volume <= 0:
-        return None
-
-    rel_volume = volume / median_volume
 
     if rel_volume < MIN_REL_VOLUME:
         return None
 
     # --------------------------------------------------------
-    # ATR
+    # LONG BREAKOUT
     # --------------------------------------------------------
 
-    atr = calculate_atr(bars, ATR_PERIOD)
+    long_breakout_percent = (
+        (entry_price - previous_high)
+        / previous_high
+    ) * 100
 
-    if atr is None or atr <= 0:
-        return None
+    if (
+        candle_high > previous_high
+        and entry_price > previous_high
+        and long_breakout_percent >= MIN_BREAKOUT_PERCENT
+    ):
 
-    # --------------------------------------------------------
-    # ENTRY / SL / TP
-    # --------------------------------------------------------
+        stop_distance = atr * ATR_MULTIPLIER
 
-    entry = close
-
-    if breakout_up:
-        side = "buy"
-
-        sl_distance = atr * ATR_MULTIPLIER
-
-        max_allowed_distance = entry * (
-            MAX_SL_PERCENT / 100
+        max_stop_distance = (
+            entry_price * MAX_STOP_PERCENT / 100
         )
 
-        sl_distance = min(
-            sl_distance,
-            max_allowed_distance,
+        stop_distance = min(
+            stop_distance,
+            max_stop_distance
         )
 
-        stop = entry - sl_distance
-
-        if stop <= 0:
+        if stop_distance <= 0:
             return None
 
-        target = entry + sl_distance * RR
+        stop_price = entry_price - stop_distance
 
-    else:
-        side = "sell"
-
-        sl_distance = atr * ATR_MULTIPLIER
-
-        max_allowed_distance = entry * (
-            MAX_SL_PERCENT / 100
+        target_price = (
+            entry_price
+            + stop_distance * RISK_REWARD
         )
 
-        sl_distance = min(
-            sl_distance,
-            max_allowed_distance,
+        return {
+            "symbol": symbol,
+            "side": "buy",
+            "entry": entry_price,
+            "breakout": previous_high,
+            "stop": stop_price,
+            "target": target_price,
+            "atr": atr,
+            "rel_volume": rel_volume,
+            "breakout_percent": long_breakout_percent,
+            "bar_time": latest["t"],
+        }
+
+    # --------------------------------------------------------
+    # SHORT BREAKOUT
+    # --------------------------------------------------------
+
+    short_breakout_percent = (
+        (previous_low - entry_price)
+        / previous_low
+    ) * 100
+
+    if (
+        candle_low < previous_low
+        and entry_price < previous_low
+        and short_breakout_percent >= MIN_BREAKOUT_PERCENT
+    ):
+
+        stop_distance = atr * ATR_MULTIPLIER
+
+        max_stop_distance = (
+            entry_price * MAX_STOP_PERCENT / 100
         )
 
-        stop = entry + sl_distance
+        stop_distance = min(
+            stop_distance,
+            max_stop_distance
+        )
 
-        target = entry - sl_distance
-
-        if target <= 0:
+        if stop_distance <= 0:
             return None
 
-    # --------------------------------------------------------
-    # POSITION SIZE
-    # --------------------------------------------------------
+        stop_price = entry_price + stop_distance
 
+        target_price = (
+            entry_price
+            - stop_distance * RISK_REWARD
+        )
+
+        return {
+            "symbol": symbol,
+            "side": "sell",
+            "entry": entry_price,
+            "breakout": previous_low,
+            "stop": stop_price,
+            "target": target_price,
+            "atr": atr,
+            "rel_volume": rel_volume,
+            "breakout_percent": short_breakout_percent,
+            "bar_time": latest["t"],
+        }
+
+    return None
+
+
+# ============================================================
+# POSITION SIZE
+# ============================================================
+
+def calculate_quantity(entry, stop):
     risk_per_share = abs(entry - stop)
 
     if risk_per_share <= 0:
-        return None
+        return 0
 
-    qty_by_risk = math.floor(
-        MAX_RISK_USD / risk_per_share
+    quantity = math.floor(
+        RISK_PER_TRADE / risk_per_share
     )
 
-    qty_by_capital = math.floor(
-        MAX_POSITION_NOTIONAL / entry
-    )
+    if quantity < 1:
+        return 0
 
-    qty = min(
-        qty_by_risk,
-        qty_by_capital,
-    )
-
-    if qty < 1:
-        return None
-
-    planned_risk = qty * risk_per_share
-    position_value = qty * entry
-
-    return {
-        "symbol": symbol,
-        "side": side,
-        "entry": entry,
-        "breakout": highest if side == "buy" else lowest,
-        "stop": stop,
-        "target": target,
-        "atr": atr,
-        "rel_volume": rel_volume,
-        "qty": qty,
-        "planned_risk": planned_risk,
-        "position_value": position_value,
-        "bar_time": current["t"],
-    }
+    return quantity
 
 
 # ============================================================
-# ROUNDING
+# ALPACA BRACKET ORDER
 # ============================================================
 
-def round_price(price):
-    """
-    Our universe is $10-$50, so 2 decimal places are appropriate.
-    """
-    return round(float(price), 2)
-
-
-# ============================================================
-# COOLDOWN
-# ============================================================
-
-def load_state():
-    if not os.path.exists(STATE_FILE):
-        return {}
-
-    state = {}
-
-    try:
-        with open(STATE_FILE, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-
-                if not line:
-                    continue
-
-                parts = line.split("|")
-
-                if len(parts) >= 2:
-                    state[parts[0]] = parts[1]
-
-    except Exception as e:
-        print(f"State read error: {e}")
-
-    return state
-
-
-def save_state(state):
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        for symbol, timestamp in state.items():
-            f.write(f"{symbol}|{timestamp}\n")
-
-
-def cooldown_active(symbol, state):
-    if symbol not in state:
-        return False
-
-    try:
-        previous = datetime.fromisoformat(
-            state[symbol]
-        )
-
-        now = datetime.now(timezone.utc)
-
-        age = now - previous
-
-        return age < timedelta(
-            minutes=COOLDOWN_MINUTES
-        )
-
-    except Exception:
-        return False
-
-
-# ============================================================
-# LOGGING
-# ============================================================
-
-def log_trade(signal, order_id):
-    exists = os.path.exists(TRADES_FILE)
-
-    with open(
-        TRADES_FILE,
-        "a",
-        encoding="utf-8",
-    ) as f:
-
-        if not exists:
-            f.write(
-                "time|symbol|side|qty|entry|stop|target|"
-                "atr|rel_volume|risk|notional|order_id\n"
-            )
-
-        f.write(
-            f"{datetime.now(timezone.utc).isoformat()}|"
-            f"{signal['symbol']}|"
-            f"{signal['side']}|"
-            f"{signal['qty']}|"
-            f"{signal['entry']:.2f}|"
-            f"{signal['stop']:.2f}|"
-            f"{signal['target']:.2f}|"
-            f"{signal['atr']:.4f}|"
-            f"{signal['rel_volume']:.2f}|"
-            f"{signal['planned_risk']:.2f}|"
-            f"{signal['position_value']:.2f}|"
-            f"{order_id}\n"
-        )
-
-
-def ensure_results_file():
-    if os.path.exists(RESULTS_FILE):
-        return
-
-    with open(
-        RESULTS_FILE,
-        "w",
-        newline="",
-        encoding="utf-8",
-    ) as f:
-
-        writer = csv.writer(f)
-
-        writer.writerow([
-            "time",
-            "symbol",
-            "side",
-            "qty",
-            "entry",
-            "stop",
-            "target",
-            "planned_risk",
-            "position_value",
-            "order_id",
-        ])
-
-
-# ============================================================
-# TELEGRAM
-# ============================================================
-
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "")
-CHAT_ID = os.getenv("CHAT_ID", "")
-
-
-def send_telegram(message):
-    if not TELEGRAM_TOKEN or not CHAT_ID:
-        print("Telegram credentials not configured.")
-        return
-
-    url = (
-        f"https://api.telegram.org/bot"
-        f"{TELEGRAM_TOKEN}/sendMessage"
-    )
-
-    payload = {
-        "chat_id": CHAT_ID,
-        "text": message,
-    }
-
-    try:
-        r = requests.post(
-            url,
-            json=payload,
-            timeout=20,
-        )
-
-        if not r.ok:
-            print(
-                f"Telegram error: "
-                f"{r.status_code} {r.text}"
-            )
-
-    except Exception as e:
-        print(f"Telegram exception: {e}")
-
-
-# ============================================================
-# ALPACA ORDER
-# ============================================================
-
-def submit_bracket(signal):
+def submit_bracket_trade(signal):
     symbol = signal["symbol"]
     side = signal["side"]
-    qty = signal["qty"]
 
-    entry = round_price(signal["entry"])
-    stop = round_price(signal["stop"])
-    target = round_price(signal["target"])
+    entry = signal["entry"]
+    stop = signal["stop"]
+    target = signal["target"]
+
+    quantity = calculate_quantity(
+        entry,
+        stop
+    )
+
+    if quantity < 1:
+        print(
+            f"{symbol}: risk distance too large "
+            f"for ${RISK_PER_TRADE:.2f} risk."
+        )
+        return None
+
+    # --------------------------------------------------------
+    # BUY BRACKET
+    # --------------------------------------------------------
 
     if side == "buy":
+
         order_side = "buy"
 
-        if stop >= entry:
-            raise RuntimeError(
-                "Invalid BUY stop price."
-            )
+        take_profit = {
+            "limit_price": f"{target:.2f}"
+        }
 
-        if target <= entry:
-            raise RuntimeError(
-                "Invalid BUY target price."
-            )
+        stop_loss = {
+            "stop_price": f"{stop:.2f}"
+        }
+
+    # --------------------------------------------------------
+    # SELL / SHORT BRACKET
+    # --------------------------------------------------------
 
     else:
+
         order_side = "sell"
 
-        if stop <= entry:
-            raise RuntimeError(
-                "Invalid SELL stop price."
-            )
+        take_profit = {
+            "limit_price": f"{target:.2f}"
+        }
 
-        if target >= entry:
-            raise RuntimeError(
-                "Invalid SELL target price."
-            )
+        stop_loss = {
+            "stop_price": f"{stop:.2f}"
+        }
 
     payload = {
         "symbol": symbol,
-        "qty": str(qty),
+        "qty": str(quantity),
         "side": order_side,
         "type": "market",
         "time_in_force": "day",
         "order_class": "bracket",
-        "take_profit": {
-            "limit_price": f"{target:.2f}"
-        },
-        "stop_loss": {
-            "stop_price": f"{stop:.2f}"
-        },
+        "take_profit": take_profit,
+        "stop_loss": stop_loss,
+        "client_order_id": (
+            f"FAST_{symbol}_"
+            f"{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        ),
     }
 
-    return alpaca_post(
-        f"{TRADING_URL}/v2/orders",
-        payload,
+    url = f"{ALPACA_BASE_URL}/orders"
+
+    response = requests.post(
+        url,
+        headers=alpaca_headers(),
+        json=payload,
+        timeout=20
     )
+
+    if response.status_code >= 400:
+        print(
+            "Alpaca order error:",
+            response.status_code,
+            response.text
+        )
+        return None
+
+    return response.json()
+
+
+# ============================================================
+# LOG TRADE
+# ============================================================
+
+def log_trade(signal, quantity, order):
+    timestamp = now_ny().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    with open(
+        TRADES_FILE,
+        "a",
+        encoding="utf-8"
+    ) as f:
+
+        f.write(
+            f"{timestamp} | "
+            f"FAST | "
+            f"{signal['symbol']} | "
+            f"{signal['side'].upper()} | "
+            f"Qty={quantity} | "
+            f"Entry={signal['entry']:.2f} | "
+            f"SL={signal['stop']:.2f} | "
+            f"TP={signal['target']:.2f} | "
+            f"RelVol={signal['rel_volume']:.2f} | "
+            f"ATR={signal['atr']:.4f} | "
+            f"OrderID={order.get('id')}\n"
+        )
+
+
+# ============================================================
+# TELEGRAM TRADE MESSAGE
+# ============================================================
+
+def send_trade_alert(signal, quantity, order):
+    message = (
+        "⚡ FAST ALPACA PAPER TRADE\n\n"
+        f"{signal['symbol']} "
+        f"{signal['side'].upper()}\n"
+        f"Qty: {quantity}\n"
+        f"Entry: {signal['entry']:.2f}\n"
+        f"Breakout: {signal['breakout']:.2f}\n"
+        f"SL: {signal['stop']:.2f}\n"
+        f"TP: {signal['target']:.2f}\n"
+        f"Risk: ${RISK_PER_TRADE:.2f}\n"
+        f"R:R: 1:{RISK_REWARD:.0f}\n"
+        f"RelVol: {signal['rel_volume']:.2f}\n"
+        f"ATR: {signal['atr']:.4f}\n\n"
+        "Alpaca Paper Trading"
+    )
+
+    send_telegram(message)
 
 
 # ============================================================
@@ -710,233 +671,279 @@ def main():
     print("Alpaca PAPER Trading")
     print("=" * 60)
 
-    if not ALPACA_KEY or not ALPACA_SECRET:
-        print(
-            "ERROR: Missing ALPACA_API_KEY "
-            "or ALPACA_SECRET_KEY."
-        )
-        return
-
-    now = now_ny()
+    current_time = now_ny()
 
     print(
         "New York time:",
-        now.strftime("%Y-%m-%d %H:%M:%S")
+        current_time.strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
     )
 
     # --------------------------------------------------------
-    # MARKET
+    # MARKET CHECK
     # --------------------------------------------------------
 
     if not market_is_open():
-        print("US market is closed.")
+
+        print("US market is CLOSED.")
+
         return
 
     print("US market is OPEN.")
 
     # --------------------------------------------------------
-    # EXISTING POSITION
+    # CHECK FAST POSITIONS ONLY
     # --------------------------------------------------------
 
-    positions = get_positions()
+    try:
 
-    if len(positions) >= MAX_OPEN_FAST_POSITIONS:
+        fast_positions = get_fast_positions()
+
+    except Exception as e:
+
         print(
-            "FAST position already exists. "
-            "No new trade."
+            "Could not retrieve Alpaca positions:",
+            e
         )
+
+        return
+
+    if fast_positions:
+
+        print(
+            "FAST position already exists:"
+        )
+
+        for position in fast_positions:
+
+            print(
+                f"  {position.get('symbol')} "
+                f"Qty={position.get('qty')} "
+                f"AvgEntry={position.get('avg_entry_price')}"
+            )
+
+        print(
+            "No new FAST trade."
+        )
+
         return
 
     # --------------------------------------------------------
-    # EXISTING ORDERS
+    # CHECK FAST OPEN ORDERS ONLY
     # --------------------------------------------------------
 
-    open_orders = get_open_orders()
+    try:
 
-    if open_orders:
+        fast_orders = get_open_orders_for_fast()
+
+    except Exception as e:
+
         print(
-            f"Open Alpaca orders: {len(open_orders)}"
+            "Could not retrieve Alpaca orders:",
+            e
         )
 
-        # Do not submit another trade if there is
-        # already an open FAST order.
         return
 
-    # --------------------------------------------------------
-    # STATE
-    # --------------------------------------------------------
+    if fast_orders:
 
-    state = load_state()
+        print(
+            "FAST open order already exists:"
+        )
+
+        for order in fast_orders:
+
+            print(
+                f"  {order.get('symbol')} "
+                f"{order.get('side')} "
+                f"{order.get('type')} "
+                f"Status={order.get('status')}"
+            )
+
+        print(
+            "No new FAST trade."
+        )
+
+        return
 
     # --------------------------------------------------------
     # SCAN
     # --------------------------------------------------------
 
-    candidates = []
+    print()
+    print(
+        f"Scanning {len(SYMBOLS)} FAST symbols..."
+    )
+
+    signals = []
 
     for symbol in SYMBOLS:
 
         try:
-            if cooldown_active(symbol, state):
-                print(
-                    f"{symbol}: cooldown active"
-                )
-                continue
 
-            print(f"Scanning {symbol}...")
+            print(
+                f"Scanning {symbol}..."
+            )
 
             signal = analyze_symbol(symbol)
 
-            if signal is None:
+            if signal:
+
+                signals.append(signal)
+
                 print(
-                    f"{symbol}: no FAST signal"
+                    f"  SIGNAL: "
+                    f"{signal['side'].upper()} "
+                    f"{symbol} "
+                    f"Entry={signal['entry']:.2f} "
+                    f"SL={signal['stop']:.2f} "
+                    f"TP={signal['target']:.2f} "
+                    f"RelVol={signal['rel_volume']:.2f}"
                 )
-                continue
 
-            candidates.append(signal)
+            else:
 
-            print(
-                f"{symbol}: SIGNAL "
-                f"{signal['side'].upper()} "
-                f"entry={signal['entry']:.2f} "
-                f"SL={signal['stop']:.2f} "
-                f"TP={signal['target']:.2f} "
-                f"RelVol={signal['rel_volume']:.2f} "
-                f"risk=${signal['planned_risk']:.2f}"
-            )
+                print(
+                    f"  No valid breakout."
+                )
 
         except Exception as e:
+
             print(
-                f"{symbol}: scan error: {e}"
+                f"  ERROR {symbol}: {e}"
             )
 
-    if not candidates:
-        print("No FAST signals.")
+    # --------------------------------------------------------
+    # NO SIGNAL
+    # --------------------------------------------------------
+
+    if not signals:
+
+        print()
+        print(
+            "No FAST breakout signal found."
+        )
+
         return
 
     # --------------------------------------------------------
     # SELECT BEST SIGNAL
     # --------------------------------------------------------
 
-    # Highest relative volume first.
-    candidates.sort(
-        key=lambda x: x["rel_volume"],
-        reverse=True,
+    signals.sort(
+        key=lambda x: (
+            x["rel_volume"],
+            x["breakout_percent"]
+        ),
+        reverse=True
     )
 
-    signal = candidates[0]
+    signal = signals[0]
 
-    print("=" * 60)
-    print("SELECTED FAST SIGNAL")
+    print()
     print(
-        signal["symbol"],
-        signal["side"].upper(),
+        "BEST FAST SIGNAL:"
     )
+
     print(
-        f"Entry: {signal['entry']:.2f}"
+        f"{signal['symbol']} "
+        f"{signal['side'].upper()} "
+        f"Entry={signal['entry']:.2f} "
+        f"SL={signal['stop']:.2f} "
+        f"TP={signal['target']:.2f}"
     )
-    print(
-        f"Breakout: {signal['breakout']:.2f}"
-    )
-    print(
-        f"SL: {signal['stop']:.2f}"
-    )
-    print(
-        f"TP: {signal['target']:.2f}"
-    )
-    print(
-        f"Qty: {signal['qty']}"
-    )
-    print(
-        f"Risk: ${signal['planned_risk']:.2f}"
-    )
-    print(
-        f"Position: ${signal['position_value']:.2f}"
-    )
-    print(
-        f"RelVol: {signal['rel_volume']:.2f}"
-    )
-    print("=" * 60)
 
     # --------------------------------------------------------
-    # BUYING POWER CHECK
+    # POSITION SIZE
     # --------------------------------------------------------
 
-    account = get_account()
-
-    buying_power = float(
-        account.get("buying_power", 0)
+    quantity = calculate_quantity(
+        signal["entry"],
+        signal["stop"]
     )
 
-    required_cash = signal["position_value"]
-
-    if signal["side"] == "buy":
-
-        if buying_power < required_cash:
-            print(
-                "Not enough buying power."
-            )
-            return
-
-    # --------------------------------------------------------
-    # SUBMIT
-    # --------------------------------------------------------
-
-    try:
-
-        order = submit_bracket(signal)
-
-        order_id = order.get("id", "")
+    if quantity < 1:
 
         print(
-            "ALPACA PAPER ORDER SUBMITTED"
-        )
-        print(
-            "Order ID:",
-            order_id
+            "Trade skipped: quantity would be below 1 share."
         )
 
-        log_trade(
-            signal,
-            order_id,
-        )
+        return
 
-        state[signal["symbol"]] = (
-            datetime.now(timezone.utc).isoformat()
-        )
+    print(
+        f"Calculated quantity: {quantity}"
+    )
 
-        save_state(state)
+    estimated_risk = (
+        abs(signal["entry"] - signal["stop"])
+        * quantity
+    )
 
-        telegram_message = (
-            "⚡ FAST PAPER TRADE\n\n"
-            f"{signal['side'].upper()} "
-            f"{signal['symbol']}\n"
-            f"Qty: {signal['qty']}\n"
-            f"Entry: {signal['entry']:.2f}\n"
-            f"SL: {signal['stop']:.2f}\n"
-            f"TP: {signal['target']:.2f}\n"
-            f"Risk: ${signal['planned_risk']:.2f}\n"
-            f"Position: ${signal['position_value']:.2f}\n"
-            f"RelVol: {signal['rel_volume']:.2f}\n\n"
-            "Alpaca PAPER"
-        )
+    print(
+        f"Estimated maximum risk: "
+        f"${estimated_risk:.2f}"
+    )
 
-        send_telegram(
-            telegram_message
-        )
+    # --------------------------------------------------------
+    # PLACE ALPACA PAPER BRACKET
+    # --------------------------------------------------------
 
-    except Exception as e:
+    print()
+    print(
+        "Submitting Alpaca PAPER bracket order..."
+    )
+
+    order = submit_bracket_trade(
+        signal
+    )
+
+    if not order:
 
         print(
-            "ORDER ERROR:",
-            e
+            "Trade was NOT submitted."
         )
 
-        send_telegram(
-            "⚠️ FAST Alpaca PAPER order error\n\n"
-            f"{signal['symbol']}\n"
-            f"{e}"
-        )
+        return
+
+    print(
+        "ORDER SUBMITTED:"
+    )
+
+    print(
+        "Order ID:",
+        order.get("id")
+    )
+
+    print(
+        "Status:",
+        order.get("status")
+    )
+
+    # --------------------------------------------------------
+    # LOG
+    # --------------------------------------------------------
+
+    log_trade(
+        signal,
+        quantity,
+        order
+    )
+
+    # --------------------------------------------------------
+    # TELEGRAM
+    # --------------------------------------------------------
+
+    send_trade_alert(
+        signal,
+        quantity,
+        order
+    )
+
+    print()
+    print(
+        "FAST trade completed successfully."
+    )
 
 
 if __name__ == "__main__":
