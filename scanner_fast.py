@@ -320,7 +320,6 @@ def calculate_relative_volume(bars, lookback=12):
 # BREAKOUT DETECTION
 # ============================================================
 
-
 def analyze_symbol(symbol):
     print(f"  Loading bars for {symbol}...")
 
