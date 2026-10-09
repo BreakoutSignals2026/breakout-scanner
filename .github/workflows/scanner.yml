@@ -213,7 +213,7 @@ jobs:
 
               echo "Synchronizing with remote main..."
 
-              git pull --rebase origin main
+              git pull --no-rebase -X ours origin main
 
               git push origin main
             fi
