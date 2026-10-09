@@ -320,178 +320,158 @@ def calculate_relative_volume(bars, lookback=12):
 # BREAKOUT DETECTION
 # ============================================================
 
+
 def analyze_symbol(symbol):
+    print(f"  Loading bars for {symbol}...")
+
     bars = get_bars(symbol, 100)
+
+    if not bars:
+        print("  REJECT: No market data returned.")
+        return None
 
     if len(bars) < max(
         BREAKOUT_LOOKBACK + 2,
         ATR_PERIOD + 2,
         VOLUME_LOOKBACK + 2
     ):
+        print(f"  REJECT: Not enough bars ({len(bars)}).")
         return None
 
-    # Ignore currently forming candle.
+    # Ignore the newest potentially incomplete candle.
     closed_bars = bars[:-1]
 
     if len(closed_bars) < BREAKOUT_LOOKBACK + 1:
+        print("  REJECT: Not enough closed candles.")
         return None
 
     latest = closed_bars[-1]
-
     entry_price = float(latest["c"])
     candle_high = float(latest["h"])
     candle_low = float(latest["l"])
 
-    # --------------------------------------------------------
-    # PRICE FILTER
-    # --------------------------------------------------------
-
     if entry_price < MIN_PRICE or entry_price > MAX_PRICE:
+        print(
+            f"  REJECT: PRICE OUT OF RANGE | "
+            f"Price=${entry_price:.2f} "
+            f"(allowed ${MIN_PRICE:.2f}-${MAX_PRICE:.2f})"
+        )
         return None
-
-    # --------------------------------------------------------
-    # PREVIOUS RANGE
-    # --------------------------------------------------------
 
     previous = closed_bars[-BREAKOUT_LOOKBACK-1:-1]
 
-    previous_high = max(
-        float(bar["h"])
-        for bar in previous
-    )
+    previous_high = max(float(bar["h"]) for bar in previous)
+    previous_low = min(float(bar["l"]) for bar in previous)
 
-    previous_low = min(
-        float(bar["l"])
-        for bar in previous
-    )
-
-    # --------------------------------------------------------
-    # ATR
-    # --------------------------------------------------------
-
-    atr = calculate_atr(
-        closed_bars,
-        ATR_PERIOD
+    atr = calculate_atr(closed_bars, ATR_PERIOD)
+    rel_volume = calculate_relative_volume(
+        closed_bars, VOLUME_LOOKBACK
     )
 
     if atr is None or atr <= 0:
+        print("  REJECT: ATR unavailable or invalid.")
         return None
-
-    # --------------------------------------------------------
-    # RELATIVE VOLUME
-    # --------------------------------------------------------
-
-    rel_volume = calculate_relative_volume(
-        closed_bars,
-        VOLUME_LOOKBACK
-    )
 
     if rel_volume is None:
+        print("  REJECT: Relative volume unavailable.")
         return None
 
-    if rel_volume < MIN_REL_VOLUME:
-        return None
-
-    # --------------------------------------------------------
-    # LONG BREAKOUT
-    # --------------------------------------------------------
-
-    long_breakout_percent = (
-        (entry_price - previous_high)
-        / previous_high
+    up_percent = (
+        (entry_price - previous_high) / previous_high
     ) * 100
 
-    if (
+    down_percent = (
+        (previous_low - entry_price) / previous_low
+    ) * 100
+
+    print(
+        f"  DATA: Price=${entry_price:.2f} | "
+        f"RangeHigh=${previous_high:.2f} | "
+        f"RangeLow=${previous_low:.2f} | "
+        f"BreakoutUp={up_percent:.3f}% | "
+        f"BreakoutDown={down_percent:.3f}% | "
+        f"RelVol={rel_volume:.2f}x | ATR=${atr:.4f}"
+    )
+
+    long_breakout = (
         candle_high > previous_high
         and entry_price > previous_high
-        and long_breakout_percent >= MIN_BREAKOUT_PERCENT
-    ):
+        and up_percent >= MIN_BREAKOUT_PERCENT
+    )
 
-        stop_distance = atr * ATR_MULTIPLIER
-
-        max_stop_distance = (
-            entry_price * MAX_STOP_PERCENT / 100
-        )
-
-        stop_distance = min(
-            stop_distance,
-            max_stop_distance
-        )
-
-        if stop_distance <= 0:
-            return None
-
-        stop_price = entry_price - stop_distance
-
-        target_price = (
-            entry_price
-            + stop_distance * RISK_REWARD
-        )
-
-        return {
-            "symbol": symbol,
-            "side": "buy",
-            "entry": entry_price,
-            "breakout": previous_high,
-            "stop": stop_price,
-            "target": target_price,
-            "atr": atr,
-            "rel_volume": rel_volume,
-            "breakout_percent": long_breakout_percent,
-            "bar_time": latest["t"],
-        }
-
-    # --------------------------------------------------------
-    # SHORT BREAKOUT
-    # --------------------------------------------------------
-
-    short_breakout_percent = (
-        (previous_low - entry_price)
-        / previous_low
-    ) * 100
-
-    if (
+    short_breakout = (
         candle_low < previous_low
         and entry_price < previous_low
-        and short_breakout_percent >= MIN_BREAKOUT_PERCENT
-    ):
+        and down_percent >= MIN_BREAKOUT_PERCENT
+    )
 
-        stop_distance = atr * ATR_MULTIPLIER
+    if rel_volume < MIN_REL_VOLUME:
+        print(
+            f"  REJECT: RELATIVE VOLUME TOO LOW "
+            f"({rel_volume:.2f}x; need {MIN_REL_VOLUME:.2f}x)."
+        )
+        return None
 
-        max_stop_distance = (
+    if not long_breakout and not short_breakout:
+        if entry_price > previous_high:
+            print(
+                f"  REJECT: Upside breakout too small "
+                f"({up_percent:.3f}%; need "
+                f"{MIN_BREAKOUT_PERCENT:.2f}%)."
+            )
+        elif entry_price < previous_low:
+            print(
+                f"  REJECT: Downside breakout too small "
+                f"({down_percent:.3f}%; need "
+                f"{MIN_BREAKOUT_PERCENT:.2f}%)."
+            )
+        else:
+            print(
+                "  REJECT: Price closed inside the previous "
+                "12-candle range; no confirmed breakout."
+            )
+        return None
+
+    if long_breakout:
+        side = "buy"
+        breakout_level = previous_high
+        breakout_percent = up_percent
+        stop_distance = min(
+            atr * ATR_MULTIPLIER,
             entry_price * MAX_STOP_PERCENT / 100
         )
+        stop_price = entry_price - stop_distance
+        target_price = entry_price + stop_distance * RISK_REWARD
 
+    else:
+        side = "sell"
+        breakout_level = previous_low
+        breakout_percent = down_percent
         stop_distance = min(
-            stop_distance,
-            max_stop_distance
+            atr * ATR_MULTIPLIER,
+            entry_price * MAX_STOP_PERCENT / 100
         )
-
-        if stop_distance <= 0:
-            return None
-
         stop_price = entry_price + stop_distance
+        target_price = entry_price - stop_distance * RISK_REWARD
 
-        target_price = (
-            entry_price
-            - stop_distance * RISK_REWARD
-        )
+    if stop_distance <= 0:
+        print("  REJECT: Invalid stop distance.")
+        return None
 
-        return {
-            "symbol": symbol,
-            "side": "sell",
-            "entry": entry_price,
-            "breakout": previous_low,
-            "stop": stop_price,
-            "target": target_price,
-            "atr": atr,
-            "rel_volume": rel_volume,
-            "breakout_percent": short_breakout_percent,
-            "bar_time": latest["t"],
-        }
+    print(f"  VALID SIGNAL: {side.upper()} {symbol}")
 
-    return None
-
+    return {
+        "symbol": symbol,
+        "side": side,
+        "entry": entry_price,
+        "breakout": breakout_level,
+        "stop": stop_price,
+        "target": target_price,
+        "atr": atr,
+        "rel_volume": rel_volume,
+        "breakout_percent": breakout_percent,
+        "bar_time": latest["t"],
+    }    
 
 # ============================================================
 # POSITION SIZE
