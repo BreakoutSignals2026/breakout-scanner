@@ -1,46 +1,42 @@
+
 import os
 import requests
 import math
-import csv
 from datetime import datetime, time
 from zoneinfo import ZoneInfo
 
 # ============================================================
-# FAST BREAKOUT SCANNER
-# Alpaca PAPER Trading
+# FAST BREAKOUT SCANNER - V2.6 DIAGNOSTIC
+# Alpaca PAPER Trading only
 # ============================================================
 
 ALPACA_BASE_URL = "https://paper-api.alpaca.markets/v2"
+DATA_URL = "https://data.alpaca.markets/v2/stocks/bars"
 
 ALPACA_API_KEY = os.getenv("ALPACA_API_KEY")
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
-
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-# ------------------------------------------------------------
-# FAST WATCHLIST
-# ------------------------------------------------------------
+# ============================================================
+# WATCHLIST
+# Selected from the last run's $10-$50 price range
+# Prices change; the price filter is checked on every run.
+# ============================================================
 
 SYMBOLS = [
     "SOFI",
-    "PLTR",
-    "SNAP",
     "RIVN",
-    "NIO",
     "F",
     "T",
     "PFE",
-    "BAC",
-    "MU",
     "AAL",
-    "UBER",
     "DKNG",
 ]
 
-# ------------------------------------------------------------
+# ============================================================
 # STRATEGY SETTINGS
-# ------------------------------------------------------------
+# ============================================================
 
 MIN_PRICE = 10.00
 MAX_PRICE = 50.00
@@ -51,31 +47,27 @@ BREAKOUT_LOOKBACK = 12
 MIN_BREAKOUT_PERCENT = 0.15
 
 VOLUME_LOOKBACK = 12
-MIN_REL_VOLUME = 1.80
+MIN_REL_VOLUME = 1.50
 
 ATR_PERIOD = 14
 ATR_MULTIPLIER = 1.50
-
 MAX_STOP_PERCENT = 1.00
 
 RISK_PER_TRADE = 10.00
 RISK_REWARD = 2.0
 
-COOLDOWN_MINUTES = 20
-
 MAX_FAST_POSITIONS = 1
 
-STATE_FILE = "breakout_state_fast.txt"
 TRADES_FILE = "breakout_trades_fast.txt"
+STATE_FILE = "breakout_state_fast.txt"
 RESULTS_FILE = "breakout_results_fast.csv"
+
+NY = ZoneInfo("America/New_York")
 
 
 # ============================================================
 # TIME
 # ============================================================
-
-NY = ZoneInfo("America/New_York")
-
 
 def now_ny():
     return datetime.now(NY)
@@ -88,7 +80,6 @@ def market_is_open():
         return False
 
     current = now.time()
-
     return time(9, 30) <= current < time(16, 0)
 
 
@@ -97,6 +88,11 @@ def market_is_open():
 # ============================================================
 
 def alpaca_headers():
+    if not ALPACA_API_KEY or not ALPACA_SECRET_KEY:
+        raise RuntimeError(
+            "Missing ALPACA_API_KEY or ALPACA_SECRET_KEY GitHub Secret."
+        )
+
     return {
         "APCA-API-KEY-ID": ALPACA_API_KEY,
         "APCA-API-SECRET-KEY": ALPACA_SECRET_KEY,
@@ -115,154 +111,79 @@ def send_telegram(message):
 
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 
-    payload = {
-        "chat_id": CHAT_ID,
-        "text": message,
-    }
-
     try:
         response = requests.post(
             url,
-            json=payload,
-            timeout=15
+            json={"chat_id": CHAT_ID, "text": message},
+            timeout=15,
         )
 
         if response.status_code != 200:
             print("Telegram error:", response.text)
 
-    except Exception as e:
-        print("Telegram exception:", e)
+    except Exception as exc:
+        print("Telegram exception:", exc)
 
 
 # ============================================================
-# ALPACA ACCOUNT
-# ============================================================
-
-def get_account():
-    url = f"{ALPACA_BASE_URL}/account"
-
-    response = requests.get(
-        url,
-        headers=alpaca_headers(),
-        timeout=20
-    )
-
-    response.raise_for_status()
-
-    return response.json()
-
-
-# ============================================================
-# ALPACA POSITIONS
+# ALPACA POSITIONS AND ORDERS
 # ============================================================
 
 def get_all_positions():
-    url = f"{ALPACA_BASE_URL}/positions"
-
     response = requests.get(
-        url,
+        f"{ALPACA_BASE_URL}/positions",
         headers=alpaca_headers(),
-        timeout=20
+        timeout=20,
     )
-
     response.raise_for_status()
-
     return response.json()
 
 
 def get_fast_positions():
-    """
-    IMPORTANT:
-    Only positions belonging to FAST SYMBOLS are considered.
+    return [
+        position
+        for position in get_all_positions()
+        if position.get("symbol", "").upper() in SYMBOLS
+    ]
 
-    An unrelated position such as AAPL does NOT block FAST.
-    """
-
-    positions = get_all_positions()
-
-    fast_positions = []
-
-    for position in positions:
-        symbol = position.get("symbol", "").upper()
-
-        if symbol in SYMBOLS:
-            fast_positions.append(position)
-
-    return fast_positions
-
-
-# ============================================================
-# ALPACA OPEN ORDERS
-# ============================================================
 
 def get_open_orders_for_fast():
-    url = f"{ALPACA_BASE_URL}/orders"
-
-    params = {
-        "status": "open",
-        "limit": 500,
-    }
-
     response = requests.get(
-        url,
+        f"{ALPACA_BASE_URL}/orders",
         headers=alpaca_headers(),
-        params=params,
-        timeout=20
+        params={"status": "open", "limit": 500},
+        timeout=20,
     )
-
     response.raise_for_status()
 
-    orders = response.json()
-
-    fast_orders = []
-
-    for order in orders:
-        symbol = order.get("symbol", "").upper()
-
-        if symbol in SYMBOLS:
-            fast_orders.append(order)
-
-    return fast_orders
+    return [
+        order
+        for order in response.json()
+        if order.get("symbol", "").upper() in SYMBOLS
+    ]
 
 
 # ============================================================
-# ALPACA MARKET DATA
+# MARKET DATA
 # ============================================================
 
 def get_bars(symbol, limit=100):
-    """
-    Gets 5-minute historical bars from Alpaca.
-    """
-
-    url = "https://data.alpaca.markets/v2/stocks/bars"
-
-    params = {
-        "symbols": symbol,
-        "timeframe": INTERVAL,
-        "limit": limit,
-        "feed": "iex",
-        "adjustment": "raw",
-    }
-
-    headers = {
-        "APCA-API-KEY-ID": ALPACA_API_KEY,
-        "APCA-API-SECRET-KEY": ALPACA_SECRET_KEY,
-    }
-
     response = requests.get(
-        url,
-        headers=headers,
-        params=params,
-        timeout=20
+        DATA_URL,
+        headers=alpaca_headers(),
+        params={
+            "symbols": symbol,
+            "timeframe": INTERVAL,
+            "limit": limit,
+            "feed": "iex",
+            "adjustment": "raw",
+        },
+        timeout=20,
     )
-
     response.raise_for_status()
 
     data = response.json()
-
-    bars = data.get("bars", {}).get(symbol, [])
-
-    return bars
+    return data.get("bars", {}).get(symbol, [])
 
 
 # ============================================================
@@ -280,13 +201,13 @@ def calculate_atr(bars, period=14):
         low = float(bars[i]["l"])
         previous_close = float(bars[i - 1]["c"])
 
-        tr = max(
-            high - low,
-            abs(high - previous_close),
-            abs(low - previous_close)
+        true_ranges.append(
+            max(
+                high - low,
+                abs(high - previous_close),
+                abs(low - previous_close),
+            )
         )
-
-        true_ranges.append(tr)
 
     if len(true_ranges) < period:
         return None
@@ -302,7 +223,7 @@ def calculate_relative_volume(bars, lookback=12):
 
     previous_volumes = [
         float(bar["v"])
-        for bar in bars[-lookback-1:-1]
+        for bar in bars[-lookback - 1:-1]
     ]
 
     if not previous_volumes:
@@ -317,47 +238,42 @@ def calculate_relative_volume(bars, lookback=12):
 
 
 # ============================================================
-# BREAKOUT DETECTION
+# BREAKOUT ANALYSIS WITH INDEPENDENT DIAGNOSTICS
 # ============================================================
 
 def analyze_symbol(symbol):
-    print(f"  Loading bars for {symbol}...")
-
     bars = get_bars(symbol, 100)
 
     if not bars:
         print("  REJECT: No market data returned.")
         return None
 
-    if len(bars) < max(
+    required = max(
         BREAKOUT_LOOKBACK + 2,
         ATR_PERIOD + 2,
-        VOLUME_LOOKBACK + 2
-    ):
-        print(f"  REJECT: Not enough bars ({len(bars)}).")
+        VOLUME_LOOKBACK + 2,
+    )
+
+    if len(bars) < required:
+        print(f"  REJECT: Not enough bars ({len(bars)}; need {required}).")
         return None
 
-    # Ignore the newest potentially incomplete candle.
+    # Exclude the newest candle because it may still be forming.
     closed_bars = bars[:-1]
 
-    if len(closed_bars) < BREAKOUT_LOOKBACK + 1:
-        print("  REJECT: Not enough closed candles.")
-        return None
-
     latest = closed_bars[-1]
-    entry_price = float(latest["c"])
+    entry = float(latest["c"])
     candle_high = float(latest["h"])
     candle_low = float(latest["l"])
 
-    if entry_price < MIN_PRICE or entry_price > MAX_PRICE:
+    if not MIN_PRICE <= entry <= MAX_PRICE:
         print(
             f"  REJECT: PRICE OUT OF RANGE | "
-            f"Price=${entry_price:.2f} "
-            f"(allowed ${MIN_PRICE:.2f}-${MAX_PRICE:.2f})"
+            f"${entry:.2f}; allowed ${MIN_PRICE:.2f}-${MAX_PRICE:.2f}"
         )
         return None
 
-    previous = closed_bars[-BREAKOUT_LOOKBACK-1:-1]
+    previous = closed_bars[-BREAKOUT_LOOKBACK - 1:-1]
 
     previous_high = max(float(bar["h"]) for bar in previous)
     previous_low = min(float(bar["l"]) for bar in previous)
@@ -375,102 +291,92 @@ def analyze_symbol(symbol):
         print("  REJECT: Relative volume unavailable.")
         return None
 
-    up_percent = (
-        (entry_price - previous_high) / previous_high
-    ) * 100
+    up_percent = (entry - previous_high) / previous_high * 100
+    down_percent = (previous_low - entry) / previous_low * 100
 
-    down_percent = (
-        (previous_low - entry_price) / previous_low
-    ) * 100
-
-    print(
-        f"  DATA: Price=${entry_price:.2f} | "
-        f"RangeHigh=${previous_high:.2f} | "
-        f"RangeLow=${previous_low:.2f} | "
-        f"BreakoutUp={up_percent:.3f}% | "
-        f"BreakoutDown={down_percent:.3f}% | "
-        f"RelVol={rel_volume:.2f}x | ATR=${atr:.4f}"
-    )
-
+    # Evaluate breakout and volume independently.
     long_breakout = (
         candle_high > previous_high
-        and entry_price > previous_high
+        and entry > previous_high
         and up_percent >= MIN_BREAKOUT_PERCENT
     )
 
     short_breakout = (
         candle_low < previous_low
-        and entry_price < previous_low
+        and entry < previous_low
         and down_percent >= MIN_BREAKOUT_PERCENT
     )
 
-    if rel_volume < MIN_REL_VOLUME:
-        print(
-            f"  REJECT: RELATIVE VOLUME TOO LOW "
-            f"({rel_volume:.2f}x; need {MIN_REL_VOLUME:.2f}x)."
-        )
-        return None
+    volume_ok = rel_volume >= MIN_REL_VOLUME
+
+    print(
+        f"  DATA: Price=${entry:.2f} | "
+        f"High=${previous_high:.2f} | "
+        f"Low=${previous_low:.2f} | "
+        f"Up={up_percent:.3f}% | "
+        f"Down={down_percent:.3f}% | "
+        f"RelVol={rel_volume:.2f}x | ATR=${atr:.4f}"
+    )
+
+    print(
+        f"  CHECK: Breakout={'YES' if long_breakout or short_breakout else 'NO'} "
+        f"(minimum {MIN_BREAKOUT_PERCENT:.2f}%) | "
+        f"Volume={'YES' if volume_ok else 'NO'} "
+        f"(minimum {MIN_REL_VOLUME:.2f}x)"
+    )
 
     if not long_breakout and not short_breakout:
-        if entry_price > previous_high:
-            print(
-                f"  REJECT: Upside breakout too small "
-                f"({up_percent:.3f}%; need "
-                f"{MIN_BREAKOUT_PERCENT:.2f}%)."
-            )
-        elif entry_price < previous_low:
-            print(
-                f"  REJECT: Downside breakout too small "
-                f"({down_percent:.3f}%; need "
-                f"{MIN_BREAKOUT_PERCENT:.2f}%)."
-            )
+        if entry <= previous_high and entry >= previous_low:
+            print("  REJECT: Close remained inside the previous range.")
+        elif entry > previous_high:
+            print("  REJECT: Upside breakout did not reach the required percentage.")
         else:
-            print(
-                "  REJECT: Price closed inside the previous "
-                "12-candle range; no confirmed breakout."
-            )
+            print("  REJECT: Downside breakout did not reach the required percentage.")
+
+    if not volume_ok:
+        print(
+            f"  REJECT: Relative volume {rel_volume:.2f}x "
+            f"is below {MIN_REL_VOLUME:.2f}x."
+        )
+
+    if not (long_breakout or short_breakout) or not volume_ok:
         return None
 
-    if long_breakout:
-        side = "buy"
-        breakout_level = previous_high
-        breakout_percent = up_percent
-        stop_distance = min(
-            atr * ATR_MULTIPLIER,
-            entry_price * MAX_STOP_PERCENT / 100
-        )
-        stop_price = entry_price - stop_distance
-        target_price = entry_price + stop_distance * RISK_REWARD
+    side = "buy" if long_breakout else "sell"
+    breakout_level = previous_high if side == "buy" else previous_low
+    breakout_percent = up_percent if side == "buy" else down_percent
 
-    else:
-        side = "sell"
-        breakout_level = previous_low
-        breakout_percent = down_percent
-        stop_distance = min(
-            atr * ATR_MULTIPLIER,
-            entry_price * MAX_STOP_PERCENT / 100
-        )
-        stop_price = entry_price + stop_distance
-        target_price = entry_price - stop_distance * RISK_REWARD
+    stop_distance = min(
+        atr * ATR_MULTIPLIER,
+        entry * MAX_STOP_PERCENT / 100,
+    )
 
     if stop_distance <= 0:
         print("  REJECT: Invalid stop distance.")
         return None
+
+    if side == "buy":
+        stop = entry - stop_distance
+        target = entry + stop_distance * RISK_REWARD
+    else:
+        stop = entry + stop_distance
+        target = entry - stop_distance * RISK_REWARD
 
     print(f"  VALID SIGNAL: {side.upper()} {symbol}")
 
     return {
         "symbol": symbol,
         "side": side,
-        "entry": entry_price,
+        "entry": entry,
         "breakout": breakout_level,
-        "stop": stop_price,
-        "target": target_price,
+        "stop": stop,
+        "target": target,
         "atr": atr,
         "rel_volume": rel_volume,
         "breakout_percent": breakout_percent,
         "bar_time": latest["t"],
-    }    
+    }
+
 
 # ============================================================
 # POSITION SIZE
@@ -482,158 +388,80 @@ def calculate_quantity(entry, stop):
     if risk_per_share <= 0:
         return 0
 
-    quantity = math.floor(
-        RISK_PER_TRADE / risk_per_share
-    )
-
-    if quantity < 1:
-        return 0
-
-    return quantity
+    return math.floor(RISK_PER_TRADE / risk_per_share)
 
 
 # ============================================================
-# ALPACA BRACKET ORDER
+# SUBMIT PAPER BRACKET ORDER
 # ============================================================
 
-def submit_bracket_trade(signal):
-    symbol = signal["symbol"]
+def submit_bracket_trade(signal, quantity):
     side = signal["side"]
 
-    entry = signal["entry"]
-    stop = signal["stop"]
-    target = signal["target"]
-
-    quantity = calculate_quantity(
-        entry,
-        stop
-    )
-
-    if quantity < 1:
-        print(
-            f"{symbol}: risk distance too large "
-            f"for ${RISK_PER_TRADE:.2f} risk."
-        )
-        return None
-
-    # --------------------------------------------------------
-    # BUY BRACKET
-    # --------------------------------------------------------
-
-    if side == "buy":
-
-        order_side = "buy"
-
-        take_profit = {
-            "limit_price": f"{target:.2f}"
-        }
-
-        stop_loss = {
-            "stop_price": f"{stop:.2f}"
-        }
-
-    # --------------------------------------------------------
-    # SELL / SHORT BRACKET
-    # --------------------------------------------------------
-
-    else:
-
-        order_side = "sell"
-
-        take_profit = {
-            "limit_price": f"{target:.2f}"
-        }
-
-        stop_loss = {
-            "stop_price": f"{stop:.2f}"
-        }
-
     payload = {
-        "symbol": symbol,
+        "symbol": signal["symbol"],
         "qty": str(quantity),
-        "side": order_side,
+        "side": side,
         "type": "market",
         "time_in_force": "day",
         "order_class": "bracket",
-        "take_profit": take_profit,
-        "stop_loss": stop_loss,
+        "take_profit": {
+            "limit_price": f"{signal['target']:.2f}"
+        },
+        "stop_loss": {
+            "stop_price": f"{signal['stop']:.2f}"
+        },
         "client_order_id": (
-            f"FAST_{symbol}_"
-            f"{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            f"FAST_{signal['symbol']}_"
+            f"{datetime.now(NY).strftime('%Y%m%d%H%M%S')}"
         ),
     }
 
-    url = f"{ALPACA_BASE_URL}/orders"
-
     response = requests.post(
-        url,
+        f"{ALPACA_BASE_URL}/orders",
         headers=alpaca_headers(),
         json=payload,
-        timeout=20
+        timeout=20,
     )
 
     if response.status_code >= 400:
-        print(
-            "Alpaca order error:",
-            response.status_code,
-            response.text
-        )
+        print("Alpaca order error:", response.status_code, response.text)
         return None
 
     return response.json()
 
 
 # ============================================================
-# LOG TRADE
+# LOGGING
 # ============================================================
 
 def log_trade(signal, quantity, order):
-    timestamp = now_ny().strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    timestamp = now_ny().strftime("%Y-%m-%d %H:%M:%S")
 
-    with open(
-        TRADES_FILE,
-        "a",
-        encoding="utf-8"
-    ) as f:
-
-        f.write(
-            f"{timestamp} | "
-            f"FAST | "
-            f"{signal['symbol']} | "
-            f"{signal['side'].upper()} | "
-            f"Qty={quantity} | "
-            f"Entry={signal['entry']:.2f} | "
-            f"SL={signal['stop']:.2f} | "
-            f"TP={signal['target']:.2f} | "
+    with open(TRADES_FILE, "a", encoding="utf-8") as file:
+        file.write(
+            f"{timestamp} | FAST | {signal['symbol']} | "
+            f"{signal['side'].upper()} | Qty={quantity} | "
+            f"EntryReference={signal['entry']:.2f} | "
+            f"SL={signal['stop']:.2f} | TP={signal['target']:.2f} | "
             f"RelVol={signal['rel_volume']:.2f} | "
-            f"ATR={signal['atr']:.4f} | "
-            f"OrderID={order.get('id')}\n"
+            f"ATR={signal['atr']:.4f} | OrderID={order.get('id')}\n"
         )
 
 
-# ============================================================
-# TELEGRAM TRADE MESSAGE
-# ============================================================
-
 def send_trade_alert(signal, quantity, order):
     message = (
-        "⚡ FAST ALPACA PAPER TRADE\n\n"
-        f"{signal['symbol']} "
-        f"{signal['side'].upper()}\n"
-        f"Qty: {quantity}\n"
-        f"Entry: {signal['entry']:.2f}\n"
-        f"Breakout: {signal['breakout']:.2f}\n"
-        f"SL: {signal['stop']:.2f}\n"
-        f"TP: {signal['target']:.2f}\n"
-        f"Risk: ${RISK_PER_TRADE:.2f}\n"
-        f"R:R: 1:{RISK_REWARD:.0f}\n"
-        f"RelVol: {signal['rel_volume']:.2f}\n"
-        f"ATR: {signal['atr']:.4f}\n\n"
+        "FAST ALPACA PAPER TRADE\n\n"
+        f"{signal['symbol']} {signal['side'].upper()}\n"
+        f"Quantity: {quantity}\n"
+        f"Signal reference: ${signal['entry']:.2f}\n"
+        f"Stop-loss: ${signal['stop']:.2f}\n"
+        f"Take-profit: ${signal['target']:.2f}\n"
+        f"Estimated risk: ${abs(signal['entry'] - signal['stop']) * quantity:.2f}\n"
+        f"Relative volume: {signal['rel_volume']:.2f}x\n"
+        f"Order ID: {order.get('id')}\n\n"
         "Alpaca Paper Trading"
     )
-
     send_telegram(message)
 
 
@@ -642,286 +470,107 @@ def send_trade_alert(signal, quantity, order):
 # ============================================================
 
 def main():
-
     print("=" * 60)
-    print("FAST BREAKOUT SCANNER")
+    print("FAST BREAKOUT SCANNER V2.6")
     print("Alpaca PAPER Trading")
     print("=" * 60)
-
-    current_time = now_ny()
-
-    print(
-        "New York time:",
-        current_time.strftime(
-            "%Y-%m-%d %H:%M:%S"
-        )
-    )
-
-    # --------------------------------------------------------
-    # MARKET CHECK
-    # --------------------------------------------------------
+    print("New York time:", now_ny().strftime("%Y-%m-%d %H:%M:%S"))
 
     if not market_is_open():
-
         print("US market is CLOSED.")
-
         return
 
     print("US market is OPEN.")
 
-    # --------------------------------------------------------
-    # CHECK FAST POSITIONS ONLY
-    # --------------------------------------------------------
-
     try:
+        positions = get_fast_positions()
+        if positions:
+            print("FAST position already exists:")
+            for position in positions:
+                print(
+                    f"  {position.get('symbol')} "
+                    f"Qty={position.get('qty')} "
+                    f"AvgEntry={position.get('avg_entry_price')}"
+                )
+            print("No new FAST trade.")
+            return
 
-        fast_positions = get_fast_positions()
+        orders = get_open_orders_for_fast()
+        if orders:
+            print("FAST open order already exists:")
+            for order in orders:
+                print(
+                    f"  {order.get('symbol')} {order.get('side')} "
+                    f"Status={order.get('status')}"
+                )
+            print("No new FAST trade.")
+            return
 
-    except Exception as e:
-
-        print(
-            "Could not retrieve Alpaca positions:",
-            e
-        )
-
+    except Exception as exc:
+        print("Could not check Alpaca positions/orders:", exc)
         return
 
-    if fast_positions:
-
-        print(
-            "FAST position already exists:"
-        )
-
-        for position in fast_positions:
-
-            print(
-                f"  {position.get('symbol')} "
-                f"Qty={position.get('qty')} "
-                f"AvgEntry={position.get('avg_entry_price')}"
-            )
-
-        print(
-            "No new FAST trade."
-        )
-
-        return
-
-    # --------------------------------------------------------
-    # CHECK FAST OPEN ORDERS ONLY
-    # --------------------------------------------------------
-
-    try:
-
-        fast_orders = get_open_orders_for_fast()
-
-    except Exception as e:
-
-        print(
-            "Could not retrieve Alpaca orders:",
-            e
-        )
-
-        return
-
-    if fast_orders:
-
-        print(
-            "FAST open order already exists:"
-        )
-
-        for order in fast_orders:
-
-            print(
-                f"  {order.get('symbol')} "
-                f"{order.get('side')} "
-                f"{order.get('type')} "
-                f"Status={order.get('status')}"
-            )
-
-        print(
-            "No new FAST trade."
-        )
-
-        return
-
-    # --------------------------------------------------------
-    # SCAN
-    # --------------------------------------------------------
-
-    print()
-    print(
-        f"Scanning {len(SYMBOLS)} FAST symbols..."
-    )
-
+    print(f"\nScanning {len(SYMBOLS)} FAST symbols...")
     signals = []
 
     for symbol in SYMBOLS:
-
+        print(f"\nScanning {symbol}...")
         try:
-
-            print(
-                f"Scanning {symbol}..."
-            )
-
             signal = analyze_symbol(symbol)
-
             if signal:
-
                 signals.append(signal)
-
-                print(
-                    f"  SIGNAL: "
-                    f"{signal['side'].upper()} "
-                    f"{symbol} "
-                    f"Entry={signal['entry']:.2f} "
-                    f"SL={signal['stop']:.2f} "
-                    f"TP={signal['target']:.2f} "
-                    f"RelVol={signal['rel_volume']:.2f}"
-                )
-
             else:
-
-                print(
-                    f"  No valid breakout."
-                )
-
-        except Exception as e:
-
-            print(
-                f"  ERROR {symbol}: {e}"
-            )
-
-    # --------------------------------------------------------
-    # NO SIGNAL
-    # --------------------------------------------------------
+                print("  No valid breakout.")
+        except Exception as exc:
+            print(f"  ERROR {symbol}: {exc}")
 
     if not signals:
-
-        print()
-        print(
-            "No FAST breakout signal found."
-        )
-
+        print("\nNo FAST breakout signal found.")
         return
 
-    # --------------------------------------------------------
-    # SELECT BEST SIGNAL
-    # --------------------------------------------------------
-
     signals.sort(
-        key=lambda x: (
-            x["rel_volume"],
-            x["breakout_percent"]
+        key=lambda item: (
+            item["rel_volume"],
+            item["breakout_percent"],
         ),
-        reverse=True
+        reverse=True,
     )
 
     signal = signals[0]
-
-    print()
-    print(
-        "BEST FAST SIGNAL:"
-    )
-
-    print(
-        f"{signal['symbol']} "
-        f"{signal['side'].upper()} "
-        f"Entry={signal['entry']:.2f} "
-        f"SL={signal['stop']:.2f} "
-        f"TP={signal['target']:.2f}"
-    )
-
-    # --------------------------------------------------------
-    # POSITION SIZE
-    # --------------------------------------------------------
-
-    quantity = calculate_quantity(
-        signal["entry"],
-        signal["stop"]
-    )
+    quantity = calculate_quantity(signal["entry"], signal["stop"])
 
     if quantity < 1:
-
-        print(
-            "Trade skipped: quantity would be below 1 share."
-        )
-
+        print("Trade skipped: quantity would be below 1 share.")
         return
 
+    estimated_risk = abs(signal["entry"] - signal["stop"]) * quantity
+
+    print("\nBEST FAST SIGNAL:")
     print(
-        f"Calculated quantity: {quantity}"
+        f"{signal['symbol']} {signal['side'].upper()} | "
+        f"Reference=${signal['entry']:.2f} | "
+        f"SL=${signal['stop']:.2f} | TP=${signal['target']:.2f}"
     )
+    print(f"Quantity: {quantity}")
+    print(f"Estimated risk: ${estimated_risk:.2f}")
 
-    estimated_risk = (
-        abs(signal["entry"] - signal["stop"])
-        * quantity
-    )
-
-    print(
-        f"Estimated maximum risk: "
-        f"${estimated_risk:.2f}"
-    )
-
-    # --------------------------------------------------------
-    # PLACE ALPACA PAPER BRACKET
-    # --------------------------------------------------------
-
-    print()
-    print(
-        "Submitting Alpaca PAPER bracket order..."
-    )
-
-    order = submit_bracket_trade(
-        signal
-    )
+    print("\nSubmitting Alpaca PAPER bracket order...")
+    order = submit_bracket_trade(signal, quantity)
 
     if not order:
-
-        print(
-            "Trade was NOT submitted."
-        )
-
+        print("Trade was NOT submitted.")
         return
 
-    print(
-        "ORDER SUBMITTED:"
-    )
+    print("Order submitted.")
+    print("Order ID:", order.get("id"))
+    print("Status:", order.get("status"))
 
-    print(
-        "Order ID:",
-        order.get("id")
-    )
+    log_trade(signal, quantity, order)
+    send_trade_alert(signal, quantity, order)
 
-    print(
-        "Status:",
-        order.get("status")
-    )
-
-    # --------------------------------------------------------
-    # LOG
-    # --------------------------------------------------------
-
-    log_trade(
-        signal,
-        quantity,
-        order
-    )
-
-    # --------------------------------------------------------
-    # TELEGRAM
-    # --------------------------------------------------------
-
-    send_trade_alert(
-        signal,
-        quantity,
-        order
-    )
-
-    print()
-    print(
-        "FAST trade completed successfully."
-    )
+    print("FAST trade submission completed.")
 
 
 if __name__ == "__main__":
     main()
+        
