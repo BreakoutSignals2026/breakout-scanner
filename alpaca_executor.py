@@ -115,7 +115,7 @@ def place_bracket_order(
         "qty": str(qty),
         "side": side,
         "type": "market",
-        "time_in_force": "day",
+        "time_in_force": "gtc",
         "order_class": "bracket",
         "take_profit": {
             "limit_price": str(
