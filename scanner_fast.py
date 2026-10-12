@@ -52,7 +52,6 @@ SYMBOLS = [
     "FSLY",
     "CFLT",
     "PATH",
-    "RUN",
     "U",
 ]
 
