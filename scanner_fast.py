@@ -40,7 +40,6 @@ SYMBOLS = [
     "IREN",
     "REXR",
     "HIMS",
-    "JOBY",
     "VALE",
     "CLSK",
     "CCL",
