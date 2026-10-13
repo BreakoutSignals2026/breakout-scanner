@@ -32,7 +32,6 @@ SYMBOLS = [
     "PFE",
     "AAL",
     "DKNG",
-    "WBD",
     "NU",
     "VZ",
     "NOK",
