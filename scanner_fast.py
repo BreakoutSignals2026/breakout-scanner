@@ -31,6 +31,7 @@ SYMBOLS = [
     "T",
     "PFE",
     "AAL",
+    "ACAD",
     "DKNG",
     "NU",
     "VZ",
