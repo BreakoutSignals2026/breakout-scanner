@@ -32,6 +32,7 @@ SYMBOLS = [
     "PFE",
     "AAL",
     "ACAD",
+    "DNLI",
     "DKNG",
     "NU",
     "VZ",
