@@ -49,7 +49,6 @@ SYMBOLS = [
     "AES",
     "CHWY",
     "FSLY",
-    "CFLT",
     "PATH",
     "U",
 ]
