@@ -45,7 +45,7 @@ SYMBOLS = [
     "CCL",
     "KHC",
     "PBR",
-    "CTRA",
+    "CTVA",
     "AES",
     "CHWY",
     "FSLY",
