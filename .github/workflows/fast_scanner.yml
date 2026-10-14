@@ -1,6 +1,14 @@
+
 name: FAST Alpaca Scanner
 
 on:
+  schedule:
+    # Spustenie približne 15 minút pred otvorením trhu
+    # 13:10 UTC = letný čas
+    # 14:10 UTC = zimný čas
+    - cron: "10 13 * * 1-5"
+    - cron: "10 14 * * 1-5"
+
   workflow_dispatch:
 
 permissions:
@@ -8,46 +16,204 @@ permissions:
 
 concurrency:
   group: fast-scanner
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  fast-scanner:
+
+  first-session:
     runs-on: ubuntu-24.04
+    timeout-minutes: 360
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Install requests
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run FAST scanner
+      - name: Wait for US market open
+        run: |
+          NY_TIME=$(TZ=America/New_York date '+%H:%M')
+          echo "New York time: $NY_TIME"
+
+          NY_HOUR=${NY_TIME:0:2}
+          NY_MIN=${NY_TIME:3:2}
+          NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
+
+          while [ "$NY_MINUTES" -lt 570 ]
+          do
+            echo "Waiting for 09:30 New York..."
+            sleep 30
+
+            NY_TIME=$(TZ=America/New_York date '+%H:%M')
+            NY_HOUR=${NY_TIME:0:2}
+            NY_MIN=${NY_TIME:3:2}
+            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
+          done
+
+          echo "US market is open."
+
+      - name: Run FAST scanner every 5 minutes
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
-          python scanner_fast.py
+          while true
+          do
+            NY_TIME=$(TZ=America/New_York date '+%H:%M')
+            NY_DAY=$(TZ=America/New_York date '+%u')
 
-      - name: Save FAST state and logs
-        if: always()
+            NY_HOUR=${NY_TIME:0:2}
+            NY_MIN=${NY_TIME:3:2}
+            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
+
+            echo ""
+            echo "======================================"
+            echo "FAST ALPACA SCANNER"
+            echo "New York time: $NY_TIME"
+            echo "======================================"
+
+            if [ "$NY_DAY" -ge 6 ]; then
+              echo "Weekend - US market closed."
+              break
+            fi
+
+            if [ "$NY_MINUTES" -lt 570 ]; then
+              echo "Before US market open."
+              sleep 60
+              continue
+            fi
+
+            if [ "$NY_MINUTES" -ge 925 ]; then
+              echo "First 6-hour job finished at 15:25 New York."
+              break
+            fi
+
+            python scanner_fast.py
+
+            echo "FAST scanner finished."
+
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git add \
+              breakout_state_fast.txt \
+              breakout_trades_fast.txt \
+              breakout_results_fast.csv \
+              2>/dev/null || true
+
+            if git diff --cached --quiet; then
+              echo "No FAST state changes."
+            else
+              git commit -m "Update FAST scanner state"
+
+              echo "Synchronizing with remote main..."
+
+              git pull --no-rebase -X ours origin main
+
+              git push origin main
+            fi
+
+            echo "Waiting 5 minutes..."
+            sleep 300
+          done
+
+  second-session:
+    needs: first-session
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python -m pip install --upgrade pip
+          pip install requests
 
-          git add breakout_state_fast.txt breakout_trades_fast.txt breakout_results_fast.csv 2>/dev/null || true
+      - name: Run final FAST session
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          while true
+          do
+            NY_TIME=$(TZ=America/New_York date '+%H:%M')
+            NY_DAY=$(TZ=America/New_York date '+%u')
 
-          if git diff --cached --quiet; then
-            echo "No FAST files changed."
-          else
-            git commit -m "Update FAST scanner state"
-            git push
-          fi
+            NY_HOUR=${NY_TIME:0:2}
+            NY_MIN=${NY_TIME:3:2}
+            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
+
+            echo ""
+            echo "======================================"
+            echo "FAST ALPACA SCANNER - FINAL SESSION"
+            echo "New York time: $NY_TIME"
+            echo "======================================"
+
+            if [ "$NY_DAY" -ge 6 ]; then
+              echo "Weekend - US market closed."
+              break
+            fi
+
+            if [ "$NY_MINUTES" -lt 925 ]; then
+              echo "Waiting for 15:25 New York..."
+              sleep 30
+              continue
+            fi
+
+            if [ "$NY_MINUTES" -ge 960 ]; then
+              echo "US market closed at 16:00 New York."
+              break
+            fi
+
+            python scanner_fast.py
+
+            echo "FAST scanner finished."
+
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git add \
+              breakout_state_fast.txt \
+              breakout_trades_fast.txt \
+              breakout_results_fast.csv \
+              2>/dev/null || true
+
+            if git diff --cached --quiet; then
+              echo "No FAST state changes."
+            else
+              git commit -m "Update FAST scanner state"
+
+              echo "Synchronizing with remote main..."
+
+              git pull --no-rebase -X ours origin main
+
+              git push origin main
+            fi
+
+            echo "Waiting 5 minutes..."
+            sleep 300
+          done
+          
