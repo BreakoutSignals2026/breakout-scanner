@@ -61,7 +61,7 @@ jobs:
 
           echo "US market is open."
 
-      - name: Run FAST scanner with precise 5-minute alignment
+      - name: Run FAST scanner with stable 270s loop
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -75,10 +75,8 @@ jobs:
 
             NY_HOUR=${NY_TIME:0:2}
             NY_MIN=${NY_TIME:3:2}
-            NY_SEC=${NY_TIME:6:2}
             
             NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-            TOTAL_SECONDS=$((10#$NY_MIN * 60 + 10#$NY_SEC))
 
             echo ""
             echo "======================================"
@@ -127,18 +125,9 @@ jobs:
               git push origin main
             fi
 
-            # Výpočet presného času do ďalšieho 5-minútového bloku, aby sa odstránil časový posun
-            CURRENT_SEC_OF_DAY=$(( 10#$NY_HOUR * 3600 + 10#$NY_MIN * 60 + 10#$NY_SEC ))
-            REMAINDER=$(( CURRENT_SEC_OF_DAY % 300 ))
-            SLEEP_TIME=$(( 300 - REMAINDER ))
-            
-            # Poistka, aby sleep nebol záporný alebo príliš krátky
-            if [ "$SLEEP_TIME" -le 10 ]; then
-              SLEEP_TIME=300
-            fi
-
-            echo "Sleeping for $SLEEP_TIME seconds to align with the next 5-minute mark..."
-            sleep "$SLEEP_TIME"
+            # Stabilný spánok na 270 sekúnd (4.5 minúty), aby sa skript stihol zobudiť tesne pred novou sviečkou
+            echo "Sleeping for 270 seconds before next scan..."
+            sleep 270
           done
 
   second-session:
@@ -162,7 +151,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run final FAST session with precise alignment
+      - name: Run final FAST session with stable 270s loop
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -176,7 +165,6 @@ jobs:
 
             NY_HOUR=${NY_TIME:0:2}
             NY_MIN=${NY_TIME:3:2}
-            NY_SEC=${NY_TIME:6:2}
 
             NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
 
@@ -227,14 +215,6 @@ jobs:
               git push origin main
             fi
 
-            CURRENT_SEC_OF_DAY=$(( 10#$NY_HOUR * 3600 + 10#$NY_MIN * 60 + 10#$NY_SEC ))
-            REMAINDER=$(( CURRENT_SEC_OF_DAY % 300 ))
-            SLEEP_TIME=$(( 300 - REMAINDER ))
-
-            if [ "$SLEEP_TIME" -le 10 ]; then
-              SLEEP_TIME=300
-            fi
-
-            echo "Sleeping for $SLEEP_TIME seconds to align with the next 5-minute mark..."
-            sleep "$SLEEP_TIME"
+            echo "Sleeping for 270 seconds before next scan..."
+            sleep 270
           done
