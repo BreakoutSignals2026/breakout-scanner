@@ -31,7 +31,7 @@ SYMBOLS = [
     "CCL", "KHC", "PBR", "CTVA", "AES", "CHWY", "FSLY", "PATH", "U"
 ]
 
-MIN_PRICE = 10.00
+MIN_PRICE = 5.00
 MAX_PRICE = 50.00
 
 # Keep existing V2.8 strategy parameters in this version.
