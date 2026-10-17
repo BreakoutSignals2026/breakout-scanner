@@ -26,9 +26,12 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "").strip()
 CHAT_ID = os.getenv("CHAT_ID", "").strip()
 
 SYMBOLS = [
-    "SOFI", "RIVN", "F", "T", "PFE", "AAL", "ACAD", "DNLI", "DKNG",
-    "NU", "VZ", "NOK", "PCG", "IREN", "REXR", "HIMS", "VALE", "CLSK",
-    "CCL", "KHC", "PBR", "CTVA", "AES", "CHWY", "FSLY", "PATH", "U"
+    # Technologické a rastové dravce
+    "SOFI", "RIVN", "DKNG", "HIMS", "CHWY", "FSLY", "PATH", "U", "AFRM", "HOOD",
+    # Krypto a blockchain väzby (vysoká beta a volatilita)
+    "CLSK", "IREN", "MARA", "RIOT", "BITF",
+    # Ďalšie obľúbené momentum tituly
+    "NIO", "OPEN", "LMND", "CELH", "PLUG"
 ]
 
 MIN_PRICE = 5.00
