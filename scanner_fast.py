@@ -331,7 +331,6 @@ def submit_trailing_stop_trade(signal, quantity):
         r"[^0-9]", "", signal["bar_time"]
     )[-12:]
     
-    # Oprava: Odstránený neplatný order_class, trailing stop sa určuje cez type="trailing_stop"
     payload = {
         "symbol": signal["symbol"],
         "qty": str(quantity),
