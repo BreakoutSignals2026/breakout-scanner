@@ -1,6 +1,6 @@
-# FAST BREAKOUT SCANNER V2.9.2 (s Trailing SL, Dynamic TP & PnL Telegram Reportom)
+# FAST BREAKOUT SCANNER V3.0 (Alpaca Trailing Stop & Risk $5)
 # Alpaca PAPER only
-# Faster concurrent scan, live-price validation, timing diagnostics.
+# Server-side trailing stop, live-price validation, risk management $5.
 
 import os
 import re
@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from zoneinfo import ZoneInfo
 
-VERSION = "2.9.2"
+VERSION = "3.0.0"
 
 ALPACA_BASE_URL = "https://paper-api.alpaca.markets/v2"
 DATA_URL = "https://data.alpaca.markets/v2/stocks/bars"
@@ -43,8 +43,10 @@ MIN_REL_VOLUME = 1.50
 ATR_PERIOD = 14
 ATR_MULTIPLIER = 1.50
 MAX_STOP_PERCENT = 1.00
-RISK_PER_TRADE = 10.00
-RISK_REWARD = 2.0
+RISK_PER_TRADE = 5.00  # Znížené riziko na 5$
+
+# Trailing stop percento pre Alpaca (napr. 1.2% odstup)
+TRAIL_PERCENT = 1.2
 
 MAX_SIGNAL_AGE_MINUTES = 8
 MAX_ENTRY_CHASE_PERCENT = 0.25
@@ -249,12 +251,12 @@ def analyze_symbol(symbol):
         if candle_high > prior_high and entry_close > prior_high:
             breakout_pct = (entry_close - prior_high) / prior_high * 100
             if breakout_pct >= MIN_BREAKOUT_PERCENT:
-                side = "buy"
+                side = "buy"  # v Alpaca terminológii pre otvorená long pozícia
                 breakout_level = prior_high
         elif candle_low < prior_low and entry_close < prior_low:
             breakout_pct = (prior_low - entry_close) / prior_low * 100
             if breakout_pct >= MIN_BREAKOUT_PERCENT:
-                side = "sell"
+                side = "sell"  # v Alpaca pre otvorená short pozícia (sell order)
                 breakout_level = prior_low
 
         if side is None:
@@ -266,17 +268,14 @@ def analyze_symbol(symbol):
 
         if side == "buy":
             stop = entry_close - stop_distance
-            target = entry_close + stop_distance * RISK_REWARD
         else:
             stop = entry_close + stop_distance
-            target = entry_close - stop_distance * RISK_REWARD
 
         return {
             "symbol": symbol,
             "side": side,
             "entry_close": round(entry_close, 4),
             "stop": round(stop, 2),
-            "target": round(target, 2),
             "stop_distance": stop_distance,
             "rel_volume": round(rel_volume, 2),
             "breakout_percent": round(breakout_pct, 3),
@@ -309,10 +308,8 @@ def validate_live_entry(signal):
     updated["entry"] = round(price, 2)
     if updated["side"] == "buy":
         updated["stop"] = round(price - distance, 2)
-        updated["target"] = round(price + distance * RISK_REWARD, 2)
     else:
         updated["stop"] = round(price + distance, 2)
-        updated["target"] = round(price - distance * RISK_REWARD, 2)
     updated["live_trade_time"] = live["time"].isoformat()
     updated["live_trade_age_seconds"] = round(live["age_seconds"], 1)
     updated["chase_percent"] = round(chase_pct, 3)
@@ -326,23 +323,25 @@ def calculate_quantity(entry, stop):
     return max(0, math.floor(RISK_PER_TRADE / distance))
 
 
-def submit_bracket_trade(signal, quantity):
+def submit_trailing_stop_trade(signal, quantity):
     if quantity < 1:
-        raise RuntimeError("Množstvo je 0 akcií; SL je príliš široký pre riziko $10.")
-    client_id = "FAST29_" + signal["symbol"] + "_" + re.sub(
+        raise RuntimeError("Množstvo je 0 akcií; riziko $5 je príliš malé pre túto volatilitu.")
+    
+    client_id = "FAST30_" + signal["symbol"] + "_" + re.sub(
         r"[^0-9]", "", signal["bar_time"]
     )[-12:]
+    
+    # Oprava: Odstránený neplatný order_class, trailing stop sa určuje cez type="trailing_stop"
     payload = {
         "symbol": signal["symbol"],
         "qty": str(quantity),
         "side": signal["side"],
-        "type": "market",
+        "type": "trailing_stop",
         "time_in_force": "gtc",
-        "order_class": "bracket",
-        "take_profit": {"limit_price": f'{signal["target"]:.2f}'},
-        "stop_loss": {"stop_price": f'{signal["stop"]:.2f}'},
+        "trail_percent": str(TRAIL_PERCENT),
         "client_order_id": client_id,
     }
+    
     started = time.monotonic()
     response = HTTP.post(
         f"{ALPACA_BASE_URL}/orders",
@@ -351,10 +350,11 @@ def submit_bracket_trade(signal, quantity):
         timeout=20,
     )
     elapsed = time.monotonic() - started
-    print(f"[{stamp()}] ORDER {signal['symbol']} HTTP {response.status_code}, {elapsed:.2f}s")
+    print(f"[{stamp()}] TRAILING ORDER {signal['symbol']} HTTP {response.status_code}, {elapsed:.2f}s")
     if response.status_code >= 400:
         raise RuntimeError(f"Alpaca objednávka odmietnutá ({response.status_code}): {response.text}")
     return response.json(), elapsed
+
 
 
 def log_trade(record):
@@ -364,8 +364,7 @@ def log_trade(record):
 
 def check_closed_positions(current_positions, state):
     """
-    Skontroluje, či nejaká pozícia od posledného cyklu zmizla (bola uzavretá),
-    a pošle celkový finančný výsledok v dolároch a percentách do Telegramu.
+    Skontroluje uzavreté pozície a odošle PnL report do Telegramu.
     """
     previous_positions = state.get("last_positions", {})
     current_symbols = {p.get("symbol") for p in current_positions}
@@ -420,187 +419,11 @@ def check_closed_positions(current_positions, state):
     return state
 
 
-def manage_dynamic_stops_and_targets(positions, orders, state):
-    """
-    Krokujúci Trailing Stop & Take Profit:
-    - Ak je obchod v pluse >= 1.2%, posunie SL na Break-Even a natiahne TP o +0.5%.
-    - Ak je obchod v pluse >= 2.0%, posunie SL do zisku a opäť natiahne TP o +0.5%.
-    """
-    trailing_state = state.setdefault("trailing_triggered", {})
-
-    for position in positions:
-        symbol = position.get("symbol")
-        try:
-            qty = float(position.get("qty", 0))
-            if qty == 0:
-                continue
-            side = "long" if qty > 0 else "short"
-            entry_price = float(position.get("avg_entry_price", 0))
-            if entry_price <= 0:
-                continue
-
-            live = get_latest_trade(symbol)
-            price = live["price"]
-
-            sl_id = None
-            tp_id = None
-            sl_price = None
-            tp_price = None
-
-            for order in orders:
-                if order.get("symbol") != symbol:
-                    continue
-                candidates = [order]
-                if isinstance(order.get("legs"), list):
-                    candidates.extend(order["legs"])
-                for item in candidates:
-                    o_type = str(item.get("type", "")).lower()
-                    o_status = str(item.get("status", "")).lower()
-                    if o_status in {"canceled", "rejected", "expired", "filled"}:
-                        continue
-                    if o_type in {"stop", "stop_limit"} and item.get("stop_price") is not None:
-                        sl_id = item.get("id")
-                        sl_price = float(item["stop_price"])
-                    elif o_type == "limit" and item.get("limit_price") is not None:
-                        tp_id = item.get("id")
-                        tp_price = float(item["limit_price"])
-
-            if not sl_id or not tp_id or sl_price is None or tp_price is None:
-                continue
-
-            sym_state = trailing_state.setdefault(symbol, {"stage": 0})
-            current_stage = sym_state.get("stage", 0)
-
-            if side == "long":
-                profit_pct = (price - entry_price) / entry_price
-
-                if profit_pct >= 0.020 and current_stage < 2:
-                    new_sl = round(entry_price * 1.005, 2)
-                    new_tp = round(tp_price + (entry_price * 0.005), 2)
-                    
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{sl_id}", json={"stop_price": str(new_sl)}, headers=alpaca_headers())
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{tp_id}", json={"limit_price": str(new_tp)}, headers=alpaca_headers())
-                    
-                    send_telegram(f"🔥 TRAILING ZISK (LONG): {symbol}\n• SL uzamknutý v zisku na ${new_sl}\n• TP natiahnutý na ${new_tp}")
-                    sym_state["stage"] = 2
-
-                elif profit_pct >= 0.012 and current_stage < 1:
-                    new_sl = round(entry_price, 2)
-                    new_tp = round(tp_price + (entry_price * 0.005), 2)
-                    
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{sl_id}", json={"stop_price": str(new_sl)}, headers=alpaca_headers())
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{tp_id}", json={"limit_price": str(new_tp)}, headers=alpaca_headers())
-                    
-                    send_telegram(f"🛡️ TRAILING STOP (LONG): {symbol}\n• SL posunutý na Break-Even (${new_sl})\n• TP natiahnutý na ${new_tp}")
-                    sym_state["stage"] = 1
-
-            elif side == "short":
-                profit_pct = (entry_price - price) / entry_price
-
-                if profit_pct >= 0.020 and current_stage < 2:
-                    new_sl = round(entry_price * 0.995, 2)
-                    new_tp = round(tp_price - (entry_price * 0.005), 2)
-                    
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{sl_id}", json={"stop_price": str(new_sl)}, headers=alpaca_headers())
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{tp_id}", json={"limit_price": str(new_tp)}, headers=alpaca_headers())
-                    
-                    send_telegram(f"🔥 TRAILING ZISK (SHORT): {symbol}\n• SL uzamknutý v zisku na ${new_sl}\n• TP natiahnutý na ${new_tp}")
-                    sym_state["stage"] = 2
-
-                elif profit_pct >= 0.012 and current_stage < 1:
-                    new_sl = round(entry_price, 2)
-                    new_tp = round(tp_price - (entry_price * 0.005), 2)
-                    
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{sl_id}", json={"stop_price": str(new_sl)}, headers=alpaca_headers())
-                    HTTP.patch(f"{ALPACA_BASE_URL}/orders/{tp_id}", json={"limit_price": str(new_tp)}, headers=alpaca_headers())
-                    
-                    send_telegram(f"🛡️ TRAILING STOP (SHORT): {symbol}\n• SL posunutý na Break-Even (${new_sl})\n• TP natiahnutý na ${new_tp}")
-                    sym_state["stage"] = 1
-
-        except Exception as exc:
-            print(f"[{stamp()}] Trailing správa {symbol}: {exc}")
-
-    open_symbols = {p.get("symbol") for p in positions}
-    for symbol in list(trailing_state):
-        if symbol not in open_symbols:
-            trailing_state.pop(symbol, None)
-
-    return state
-
-
-def monitor_fast_positions(positions, orders, state):
-    alerts = state.setdefault("alerts_sent", {})
-    open_symbols = {p.get("symbol") for p in positions}
-    for symbol in list(alerts):
-        if symbol not in open_symbols:
-            alerts.pop(symbol, None)
-
-    for position in positions:
-        symbol = position.get("symbol")
-        try:
-            qty = float(position.get("qty", 0))
-            side = "long" if qty > 0 else "short"
-            stop, target = get_protective_levels_for_monitor(symbol, orders, side)
-            live = get_latest_trade(symbol)
-            price = live["price"]
-            hit = None
-            if side == "long":
-                if stop is not None and price <= stop:
-                    hit = "SL"
-                elif target is not None and price >= target:
-                    hit = "TP"
-            else:
-                if stop is not None and price >= stop:
-                    hit = "SL"
-                elif target is not None and price <= target:
-                    hit = "TP"
-
-            if hit and alerts.get(symbol) != hit:
-                send_telegram(
-                    f"⚠️ FAST V{VERSION} {hit} CENA DOSIAHNUTÁ\n"
-                    f"{symbol} | pozícia: {side}\n"
-                    f"Posledná cena: ${price:.2f}\n"
-                    f"SL: {('$' + format(stop, '.2f')) if stop is not None else 'nenájdený'} | "
-                    f"TP: {('$' + format(target, '.2f')) if target is not None else 'nenájdený'}\n"
-                    f"Upozornenie nie je potvrdením vyplnenia objednávky."
-                )
-                alerts[symbol] = hit
-        except Exception as exc:
-            print(f"[{stamp()}] Monitor {symbol}: {exc}")
-    state["alerts_sent"] = alerts
-    return state
-
-
-def get_protective_levels_for_monitor(symbol, orders, position_side):
-    stop = None
-    target = None
-    for order in orders:
-        if order.get("symbol") != symbol:
-            continue
-        candidates = [order]
-        if isinstance(order.get("legs"), list):
-            candidates.extend(order["legs"])
-        for item in candidates:
-            order_type = str(item.get("type", "")).lower()
-            side = str(item.get("side", "")).lower()
-            status = str(item.get("status", "")).lower()
-            if status in {"canceled", "rejected", "expired", "filled"}:
-                continue
-            if order_type in {"stop", "stop_limit"} and item.get("stop_price") is not None:
-                stop = float(item["stop_price"])
-            elif order_type == "limit" and item.get("limit_price") is not None:
-                if (position_side == "long" and side == "sell") or (
-                    position_side == "short" and side == "buy"
-                ):
-                    target = float(item["limit_price"])
-    return stop, target
-
-
 def main():
     run_started = time.monotonic()
-    print(f"=== FAST BREAKOUT SCANNER V{VERSION} | Alpaca PAPER ===")
+    print(f"=== FAST BREAKOUT SCANNER V{VERSION} (Alpaca Trailing) ===")
     print(f"[{stamp()}] NY time: {now_ny().isoformat(timespec='seconds')}")
-    print(f"[{stamp()}] Symbols={len(SYMBOLS)} interval={INTERVAL} workers={MAX_WORKERS}")
+    print(f"[{stamp()}] Symbols={len(SYMBOLS)} interval={INTERVAL} risk=${RISK_PER_TRADE}")
     state = load_state()
 
     try:
@@ -608,18 +431,12 @@ def main():
         orders = get_open_orders_for_fast()
         print(f"[{stamp()}] FAST positions={len(positions)}, open orders={len(orders)}")
         
-        # 0. Skontrolujeme uzatvorené pozície a odošleme PnL report
+        # 1. Skontrolujeme uzatvorené pozície a odošleme PnL report
         state = check_closed_positions(positions, state)
-
-        # 1. Spustíme dynamickú správu Trailing Stopov a Take Profitov
-        state = manage_dynamic_stops_and_targets(positions, orders, state)
-        
-        # 2. Skontrolujeme zásahy (SL/TP)
-        state = monitor_fast_positions(positions, orders, state)
         save_state(state)
     except Exception as exc:
         print(f"[{stamp()}] Monitor/API chyba: {exc}")
-        send_telegram(f"⚠️ FAST V{VERSION}: chyba pri kontrole pozícií/objednávok:\n{exc}")
+        send_telegram(f"⚠️ FAST V{VERSION}: chyba pri kontrole pozícií:\n{exc}")
         return
 
     if not market_is_open():
@@ -647,19 +464,12 @@ def main():
                     print(f"[{stamp()}] {symbol}: táto sviečka už bola spracovaná")
                     continue
                 signals.append(signal)
-                print(
-                    f"[{stamp()}] Kandidát {symbol} {signal['side'].upper()} "
-                    f"close=${signal['entry_close']:.2f} RVOL={signal['rel_volume']:.2f}x "
-                    f"breakout={signal['breakout_percent']:.3f}% age={signal['signal_age_minutes']:.1f}m"
-                )
             elif error:
                 errors.append(error)
 
     print(f"[{stamp()}] Súbežný scan: {time.monotonic()-scan_started:.2f}s; kandidáti={len(signals)}")
     if not signals:
         print("[INFO] Nenašiel sa žiadny nový breakout.")
-        for error in errors[:12]:
-            print(f"[SCAN] {error}")
         print(f"Celkový čas: {time.monotonic() - run_started:.2f}s")
         return
 
@@ -693,10 +503,10 @@ def main():
 
     print(
         f"[{stamp()}] ODOSIELAM {selected['symbol']} {selected['side'].upper()} "
-        f"entry~${selected['entry']:.2f} qty={qty} SL=${selected['stop']:.2f} TP=${selected['target']:.2f}"
+        f"entry~${selected['entry']:.2f} qty={qty} trail_pct={TRAIL_PERCENT}%"
     )
     try:
-        order, order_seconds = submit_bracket_trade(selected, qty)
+        order, order_seconds = submit_trailing_stop_trade(selected, qty)
     except Exception as exc:
         print(f"[{stamp()}] Objednávka zlyhala: {exc}")
         send_telegram(f"❌ FAST V{VERSION}: objednávka {selected['symbol']} zlyhala.\n{exc}")
@@ -713,27 +523,17 @@ def main():
     })
 
     state.setdefault("last_signal_bar", {})[selected["symbol"]] = selected["bar_key"]
-    state.setdefault("last_order", {})[selected["symbol"]] = {
-        "bar_key": selected["bar_key"],
-        "order_id": order.get("id"),
-        "submitted_at": selected["submitted_at"],
-    }
     save_state(state)
     log_trade(selected)
 
-    planned_risk = abs(selected["entry"] - selected["stop"]) * qty
     send_telegram(
-        f"🚀 FAST V{VERSION} PAPER OBJEDNÁVKA\n"
+        f"🚀 FAST V{VERSION} ALPACA TRAILING OBJEDNÁVKA\n"
         f"{selected['symbol']} {selected['side'].upper()}\n"
-        f"Vstup (posledný obchod): ${selected['entry']:.2f}\n"
-        f"Množstvo: {qty} akcií | plánované riziko približne ${planned_risk:.2f}\n"
-        f"SL: ${selected['stop']:.2f}\n"
-        f"TP: ${selected['target']:.2f} (R:R {RISK_REWARD:.1f}:1)\n"
+        f"Vstup: ${selected['entry']:.2f}\n"
+        f"Množstvo: {qty} akcií | Plánované riziko: ${RISK_PER_TRADE:.2f}\n"
+        f"Alpaca Server Trailing Stop: {TRAIL_PERCENT}%\n"
         f"Rel. objem: {selected['rel_volume']:.2f}x | breakout: {selected['breakout_percent']:.3f}%\n"
-        f"Vek signálu: {selected['signal_age_minutes']:.1f} min | odchýlka ceny: {selected['chase_percent']:.3f}%\n"
-        f"Stav pri odpovedi Alpaca: {order.get('status', 'neznámy')}\n"
-        f"Čas od štartu po odoslanie: {selected['run_seconds_to_order']:.1f}s\n"
-        f"Upozornenie: PAPER účet; skutočnú cenu a stav vyplnenia over v Alpaca."
+        f"Stav v Alpaca: {order.get('status', 'neznámy')}"
     )
     print(f"[{stamp()}] Hotovo. Celkový čas: {time.monotonic() - run_started:.2f}s")
 
