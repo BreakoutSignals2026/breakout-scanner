@@ -331,14 +331,13 @@ def submit_trailing_stop_trade(signal, quantity):
         r"[^0-9]", "", signal["bar_time"]
     )[-12:]
     
-    # Použijeme Order Class "trailing_stop" priamo na serveroch Alpaca
+    # Oprava: Odstránený neplatný order_class, trailing stop sa určuje cez type="trailing_stop"
     payload = {
         "symbol": signal["symbol"],
         "qty": str(quantity),
         "side": signal["side"],
-        "type": "market",
+        "type": "trailing_stop",
         "time_in_force": "gtc",
-        "order_class": "trailing_stop",
         "trail_percent": str(TRAIL_PERCENT),
         "client_order_id": client_id,
     }
@@ -355,6 +354,7 @@ def submit_trailing_stop_trade(signal, quantity):
     if response.status_code >= 400:
         raise RuntimeError(f"Alpaca objednávka odmietnutá ({response.status_code}): {response.text}")
     return response.json(), elapsed
+
 
 
 def log_trade(record):
