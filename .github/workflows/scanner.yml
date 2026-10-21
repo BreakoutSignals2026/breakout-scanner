@@ -57,7 +57,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ vars.ENABLE_BREAKOUT_TRADING }}
+          ENABLE_BREAKOUT_TRADING: "false"
         shell: bash
         run: |
           set -euo pipefail
@@ -124,7 +124,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ vars.ENABLE_BREAKOUT_TRADING }}
+          ENABLE_BREAKOUT_TRADING: "false"
         shell: bash
         run: |
           set -euo pipefail
