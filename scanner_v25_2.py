@@ -55,6 +55,7 @@ LIQUIDATE_BEFORE_CLOSE_MINUTES = 15
 STATE_FILE = Path("breakout_state_v252.json")
 RESULTS_FILE = Path("breakout_results_v252.csv")
 ALLOW_ENTRY = os.getenv("ENABLE_BREAKOUT_TRADING", "false").strip().lower() == "true"
+ONE_SHOT_PAPER_TEST = os.getenv("BREAKOUT_ONE_SHOT_PAPER_TEST", "false").strip().lower() == "true"
 HTTP = requests.Session()
 TERMINAL = {"filled", "canceled", "expired", "rejected", "done_for_day", "replaced", "stopped", "suspended"}
 CLOSED = {"closed", "rejected", "canceled_no_fill"}
