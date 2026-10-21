@@ -326,6 +326,11 @@ def send_bracket(signal, p, state):
     cid = my_entry_client_id(signal)
     if cid in (t.get("client_id") for t in state["trades"].values()):
         return False
+    if ONE_SHOT_PAPER_TEST:
+        if one_shot_already_consumed(state):
+            print("PAPER ONE-SHOT: entry permit already consumed", flush=True)
+            return False
+        state["one_shot_paper_entry_attempted"] = when(datetime.now(timezone.utc))
     state["trades"][cid] = {
         "symbol": symbol, "side": signal["side"], "client_id": cid,
         "entry_id": None, "status": "submitting", "submitted": when(datetime.now(timezone.utc)),
