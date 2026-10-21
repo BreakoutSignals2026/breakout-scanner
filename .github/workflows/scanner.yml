@@ -7,6 +7,12 @@ on:
     - cron: "10 13 * * 1-5"
     - cron: "10 14 * * 1-5"
   workflow_dispatch:
+    inputs:
+      one_paper_trade:
+        description: "ONE-SHOT classic PAPER: permit max one new bracket entry attempt"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -57,7 +63,8 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: "false"
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -104,8 +111,8 @@ jobs:
 
   second-session:
     needs: [preflight, first-session]
-    # Still run the EOD monitor when first-session fails (but not when gate skipped).
-    if: ${{ always() && needs.preflight.outputs.run == 'true' }}
+    # Keep EOD monitor after scan failure but honor explicit run cancellation.
+    if: ${{ !cancelled() && needs.preflight.outputs.run == 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -124,7 +131,8 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: "false"
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |
           set -euo pipefail

@@ -55,6 +55,7 @@ LIQUIDATE_BEFORE_CLOSE_MINUTES = 15
 STATE_FILE = Path("breakout_state_v252.json")
 RESULTS_FILE = Path("breakout_results_v252.csv")
 ALLOW_ENTRY = os.getenv("ENABLE_BREAKOUT_TRADING", "false").strip().lower() == "true"
+ONE_SHOT_PAPER_TEST = os.getenv("BREAKOUT_ONE_SHOT_PAPER_TEST", "false").strip().lower() == "true"
 HTTP = requests.Session()
 TERMINAL = {"filled", "canceled", "expired", "rejected", "done_for_day", "replaced", "stopped", "suspended"}
 CLOSED = {"closed", "rejected", "canceled_no_fill"}
@@ -325,6 +326,11 @@ def send_bracket(signal, p, state):
     cid = my_entry_client_id(signal)
     if cid in (t.get("client_id") for t in state["trades"].values()):
         return False
+    if ONE_SHOT_PAPER_TEST:
+        if one_shot_already_consumed(state):
+            print("PAPER ONE-SHOT: entry permit already consumed", flush=True)
+            return False
+        state["one_shot_paper_entry_attempted"] = when(datetime.now(timezone.utc))
     state["trades"][cid] = {
         "symbol": symbol, "side": signal["side"], "client_id": cid,
         "entry_id": None, "status": "submitting", "submitted": when(datetime.now(timezone.utc)),
@@ -370,6 +376,23 @@ def ensure_no_untracked_classic_orders(state):
               and not o.get("parent_order_id")]
     if extras:
         raise RuntimeError(f"Neznáme predchádzajúce BREAKOUT objednávky: {extras[:6]} – ručná kontrola")
+
+
+def one_shot_already_consumed(state):
+    """Conservative PAPER test permit; block repeats after restarts."""
+    if state.get("one_shot_paper_entry_attempted") or state["trades"]:
+        return True
+    after = (datetime.now(timezone.utc) - timedelta(days=8)).isoformat()
+    records = api("GET", "/orders", params={"status": "all", "limit": 500,
+                                             "after": after, "nested": "false"})
+    if not isinstance(records, list):
+        raise RuntimeError("PAPER test: no order history available")
+    return any(
+        str(order.get("client_order_id") or "").startswith("B252_")
+        and not str(order.get("client_order_id") or "").startswith("B252_EOD_")
+        and not order.get("parent_order_id")
+        for order in records
+    )
 
 
 def get_tracked_order(t):
@@ -649,6 +672,9 @@ def scan_for_new(state, session):
     blockers = {o.get('symbol') for o in walk_orders(open_orders())} | set(positions)
     blockers |= {t['symbol'] for t in state['trades'].values() if active_record(t)}
     for symbol in SYMBOLS:
+        if ONE_SHOT_PAPER_TEST and state.get("one_shot_paper_entry_attempted"):
+            print("PAPER ONE-SHOT: one attempt already used", flush=True)
+            return
         if now_ny() >= session["entry_stop"]:
             break
         if symbol in blockers:
@@ -688,7 +714,7 @@ def scan_for_new(state, session):
 
 
 def main():
-    print(f"BREAKOUT V{VERSION} PAPER | NY={when(now_ny())} | entry enabled={ALLOW_ENTRY}", flush=True)
+    print(f"BREAKOUT V{VERSION} PAPER | NY={when(now_ny())} | entry enabled={ALLOW_ENTRY} | one-shot={ONE_SHOT_PAPER_TEST}", flush=True)
     state = load_state()
     session = market_session_today()
     if session and now_ny() >= session["close"]:
@@ -715,6 +741,9 @@ def main():
         print("UNSAFE/UNRESOLVED positions/orders, new entries blocked", flush=True)
         return
     ensure_no_untracked_classic_orders(state)
+    if ONE_SHOT_PAPER_TEST and one_shot_already_consumed(state):
+        print("PAPER ONE-SHOT: prior BREAKOUT attempt/order found; entry blocked", flush=True)
+        return
     if not session or now_ny() < session["open"] or now_ny() >= session["entry_stop"] or not clock_open():
         print("Market outside entry window", flush=True)
         return
