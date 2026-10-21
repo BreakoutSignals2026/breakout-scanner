@@ -1,13 +1,11 @@
-name: FAST Alpaca Scanner
+name: FAST Alpaca Scanner V3.2.1 (28 symbols)
 
 on:
   schedule:
-    # Spustenie približne 15 minút pred otvorením trhu
-    # 13:10 UTC = letný čas
-    # 14:10 UTC = zimný čas
+    # 09:10 America/New_York: 13:10 UTC in EDT, 14:10 UTC in EST.
+    # The other invocation is discarded by preflight (10:10 NY).
     - cron: "10 13 * * 1-5"
     - cron: "10 14 * * 1-5"
-
   workflow_dispatch:
 
 permissions:
@@ -18,203 +16,166 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    outputs:
+      should_run: ${{ steps.gate.outputs.should_run }}
+    steps:
+      - id: gate
+        name: Gate duplicate daylight-saving UTC schedule
+        shell: bash
+        run: |
+          NOW_NY=$(TZ=America/New_York date '+%H:%M')
+          WEEKDAY=$(TZ=America/New_York date '+%u')
+          HOUR=${NOW_NY:0:2}
+          MINUTE=${NOW_NY:3:2}
+          NOW_MIN=$((10#$HOUR * 60 + 10#$MINUTE))
+          echo "New York time: $NOW_NY, weekday: $WEEKDAY"
+          if [ "$WEEKDAY" -ge 6 ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Never start a 6h job overnight: it would time out before the close.
+            if [ "$NOW_MIN" -ge 540 ] && [ "$NOW_MIN" -lt 960 ]; then
+              echo "should_run=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+              echo "Manual test skipped outside 09:00-16:00 New York."
+            fi
+          elif [ "$NOW_MIN" -ge 530 ] && [ "$NOW_MIN" -lt 595 ]; then
+            # Accept 08:50-09:54 New York: true pre-market trigger.
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            # Skip the extra 10:10 local trigger in the other DST season.
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipped duplicate / late scheduled run."
+          fi
 
   first-session:
+    needs: preflight
+    if: ${{ needs.preflight.outputs.should_run == 'true' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 360
-
+    # Early-close days can end at 13:00 NY. Hand off at noon, not 14:25.
+    timeout-minutes: 230
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
       - name: Install requests
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Wait for US market open
-        run: |
-          NY_TIME=$(TZ=America/New_York date '+%H:%M')
-          echo "New York time: $NY_TIME"
-
-          NY_HOUR=${NY_TIME:0:2}
-          NY_MIN=${NY_TIME:3:2}
-          NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-          while [ "$NY_MINUTES" -lt 570 ]
-          do
-            echo "Waiting for 09:30 New York..."
-            sleep 30
-
-            NY_TIME=$(TZ=America/New_York date '+%H:%M')
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-          done
-
-          echo "US market is open."
-
-      - name: Run FAST scanner with stable 270s loop
+        run: python -m pip install requests
+      - name: Scan from US open until 12:00 New York
+        shell: bash
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
+          # Keep false until PAPER validation of order lifecycle and EOD.
+          ENABLE_FAST_TRADING: ${{ vars.ENABLE_FAST_TRADING || 'false' }}
         run: |
-          while true
-          do
+          set -e
+          while true; do
             NY_TIME=$(TZ=America/New_York date '+%H:%M:%S')
             NY_DAY=$(TZ=America/New_York date '+%u')
-
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-            
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-            echo ""
-            echo "======================================"
-            echo "FAST ALPACA SCANNER"
-            echo "New York time: $NY_TIME"
-            echo "======================================"
-
-            if [ "$NY_DAY" -ge 6 ]; then
-              echo "Weekend - US market closed."
+            HOUR=${NY_TIME:0:2}
+            MINUTE=${NY_TIME:3:2}
+            NOW_MIN=$((10#$HOUR * 60 + 10#$MINUTE))
+            echo "FAST first-session: NY $NY_TIME"
+            if [ "$NY_DAY" -ge 6 ] || [ "$NOW_MIN" -ge 720 ]; then
+              echo "First-session finished."
               break
             fi
-
-            if [ "$NY_MINUTES" -lt 570 ]; then
-              echo "Before US market open."
-              sleep 60
-              continue
-            fi
-
-            if [ "$NY_MINUTES" -ge 925 ]; then
-              echo "First 6-hour job finished at 15:25 New York."
-              break
-            fi
-
-            python scanner_fast.py
-
-            echo "FAST scanner finished."
-
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-            git add \
-              breakout_state_fast.txt \
-              breakout_trades_fast.txt \
-              breakout_results_fast.csv \
-              2>/dev/null || true
-
-            if git diff --cached --quiet; then
-              echo "No FAST state changes."
-            else
-              git commit -m "Update FAST scanner state"
-
-              echo "Synchronizing with remote main..."
-
-              git pull --no-rebase -X ours origin main
-
-              git push origin main
-            fi
-
-            # Stabilný spánok na 270 sekúnd (4.5 minúty), aby sa skript stihol zobudiť tesne pred novou sviečkou
-            echo "Sleeping for 270 seconds before next scan..."
-            sleep 270
-          done
-
-  second-session:
-    needs: first-session
-    runs-on: ubuntu-24.04
-    timeout-minutes: 60
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install requests
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Run final FAST session with stable 270s loop
-        env:
-          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
-        run: |
-          while true
-          do
-            NY_TIME=$(TZ=America/New_York date '+%H:%M:%S')
-            NY_DAY=$(TZ=America/New_York date '+%u')
-
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-            echo ""
-            echo "======================================"
-            echo "FAST ALPACA SCANNER - FINAL SESSION"
-            echo "New York time: $NY_TIME"
-            echo "======================================"
-
-            if [ "$NY_DAY" -ge 6 ]; then
-              echo "Weekend - US market closed."
-              break
-            fi
-
-            if [ "$NY_MINUTES" -lt 925 ]; then
-              echo "Waiting for 15:25 New York..."
+            if [ "$NOW_MIN" -lt 570 ]; then
               sleep 30
               continue
             fi
-
-            if [ "$NY_MINUTES" -ge 960 ]; then
-              echo "US market closed at 16:00 New York."
-              break
+            if ! python scanner_fast.py; then
+              echo "::warning::FAST scan/monitor API error. Retrying on next 270s cycle."
             fi
-
-            python scanner_fast.py
-
-            echo "FAST scanner finished."
-
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-            git add \
-              breakout_state_fast.txt \
-              breakout_trades_fast.txt \
-              breakout_results_fast.csv \
-              2>/dev/null || true
-
-            if git diff --cached --quiet; then
-              echo "No FAST state changes."
-            else
-              git commit -m "Update FAST scanner state"
-
-              echo "Synchronizing with remote main..."
-
+            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
+            if ! git diff --cached --quiet; then
+              git commit -m "Update FAST V3.2.1 state"
               git pull --no-rebase -X ours origin main
-
               git push origin main
             fi
+            CLOSE_EPOCH=$(python scanner_fast.py --close-epoch)
+            if [ "$CLOSE_EPOCH" -eq 0 ]; then
+              echo "No trading session today."
+              break
+            fi
+            # Sleep at most 270 seconds, but wake exactly at the real
+            # (possibly shortened) session close-minus-15-min threshold.
+            PAUSE=$(python scanner_fast.py --sleep-seconds)
+            sleep "$PAUSE"
+          done
 
-            echo "Sleeping for 270 seconds before next scan..."
-            sleep 270
+  second-session:
+    needs: [preflight, first-session]
+    # The final monitoring session is never dependent on successfully
+    # finishing the trading scan: it should also run after first-session fails.
+    if: ${{ always() && needs.preflight.outputs.should_run == 'true' }}
+    runs-on: ubuntu-24.04
+    # 12:00 -> 16:00 (or early-close time), includes setup and verification.
+    timeout-minutes: 285
+    steps:
+      - name: Checkout latest state from repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Monitor, scan and close FAST trades before actual session end
+        shell: bash
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          ENABLE_FAST_TRADING: ${{ vars.ENABLE_FAST_TRADING || 'false' }}
+        run: |
+          set -e
+          while true; do
+            NY_TIME=$(TZ=America/New_York date '+%H:%M:%S')
+            NY_DAY=$(TZ=America/New_York date '+%u')
+            HOUR=${NY_TIME:0:2}
+            MINUTE=${NY_TIME:3:2}
+            NOW_MIN=$((10#$HOUR * 60 + 10#$MINUTE))
+            echo "FAST second-session: NY $NY_TIME"
+            if [ "$NY_DAY" -ge 6 ]; then
+              break
+            fi
+            if [ "$NOW_MIN" -lt 720 ]; then
+              sleep 30
+              continue
+            fi
+            if ! python scanner_fast.py; then
+              echo "::warning::FAST scan/monitor API error. Retrying on next 270s cycle."
+            fi
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
+            if ! git diff --cached --quiet; then
+              git commit -m "Update FAST V3.2.1 state"
+              git pull --no-rebase -X ours origin main
+              git push origin main
+            fi
+            # Sleep at most 270 seconds, but wake exactly at the real
+            # (possibly shortened) session close-minus-15-min threshold.
+            CLOSE_EPOCH=$(python scanner_fast.py --close-epoch)
+            if [ "$CLOSE_EPOCH" -eq 0 ] || [ "$(date +%s)" -ge "$CLOSE_EPOCH" ]; then
+              echo "Exchange session ended or market holiday; final scan done."
+              break
+            fi
+            PAUSE=$(python scanner_fast.py --sleep-seconds)
+            sleep "$PAUSE"
           done
