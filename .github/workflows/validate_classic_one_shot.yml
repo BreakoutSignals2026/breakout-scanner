@@ -28,5 +28,29 @@ jobs:
               assert s.one_shot_already_consumed(empty)
           with patch.object(s, "api", return_value=[]):
               assert s.one_shot_already_consumed({**empty, "one_shot_paper_entry_attempted": "used"})
-          print("PASS: Python compiles; Alpaca order-history/state guards block repeated attempts.")
+          import json
+          import tempfile
+          from datetime import timedelta
+          from pathlib import Path
+          post_count = []
+          def mock_api(method, endpoint, **kw):
+              if (method, endpoint) == ("GET", "/orders"):
+                  return []
+              if (method, endpoint) == ("POST", "/orders"):
+                  payload = json.loads(s.STATE_FILE.read_text())
+                  assert payload.get("one_shot_paper_entry_attempted")
+                  post_count.append(1)
+                  return {"id": "MOCK", "status": "accepted"}
+              raise AssertionError((method, endpoint))
+          with tempfile.TemporaryDirectory() as folder:
+              with patch.object(s, "api", side_effect=mock_api), patch.object(s, "telegram"), \
+                   patch.object(s, "ONE_SHOT_PAPER_TEST", True), \
+                   patch.object(s, "STATE_FILE", Path(folder) / "state.json"):
+                  t = s.now_ny() - timedelta(minutes=5)
+                  p = {"qty": 1, "reference_entry": 100.0, "stop": 99.0,
+                       "tp": 102.0, "planned_risk": 1.0}
+                  assert s.send_bracket({"symbol": "AAPL", "side": "BUY", "bar_time": t}, p, empty)
+                  assert not s.send_bracket({"symbol": "AMD", "side": "BUY", "bar_time": t}, p, empty)
+                  assert len(post_count) == 1
+          print("PASS: compiles, persists permit BEFORE POST, blocks second mock order.")
           PY
