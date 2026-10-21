@@ -373,6 +373,23 @@ def ensure_no_untracked_classic_orders(state):
         raise RuntimeError(f"Neznáme predchádzajúce BREAKOUT objednávky: {extras[:6]} – ručná kontrola")
 
 
+def one_shot_already_consumed(state):
+    """Conservative PAPER test permit; block repeats after restarts."""
+    if state.get("one_shot_paper_entry_attempted") or state["trades"]:
+        return True
+    after = (datetime.now(timezone.utc) - timedelta(days=8)).isoformat()
+    records = api("GET", "/orders", params={"status": "all", "limit": 500,
+                                             "after": after, "nested": "false"})
+    if not isinstance(records, list):
+        raise RuntimeError("PAPER test: no order history available")
+    return any(
+        str(order.get("client_order_id") or "").startswith("B252_")
+        and not str(order.get("client_order_id") or "").startswith("B252_EOD_")
+        and not order.get("parent_order_id")
+        for order in records
+    )
+
+
 def get_tracked_order(t):
     order = order_by_id(t["entry_id"]) if t.get("entry_id") else None
     if order is None:
