@@ -24,6 +24,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "").strip()
 CHAT_ID = os.getenv("CHAT_ID", "").strip()
 # Deliberately OFF on first deployment. Set explicitly to 'true' after checking.
 ENABLE_NEW_TRADES = os.getenv("ENABLE_FAST_TRADING", "false").lower() == "true"
+ONE_SHOT_PAPER_TEST = os.getenv("FAST_ONE_SHOT_PAPER_TEST", "false").lower() == "true"
 
 # 13 existing candidates + 15 replacement candidates. Every symbol must still
 # pass live 5-50 USD price, IEX-volume, quote/spread and asset checks.
@@ -795,8 +796,25 @@ def watch_new_entry(symbol, state):
            "Skontroluj Alpaca Orders a Positions OKAMŽITE!")
 
 
+def one_shot_already_consumed(state):
+    """Never submit a second FAST entry during the one-shot PAPER test.
+
+    Check both persisted local state and recent Alpaca order history. A
+    missing/invalid API result fails closed. The marker is persisted before
+    POST, so a failed/ambiguous submission also consumes the test permit.
+    """
+    if state.get("one_shot_paper_entry_attempted"):
+        return True
+    recent = api("GET", "/orders", params={"status": "all", "limit": 500,
+                                           "nested": "false"})
+    if not isinstance(recent, list):
+        raise RuntimeError("PAPER test: orders history unavailable")
+    return any(str(order.get("client_order_id") or "").startswith(ENTRY_PREFIX)
+               for order in recent)
+
+
 def main():
-    print(f"FAST V{VERSION} PAPER | {stamp()} | entry enabled={ENABLE_NEW_TRADES} | "
+    print(f"FAST V{VERSION} PAPER | {stamp()} | entry enabled={ENABLE_NEW_TRADES} | one-shot={ONE_SHOT_PAPER_TEST} | "
           f"risk ${RISK_PER_TRADE:.2f}, trail {TRAIL_PERCENT:.2f}%")
     state = load_state()
     session = market_session_today()  # fail closed if API unavailable
@@ -818,6 +836,9 @@ def main():
     if not safe:
         notify(f"⚠️ FAST V{VERSION}: nové obchody pozastavené: "
                "neznáme objednávky/pozície alebo neoverená ochrana")
+        return
+    if ONE_SHOT_PAPER_TEST and one_shot_already_consumed(state):
+        print("PAPER ONE-SHOT: previous FAST entry attempt/order found; no more NEW entries")
         return
     if not session:
         print("No US trading session today")
@@ -873,6 +894,15 @@ def main():
                    f"Vek signálu: {duration(age)}\n"
                    f"Referenčná {'ASK' if signal['side']=='buy' else 'BID'} cena: ${price:.4f}\n"
                    "Signál vybraný na odoslanie; obchod ešte NIE JE otvorený.")
+            if ONE_SHOT_PAPER_TEST:
+                if one_shot_already_consumed(state):
+                    print("PAPER ONE-SHOT already consumed before POST")
+                    return
+                # Persist before network POST; a timeout must not grant a second attempt.
+                state["one_shot_paper_entry_attempted"] = stamp()
+                save_state(state)
+                notify(f"🧪 FAST V{VERSION}: jednorazový PAPER test – najviac 1 vstup. "
+                       "Ďalšie nové vstupy zostanú zablokované.")
             submit_entry(signal, price, qty, state, live=live)
             watch_new_entry(signal["symbol"], state)
             return
