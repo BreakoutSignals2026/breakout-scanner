@@ -1,0 +1,40 @@
+name: Emergency stop stale FAST runs
+on:
+  push:
+    paths:
+      - ".github/workflows/emergency_stop_fast.yml"
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  stop-old-fast:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Cancel pending test before force-stopping stale session
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for task in "39625139997:cancel" "39604281966:force-cancel"; do
+            run_id="${task%%:*}"
+            operation="${task##*:}"
+            echo "FAST run ${run_id}: requesting ${operation}"
+            http_status=$(curl --silent --show-error --location \
+              -o /tmp/fast_cancel_response -w "%{http_code}" \
+              -X POST \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${GH_REPOSITORY}/actions/runs/${run_id}/${operation}")
+            echo "HTTP ${http_status}"
+            if [ "${http_status}" != 202 ] && [ "${http_status}" != 409 ]; then
+              cat /tmp/fast_cancel_response
+              exit 1
+            fi
+          done
+          echo "Cancel requests sent. Confirm in Actions UI."
