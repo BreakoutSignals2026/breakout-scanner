@@ -1,0 +1,24 @@
+# Python temporary files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Local settings / secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+
+# Editor / OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Transient workflow files; DO NOT ignore tracked trading state files
+*.tmp
+*.json.tmp
