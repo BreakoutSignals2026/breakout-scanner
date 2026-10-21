@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-VERSION = "3.2.1"
+VERSION = "3.2.2"
 API = "https://paper-api.alpaca.markets/v2"
 DATA = "https://data.alpaca.markets/v2/stocks"
 NY = ZoneInfo("America/New_York")
@@ -44,6 +44,8 @@ MIN_REL_VOLUME = 1.50
 ATR_PERIOD = 14
 RISK_PER_TRADE = 5.00
 TRAIL_PERCENT = 1.20
+MAX_FAST_ACTIVE_POSITIONS = 1
+MAX_FAST_NEW_ENTRIES_PER_NY_DAY = 2
 MAX_SIGNAL_AGE_MINUTES = 8
 MAX_ENTRY_CHASE_PERCENT = 0.25
 MAX_TRADE_AGE_SECONDS = 120  # Trade feed can be sparse; quote must be fresher.
@@ -813,9 +815,46 @@ def one_shot_already_consumed(state):
                for order in recent)
 
 
+def automatic_entry_limits(state, positions):
+    """Conservative account-independent FAST exposure and entry-attempt limits.
+
+    Counts both Alpaca order history and persisted intents, so a timeout
+    does not permit a new entry. API errors/500-order truncation fail closed.
+    """
+    active = {symbol for symbol, trade in state["trades"].items()
+              if trade.get("status") != "closed"} | set(positions)
+    if len(active) >= MAX_FAST_ACTIVE_POSITIONS:
+        return False, f"FAST active/pending positions {len(active)}/{MAX_FAST_ACTIVE_POSITIONS}"
+
+    date_ny = now_utc().astimezone(NY).date()
+    day_start = datetime(date_ny.year, date_ny.month, date_ny.day, tzinfo=NY)
+    recent = api("GET", "/orders", params={
+        "status": "all", "limit": 500, "nested": "false",
+        "after": day_start.astimezone(timezone.utc).isoformat()
+    })
+    if not isinstance(recent, list) or len(recent) >= 500:
+        raise RuntimeError("FAST daily-limit check: Alpaca order history missing/truncated")
+    entry_ids = {
+        str(order.get("client_order_id") or "")
+        for order in recent
+        if str(order.get("client_order_id") or "").startswith(ENTRY_PREFIX)
+    }
+    for trade in state["trades"].values():
+        cid = str(trade.get("entry_cid") or "")
+        submitted = parse_alpaca_time(trade.get("submitted_at"))
+        if cid.startswith(ENTRY_PREFIX) and submitted and submitted.astimezone(NY).date() == date_ny:
+            entry_ids.add(cid)
+        elif cid.startswith(ENTRY_PREFIX) and not submitted and trade.get("status") != "closed":
+            raise RuntimeError("FAST daily-limit check: pending entry without timestamp")
+    if len(entry_ids) >= MAX_FAST_NEW_ENTRIES_PER_NY_DAY:
+        return False, f"FAST daily entry attempts {len(entry_ids)}/{MAX_FAST_NEW_ENTRIES_PER_NY_DAY}"
+    return True, f"FAST daily attempts {len(entry_ids)}/{MAX_FAST_NEW_ENTRIES_PER_NY_DAY}; active {len(active)}/{MAX_FAST_ACTIVE_POSITIONS}"
+
+
 def main():
     print(f"FAST V{VERSION} PAPER | {stamp()} | entry enabled={ENABLE_NEW_TRADES} | one-shot={ONE_SHOT_PAPER_TEST} | "
-          f"risk ${RISK_PER_TRADE:.2f}, trail {TRAIL_PERCENT:.2f}%")
+          f"risk ${RISK_PER_TRADE:.2f}, trail {TRAIL_PERCENT:.2f}%, "
+          f"max active={MAX_FAST_ACTIVE_POSITIONS}, max daily entries={MAX_FAST_NEW_ENTRIES_PER_NY_DAY}")
     state = load_state()
     session = market_session_today()  # fail closed if API unavailable
     positions = get_positions()
@@ -848,6 +887,11 @@ def main():
         return
     if not market_open_now():
         print("US market is closed — no entries")
+        return
+    capacity, reason = automatic_entry_limits(state, positions)
+    print(reason)
+    if not capacity:
+        print("FAST automatic limit reached — no new entries")
         return
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
@@ -882,6 +926,10 @@ def main():
             if age is None or age > MAX_SIGNAL_AGE_MINUTES * 60:
                 print(f"{signal['symbol']}: breakout expired before order submission")
                 continue
+            room, reason = automatic_entry_limits(state, get_positions())
+            if not room:
+                print("FAST entry blocked immediately before POST: " + reason)
+                return
             notify(f"🔔 FAST V{VERSION} BREAKOUT "
                    f"{'BUY' if signal['side'] == 'buy' else 'SELL'}\n"
                    f"{signal['symbol']} | breakout: {signal['breakout_percent']:.3f}%\n"
