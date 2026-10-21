@@ -1,0 +1,2 @@
+{"timestamp": "2026-10-21T18:02:16+00:00", "action": "entry_submitted", "symbol": "RIOT", "order_id": "d41f0487-780a-455b-a55c-ab07cb94b389", "requested_qty": 27, "reference": 14.48, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.069}
+{"timestamp": "2026-10-21T18:02:22+00:00", "action": "exit_accepted", "symbol": "RIOT", "order_id": "5d417a82-b06e-41a2-b7d7-cd774d729ff3", "qty": 27}

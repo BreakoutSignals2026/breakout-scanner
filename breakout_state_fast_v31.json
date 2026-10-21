@@ -1,0 +1,26 @@
+{
+  "last_signal_bar": {
+    "RIOT": "2026-10-21T17:55:00+00:00"
+  },
+  "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
+  "trades": {
+    "RIOT": {
+      "bar_key": "2026-10-21T17:55:00+00:00",
+      "entry_cid": "FAST31E_RIOT_10211755000000",
+      "entry_fill_price": 14.48,
+      "entry_filled_at": "2026-10-21T18:02:17.874769804Z",
+      "entry_order_id": "d41f0487-780a-455b-a55c-ab07cb94b389",
+      "exit_cid": "FAST31X_RIOT_10211755000000",
+      "exit_order_id": "5d417a82-b06e-41a2-b7d7-cd774d729ff3",
+      "filled_qty": 27,
+      "reference_price": 14.48,
+      "requested_qty": 27,
+      "side": "buy",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-21T18:02:16+00:00",
+      "symbol": "RIOT"
+    }
+  },
+  "version": "3.2.1"
+}
