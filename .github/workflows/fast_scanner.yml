@@ -124,9 +124,9 @@ jobs:
 
   second-session:
     needs: [preflight, first-session]
-    # The final monitoring session is never dependent on successfully
-    # finishing the trading scan: it should also run after first-session fails.
-    if: ${{ always() && needs.preflight.outputs.should_run == 'true' }}
+    # Run EOD monitoring after scan failure, but honor explicit workflow cancellation.
+    # Avoid always(): it can keep the second job alive when the run was canceled.
+    if: ${{ !cancelled() && needs.preflight.outputs.should_run == 'true' }}
     runs-on: ubuntu-24.04
     # 12:00 -> 16:00 (or early-close time), includes setup and verification.
     timeout-minutes: 285
