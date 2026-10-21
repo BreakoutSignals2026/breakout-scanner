@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FAST BREAKOUT V3.2.1 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $5 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
+"""FAST BREAKOUT V3.2.3 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $5 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
 
 import json
 import math
@@ -22,7 +22,7 @@ ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "").strip()
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "").strip()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "").strip()
 CHAT_ID = os.getenv("CHAT_ID", "").strip()
-# Deliberately OFF on first deployment. Set explicitly to 'true' after checking.
+# Default OFF. Scheduled GitHub PAPER workflows explicitly enable new entries.
 ENABLE_NEW_TRADES = os.getenv("ENABLE_FAST_TRADING", "false").lower() == "true"
 ONE_SHOT_PAPER_TEST = os.getenv("FAST_ONE_SHOT_PAPER_TEST", "false").lower() == "true"
 
