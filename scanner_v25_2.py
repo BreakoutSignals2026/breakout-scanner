@@ -672,6 +672,9 @@ def scan_for_new(state, session):
     blockers = {o.get('symbol') for o in walk_orders(open_orders())} | set(positions)
     blockers |= {t['symbol'] for t in state['trades'].values() if active_record(t)}
     for symbol in SYMBOLS:
+        if ONE_SHOT_PAPER_TEST and state.get("one_shot_paper_entry_attempted"):
+            print("PAPER ONE-SHOT: one attempt already used", flush=True)
+            return
         if now_ny() >= session["entry_stop"]:
             break
         if symbol in blockers:
@@ -711,7 +714,7 @@ def scan_for_new(state, session):
 
 
 def main():
-    print(f"BREAKOUT V{VERSION} PAPER | NY={when(now_ny())} | entry enabled={ALLOW_ENTRY}", flush=True)
+    print(f"BREAKOUT V{VERSION} PAPER | NY={when(now_ny())} | entry enabled={ALLOW_ENTRY} | one-shot={ONE_SHOT_PAPER_TEST}", flush=True)
     state = load_state()
     session = market_session_today()
     if session and now_ny() >= session["close"]:
@@ -738,6 +741,9 @@ def main():
         print("UNSAFE/UNRESOLVED positions/orders, new entries blocked", flush=True)
         return
     ensure_no_untracked_classic_orders(state)
+    if ONE_SHOT_PAPER_TEST and one_shot_already_consumed(state):
+        print("PAPER ONE-SHOT: prior BREAKOUT attempt/order found; entry blocked", flush=True)
+        return
     if not session or now_ny() < session["open"] or now_ny() >= session["entry_stop"] or not clock_open():
         print("Market outside entry window", flush=True)
         return
