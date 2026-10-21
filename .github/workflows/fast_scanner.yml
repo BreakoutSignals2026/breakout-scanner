@@ -1,4 +1,4 @@
-name: FAST Alpaca Scanner V3.2.1 (28 symbols)
+name: FAST Alpaca Scanner V3.2.3 (28 symbols; PAPER auto)
 
 on:
   schedule:
@@ -80,8 +80,8 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          # Keep false until PAPER validation of order lifecycle and EOD.
-          ENABLE_FAST_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          # Scheduled runs: capped PAPER auto; manual runs require explicit one_paper_trade. No LIVE credentials.
+          ENABLE_FAST_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
           FAST_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         run: |
           set -e
@@ -148,7 +148,7 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          ENABLE_FAST_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_FAST_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
           FAST_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         run: |
           set -e

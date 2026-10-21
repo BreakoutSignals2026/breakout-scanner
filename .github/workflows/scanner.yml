@@ -1,4 +1,4 @@
-name: Breakout Scanner V2.5.2
+name: Breakout Scanner V2.5.2 (PAPER auto)
 
 on:
   schedule:
@@ -63,7 +63,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
           BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |
@@ -131,7 +131,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
           BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |

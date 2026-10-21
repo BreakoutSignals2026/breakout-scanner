@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-VERSION = "3.2.1"
+VERSION = "3.2.3"
 API = "https://paper-api.alpaca.markets/v2"
 DATA = "https://data.alpaca.markets/v2/stocks"
 NY = ZoneInfo("America/New_York")
