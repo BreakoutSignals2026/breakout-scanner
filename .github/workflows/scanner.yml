@@ -1,13 +1,11 @@
-name: Breakout Scanner
+name: Breakout Scanner V2.5.2
 
 on:
   schedule:
-    # Spustenie približne 15 minút pred otvorením trhu
-    # 13:10 UTC = letný čas
-    # 14:10 UTC = zimný čas
+    # One correct 09:10 NY launch in either US DST regime.
+    # Wrong-season launch is skipped in the preflight job.
     - cron: "10 13 * * 1-5"
     - cron: "10 14 * * 1-5"
-
   workflow_dispatch:
 
 permissions:
@@ -18,206 +16,149 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    outputs:
+      run: ${{ steps.gate.outputs.run }}
+    steps:
+      - id: gate
+        name: Pick correct NY 09:10 launch; allow manual test
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ny_time=$(TZ=America/New_York date +%H%M)
+          echo "New York time: $ny_time"
+          if [ "$ny_time" -ge 0900 ] && [ "$ny_time" -lt 1000 ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
 
   first-session:
+    needs: preflight
+    if: ${{ needs.preflight.outputs.run == 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
-      - name: Install requests
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Wait for US market open
-        run: |
-          NY_TIME=$(TZ=America/New_York date '+%H:%M')
-          echo "New York time: $NY_TIME"
-
-          NY_HOUR=${NY_TIME:0:2}
-          NY_MIN=${NY_TIME:3:2}
-          NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-          while [ "$NY_MINUTES" -lt 570 ]
-          do
-            echo "Waiting for 09:30 New York..."
-            sleep 30
-
-            NY_TIME=$(TZ=America/New_York date '+%H:%M')
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-          done
-
-          echo "US market is open."
-
-      - name: Run V2.5-1 scanner every 5 minutes
+      - name: Install dependencies
+        run: python -m pip install requests
+      - name: Scan until safe handover
         env:
           TWELVE_API_KEY: ${{ secrets.TWELVE_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ENABLE_BREAKOUT_TRADING: ${{ vars.ENABLE_BREAKOUT_TRADING }}
+        shell: bash
         run: |
-          while true
-          do
-            NY_TIME=$(TZ=America/New_York date '+%H:%M')
-            NY_DAY=$(TZ=America/New_York date '+%u')
-
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-            echo ""
-            echo "======================================"
-            echo "BREAKOUT SCANNER V2.5-1"
-            echo "New York time: $NY_TIME"
-            echo "======================================"
-
-            if [ "$NY_DAY" -ge 6 ]; then
-              echo "Weekend - US market closed."
+          set -euo pipefail
+          while true; do
+            now_epoch=$(date +%s)
+            close_epoch=$(python scanner_v25_2.py --close-epoch) || { echo "Calendar error — retrying"; sleep 30; continue; }
+            if [ "$close_epoch" -eq 0 ]; then
+              echo "No trading session today"
               break
             fi
-
-            if [ "$NY_MINUTES" -lt 570 ]; then
-              echo "Before US market open."
-              sleep 60
-              continue
-            fi
-
-            if [ "$NY_MINUTES" -ge 925 ]; then
-              echo "First 6-hour job finished at 15:25 New York."
+            # Handover no later than 14:45 NY or 60 minutes before early close.
+            regular_handover=$(TZ=America/New_York date -d "$(TZ=America/New_York date +%F) 14:45:00" +%s)
+            eod_handover=$((close_epoch - 3600))
+            handover=$regular_handover
+            if [ "$eod_handover" -lt "$handover" ]; then handover=$eod_handover; fi
+            if [ "$now_epoch" -ge "$handover" ]; then
+              echo "First-session handover"
               break
             fi
-
-            python scanner_v25_1.py
-
-            echo "Scanner finished."
-
+            # Scanner itself waits for market open and refuses trades when closed.
+            echo "CLASSIC BREAKOUT V2.5.2 $(TZ=America/New_York date)"
+            set +e
+            python scanner_v25_2.py
+            status=$?
+            set -e
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-            touch breakout_trades_v25.txt
-
-            git add \
-              breakout_state_v24.txt \
-              breakout_trades_v25.txt \
-              breakout_results_v25.csv \
-              2>/dev/null || true
-
-            if git diff --cached --quiet; then
-              echo "No state changes."
-            else
-              git commit -m "Update scanner state"
-
-              echo "Synchronizing with remote main..."
-
-              git pull --no-rebase -X ours origin main
-
-              git push origin main
+            git add breakout_state_v252.json breakout_results_v252.csv 2>/dev/null || true
+            if ! git diff --cached --quiet; then
+              git commit -m "Update classic Breakout V2.5.2 state"
+              git pull --rebase origin main
+              git push origin HEAD:main
             fi
-
-            echo "Waiting 5 minutes..."
-            sleep 300
+            if [ "$status" -ne 0 ]; then
+              echo "Scanner error $status; retrying in 30s"
+              sleep 30
+            else
+              sleep_sec=$(python scanner_v25_2.py --sleep-seconds 2>/dev/null) || sleep_sec=30
+              if ! [[ "$sleep_sec" =~ ^[0-9]+$ ]]; then sleep_sec=30; fi
+              echo "Sleeping ${sleep_sec}s"
+              sleep "$sleep_sec"
+            fi
           done
 
   second-session:
-    needs: first-session
+    needs: [preflight, first-session]
+    # Still run the EOD monitor when first-session fails (but not when gate skipped).
+    if: ${{ always() && needs.preflight.outputs.run == 'true' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
-
+    timeout-minutes: 360
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
-      - name: Install requests
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Run final US session
+      - name: Install dependencies
+        run: python -m pip install requests
+      - name: Monitor and liquidate 15min before REAL close
         env:
           TWELVE_API_KEY: ${{ secrets.TWELVE_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ENABLE_BREAKOUT_TRADING: ${{ vars.ENABLE_BREAKOUT_TRADING }}
+        shell: bash
         run: |
-          while true
-          do
-            NY_TIME=$(TZ=America/New_York date '+%H:%M')
-            NY_DAY=$(TZ=America/New_York date '+%u')
-
-            NY_HOUR=${NY_TIME:0:2}
-            NY_MIN=${NY_TIME:3:2}
-            NY_MINUTES=$((10#$NY_HOUR * 60 + 10#$NY_MIN))
-
-            echo ""
-            echo "======================================"
-            echo "BREAKOUT SCANNER V2.5-1 - FINAL SESSION"
-            echo "New York time: $NY_TIME"
-            echo "======================================"
-
-            if [ "$NY_DAY" -ge 6 ]; then
-              echo "Weekend - US market closed."
+          set -euo pipefail
+          while true; do
+            close_epoch=$(python scanner_v25_2.py --close-epoch) || { echo "Calendar error"; sleep 30; continue; }
+            if [ "$close_epoch" -eq 0 ]; then
+              echo "No trading session"
               break
             fi
-
-            if [ "$NY_MINUTES" -lt 925 ]; then
-              echo "Waiting for 15:25 New York..."
-              sleep 30
-              continue
+            if [ "$(date +%s)" -ge "$close_epoch" ]; then
+              echo "Real NY market close reached; final monitor only"
             fi
-
-            if [ "$NY_MINUTES" -ge 960 ]; then
-              echo "US market closed at 16:00 New York."
-              break
-            fi
-
-            python scanner_v25_1.py
-
-            echo "Scanner finished."
-
+            echo "CLASSIC BREAKOUT FINAL $(TZ=America/New_York date)"
+            set +e
+            python scanner_v25_2.py
+            status=$?
+            set -e
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-            touch breakout_trades_v25.txt
-
-            git add \
-              breakout_state_v24.txt \
-              breakout_trades_v25.txt \
-              breakout_results_v25.csv \
-              2>/dev/null || true
-
-            if git diff --cached --quiet; then
-              echo "No state changes."
-            else
-              git commit -m "Update scanner state"
-
-              echo "Synchronizing with remote main..."
-
-              git pull --no-rebase -X ours origin main
-
-              git push origin main
+            git add breakout_state_v252.json breakout_results_v252.csv 2>/dev/null || true
+            if ! git diff --cached --quiet; then
+              git commit -m "Update classic Breakout V2.5.2 state and EOD"
+              git pull --rebase origin main
+              git push origin HEAD:main
             fi
-
-            echo "Waiting 5 minutes..."
-            sleep 300
+            if [ "$(date +%s)" -ge "$((close_epoch + 120))" ]; then
+              echo "End of EOD monitoring; inspect any Telegram warnings."
+              break
+            fi
+            if [ "$status" -ne 0 ]; then
+              sleep 30
+            else
+              sleep_sec=$(python scanner_v25_2.py --sleep-seconds 2>/dev/null) || sleep_sec=30
+              if ! [[ "$sleep_sec" =~ ^[0-9]+$ ]]; then sleep_sec=30; fi
+              sleep "$sleep_sec"
+            fi
           done
