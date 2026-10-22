@@ -29,3 +29,8 @@
 {"timestamp": "2026-10-22T19:29:35+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6", "qty": 37}
 {"timestamp": "2026-10-22T19:34:10+00:00", "action": "closed", "symbol": "RIVN", "entry": 12.04, "exit": 12.12, "qty": 32.0, "side": "sell", "pnl": -2.56, "pnl_pct": -0.664, "reason": "trailing stop"}
 {"timestamp": "2026-10-22T19:38:44+00:00", "action": "closed", "symbol": "CLSK", "entry": 8.12, "exit": 8.06, "qty": 46.0, "side": "buy", "pnl": -2.76, "pnl_pct": -0.739, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T19:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "CCL", "id": "b25ea6a2-40c4-43ca-82a3-5d066606a7c0"}
+{"timestamp": "2026-10-22T19:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "CELH", "id": "9d8ceb1c-7440-4640-9e79-80048056544f"}
+{"timestamp": "2026-10-22T19:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "bd4496b6-ab26-47c3-9950-7978cda59c1f"}
+{"timestamp": "2026-10-22T19:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6"}
+{"timestamp": "2026-10-22T19:45:37+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "f79431e7-4e7c-4041-b319-0939ec80c932"}

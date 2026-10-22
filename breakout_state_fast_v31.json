@@ -1,6 +1,7 @@
 {
   "eod_notice": {
-    "2026-10-21": "2026-10-21T19:45:32+00:00"
+    "2026-10-21": "2026-10-21T19:45:32+00:00",
+    "2026-10-22": "2026-10-22T19:45:33+00:00"
   },
   "last_signal_bar": {
     "CCL": "2026-10-22T18:00:00+00:00",
@@ -20,6 +21,7 @@
   "trades": {
     "CCL": {
       "bar_key": "2026-10-22T18:00:00+00:00",
+      "close_cid": "FAST31C_CCL_10221800000000",
       "entry_cid": "FAST31E_CCL_10221800000000",
       "entry_fill_price": 27.14,
       "entry_filled_at": "2026-10-22T18:06:49.189521058Z",
@@ -31,12 +33,13 @@
       "requested_qty": 14,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-10-22T18:06:48+00:00",
       "symbol": "CCL"
     },
     "CELH": {
       "bar_key": "2026-10-22T18:05:00+00:00",
+      "close_cid": "FAST31C_CELH_10221805000000",
       "entry_cid": "FAST31E_CELH_10221805000000",
       "entry_fill_price": 28.32,
       "entry_filled_at": "2026-10-22T18:11:29.596672781Z",
@@ -48,7 +51,7 @@
       "requested_qty": 14,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-10-22T18:11:28+00:00",
       "symbol": "CELH"
     },
@@ -90,6 +93,7 @@
     },
     "F": {
       "bar_key": "2026-10-22T19:10:00+00:00",
+      "close_cid": "FAST31C_F_10221910000000",
       "entry_cid": "FAST31E_F_10221910000000",
       "entry_fill_price": 11.97,
       "entry_filled_at": "2026-10-22T19:20:05.486938834Z",
@@ -101,7 +105,7 @@
       "requested_qty": 32,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-10-22T19:20:03+00:00",
       "symbol": "F"
     },
@@ -143,6 +147,7 @@
     },
     "LUNR": {
       "bar_key": "2026-10-22T19:20:00+00:00",
+      "close_cid": "FAST31C_LUNR_10221920000000",
       "entry_cid": "FAST31E_LUNR_10221920000000",
       "entry_fill_price": 10.31,
       "entry_filled_at": "2026-10-22T19:29:31.240700953Z",
@@ -154,12 +159,13 @@
       "requested_qty": 37,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-10-22T19:29:29+00:00",
       "symbol": "LUNR"
     },
     "NOK": {
       "bar_key": "2026-10-22T15:25:00+00:00",
+      "close_cid": "FAST31C_NOK_10221525000000",
       "entry_cid": "FAST31E_NOK_10221525000000",
       "entry_fill_price": 8.26,
       "entry_filled_at": "2026-10-22T15:31:07.858731826Z",
@@ -171,7 +177,7 @@
       "requested_qty": 45,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-10-22T15:31:04+00:00",
       "symbol": "NOK"
     },
