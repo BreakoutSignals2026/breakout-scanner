@@ -72,15 +72,23 @@
       "phase": "watching"
     },
     "RIVN": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.245,
+        "entry": 12.213890000000001,
+        "entry_bar": "2026-10-22T11:05:00-04:00",
+        "last_evaluated_bar": "2026-10-22T11:05:00-04:00",
         "orb_high": 12.39,
         "orb_low": 12.24,
+        "qty": 71,
         "rel_vol": 1.597,
+        "risk_estimate_usd": 4.95,
         "side": "SHORT",
         "signal_bar": "2026-10-22T11:00:00-04:00",
-        "symbol": "RIVN"
+        "stop": 12.2775,
+        "symbol": "RIVN",
+        "tp": 12.086670000000003,
+        "trade_id": "20261022-RIVN-20261022T1100000400"
       }
     },
     "SNAP": {
