@@ -1,10 +1,13 @@
-name: ORB V1.0 - regression tests (NO TRADING)
+name: ORB + FAST guardrail regression tests (NO TRADING)
 
 on:
   push:
     paths:
       - "scanner_orb_v1.py"
       - "tests/test_orb_v1.py"
+      - "scanner_fast.py"
+      - "tests/test_fast_guardrails.py"
+      - ".github/workflows/fast_scanner.yml"
       - ".github/workflows/orb_scanner.yml"
       - ".github/workflows/orb_tests.yml"
   workflow_dispatch:
@@ -25,7 +28,7 @@ jobs:
         run: python -m pip install requests
       - name: Compile strategy and verify no trade calls
         run: |
-          python -m py_compile scanner_orb_v1.py tests/test_orb_v1.py
+          python -m py_compile scanner_fast.py scanner_orb_v1.py tests/test_orb_v1.py tests/test_fast_guardrails.py
           python scanner_orb_v1.py --self-check
       - name: Run no-credentials simulator tests
-        run: python -m unittest discover -s tests -p 'test_orb_v1.py' -v
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
