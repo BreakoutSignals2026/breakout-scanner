@@ -7,3 +7,4 @@
 {"timestamp": "2026-10-22T15:12:29+00:00", "action": "exit_accepted", "symbol": "IREN", "order_id": "41aeddd3-d96c-4c25-a612-779b8490f077", "qty": 16}
 {"timestamp": "2026-10-22T15:17:08+00:00", "action": "entry_submitted", "symbol": "CHWY", "order_id": "d2e37db6-317b-4216-bb13-526362d26a92", "requested_qty": 18, "reference": 22.07, "side": "buy", "estimated_risk": 4.95, "spread_percent": 0.045}
 {"timestamp": "2026-10-22T15:17:16+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "79432f1d-fb24-4f89-8619-23f678ceb789", "qty": 15}
+{"timestamp": "2026-10-22T15:21:50+00:00", "action": "closed", "symbol": "IREN", "entry": 24.95, "exit": 25.22, "qty": 16.0, "side": "sell", "pnl": -4.32, "pnl_pct": -1.082, "reason": "trailing stop"}
