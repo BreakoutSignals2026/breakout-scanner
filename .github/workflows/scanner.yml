@@ -6,9 +6,9 @@ on:
     # Wrong-season launch at 10:20 NY is skipped by preflight.
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
-    # Recovery launches at NY 09:47 (in either DST regime).
-    - cron: "47 13 * * 1-5"
-    - cron: "47 14 * * 1-5"
+    # Recovery launches at NY 09:30 (at the regular US market open).
+    - cron: "30 13 * * 1-5"
+    - cron: "30 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
