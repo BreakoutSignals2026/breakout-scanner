@@ -13,7 +13,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-10-22T14:30:00-04:00",
-      "status": "pending",
+      "status": "open",
       "stop": 250.47,
       "submitted": "2026-10-22T18:39:04+00:00",
       "symbol": "AMZN",
