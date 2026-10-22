@@ -21,3 +21,5 @@
 {"timestamp": "2026-10-22T18:06:51+00:00", "action": "exit_accepted", "symbol": "CCL", "order_id": "b25ea6a2-40c4-43ca-82a3-5d066606a7c0", "qty": 14}
 {"timestamp": "2026-10-22T18:11:29+00:00", "action": "entry_submitted", "symbol": "CELH", "order_id": "f0a2fc81-40bc-4349-af2d-2c2a6bb10066", "requested_qty": 14, "reference": 28.32, "side": "sell", "estimated_risk": 4.9, "spread_percent": 0.035}
 {"timestamp": "2026-10-22T18:11:34+00:00", "action": "exit_accepted", "symbol": "CELH", "order_id": "9d8ceb1c-7440-4640-9e79-80048056544f", "qty": 3}
+{"timestamp": "2026-10-22T19:20:04+00:00", "action": "entry_submitted", "symbol": "F", "order_id": "a22ec308-1464-4f69-8f0c-70971d8301c7", "requested_qty": 32, "reference": 11.97, "side": "buy", "estimated_risk": 4.92, "spread_percent": 0.084}
+{"timestamp": "2026-10-22T19:20:09+00:00", "action": "exit_accepted", "symbol": "F", "order_id": "bd4496b6-ab26-47c3-9950-7978cda59c1f", "qty": 32}
