@@ -4,6 +4,7 @@
   },
   "last_signal_bar": {
     "CHWY": "2026-10-22T15:10:00+00:00",
+    "GME": "2026-10-22T17:10:00+00:00",
     "IREN": "2026-10-22T15:05:00+00:00",
     "NOK": "2026-10-22T15:25:00+00:00",
     "PATH": "2026-10-22T14:55:00+00:00",
@@ -28,6 +29,23 @@
       "status": "closed",
       "submitted_at": "2026-10-22T15:17:07+00:00",
       "symbol": "CHWY"
+    },
+    "GME": {
+      "bar_key": "2026-10-22T17:10:00+00:00",
+      "entry_cid": "FAST31E_GME_10221710000000",
+      "entry_fill_price": 24.68,
+      "entry_filled_at": "2026-10-22T17:16:26.589939775Z",
+      "entry_order_id": "f376db53-e5b7-432e-a6a3-23d2570c3711",
+      "exit_cid": "FAST31X_GME_10221710000000",
+      "exit_order_id": "85ce3482-eb54-4c3e-bc05-5c4ea3cba19e",
+      "filled_qty": 16,
+      "reference_price": 24.68,
+      "requested_qty": 16,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T17:16:26+00:00",
+      "symbol": "GME"
     },
     "IREN": {
       "bar_key": "2026-10-22T15:05:00+00:00",
