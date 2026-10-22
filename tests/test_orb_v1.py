@@ -120,7 +120,7 @@ class SimulatorTest(unittest.TestCase):
         self.assertEqual(slot["phase"], "open")
         self.assertEqual(slot["trade"]["entry_bar"], orb.iso(dt(9, 50)))
         self.assertAlmostEqual(slot["trade"]["entry"], 10.29 * 1.0005)
-        self.assertIsNone(slot["trade"]["last_evaluated_bar"] if False else None)
+        self.assertEqual(slot["trade"]["last_evaluated_bar"], orb.iso(dt(9, 50)))
         # Next scan shouldn't repeat a previous exit candle.
         self.assertEqual(orb.update_symbol("RIOT", bars, SESSION, dt(9, 56), slot)["phase"],
                          "open")
