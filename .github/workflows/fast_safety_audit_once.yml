@@ -61,6 +61,23 @@ jobs:
           for sym, rec in entries.items():
               if rec.get('status')!='closed' and not any(p.get('symbol')==sym for p in positions):
                   print('tracked_not_in_positions',sym,'saved_status',rec.get('status'))
+          print('TODAY FAST/BREAKOUT ORDER HISTORY:')
+          import datetime
+          after=datetime.datetime.now(datetime.timezone.utc).date().isoformat()+'T12:00:00Z'
+          recent=get('/orders', {'status':'all','limit':500,'nested':'true','after':after})
+          def show(o, depth=0):
+              cid=str(o.get('client_order_id') or '')
+              sym=o.get('symbol')
+              if cid.startswith(('FAST31','B252_')) or sym=='INTC':
+                  print('order',sym,'depth',depth,'client_prefix',cid[:22],
+                        'type',o.get('type'),'side',o.get('side'),
+                        'status',o.get('status'),'qty',o.get('qty'),
+                        'filled_qty',o.get('filled_qty'),'filled_avg_price',o.get('filled_avg_price'),
+                        'order_id',o.get('id'))
+              for leg in o.get('legs') or []:
+                  show(leg,depth+1)
+          for order in recent:
+              show(order)
           clock=get('/clock')
           print('market_open=',clock.get('is_open'),'next_close=',clock.get('next_close'))
           PY
