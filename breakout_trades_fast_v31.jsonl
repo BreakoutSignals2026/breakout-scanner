@@ -10,3 +10,5 @@
 {"timestamp": "2026-10-22T15:21:50+00:00", "action": "closed", "symbol": "IREN", "entry": 24.95, "exit": 25.22, "qty": 16.0, "side": "sell", "pnl": -4.32, "pnl_pct": -1.082, "reason": "trailing stop"}
 {"timestamp": "2026-10-22T15:31:05+00:00", "action": "entry_submitted", "symbol": "NOK", "order_id": "e53856f1-3550-480a-8c6c-038993f9d2f1", "requested_qty": 45, "reference": 8.26, "side": "sell", "estimated_risk": 4.91, "spread_percent": 0.121}
 {"timestamp": "2026-10-22T15:31:11+00:00", "action": "exit_accepted", "symbol": "NOK", "order_id": "f79431e7-4e7c-4041-b319-0939ec80c932", "qty": 45}
+{"timestamp": "2026-10-22T17:11:46+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.072666, "exit": 22.07, "qty": 15.0, "side": "buy", "pnl": -0.04, "pnl_pct": -0.012, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T17:11:47+00:00", "action": "closed", "symbol": "PATH", "entry": 13.94, "exit": 13.929999999999998, "qty": 7.0, "side": "buy", "pnl": -0.07, "pnl_pct": -0.072, "reason": "trailing stop"}
