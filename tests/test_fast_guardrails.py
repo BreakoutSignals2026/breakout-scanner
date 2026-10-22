@@ -24,6 +24,11 @@ class FakeResponse:
 
 
 class DataQualityTests(unittest.TestCase):
+    def setUp(self):
+        fake_auth = patch.object(fast, 'headers', return_value={'TEST': 'NO REAL SECRET'})
+        fake_auth.start()
+        self.addCleanup(fake_auth.stop)
+
     def test_spread_over_030_percent_rejected_without_order(self):
         quote = {
             "quote": {
