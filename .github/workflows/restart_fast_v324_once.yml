@@ -1,0 +1,53 @@
+name: One-time safe restart FAST V3.2.4 from persisted main state
+on:
+  push:
+    paths:
+      - ".github/workflows/restart_fast_v324_once.yml"
+permissions:
+  actions: write
+  contents: read
+jobs:
+  restart:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Cancel stale queued FAST schedule and stale state runner, then dispatch fresh PAPER monitor
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="https://api.github.com/repos/$GH_REPOSITORY"
+          api() {
+            method=$1
+            url=$2
+            shift 2
+            curl --silent --show-error --location \
+              --output /tmp/api-response \
+              --write-out '%{http_code}' \
+              -X "$method" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "$@" "$ROOT/$url"
+          }
+          for id in 39800509984 39790264191 39789686136; do
+            code=$(api POST "actions/runs/$id/cancel")
+            echo "Cancel stale FAST workflow run $id: HTTP $code"
+            if [ "$code" != "202" ] && [ "$code" != "409" ]; then
+              cat /tmp/api-response
+              exit 1
+            fi
+          done
+          # Give Actions a moment to release the old FAST concurrency slot.
+          sleep 6
+          code=$(api POST "actions/workflows/fast_scanner.yml/dispatches" \
+            -H 'Content-Type: application/json' \
+            --data '{"ref":"main","inputs":{"one_paper_trade":"false","full_paper_session":"true"}}')
+          echo "Dispatch FAST full PAPER session using CURRENT main state: HTTP $code"
+          if [ "$code" != "204" ]; then
+            cat /tmp/api-response
+            exit 1
+          fi
+          echo "Only GitHub Actions runs were changed; no Alpaca orders were edited."
