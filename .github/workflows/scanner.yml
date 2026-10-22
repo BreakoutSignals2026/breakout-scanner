@@ -6,10 +6,18 @@ on:
     # Wrong-season launch is skipped in the preflight job.
     - cron: "10 13 * * 1-5"
     - cron: "10 14 * * 1-5"
+    # Recovery launches at NY 09:47 (in either DST regime).
+    - cron: "47 13 * * 1-5"
+    - cron: "47 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
         description: "ONE-SHOT classic PAPER: permit max one new bracket entry attempt"
+        type: boolean
+        required: false
+        default: false
+      full_paper_session:
+        description: "MANUAL RECOVERY: full PAPER auto trading for this session"
         type: boolean
         required: false
         default: false
@@ -36,7 +44,7 @@ jobs:
           fi
           ny_time=$(TZ=America/New_York date +%H%M)
           echo "New York time: $ny_time"
-          if [ "$ny_time" -ge 0900 ] && [ "$ny_time" -lt 1000 ]; then
+          if [ "$ny_time" -ge 0900 ] && [ "$ny_time" -lt 1100 ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -63,7 +71,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
           BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |
@@ -131,7 +139,7 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false') }}
+          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
           BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
         shell: bash
         run: |
