@@ -501,6 +501,9 @@ if __name__ == "__main__":
         if "--self-check" in sys.argv:
             assert VERSION == "1.0" and len(SYMBOLS) == 28
             print("ORB V1.0 simulation-only structure OK")
+        elif "--close-epoch" in sys.argv:
+            session = get_session(now_ny())
+            print(int(session["close"].timestamp()) if session else 0)
         else:
             main()
     except Exception as exc:
