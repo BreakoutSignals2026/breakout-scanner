@@ -28,3 +28,4 @@
 {"timestamp": "2026-10-22T19:29:29+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "2bb895d9-45d2-48a0-9a69-e253912a6bfc", "requested_qty": 37, "reference": 10.31, "side": "buy", "estimated_risk": 4.95, "spread_percent": 0.097}
 {"timestamp": "2026-10-22T19:29:35+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6", "qty": 37}
 {"timestamp": "2026-10-22T19:34:10+00:00", "action": "closed", "symbol": "RIVN", "entry": 12.04, "exit": 12.12, "qty": 32.0, "side": "sell", "pnl": -2.56, "pnl_pct": -0.664, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T19:38:44+00:00", "action": "closed", "symbol": "CLSK", "entry": 8.12, "exit": 8.06, "qty": 46.0, "side": "buy", "pnl": -2.76, "pnl_pct": -0.739, "reason": "trailing stop"}
