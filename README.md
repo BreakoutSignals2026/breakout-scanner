@@ -22,15 +22,20 @@ Nie je tu žiadny LIVE trading workflow.
 
 ## Automatické spustenie
 
-GitHub Actions používa dva UTC crony (`13:10`, `14:10`) počas pracovných dní
-kvôli zmenám letného času. Kontrola `preflight` prepustí správny štart
-**09:10 New York**; druhý štart preskočí. GitHub môže cron oneskoriť.
+GitHub Actions používa štyri UTC crony (`13:10`, `14:10`, `13:47`,
+`14:47`) počas pracovných dní kvôli zmenám letného času a obnove po
+vynechanom spustení. Hlavný štart je **09:10 New York**, záložný **09:47 NY**.
+`preflight` kontroluje čas a skupina `concurrency` bráni paralelným behov
+toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vynechať.
 
 - **Plánovaný beh:** obom scannerom povolí nové PAPER vstupy.
 - **Manuálny beh bez voľby `one_paper_trade`:** SAFE MODE – iba
   monitorovanie/večerná kontrola, bez nových vstupov.
 - **Manuálny beh s `one_paper_trade=true`:** jednorazový vstupný test.
   Ak už bola jednorazová skúška použitá, scanner ďalší vstup zablokuje.
+- **Manuálny beh s `full_paper_session=true`:** núdzové spustenie celej
+  PAPER seansy pri vynechanom GitHub `schedule`; bez nového pevného limitu
+  počtu vstupov, stále s pôvodnými ochrannými pravidlami.
 - Workflow používajú samostatné `concurrency` skupiny, aby sa nekryli dva
   behy **toho istého** scanneru.
 
