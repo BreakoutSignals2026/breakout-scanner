@@ -1,0 +1,66 @@
+name: One-time read-only FAST Alpaca safety audit
+on:
+  push:
+    paths:
+      - ".github/workflows/fast_safety_audit_once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Compare CURRENT Alpaca PAPER positions, stops, and checked-in FAST state
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, json, requests
+          from pathlib import Path
+          base = 'https://paper-api.alpaca.markets/v2'
+          h = {'APCA-API-KEY-ID': os.environ['ALPACA_API_KEY'],
+               'APCA-API-SECRET-KEY': os.environ['ALPACA_SECRET_KEY']}
+          def get(endpoint, params=None):
+              r = requests.get(base+endpoint, headers=h, params=params, timeout=18)
+              r.raise_for_status()
+              return r.json()
+          positions = get('/positions')
+          orders = get('/orders', {'status': 'open', 'limit': 500, 'nested': 'false'})
+          saved = json.loads(Path('breakout_state_fast_v31.json').read_text())
+          entries = saved.get('trades', {})
+          print('read_only_audit=TRUE; Alpaca API POST=0; DELETE=0')
+          print('PAPER positions total=',len(positions),'open_orders_total=',len(orders))
+          print('FAST state symbols=', sorted(entries))
+          for p in positions:
+              sym=p.get('symbol')
+              expected=entries.get(sym)
+              qty=p.get('qty')
+              stops=[o for o in orders if o.get('symbol')==sym and
+                     o.get('type')=='trailing_stop']
+              for stop in stops:
+                  cid=stop.get('client_order_id')
+                  linked=bool(expected and expected.get('exit_cid')==cid)
+                  print('stop',sym,'id',stop.get('id'),
+                        'qty',stop.get('qty'),'side',stop.get('side'),
+                        'trail_percent',stop.get('trail_percent'),
+                        'status',stop.get('status'),'client_id_matches_state',linked)
+              print('position',sym,'qty',qty,
+                    'tracked_by_FAST',bool(expected and expected.get('status')!='closed'),
+                    'saved_entry_id',expected.get('entry_order_id') if expected else None,
+                    'saved_stop_id',expected.get('exit_order_id') if expected else None,
+                    'active_trailing_stops',len(stops))
+          for sym, rec in entries.items():
+              if rec.get('status')!='closed' and not any(p.get('symbol')==sym for p in positions):
+                  print('tracked_not_in_positions',sym,'saved_status',rec.get('status'))
+          clock=get('/clock')
+          print('market_open=',clock.get('is_open'),'next_close=',clock.get('next_close'))
+          PY
