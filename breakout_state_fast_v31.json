@@ -10,6 +10,7 @@
     "F": "2026-10-22T19:10:00+00:00",
     "GME": "2026-10-22T17:10:00+00:00",
     "IREN": "2026-10-22T15:05:00+00:00",
+    "LUNR": "2026-10-22T19:20:00+00:00",
     "NOK": "2026-10-22T15:25:00+00:00",
     "PATH": "2026-10-22T14:55:00+00:00",
     "RIOT": "2026-10-21T17:55:00+00:00",
@@ -138,6 +139,23 @@
       "status": "closed",
       "submitted_at": "2026-10-22T15:12:26+00:00",
       "symbol": "IREN"
+    },
+    "LUNR": {
+      "bar_key": "2026-10-22T19:20:00+00:00",
+      "entry_cid": "FAST31E_LUNR_10221920000000",
+      "entry_fill_price": 10.31,
+      "entry_filled_at": "2026-10-22T19:29:31.240700953Z",
+      "entry_order_id": "2bb895d9-45d2-48a0-9a69-e253912a6bfc",
+      "exit_cid": "FAST31X_LUNR_10221920000000",
+      "exit_order_id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6",
+      "filled_qty": 37,
+      "reference_price": 10.31,
+      "requested_qty": 37,
+      "side": "buy",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T19:29:29+00:00",
+      "symbol": "LUNR"
     },
     "NOK": {
       "bar_key": "2026-10-22T15:25:00+00:00",
