@@ -33,15 +33,23 @@
       "phase": "watching"
     },
     "FSLY": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.176,
+        "entry": 22.783602500000004,
+        "entry_bar": "2026-10-22T11:30:00-04:00",
+        "last_evaluated_bar": "2026-10-22T11:30:00-04:00",
         "orb_high": 23.37,
         "orb_low": 22.77,
+        "qty": 33,
         "rel_vol": 2.843,
+        "risk_estimate_usd": 4.88,
         "side": "SHORT",
         "signal_bar": "2026-10-22T11:25:00-04:00",
-        "symbol": "FSLY"
+        "stop": 22.92,
+        "symbol": "FSLY",
+        "tp": 22.51080750000001,
+        "trade_id": "20261022-FSLY-20261022T1125000400"
       }
     },
     "GME": {
@@ -86,7 +94,7 @@
         "breakout_pct": 0.245,
         "entry": 12.213890000000001,
         "entry_bar": "2026-10-22T11:05:00-04:00",
-        "last_evaluated_bar": "2026-10-22T11:25:00-04:00",
+        "last_evaluated_bar": "2026-10-22T11:30:00-04:00",
         "orb_high": 12.39,
         "orb_low": 12.24,
         "qty": 71,
