@@ -4,6 +4,7 @@
   },
   "last_signal_bar": {
     "CCL": "2026-10-22T18:00:00+00:00",
+    "CELH": "2026-10-22T18:05:00+00:00",
     "CHWY": "2026-10-22T15:10:00+00:00",
     "GME": "2026-10-22T17:10:00+00:00",
     "IREN": "2026-10-22T15:05:00+00:00",
@@ -30,6 +31,23 @@
       "status": "protected",
       "submitted_at": "2026-10-22T18:06:48+00:00",
       "symbol": "CCL"
+    },
+    "CELH": {
+      "bar_key": "2026-10-22T18:05:00+00:00",
+      "entry_cid": "FAST31E_CELH_10221805000000",
+      "entry_fill_price": 28.32,
+      "entry_filled_at": "2026-10-22T18:11:29.596672781Z",
+      "entry_order_id": "f0a2fc81-40bc-4349-af2d-2c2a6bb10066",
+      "exit_cid": "FAST31X_CELH_10221805000000",
+      "exit_order_id": "9d8ceb1c-7440-4640-9e79-80048056544f",
+      "filled_qty": 3,
+      "reference_price": 28.32,
+      "requested_qty": 14,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T18:11:28+00:00",
+      "symbol": "CELH"
     },
     "CHWY": {
       "bar_key": "2026-10-22T15:10:00+00:00",
