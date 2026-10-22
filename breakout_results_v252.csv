@@ -1,0 +1,2 @@
+client_id,symbol,direction,qty,entry,exit,pnl_usd,submitted_at,closed_at,exit_reason
+B252_INTC_202610221245,INTC,SELL,7.0,86.04,86.61,-3.99,2026-10-22T16:54:20.475347Z,2026-10-22T17:44:04.48565844Z,BRACKET_SL_OR_TP

@@ -1,24 +1,24 @@
 {
-  "version": "2.5.2",
-  "trades": {
-    "B252_INTC_202610221245": {
-      "symbol": "INTC",
-      "side": "SELL",
-      "client_id": "B252_INTC_202610221245",
-      "entry_id": "106b5c2b-1be1-48f1-a16d-976e55a218e9",
-      "status": "open",
-      "submitted": "2026-10-22T16:54:20.475347Z",
-      "signal_candle": "2026-10-22T12:45:00-04:00",
-      "reference_entry": 86.04,
-      "stop": 86.62,
-      "tp": 84.91,
-      "qty": 7,
-      "planned_risk": 4.06,
-      "result_logged": false,
-      "recovered_from_alpaca_read_only": true
-    }
-  },
   "cooldown": {
     "INTC": "2026-10-22T12:45:00-04:00"
-  }
+  },
+  "trades": {
+    "B252_INTC_202610221245": {
+      "client_id": "B252_INTC_202610221245",
+      "entry_id": "106b5c2b-1be1-48f1-a16d-976e55a218e9",
+      "planned_risk": 4.06,
+      "qty": 7,
+      "recovered_from_alpaca_read_only": true,
+      "reference_entry": 86.04,
+      "result_logged": true,
+      "side": "SELL",
+      "signal_candle": "2026-10-22T12:45:00-04:00",
+      "status": "closed",
+      "stop": 86.62,
+      "submitted": "2026-10-22T16:54:20.475347Z",
+      "symbol": "INTC",
+      "tp": 84.91
+    }
+  },
+  "version": "2.5.2"
 }
