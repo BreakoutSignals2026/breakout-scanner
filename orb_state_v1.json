@@ -1,6 +1,100 @@
 {
-  "version": "1.0",
-  "session_date": null,
-  "symbols": {},
-  "daily_summary_sent": false
+  "daily_summary_sent": false,
+  "session_date": "2026-10-22",
+  "symbols": {
+    "AA": {
+      "phase": "watching"
+    },
+    "AAL": {
+      "phase": "watching"
+    },
+    "BB": {
+      "phase": "watching"
+    },
+    "CCL": {
+      "phase": "watching"
+    },
+    "CELH": {
+      "phase": "watching"
+    },
+    "CHWY": {
+      "phase": "watching"
+    },
+    "CLF": {
+      "phase": "watching"
+    },
+    "CLSK": {
+      "phase": "watching"
+    },
+    "DKNG": {
+      "phase": "watching"
+    },
+    "F": {
+      "phase": "watching"
+    },
+    "FSLY": {
+      "phase": "watching"
+    },
+    "GME": {
+      "phase": "watching"
+    },
+    "HIMS": {
+      "phase": "watching"
+    },
+    "IREN": {
+      "phase": "watching"
+    },
+    "LUNR": {
+      "phase": "watching"
+    },
+    "MARA": {
+      "phase": "watching"
+    },
+    "NOK": {
+      "phase": "watching"
+    },
+    "NU": {
+      "phase": "watching"
+    },
+    "PATH": {
+      "phase": "watching"
+    },
+    "PTON": {
+      "phase": "watching"
+    },
+    "QBTS": {
+      "phase": "watching"
+    },
+    "RGTI": {
+      "phase": "watching"
+    },
+    "RIOT": {
+      "phase": "watching"
+    },
+    "RIVN": {
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.245,
+        "orb_high": 12.39,
+        "orb_low": 12.24,
+        "rel_vol": 1.597,
+        "side": "SHORT",
+        "signal_bar": "2026-10-22T11:00:00-04:00",
+        "symbol": "RIVN"
+      }
+    },
+    "SNAP": {
+      "phase": "watching"
+    },
+    "SOFI": {
+      "phase": "watching"
+    },
+    "U": {
+      "phase": "watching"
+    },
+    "VALE": {
+      "phase": "watching"
+    }
+  },
+  "version": "1.0"
 }
