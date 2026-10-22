@@ -34,3 +34,8 @@
 {"timestamp": "2026-10-22T19:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "bd4496b6-ab26-47c3-9950-7978cda59c1f"}
 {"timestamp": "2026-10-22T19:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6"}
 {"timestamp": "2026-10-22T19:45:37+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "f79431e7-4e7c-4041-b319-0939ec80c932"}
+{"timestamp": "2026-10-22T19:46:11+00:00", "action": "eod_close_submitted", "symbol": "CCL", "qty": 14, "order_id": "d2ff4c6a-0e07-48cc-82e1-cb0cd5807ced"}
+{"timestamp": "2026-10-22T19:46:13+00:00", "action": "eod_close_submitted", "symbol": "CELH", "qty": 3, "order_id": "9499b2c4-d9fb-4c9d-962b-c1404306fb67"}
+{"timestamp": "2026-10-22T19:46:14+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 32, "order_id": "9ba4000a-7f19-41ab-a5d7-906e0fa8b9eb"}
+{"timestamp": "2026-10-22T19:46:16+00:00", "action": "eod_close_submitted", "symbol": "LUNR", "qty": 37, "order_id": "b642558f-9565-4605-ad17-8dfa5cfa09d5"}
+{"timestamp": "2026-10-22T19:46:18+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 45, "order_id": "7807bff2-33e4-4465-937b-cd5444168f57"}
