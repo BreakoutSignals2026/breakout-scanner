@@ -1,0 +1,49 @@
+name: One-time restore Classic V2.5.2 monitoring from verified state
+on:
+  push:
+    paths:
+      - ".github/workflows/restart_classic_once.yml"
+permissions:
+  actions: write
+  contents: read
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Cancel stale Classic runner and queue, then dispatch from CURRENT main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="https://api.github.com/repos/$GH_REPOSITORY"
+          api() {
+            method=$1; url=$2; shift 2
+            curl --silent --show-error --location \
+              --output /tmp/restresult --write-out "%{http_code}" \
+              -X "$method" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "$@" "$ROOT/$url"
+          }
+          for id in 39800722130 39789689949; do
+            code=$(api POST "actions/runs/$id/cancel")
+            echo "Cancel stale Classic run $id HTTP $code"
+            if [ "$code" != "202" ] && [ "$code" != "409" ]; then
+              cat /tmp/restresult
+              exit 1
+            fi
+          done
+          sleep 6
+          code=$(api POST "actions/workflows/scanner.yml/dispatches" \
+            -H "Content-Type: application/json" \
+            --data '{"ref":"main","inputs":{"one_paper_trade":"false","full_paper_session":"true"}}')
+          echo "Dispatch Classic full PAPER session from restored tracked state HTTP $code"
+          if [ "$code" != "204" ]; then
+            cat /tmp/restresult
+            exit 1
+          fi
+          echo "Actions only; no Alpaca orders modified."
