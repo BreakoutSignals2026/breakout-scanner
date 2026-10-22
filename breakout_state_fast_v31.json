@@ -3,6 +3,7 @@
     "2026-10-21": "2026-10-21T19:45:32+00:00"
   },
   "last_signal_bar": {
+    "CCL": "2026-10-22T18:00:00+00:00",
     "CHWY": "2026-10-22T15:10:00+00:00",
     "GME": "2026-10-22T17:10:00+00:00",
     "IREN": "2026-10-22T15:05:00+00:00",
@@ -13,6 +14,23 @@
   },
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
+    "CCL": {
+      "bar_key": "2026-10-22T18:00:00+00:00",
+      "entry_cid": "FAST31E_CCL_10221800000000",
+      "entry_fill_price": 27.14,
+      "entry_filled_at": "2026-10-22T18:06:49.189521058Z",
+      "entry_order_id": "c43e8e6e-2b1a-46ca-b98f-52721f468b38",
+      "exit_cid": "FAST31X_CCL_10221800000000",
+      "exit_order_id": "b25ea6a2-40c4-43ca-82a3-5d066606a7c0",
+      "filled_qty": 14,
+      "reference_price": 27.14,
+      "requested_qty": 14,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T18:06:48+00:00",
+      "symbol": "CCL"
+    },
     "CHWY": {
       "bar_key": "2026-10-22T15:10:00+00:00",
       "entry_cid": "FAST31E_CHWY_10221510000000",
