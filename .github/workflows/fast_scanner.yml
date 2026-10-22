@@ -2,13 +2,14 @@ name: FAST Alpaca Scanner V3.2.3 (28 symbols; PAPER auto)
 
 on:
   schedule:
-    # 09:10 America/New_York: 13:10 UTC in EDT, 14:10 UTC in EST.
-    # The other invocation is discarded by preflight (10:10 NY).
-    - cron: "10 13 * * 1-5"
-    - cron: "10 14 * * 1-5"
-    # Recovery launches at NY 09:47 (in either DST regime).
-    - cron: "47 13 * * 1-5"
-    - cron: "47 14 * * 1-5"
+    # 09:20 America/New_York: 13:20 UTC in EDT, 14:20 UTC in EST.
+    # Ten minutes before US market opens (09:30 NY).
+    # Wrong-season invocations at 10:20 NY are rejected by preflight.
+    - cron: "20 13 * * 1-5"
+    - cron: "20 14 * * 1-5"
+    # Recovery launches at NY 09:30 (at the regular US market open).
+    - cron: "30 13 * * 1-5"
+    - cron: "30 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
@@ -55,12 +56,13 @@ jobs:
               echo "should_run=false" >> "$GITHUB_OUTPUT"
               echo "Manual test skipped outside 09:00-16:00 New York."
             fi
-          elif [ "$NOW_MIN" -ge 530 ] && [ "$NOW_MIN" -lt 660 ]; then
-            # Accept NY 08:50-10:59 to recover when earlier GitHub schedule is dropped.
-            # Concurrency queues extra scheduled runs; late queued preflight skips after close.
+          elif [ "$NOW_MIN" -ge 560 ] && [ "$NOW_MIN" -lt 600 ]; then
+            # Only accept 09:20-09:59 NY. This covers late 09:20 and
+            # 09:30 recovery, but skips wrong-season 10:20/10:30 runs.
+            # Concurrency prevents overlapping workflows for this scanner.
             echo "should_run=true" >> "$GITHUB_OUTPUT"
           else
-            # Skip the extra 10:10 local trigger in the other DST season.
+            # Skip delayed/duplicate scheduled triggers outside 09:20-09:59 NY.
             echo "should_run=false" >> "$GITHUB_OUTPUT"
             echo "Skipped duplicate / late scheduled run."
           fi

@@ -2,13 +2,13 @@ name: Breakout Scanner V2.5.2 (PAPER auto)
 
 on:
   schedule:
-    # One correct 09:10 NY launch in either US DST regime.
-    # Wrong-season launch is skipped in the preflight job.
-    - cron: "10 13 * * 1-5"
-    - cron: "10 14 * * 1-5"
-    # Recovery launches at NY 09:47 (in either DST regime).
-    - cron: "47 13 * * 1-5"
-    - cron: "47 14 * * 1-5"
+    # Primary launch 09:20 NY (10 minutes before US open) in either DST regime.
+    # Wrong-season launch at 10:20 NY is skipped by preflight.
+    - cron: "20 13 * * 1-5"
+    - cron: "20 14 * * 1-5"
+    # Recovery launches at NY 09:30 (at the regular US market open).
+    - cron: "30 13 * * 1-5"
+    - cron: "30 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
@@ -36,7 +36,7 @@ jobs:
       run: ${{ steps.gate.outputs.run }}
     steps:
       - id: gate
-        name: Pick correct NY 09:10 launch; allow manual test
+        name: Pick NY 09:20-09:59 launch; allow manual recovery
         run: |
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -44,7 +44,7 @@ jobs:
           fi
           ny_time=$(TZ=America/New_York date +%H%M)
           echo "New York time: $ny_time"
-          if [ "$ny_time" -ge 0900 ] && [ "$ny_time" -lt 1100 ]; then
+          if [ "$ny_time" -ge 0920 ] && [ "$ny_time" -lt 1000 ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
