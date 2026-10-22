@@ -1,4 +1,4 @@
-name: FAST Alpaca Scanner V3.2.3 (28 symbols; PAPER auto)
+name: FAST Alpaca Scanner V3.2.4 (28 symbols; PAPER auto)
 
 on:
   schedule:
@@ -119,7 +119,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.2.3 state"
+              git commit -m "Update FAST V3.2.4 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
@@ -186,7 +186,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.2.3 state"
+              git commit -m "Update FAST V3.2.4 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
