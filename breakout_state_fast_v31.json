@@ -3,11 +3,29 @@
     "2026-10-21": "2026-10-21T19:45:32+00:00"
   },
   "last_signal_bar": {
+    "IREN": "2026-10-22T15:05:00+00:00",
     "PATH": "2026-10-22T14:55:00+00:00",
     "RIOT": "2026-10-21T17:55:00+00:00"
   },
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
+    "IREN": {
+      "bar_key": "2026-10-22T15:05:00+00:00",
+      "entry_cid": "FAST31E_IREN_10221505000000",
+      "entry_fill_price": 24.95,
+      "entry_filled_at": "2026-10-22T15:12:27.23653906Z",
+      "entry_order_id": "49d11cd7-9eef-4796-9fe1-2222bd889574",
+      "exit_cid": "FAST31X_IREN_10221505000000",
+      "exit_order_id": "41aeddd3-d96c-4c25-a612-779b8490f077",
+      "filled_qty": 16,
+      "reference_price": 24.95,
+      "requested_qty": 16,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T15:12:26+00:00",
+      "symbol": "IREN"
+    },
     "PATH": {
       "bar_key": "2026-10-22T14:55:00+00:00",
       "entry_cid": "FAST31E_PATH_10221455000000",

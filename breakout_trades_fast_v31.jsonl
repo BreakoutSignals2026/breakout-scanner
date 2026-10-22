@@ -3,3 +3,5 @@
 {"timestamp": "2026-10-21T18:11:29+00:00", "action": "closed", "symbol": "RIOT", "entry": 14.48, "exit": 14.34, "qty": 27.0, "side": "buy", "pnl": -3.78, "pnl_pct": -0.967, "reason": "trailing stop"}
 {"timestamp": "2026-10-22T15:03:10+00:00", "action": "entry_submitted", "symbol": "PATH", "order_id": "e7ec5da7-88fa-46ef-a315-35ff5ba1c57c", "requested_qty": 28, "reference": 13.94, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.072}
 {"timestamp": "2026-10-22T15:03:16+00:00", "action": "exit_accepted", "symbol": "PATH", "order_id": "dfe9c6b7-2aea-4678-aab1-af4537dab97a", "qty": 7}
+{"timestamp": "2026-10-22T15:12:26+00:00", "action": "entry_submitted", "symbol": "IREN", "order_id": "49d11cd7-9eef-4796-9fe1-2222bd889574", "requested_qty": 16, "reference": 24.95, "side": "sell", "estimated_risk": 4.95, "spread_percent": 0.04}
+{"timestamp": "2026-10-22T15:12:29+00:00", "action": "exit_accepted", "symbol": "IREN", "order_id": "41aeddd3-d96c-4c25-a612-779b8490f077", "qty": 16}
