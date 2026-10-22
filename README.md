@@ -1,7 +1,8 @@
 # BreakoutSignals2026 — Alpaca PAPER scannery
 
-Vyčistený repozitár obsahuje **dva aktívne scannery**. Oba obchodujú iba
-na `https://paper-api.alpaca.markets` a odosielajú upozornenia do Telegramu.
+Repozitár obsahuje **dva aktívne PAPER obchodné scannery** a **tretí ORB
+V1.0 iba na simuláciu**. FAST a BREAKOUT obchodujú cez
+`https://paper-api.alpaca.markets`; ORB neodosiela do Alpaca žiadne objednávky.
 Nie je tu žiadny LIVE trading workflow.
 
 ## Aktívne programy
@@ -10,6 +11,7 @@ Nie je tu žiadny LIVE trading workflow.
 | --- | --- | --- | --- |
 | FAST V3.2.3 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
+| ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
 
 - Plánované riziko je **5 USD na obchod**, nie garantovaná maximálna strata.
 - **Bez pevného denného limitu vstupov či počtu súčasných pozícií** navyše
@@ -28,7 +30,7 @@ vynechanom spustení. Hlavný štart je **09:20 New York** (10 minút pred otvor
 `preflight` kontroluje čas a skupina `concurrency` bráni paralelným behov
 toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vynechať.
 
-- **Plánovaný beh:** obom scannerom povolí nové PAPER vstupy.
+- **Plánovaný beh:** FAST a BREAKOUT môžu posielať PAPER vstupy; ORB iba simuluje.
 - **Manuálny beh bez voľby `one_paper_trade`:** SAFE MODE – iba
   monitorovanie/večerná kontrola, bez nových vstupov.
 - **Manuálny beh s `one_paper_trade=true`:** jednorazový vstupný test.
@@ -38,6 +40,8 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
   počtu vstupov, stále s pôvodnými ochrannými pravidlami.
 - Workflow používajú samostatné `concurrency` skupiny, aby sa nekryli dva
   behy **toho istého** scanneru.
+- ORB začne analyzovať až po vytvorení 15-minútového opening range, teda
+  od 09:45 NY. Podrobnosti: [ORB_STRATEGY.md](ORB_STRATEGY.md).
 
 ## Dôležité súbory, ktoré sa nesmú len tak vymazať
 
@@ -48,6 +52,8 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
 | `breakout_state_v252.json` | Stav BREAKOUT V2.5.2; vytvorí sa pri potrebe |
 | `breakout_results_v252.csv` | Overené výsledky BREAKOUT V2.5.2; vytvorí sa po uzatvorených obchodoch |
 | `archive/breakout_results_v25.csv` | Historické výsledky staršieho scanneru; **nemiešať** s reálnymi PnL Alpaca |
+| `orb_state_v1.json` | Aktuálny stav virtuálneho ORB obchodovania, **nie** stav Alpaca pozícií |
+| `orb_results_v1.csv` | Hypotetické ORB výsledky, nesčítavať s reálnym PAPER PnL |
 
 Súbory so stavom vznikajú alebo sa aktualizujú automaticky počas skenovania.
 Ich odstránenie či prepísanie môže narušiť overovanie otvorených pozícií.
