@@ -1,0 +1,35 @@
+name: Launch ORB V1.0 signal-only test once
+on:
+  push:
+    paths:
+      - ".github/workflows/launch_orb_once.yml"
+permissions:
+  actions: write
+  contents: read
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Start virtual ORB scanner - no Alpaca orders
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          status=$(curl --silent --show-error --location \
+            --output /tmp/orb_dispatch_response \
+            --write-out "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Content-Type: application/json" \
+            --data '{"ref":"main"}' \
+            "https://api.github.com/repos/$GH_REPOSITORY/actions/workflows/orb_scanner.yml/dispatches")
+          echo "ORB dispatch HTTP $status"
+          if [ "$status" != "204" ]; then
+            cat /tmp/orb_dispatch_response
+            exit 1
+          fi
