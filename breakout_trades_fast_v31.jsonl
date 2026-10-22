@@ -16,3 +16,4 @@
 {"timestamp": "2026-10-22T17:16:28+00:00", "action": "exit_accepted", "symbol": "GME", "order_id": "85ce3482-eb54-4c3e-bc05-5c4ea3cba19e", "qty": 16}
 {"timestamp": "2026-10-22T17:30:14+00:00", "action": "entry_submitted", "symbol": "RIVN", "order_id": "d66261ae-72e2-40fe-a830-7e7d61e1606e", "requested_qty": 32, "reference": 12.04, "side": "sell", "estimated_risk": 4.94, "spread_percent": 0.083}
 {"timestamp": "2026-10-22T17:30:19+00:00", "action": "exit_accepted", "symbol": "RIVN", "order_id": "d1d26068-af95-426a-8fb9-2d658e006d85", "qty": 32}
+{"timestamp": "2026-10-22T17:43:58+00:00", "action": "closed", "symbol": "GME", "entry": 24.68, "exit": 24.99625, "qty": 16.0, "side": "sell", "pnl": -5.06, "pnl_pct": -1.281, "reason": "trailing stop"}
