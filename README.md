@@ -9,7 +9,7 @@ Nie je tu žiadny LIVE trading workflow.
 
 | Scanner | Python | GitHub Actions | Stratégia |
 | --- | --- | --- | --- |
-| FAST V3.2.3 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
+| FAST V3.2.4 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
 | ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
 
@@ -40,6 +40,11 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
   počtu vstupov, stále s pôvodnými ochrannými pravidlami.
 - Workflow používajú samostatné `concurrency` skupiny, aby sa nekryli dva
   behy **toho istého** scanneru.
+- Pri odovzdávaní prvej a druhej časti seansy používajú oba obchodné scannery
+  `actions/checkout` s `ref: main`, aby si načítali **najnovší commitnutý stav**.
+  Starý snapshot zo začiatku workflow môže mylne označiť vlastné pozície ako cudzie.
+- FAST V3.2.4 hlási široký IEX spread či starú cenu ako zamietnutý signál
+  **pred odoslaním objednávky**, nie ako chybné vykonanie obchodu.
 - ORB začne analyzovať až po vytvorení 15-minútového opening range, teda
   od 09:45 NY. Podrobnosti: [ORB_STRATEGY.md](ORB_STRATEGY.md).
 
