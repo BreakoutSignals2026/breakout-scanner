@@ -23,3 +23,5 @@
 {"timestamp": "2026-10-22T18:11:34+00:00", "action": "exit_accepted", "symbol": "CELH", "order_id": "9d8ceb1c-7440-4640-9e79-80048056544f", "qty": 3}
 {"timestamp": "2026-10-22T19:20:04+00:00", "action": "entry_submitted", "symbol": "F", "order_id": "a22ec308-1464-4f69-8f0c-70971d8301c7", "requested_qty": 32, "reference": 11.97, "side": "buy", "estimated_risk": 4.92, "spread_percent": 0.084}
 {"timestamp": "2026-10-22T19:20:09+00:00", "action": "exit_accepted", "symbol": "F", "order_id": "bd4496b6-ab26-47c3-9950-7978cda59c1f", "qty": 32}
+{"timestamp": "2026-10-22T19:24:46+00:00", "action": "entry_submitted", "symbol": "CLSK", "order_id": "5ff033f3-94af-454d-8d22-0d1576e6c012", "requested_qty": 46, "reference": 8.11, "side": "buy", "estimated_risk": 4.94, "spread_percent": 0.123}
+{"timestamp": "2026-10-22T19:24:51+00:00", "action": "exit_accepted", "symbol": "CLSK", "order_id": "aba67c45-9a07-4758-bcb9-0134847c9182", "qty": 46}
