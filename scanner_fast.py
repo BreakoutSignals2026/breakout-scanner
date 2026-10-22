@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FAST BREAKOUT V3.2.3 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $5 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
+"""FAST BREAKOUT V3.2.4 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $5 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
 
 import json
 import math
@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-VERSION = "3.2.3"
+VERSION = "3.2.4"
 API = "https://paper-api.alpaca.markets/v2"
 DATA = "https://data.alpaca.markets/v2/stocks"
 NY = ZoneInfo("America/New_York")
@@ -66,6 +66,11 @@ EOD_EXIT_BEFORE_MIN = 15
 NEW_ENTRY_STOP_BEFORE_MIN = 30
 OPEN_STATES = {"new", "accepted", "pending_new", "accepted_for_bidding", "partially_filled", "pending_replace", "pending_cancel", "stopped", "suspended", "calculated"}
 PROTECTED_STATES = {"new", "accepted", "pending_new", "accepted_for_bidding", "partially_filled", "stopped"}
+
+
+class SignalDataRejected(RuntimeError):
+    """Expected live-price/quote quality rejection; never imply an order was sent."""
+
 
 
 def now_utc():
@@ -211,11 +216,11 @@ def latest_trade(symbol):
     trade = data.json().get("trade", {})
     price = fnum(trade.get("p"))
     if price <= 0 or not trade.get("t"):
-        raise RuntimeError(f"{symbol}: neplatná live cena")
+        raise SignalDataRejected(f"{symbol}: neplatná live cena")
     tm = datetime.fromisoformat(trade["t"].replace("Z", "+00:00"))
     age = (now_utc() - tm).total_seconds()
     if age < -10 or age > MAX_TRADE_AGE_SECONDS:
-        raise RuntimeError(f"{symbol}: IEX cena stará {age:.0f}s")
+        raise SignalDataRejected(f"{symbol}: IEX cena stará {age:.0f}s")
     return price
 
 
@@ -229,15 +234,15 @@ def latest_quote(symbol):
     bid_size, ask_size = fnum(q.get("bs")), fnum(q.get("as"))
     timestamp = parse_alpaca_time(q.get("t"))
     if bid <= 0 or ask <= 0 or ask <= bid or bid_size <= 0 or ask_size <= 0 or timestamp is None:
-        raise RuntimeError(f"{symbol}: neplatný alebo prázdny IEX bid/ask")
+        raise SignalDataRejected(f"{symbol}: neplatný alebo prázdny IEX bid/ask")
     age = (now_utc() - timestamp).total_seconds()
     if age < -10 or age > MAX_QUOTE_AGE_SECONDS:
-        raise RuntimeError(f"{symbol}: IEX kotácia stará {age:.0f} s")
+        raise SignalDataRejected(f"{symbol}: IEX kotácia stará {age:.0f} s")
     midpoint = (bid + ask) / 2
     spread = ask - bid
     spread_pct = spread / midpoint * 100
     if spread_pct > MAX_SPREAD_PERCENT:
-        raise RuntimeError(f"{symbol}: IEX spread {spread_pct:.3f}% > {MAX_SPREAD_PERCENT:.2f}%")
+        raise SignalDataRejected(f"{symbol}: IEX spread {spread_pct:.3f}% > {MAX_SPREAD_PERCENT:.2f}%")
     return {"bid": bid, "ask": ask, "spread": spread,
             "spread_percent": spread_pct, "quote_age_seconds": age}
 
@@ -906,6 +911,11 @@ def main():
             submit_entry(signal, price, qty, state, live=live)
             watch_new_entry(signal["symbol"], state)
             return
+        except SignalDataRejected as exc:
+            # Quote/feed rejection happens BEFORE order submission. Not an
+            # Alpaca order/protection emergency; try the next candidate.
+            print(f"{signal['symbol']}: vynechaný signál (bez objednávky): {exc}")
+            continue
         except Exception as exc:
             notify(f"🚨 FAST V{VERSION} {signal['symbol']}: "
                    f"výnimka pri odosielaní/ochrane: {exc}. "

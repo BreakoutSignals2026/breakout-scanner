@@ -10,3 +10,37 @@
 {"timestamp": "2026-10-22T15:21:50+00:00", "action": "closed", "symbol": "IREN", "entry": 24.95, "exit": 25.22, "qty": 16.0, "side": "sell", "pnl": -4.32, "pnl_pct": -1.082, "reason": "trailing stop"}
 {"timestamp": "2026-10-22T15:31:05+00:00", "action": "entry_submitted", "symbol": "NOK", "order_id": "e53856f1-3550-480a-8c6c-038993f9d2f1", "requested_qty": 45, "reference": 8.26, "side": "sell", "estimated_risk": 4.91, "spread_percent": 0.121}
 {"timestamp": "2026-10-22T15:31:11+00:00", "action": "exit_accepted", "symbol": "NOK", "order_id": "f79431e7-4e7c-4041-b319-0939ec80c932", "qty": 45}
+{"timestamp": "2026-10-22T17:11:46+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.072666, "exit": 22.07, "qty": 15.0, "side": "buy", "pnl": -0.04, "pnl_pct": -0.012, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T17:11:47+00:00", "action": "closed", "symbol": "PATH", "entry": 13.94, "exit": 13.929999999999998, "qty": 7.0, "side": "buy", "pnl": -0.07, "pnl_pct": -0.072, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T17:16:26+00:00", "action": "entry_submitted", "symbol": "GME", "order_id": "f376db53-e5b7-432e-a6a3-23d2570c3711", "requested_qty": 16, "reference": 24.68, "side": "sell", "estimated_risk": 4.9, "spread_percent": 0.041}
+{"timestamp": "2026-10-22T17:16:28+00:00", "action": "exit_accepted", "symbol": "GME", "order_id": "85ce3482-eb54-4c3e-bc05-5c4ea3cba19e", "qty": 16}
+{"timestamp": "2026-10-22T17:30:14+00:00", "action": "entry_submitted", "symbol": "RIVN", "order_id": "d66261ae-72e2-40fe-a830-7e7d61e1606e", "requested_qty": 32, "reference": 12.04, "side": "sell", "estimated_risk": 4.94, "spread_percent": 0.083}
+{"timestamp": "2026-10-22T17:30:19+00:00", "action": "exit_accepted", "symbol": "RIVN", "order_id": "d1d26068-af95-426a-8fb9-2d658e006d85", "qty": 32}
+{"timestamp": "2026-10-22T17:43:58+00:00", "action": "closed", "symbol": "GME", "entry": 24.68, "exit": 24.99625, "qty": 16.0, "side": "sell", "pnl": -5.06, "pnl_pct": -1.281, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T18:06:48+00:00", "action": "entry_submitted", "symbol": "CCL", "order_id": "c43e8e6e-2b1a-46ca-b98f-52721f468b38", "requested_qty": 14, "reference": 27.14, "side": "sell", "estimated_risk": 4.7, "spread_percent": 0.037}
+{"timestamp": "2026-10-22T18:06:51+00:00", "action": "exit_accepted", "symbol": "CCL", "order_id": "b25ea6a2-40c4-43ca-82a3-5d066606a7c0", "qty": 14}
+{"timestamp": "2026-10-22T18:11:29+00:00", "action": "entry_submitted", "symbol": "CELH", "order_id": "f0a2fc81-40bc-4349-af2d-2c2a6bb10066", "requested_qty": 14, "reference": 28.32, "side": "sell", "estimated_risk": 4.9, "spread_percent": 0.035}
+{"timestamp": "2026-10-22T18:11:34+00:00", "action": "exit_accepted", "symbol": "CELH", "order_id": "9d8ceb1c-7440-4640-9e79-80048056544f", "qty": 3}
+{"timestamp": "2026-10-22T19:20:04+00:00", "action": "entry_submitted", "symbol": "F", "order_id": "a22ec308-1464-4f69-8f0c-70971d8301c7", "requested_qty": 32, "reference": 11.97, "side": "buy", "estimated_risk": 4.92, "spread_percent": 0.084}
+{"timestamp": "2026-10-22T19:20:09+00:00", "action": "exit_accepted", "symbol": "F", "order_id": "bd4496b6-ab26-47c3-9950-7978cda59c1f", "qty": 32}
+{"timestamp": "2026-10-22T19:24:46+00:00", "action": "entry_submitted", "symbol": "CLSK", "order_id": "5ff033f3-94af-454d-8d22-0d1576e6c012", "requested_qty": 46, "reference": 8.11, "side": "buy", "estimated_risk": 4.94, "spread_percent": 0.123}
+{"timestamp": "2026-10-22T19:24:51+00:00", "action": "exit_accepted", "symbol": "CLSK", "order_id": "aba67c45-9a07-4758-bcb9-0134847c9182", "qty": 46}
+{"timestamp": "2026-10-22T19:29:29+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "2bb895d9-45d2-48a0-9a69-e253912a6bfc", "requested_qty": 37, "reference": 10.31, "side": "buy", "estimated_risk": 4.95, "spread_percent": 0.097}
+{"timestamp": "2026-10-22T19:29:35+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6", "qty": 37}
+{"timestamp": "2026-10-22T19:34:10+00:00", "action": "closed", "symbol": "RIVN", "entry": 12.04, "exit": 12.12, "qty": 32.0, "side": "sell", "pnl": -2.56, "pnl_pct": -0.664, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T19:38:44+00:00", "action": "closed", "symbol": "CLSK", "entry": 8.12, "exit": 8.06, "qty": 46.0, "side": "buy", "pnl": -2.76, "pnl_pct": -0.739, "reason": "trailing stop"}
+{"timestamp": "2026-10-22T19:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "CCL", "id": "b25ea6a2-40c4-43ca-82a3-5d066606a7c0"}
+{"timestamp": "2026-10-22T19:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "CELH", "id": "9d8ceb1c-7440-4640-9e79-80048056544f"}
+{"timestamp": "2026-10-22T19:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "bd4496b6-ab26-47c3-9950-7978cda59c1f"}
+{"timestamp": "2026-10-22T19:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "5440a17a-1ff5-4897-9edc-b4b2b7c5f1e6"}
+{"timestamp": "2026-10-22T19:45:37+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "f79431e7-4e7c-4041-b319-0939ec80c932"}
+{"timestamp": "2026-10-22T19:46:11+00:00", "action": "eod_close_submitted", "symbol": "CCL", "qty": 14, "order_id": "d2ff4c6a-0e07-48cc-82e1-cb0cd5807ced"}
+{"timestamp": "2026-10-22T19:46:13+00:00", "action": "eod_close_submitted", "symbol": "CELH", "qty": 3, "order_id": "9499b2c4-d9fb-4c9d-962b-c1404306fb67"}
+{"timestamp": "2026-10-22T19:46:14+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 32, "order_id": "9ba4000a-7f19-41ab-a5d7-906e0fa8b9eb"}
+{"timestamp": "2026-10-22T19:46:16+00:00", "action": "eod_close_submitted", "symbol": "LUNR", "qty": 37, "order_id": "b642558f-9565-4605-ad17-8dfa5cfa09d5"}
+{"timestamp": "2026-10-22T19:46:18+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 45, "order_id": "7807bff2-33e4-4465-937b-cd5444168f57"}
+{"timestamp": "2026-10-22T19:46:52+00:00", "action": "closed", "symbol": "CCL", "entry": 27.14, "exit": 27.01, "qty": 14.0, "side": "sell", "pnl": 1.82, "pnl_pct": 0.479, "reason": "koniec seansy"}
+{"timestamp": "2026-10-22T19:46:53+00:00", "action": "closed", "symbol": "CELH", "entry": 28.32, "exit": 28.22, "qty": 3.0, "side": "sell", "pnl": 0.3, "pnl_pct": 0.353, "reason": "koniec seansy"}
+{"timestamp": "2026-10-22T19:46:54+00:00", "action": "closed", "symbol": "F", "entry": 11.97, "exit": 11.96, "qty": 32.0, "side": "buy", "pnl": -0.32, "pnl_pct": -0.084, "reason": "koniec seansy"}
+{"timestamp": "2026-10-22T19:46:55+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.31, "exit": 10.26, "qty": 37.0, "side": "buy", "pnl": -1.85, "pnl_pct": -0.485, "reason": "koniec seansy"}
+{"timestamp": "2026-10-22T19:46:56+00:00", "action": "closed", "symbol": "NOK", "entry": 8.26, "exit": 7.8, "qty": 45.0, "side": "sell", "pnl": 20.7, "pnl_pct": 5.569, "reason": "koniec seansy"}
