@@ -8,7 +8,8 @@
     "IREN": "2026-10-22T15:05:00+00:00",
     "NOK": "2026-10-22T15:25:00+00:00",
     "PATH": "2026-10-22T14:55:00+00:00",
-    "RIOT": "2026-10-21T17:55:00+00:00"
+    "RIOT": "2026-10-21T17:55:00+00:00",
+    "RIVN": "2026-10-22T17:20:00+00:00"
   },
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
@@ -117,6 +118,23 @@
       "status": "closed",
       "submitted_at": "2026-10-21T18:02:16+00:00",
       "symbol": "RIOT"
+    },
+    "RIVN": {
+      "bar_key": "2026-10-22T17:20:00+00:00",
+      "entry_cid": "FAST31E_RIVN_10221720000000",
+      "entry_fill_price": 12.04,
+      "entry_filled_at": "2026-10-22T17:30:15.734087614Z",
+      "entry_order_id": "d66261ae-72e2-40fe-a830-7e7d61e1606e",
+      "exit_cid": "FAST31X_RIVN_10221720000000",
+      "exit_order_id": "d1d26068-af95-426a-8fb9-2d658e006d85",
+      "filled_qty": 32,
+      "reference_price": 12.04,
+      "requested_qty": 32,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-22T17:30:14+00:00",
+      "symbol": "RIVN"
     }
   },
   "version": "3.2.1"
