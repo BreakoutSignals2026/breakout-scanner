@@ -22,9 +22,9 @@ Nie je tu žiadny LIVE trading workflow.
 
 ## Automatické spustenie
 
-GitHub Actions používa štyri UTC crony (`13:20`, `14:20`, `13:47`,
-`14:47`) počas pracovných dní kvôli zmenám letného času a obnove po
-vynechanom spustení. Hlavný štart je **09:20 New York** (10 minút pred otvorením US burzy), záložný **09:47 NY**.
+GitHub Actions používa štyri UTC crony (`13:20`, `14:20`, `13:30`,
+`14:30`) počas pracovných dní kvôli zmenám letného času a obnove po
+vynechanom spustení. Hlavný štart je **09:20 New York** (10 minút pred otvorením US burzy), záložný **09:30 NY** (otvorenie burzy).
 `preflight` kontroluje čas a skupina `concurrency` bráni paralelným behov
 toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vynechať.
 
