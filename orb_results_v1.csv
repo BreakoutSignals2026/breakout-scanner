@@ -1,0 +1,1 @@
+trade_id,date,symbol,side,signal_bar,entry_bar,exit_bar,orb_high,orb_low,entry,stop,tp,exit,qty,risk_estimate_usd,gross_pnl_usd,gross_pnl_r,exit_reason,ambiguous_stop_first,simulated,slippage_pct_per_side
