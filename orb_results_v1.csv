@@ -1,1 +1,3 @@
 trade_id,date,symbol,side,signal_bar,entry_bar,exit_bar,orb_high,orb_low,entry,stop,tp,exit,qty,risk_estimate_usd,gross_pnl_usd,gross_pnl_r,exit_reason,ambiguous_stop_first,simulated,slippage_pct_per_side
+20261022-RIVN-20261022T1100000400,2026-10-22,RIVN,SHORT,2026-10-22T11:00:00-04:00,2026-10-22T11:05:00-04:00,2026-10-22T13:20:00-04:00,12.39,12.24,12.2139,12.2775,12.0867,12.0927,71,4.95,8.6,1.721,TP,False,True,0.05
+20261022-FSLY-20261022T1125000400,2026-10-22,FSLY,SHORT,2026-10-22T11:25:00-04:00,2026-10-22T11:30:00-04:00,2026-10-22T11:55:00-04:00,23.37,22.77,22.7836,22.92,22.5108,22.9315,33,4.88,-4.88,-0.976,SL,False,True,0.05
