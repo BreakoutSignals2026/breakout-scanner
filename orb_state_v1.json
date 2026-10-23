@@ -24,15 +24,23 @@
       "phase": "watching"
     },
     "CLSK": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.607,
+        "entry": 8.2691325,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "last_evaluated_bar": "2026-10-23T09:50:00-04:00",
         "orb_high": 8.24,
         "orb_low": 8.02,
+        "qty": 56,
         "rel_vol": 1.674,
+        "risk_estimate_usd": 4.94,
         "side": "LONG",
         "signal_bar": "2026-10-23T09:45:00-04:00",
-        "symbol": "CLSK"
+        "stop": 8.185,
+        "symbol": "CLSK",
+        "tp": 8.437397499999998,
+        "trade_id": "20261023-CLSK-20261023T0945000400"
       }
     },
     "DKNG": {
@@ -51,30 +59,46 @@
       "phase": "watching"
     },
     "IREN": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.668,
+        "entry": 26.343164999999996,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "last_evaluated_bar": "2026-10-23T09:50:00-04:00",
         "orb_high": 26.18,
         "orb_low": 25.19,
+        "qty": 11,
         "rel_vol": 2.242,
+        "risk_estimate_usd": 4.66,
         "side": "LONG",
         "signal_bar": "2026-10-23T09:45:00-04:00",
-        "symbol": "IREN"
+        "stop": 25.9325,
+        "symbol": "IREN",
+        "tp": 27.164494999999985,
+        "trade_id": "20261023-IREN-20261023T0945000400"
       }
     },
     "LUNR": {
       "phase": "watching"
     },
     "MARA": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 1.287,
+        "entry": 7.46373,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "last_evaluated_bar": "2026-10-23T09:50:00-04:00",
         "orb_high": 7.38,
         "orb_low": 7.18,
+        "qty": 36,
         "rel_vol": 1.894,
+        "risk_estimate_usd": 4.95,
         "side": "LONG",
         "signal_bar": "2026-10-23T09:45:00-04:00",
-        "symbol": "MARA"
+        "stop": 7.33,
+        "symbol": "MARA",
+        "tp": 7.73119,
+        "trade_id": "20261023-MARA-20261023T0945000400"
       }
     },
     "NOK": {
@@ -96,22 +120,62 @@
       "phase": "watching"
     },
     "RIOT": {
-      "phase": "pending",
-      "signal": {
-        "breakout_pct": 0.465,
+      "phase": "closed",
+      "result": {
+        "ambiguous_stop_first": false,
+        "date": "2026-10-23",
+        "entry": 12.9765,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "exit": 12.8311,
+        "exit_bar": "2026-10-23T09:50:00-04:00",
+        "exit_reason": "SL",
+        "gross_pnl_r": -0.989,
+        "gross_pnl_usd": -4.94,
         "orb_high": 12.91,
         "orb_low": 12.62,
-        "rel_vol": 2.998,
+        "qty": 34,
+        "risk_estimate_usd": 4.95,
         "side": "LONG",
         "signal_bar": "2026-10-23T09:45:00-04:00",
-        "symbol": "RIOT"
+        "simulated": true,
+        "slippage_pct_per_side": 0.05,
+        "stop": 12.8375,
+        "symbol": "RIOT",
+        "tp": 13.2545,
+        "trade_id": "20261023-RIOT-20261023T0945000400"
+      },
+      "trade": {
+        "breakout_pct": 0.465,
+        "entry": 12.976485,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "last_evaluated_bar": "2026-10-23T09:50:00-04:00",
+        "orb_high": 12.91,
+        "orb_low": 12.62,
+        "qty": 34,
+        "rel_vol": 2.998,
+        "risk_estimate_usd": 4.95,
+        "side": "LONG",
+        "signal_bar": "2026-10-23T09:45:00-04:00",
+        "stop": 12.8375,
+        "symbol": "RIOT",
+        "tp": 13.254455,
+        "trade_id": "20261023-RIOT-20261023T0945000400"
       }
     },
     "RIVN": {
       "phase": "watching"
     },
     "SNAP": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.395,
+        "orb_high": 6.33,
+        "orb_low": 6.25,
+        "rel_vol": 1.128,
+        "side": "LONG",
+        "signal_bar": "2026-10-23T09:50:00-04:00",
+        "symbol": "SNAP"
+      }
     },
     "SOFI": {
       "phase": "watching"
