@@ -29,6 +29,7 @@
     "BB": {
       "bar_key": "2026-10-23T16:15:00+00:00",
       "close_cid": "FAST31C_BB_10231615000000",
+      "close_order_id": "e671e5a5-6a96-439e-a722-09f9d6640eac",
       "entry_cid": "FAST31E_BB_10231615000000",
       "entry_fill_price": 8.85,
       "entry_filled_at": "2026-10-23T16:23:33.539949287Z",
@@ -40,7 +41,7 @@
       "requested_qty": 43,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T16:23:30+00:00",
       "symbol": "BB"
     },
@@ -143,6 +144,7 @@
     "GME": {
       "bar_key": "2026-10-23T17:35:00+00:00",
       "close_cid": "FAST31C_GME_10231735000000",
+      "close_order_id": "242c279d-fa67-4248-b935-e08d0a1dce30",
       "entry_cid": "FAST31E_GME_10231735000000",
       "entry_fill_price": 25.17,
       "entry_filled_at": "2026-10-23T17:41:21.535832065Z",
@@ -154,7 +156,7 @@
       "requested_qty": 15,
       "side": "sell",
       "spread_at_entry": 0.02,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T17:41:21+00:00",
       "symbol": "GME"
     },
@@ -197,6 +199,7 @@
     "LUNR": {
       "bar_key": "2026-10-23T18:50:00+00:00",
       "close_cid": "FAST31C_LUNR_10231850000000",
+      "close_order_id": "b338a477-ab43-4efd-8470-61adde97f854",
       "entry_cid": "FAST31E_LUNR_10231850000000",
       "entry_fill_price": 10.64,
       "entry_filled_at": "2026-10-23T18:59:52.841667878Z",
@@ -208,13 +211,14 @@
       "requested_qty": 36,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T18:59:51+00:00",
       "symbol": "LUNR"
     },
     "NOK": {
       "bar_key": "2026-10-23T18:30:00+00:00",
       "close_cid": "FAST31C_NOK_10231830000000",
+      "close_order_id": "aea61891-816c-42e6-beb6-874a2dd779dd",
       "entry_cid": "FAST31E_NOK_10231830000000",
       "entry_fill_price": 8.15,
       "entry_filled_at": "2026-10-23T18:36:43.675406686Z",
@@ -226,7 +230,7 @@
       "requested_qty": 46,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T18:36:42+00:00",
       "symbol": "NOK"
     },
@@ -269,6 +273,7 @@
     "QBTS": {
       "bar_key": "2026-10-23T16:55:00+00:00",
       "close_cid": "FAST31C_QBTS_10231655000000",
+      "close_order_id": "6a1672f7-c249-4ce2-9144-c14031fa9138",
       "entry_cid": "FAST31E_QBTS_10231655000000",
       "entry_fill_price": 11.46,
       "entry_filled_at": "2026-10-23T17:04:41.128044154Z",
@@ -280,7 +285,7 @@
       "requested_qty": 33,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T17:04:40+00:00",
       "symbol": "QBTS"
     },
@@ -323,6 +328,7 @@
     "U": {
       "bar_key": "2026-10-23T18:05:00+00:00",
       "close_cid": "FAST31C_U_10231805000000",
+      "close_order_id": "50c53746-93b5-4012-a892-47d709aaf73b",
       "entry_cid": "FAST31E_U_10231805000000",
       "entry_fill_price": 41.172222,
       "entry_filled_at": "2026-10-23T18:13:41.286193324Z",
@@ -334,13 +340,14 @@
       "requested_qty": 9,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T18:13:38+00:00",
       "symbol": "U"
     },
     "VALE": {
       "bar_key": "2026-10-23T17:45:00+00:00",
       "close_cid": "FAST31C_VALE_10231745000000",
+      "close_order_id": "a5c66b82-7aaa-4825-bd19-1fce5c972333",
       "entry_cid": "FAST31E_VALE_10231745000000",
       "entry_fill_price": 12.35,
       "entry_filled_at": "2026-10-23T17:55:14.591754928Z",
@@ -352,7 +359,7 @@
       "requested_qty": 31,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-23T17:55:13+00:00",
       "symbol": "VALE"
     }
