@@ -69,3 +69,4 @@
 {"timestamp": "2026-10-23T18:41:29+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "e077da9c-99c3-4f3d-b49e-aed0a046e63e", "qty": 18}
 {"timestamp": "2026-10-23T18:59:51+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "c3ecb34e-76aa-4e29-beba-21229740a39d", "requested_qty": 36, "reference": 10.64, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.094}
 {"timestamp": "2026-10-23T18:59:57+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "387420cc-b384-4b3f-b91b-20b765ba94f4", "qty": 33}
+{"timestamp": "2026-10-23T19:09:06+00:00", "action": "closed", "symbol": "CHWY", "entry": 21.81, "exit": 22.01, "qty": 18.0, "side": "sell", "pnl": -3.6, "pnl_pct": -0.917, "reason": "trailing stop"}
