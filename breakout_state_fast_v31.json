@@ -4,7 +4,7 @@
     "2026-10-22": "2026-10-22T19:45:33+00:00"
   },
   "last_signal_bar": {
-    "BB": "2026-10-23T14:50:00+00:00",
+    "BB": "2026-10-23T16:15:00+00:00",
     "CCL": "2026-10-22T18:00:00+00:00",
     "CELH": "2026-10-22T18:05:00+00:00",
     "CHWY": "2026-10-22T15:10:00+00:00",
@@ -22,21 +22,20 @@
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
     "BB": {
-      "bar_key": "2026-10-23T14:50:00+00:00",
-      "entry_cid": "FAST31E_BB_10231450000000",
-      "entry_fill_price": 8.99,
-      "entry_filled_at": "2026-10-23T14:56:59.576039528Z",
-      "entry_order_id": "e9e12835-ddad-4c02-bb95-2d65cfd37a51",
-      "exit_cid": "FAST31X_BB_10231450000000",
-      "exit_order_id": "64a9dc99-d295-4afa-888a-230b6b23da96",
-      "filled_qty": 42,
-      "realized_pnl": -4.2,
-      "reference_price": 8.99,
-      "requested_qty": 42,
-      "side": "buy",
+      "bar_key": "2026-10-23T16:15:00+00:00",
+      "entry_cid": "FAST31E_BB_10231615000000",
+      "entry_fill_price": 8.85,
+      "entry_filled_at": "2026-10-23T16:23:33.539949287Z",
+      "entry_order_id": "aea25565-b85d-46d0-9467-5d2f689d8672",
+      "exit_cid": "FAST31X_BB_10231615000000",
+      "exit_order_id": "f7a123d5-b19e-4c41-a4e2-5b9d17f66f4c",
+      "filled_qty": 43,
+      "reference_price": 8.85,
+      "requested_qty": 43,
+      "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "closed",
-      "submitted_at": "2026-10-23T14:56:58+00:00",
+      "status": "protected",
+      "submitted_at": "2026-10-23T16:23:30+00:00",
       "symbol": "BB"
     },
     "CCL": {
