@@ -58,12 +58,35 @@
       "phase": "watching"
     },
     "CHWY": {
-      "phase": "open",
+      "phase": "closed",
+      "result": {
+        "ambiguous_stop_first": false,
+        "date": "2026-10-23",
+        "entry": 21.7291,
+        "entry_bar": "2026-10-23T10:35:00-04:00",
+        "exit": 21.9009,
+        "exit_bar": "2026-10-23T11:05:00-04:00",
+        "exit_reason": "SL",
+        "gross_pnl_r": -0.997,
+        "gross_pnl_usd": -4.98,
+        "orb_high": 22.1,
+        "orb_low": 21.82,
+        "qty": 29,
+        "risk_estimate_usd": 4.98,
+        "side": "SHORT",
+        "signal_bar": "2026-10-23T10:30:00-04:00",
+        "simulated": true,
+        "slippage_pct_per_side": 0.05,
+        "stop": 21.89,
+        "symbol": "CHWY",
+        "tp": 21.4074,
+        "trade_id": "20261023-CHWY-20261023T1030000400"
+      },
       "trade": {
         "breakout_pct": 0.39,
         "entry": 21.72913,
         "entry_bar": "2026-10-23T10:35:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:50:00-04:00",
+        "last_evaluated_bar": "2026-10-23T11:05:00-04:00",
         "orb_high": 22.1,
         "orb_low": 21.82,
         "qty": 29,
@@ -311,7 +334,24 @@
       "phase": "watching"
     },
     "NU": {
-      "phase": "watching"
+      "phase": "open",
+      "trade": {
+        "breakout_pct": 0.237,
+        "entry": 14.822407499999999,
+        "entry_bar": "2026-10-23T11:05:00-04:00",
+        "last_evaluated_bar": "2026-10-23T11:05:00-04:00",
+        "orb_high": 14.765,
+        "orb_low": 14.59,
+        "qty": 46,
+        "rel_vol": 1.137,
+        "risk_estimate_usd": 4.99,
+        "side": "LONG",
+        "signal_bar": "2026-10-23T11:00:00-04:00",
+        "stop": 14.721250000000001,
+        "symbol": "NU",
+        "tp": 15.024722499999994,
+        "trade_id": "20261023-NU-20261023T1100000400"
+      }
     },
     "PATH": {
       "phase": "watching"
