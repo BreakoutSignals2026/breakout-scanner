@@ -76,7 +76,16 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.197,
+        "orb_high": 25.61,
+        "orb_low": 25.35,
+        "rel_vol": 1.876,
+        "side": "SHORT",
+        "signal_bar": "2026-10-23T10:05:00-04:00",
+        "symbol": "GME"
+      }
     },
     "HIMS": {
       "phase": "watching"
@@ -133,7 +142,7 @@
         "breakout_pct": 1.287,
         "entry": 7.46373,
         "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:00:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:05:00-04:00",
         "orb_high": 7.38,
         "orb_low": 7.18,
         "qty": 36,
@@ -212,12 +221,35 @@
       "phase": "watching"
     },
     "SNAP": {
-      "phase": "open",
+      "phase": "closed",
+      "result": {
+        "ambiguous_stop_first": false,
+        "date": "2026-10-23",
+        "entry": 6.3532,
+        "entry_bar": "2026-10-23T09:55:00-04:00",
+        "exit": 6.3068,
+        "exit_bar": "2026-10-23T10:05:00-04:00",
+        "exit_reason": "SL",
+        "gross_pnl_r": -0.991,
+        "gross_pnl_usd": -4.96,
+        "orb_high": 6.33,
+        "orb_low": 6.25,
+        "qty": 107,
+        "risk_estimate_usd": 4.96,
+        "side": "LONG",
+        "signal_bar": "2026-10-23T09:50:00-04:00",
+        "simulated": true,
+        "slippage_pct_per_side": 0.05,
+        "stop": 6.31,
+        "symbol": "SNAP",
+        "tp": 6.4395,
+        "trade_id": "20261023-SNAP-20261023T0950000400"
+      },
       "trade": {
         "breakout_pct": 0.395,
         "entry": 6.353174999999999,
         "entry_bar": "2026-10-23T09:55:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:00:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:05:00-04:00",
         "orb_high": 6.33,
         "orb_low": 6.25,
         "qty": 107,
