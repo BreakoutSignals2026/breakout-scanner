@@ -8,7 +8,7 @@
         "breakout_pct": 0.261,
         "entry": 38.18090000000001,
         "entry_bar": "2026-10-23T10:15:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:20:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:25:00-04:00",
         "orb_high": 38.705,
         "orb_low": 38.33,
         "qty": 19,
@@ -98,7 +98,7 @@
         "breakout_pct": 0.197,
         "entry": 25.257365,
         "entry_bar": "2026-10-23T10:10:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:20:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:25:00-04:00",
         "orb_high": 25.61,
         "orb_low": 25.35,
         "qty": 29,
@@ -113,7 +113,16 @@
       }
     },
     "HIMS": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.343,
+        "orb_high": 28.89,
+        "orb_low": 27.69,
+        "rel_vol": 1.788,
+        "side": "SHORT",
+        "signal_bar": "2026-10-23T10:25:00-04:00",
+        "symbol": "HIMS"
+      }
     },
     "IREN": {
       "phase": "closed",
