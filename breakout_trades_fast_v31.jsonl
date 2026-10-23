@@ -60,3 +60,5 @@
 {"timestamp": "2026-10-23T17:46:00+00:00", "action": "closed", "symbol": "HIMS", "entry": 28.65, "exit": 28.351538, "qty": 13.0, "side": "buy", "pnl": -3.88, "pnl_pct": -1.042, "reason": "trailing stop"}
 {"timestamp": "2026-10-23T17:55:13+00:00", "action": "entry_submitted", "symbol": "VALE", "order_id": "3fca3da3-dcb6-4d12-acfd-9eff6e71c4e0", "requested_qty": 31, "reference": 12.35, "side": "buy", "estimated_risk": 4.9, "spread_percent": 0.081}
 {"timestamp": "2026-10-23T17:55:18+00:00", "action": "exit_accepted", "symbol": "VALE", "order_id": "8e2a7e87-f0a3-455a-9595-a612a1c72fe4", "qty": 31}
+{"timestamp": "2026-10-23T18:13:38+00:00", "action": "entry_submitted", "symbol": "U", "order_id": "fb08755c-8566-49f9-b3aa-0a5fcb84c658", "requested_qty": 9, "reference": 41.18, "side": "sell", "estimated_risk": 4.54, "spread_percent": 0.024}
+{"timestamp": "2026-10-23T18:13:46+00:00", "action": "exit_accepted", "symbol": "U", "order_id": "64fe146e-fdee-4d38-915d-437db226c50e", "qty": 9}
