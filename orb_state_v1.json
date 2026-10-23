@@ -3,15 +3,23 @@
   "session_date": "2026-10-23",
   "symbols": {
     "AA": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.261,
+        "entry": 38.18090000000001,
+        "entry_bar": "2026-10-23T10:15:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:15:00-04:00",
         "orb_high": 38.705,
         "orb_low": 38.33,
+        "qty": 19,
         "rel_vol": 1.263,
+        "risk_estimate_usd": 4.98,
         "side": "SHORT",
         "signal_bar": "2026-10-23T10:10:00-04:00",
-        "symbol": "AA"
+        "stop": 38.42375,
+        "symbol": "AA",
+        "tp": 37.69520000000003,
+        "trade_id": "20261023-AA-20261023T1010000400"
       }
     },
     "AAL": {
@@ -90,7 +98,7 @@
         "breakout_pct": 0.197,
         "entry": 25.257365,
         "entry_bar": "2026-10-23T10:10:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:10:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:15:00-04:00",
         "orb_high": 25.61,
         "orb_low": 25.35,
         "qty": 29,
