@@ -3,7 +3,16 @@
   "session_date": "2026-10-23",
   "symbols": {
     "AA": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.261,
+        "orb_high": 38.705,
+        "orb_low": 38.33,
+        "rel_vol": 1.263,
+        "side": "SHORT",
+        "signal_bar": "2026-10-23T10:10:00-04:00",
+        "symbol": "AA"
+      }
     },
     "AAL": {
       "phase": "watching"
@@ -76,15 +85,23 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.197,
+        "entry": 25.257365,
+        "entry_bar": "2026-10-23T10:10:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:10:00-04:00",
         "orb_high": 25.61,
         "orb_low": 25.35,
+        "qty": 29,
         "rel_vol": 1.876,
+        "risk_estimate_usd": 4.94,
         "side": "SHORT",
         "signal_bar": "2026-10-23T10:05:00-04:00",
-        "symbol": "GME"
+        "stop": 25.415,
+        "symbol": "GME",
+        "tp": 24.942095000000002,
+        "trade_id": "20261023-GME-20261023T1005000400"
       }
     },
     "HIMS": {
@@ -137,12 +154,35 @@
       "phase": "watching"
     },
     "MARA": {
-      "phase": "open",
+      "phase": "closed",
+      "result": {
+        "ambiguous_stop_first": false,
+        "date": "2026-10-23",
+        "entry": 7.4637,
+        "entry_bar": "2026-10-23T09:50:00-04:00",
+        "exit": 7.3163,
+        "exit_bar": "2026-10-23T10:10:00-04:00",
+        "exit_reason": "SL",
+        "gross_pnl_r": -1.061,
+        "gross_pnl_usd": -5.31,
+        "orb_high": 7.38,
+        "orb_low": 7.18,
+        "qty": 36,
+        "risk_estimate_usd": 4.95,
+        "side": "LONG",
+        "signal_bar": "2026-10-23T09:45:00-04:00",
+        "simulated": true,
+        "slippage_pct_per_side": 0.05,
+        "stop": 7.33,
+        "symbol": "MARA",
+        "tp": 7.7312,
+        "trade_id": "20261023-MARA-20261023T0945000400"
+      },
       "trade": {
         "breakout_pct": 1.287,
         "entry": 7.46373,
         "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:05:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:10:00-04:00",
         "orb_high": 7.38,
         "orb_low": 7.18,
         "qty": 36,
