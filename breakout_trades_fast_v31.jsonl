@@ -65,3 +65,5 @@
 {"timestamp": "2026-10-23T18:32:03+00:00", "action": "closed", "symbol": "PTON", "entry": 5.35, "exit": 5.36, "qty": 67.0, "side": "buy", "pnl": 0.67, "pnl_pct": 0.187, "reason": "trailing stop"}
 {"timestamp": "2026-10-23T18:36:42+00:00", "action": "entry_submitted", "symbol": "NOK", "order_id": "e30702f1-f71c-4a1a-afee-a8d42b9e2e4f", "requested_qty": 46, "reference": 8.15, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.123}
 {"timestamp": "2026-10-23T18:36:47+00:00", "action": "exit_accepted", "symbol": "NOK", "order_id": "57385984-082b-4640-8779-98ed9b800e61", "qty": 46}
+{"timestamp": "2026-10-23T18:41:25+00:00", "action": "entry_submitted", "symbol": "CHWY", "order_id": "cf4db7aa-0c45-4103-bb3d-c7a5ad164e82", "requested_qty": 18, "reference": 21.81, "side": "sell", "estimated_risk": 4.89, "spread_percent": 0.046}
+{"timestamp": "2026-10-23T18:41:29+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "e077da9c-99c3-4f3d-b49e-aed0a046e63e", "qty": 18}
