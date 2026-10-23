@@ -8,7 +8,7 @@
         "breakout_pct": 0.261,
         "entry": 38.18090000000001,
         "entry_bar": "2026-10-23T10:15:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:25:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
         "orb_high": 38.705,
         "orb_low": 38.33,
         "qty": 19,
@@ -35,7 +35,16 @@
       "phase": "watching"
     },
     "CHWY": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.39,
+        "orb_high": 22.1,
+        "orb_low": 21.82,
+        "rel_vol": 2.139,
+        "side": "SHORT",
+        "signal_bar": "2026-10-23T10:30:00-04:00",
+        "symbol": "CHWY"
+      }
     },
     "CLF": {
       "phase": "watching"
@@ -98,7 +107,7 @@
         "breakout_pct": 0.197,
         "entry": 25.257365,
         "entry_bar": "2026-10-23T10:10:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:25:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
         "orb_high": 25.61,
         "orb_low": 25.35,
         "qty": 29,
@@ -113,15 +122,23 @@
       }
     },
     "HIMS": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.343,
+        "entry": 27.62618,
+        "entry_bar": "2026-10-23T10:30:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
         "orb_high": 28.89,
         "orb_low": 27.69,
+        "qty": 13,
         "rel_vol": 1.788,
+        "risk_estimate_usd": 4.91,
         "side": "SHORT",
         "signal_bar": "2026-10-23T10:25:00-04:00",
-        "symbol": "HIMS"
+        "stop": 27.990000000000002,
+        "symbol": "HIMS",
+        "tp": 26.89854,
+        "trade_id": "20261023-HIMS-20261023T1025000400"
       }
     },
     "IREN": {
