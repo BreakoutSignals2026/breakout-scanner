@@ -8,7 +8,7 @@
         "breakout_pct": 0.261,
         "entry": 38.18090000000001,
         "entry_bar": "2026-10-23T10:15:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:35:00-04:00",
         "orb_high": 38.705,
         "orb_low": 38.33,
         "qty": 19,
@@ -35,15 +35,23 @@
       "phase": "watching"
     },
     "CHWY": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.39,
+        "entry": 21.72913,
+        "entry_bar": "2026-10-23T10:35:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:35:00-04:00",
         "orb_high": 22.1,
         "orb_low": 21.82,
+        "qty": 29,
         "rel_vol": 2.139,
+        "risk_estimate_usd": 4.98,
         "side": "SHORT",
         "signal_bar": "2026-10-23T10:30:00-04:00",
-        "symbol": "CHWY"
+        "stop": 21.89,
+        "symbol": "CHWY",
+        "tp": 21.407390000000003,
+        "trade_id": "20261023-CHWY-20261023T1030000400"
       }
     },
     "CLF": {
@@ -107,7 +115,7 @@
         "breakout_pct": 0.197,
         "entry": 25.257365,
         "entry_bar": "2026-10-23T10:10:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:35:00-04:00",
         "orb_high": 25.61,
         "orb_low": 25.35,
         "qty": 29,
@@ -127,7 +135,7 @@
         "breakout_pct": 0.343,
         "entry": 27.62618,
         "entry_bar": "2026-10-23T10:30:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:30:00-04:00",
+        "last_evaluated_bar": "2026-10-23T10:35:00-04:00",
         "orb_high": 28.89,
         "orb_low": 27.69,
         "qty": 13,
