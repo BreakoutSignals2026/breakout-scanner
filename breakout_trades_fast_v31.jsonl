@@ -55,3 +55,5 @@
 {"timestamp": "2026-10-23T17:04:43+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "b1f11d2f-1223-4f93-a25d-8f98c001eed9", "qty": 33}
 {"timestamp": "2026-10-23T17:22:59+00:00", "action": "entry_submitted", "symbol": "HIMS", "order_id": "f988ca5c-73e7-4a7a-a20f-22487c250ee0", "requested_qty": 13, "reference": 28.65, "side": "buy", "estimated_risk": 4.73, "spread_percent": 0.07}
 {"timestamp": "2026-10-23T17:23:04+00:00", "action": "exit_accepted", "symbol": "HIMS", "order_id": "ebde7bf2-fce2-40f9-9789-be85eafe0fff", "qty": 13}
+{"timestamp": "2026-10-23T17:41:21+00:00", "action": "entry_submitted", "symbol": "GME", "order_id": "f85864a6-77d2-4157-b1a4-76fba238031c", "requested_qty": 15, "reference": 25.17, "side": "sell", "estimated_risk": 4.83, "spread_percent": 0.079}
+{"timestamp": "2026-10-23T17:41:25+00:00", "action": "exit_accepted", "symbol": "GME", "order_id": "3fe56635-b1a7-4b01-917f-9e20990d5105", "qty": 4}
