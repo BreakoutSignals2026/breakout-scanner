@@ -48,3 +48,4 @@
 {"timestamp": "2026-10-23T14:52:25+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "4bf3f2c4-5199-474a-bd7e-87ced64d7d3e", "qty": 67}
 {"timestamp": "2026-10-23T14:56:58+00:00", "action": "entry_submitted", "symbol": "BB", "order_id": "e9e12835-ddad-4c02-bb95-2d65cfd37a51", "requested_qty": 42, "reference": 8.99, "side": "buy", "estimated_risk": 4.95, "spread_percent": 0.111}
 {"timestamp": "2026-10-23T14:57:02+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "64a9dc99-d295-4afa-888a-230b6b23da96", "qty": 42}
+{"timestamp": "2026-10-23T15:10:39+00:00", "action": "closed", "symbol": "BB", "entry": 8.99, "exit": 8.89, "qty": 42.0, "side": "buy", "pnl": -4.2, "pnl_pct": -1.112, "reason": "trailing stop"}
