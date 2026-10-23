@@ -70,3 +70,10 @@
 {"timestamp": "2026-10-23T18:59:51+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "c3ecb34e-76aa-4e29-beba-21229740a39d", "requested_qty": 36, "reference": 10.64, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.094}
 {"timestamp": "2026-10-23T18:59:57+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "387420cc-b384-4b3f-b91b-20b765ba94f4", "qty": 33}
 {"timestamp": "2026-10-23T19:09:06+00:00", "action": "closed", "symbol": "CHWY", "entry": 21.81, "exit": 22.01, "qty": 18.0, "side": "sell", "pnl": -3.6, "pnl_pct": -0.917, "reason": "trailing stop"}
+{"timestamp": "2026-10-23T19:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "f7a123d5-b19e-4c41-a4e2-5b9d17f66f4c"}
+{"timestamp": "2026-10-23T19:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "3fe56635-b1a7-4b01-917f-9e20990d5105"}
+{"timestamp": "2026-10-23T19:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "387420cc-b384-4b3f-b91b-20b765ba94f4"}
+{"timestamp": "2026-10-23T19:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "57385984-082b-4640-8779-98ed9b800e61"}
+{"timestamp": "2026-10-23T19:45:10+00:00", "action": "eod_stop_cancel_requested", "symbol": "QBTS", "id": "b1f11d2f-1223-4f93-a25d-8f98c001eed9"}
+{"timestamp": "2026-10-23T19:45:11+00:00", "action": "eod_stop_cancel_requested", "symbol": "U", "id": "64fe146e-fdee-4d38-915d-437db226c50e"}
+{"timestamp": "2026-10-23T19:45:13+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "8e2a7e87-f0a3-455a-9595-a612a1c72fe4"}
