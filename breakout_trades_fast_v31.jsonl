@@ -60,3 +60,34 @@
 {"timestamp": "2026-10-23T17:46:00+00:00", "action": "closed", "symbol": "HIMS", "entry": 28.65, "exit": 28.351538, "qty": 13.0, "side": "buy", "pnl": -3.88, "pnl_pct": -1.042, "reason": "trailing stop"}
 {"timestamp": "2026-10-23T17:55:13+00:00", "action": "entry_submitted", "symbol": "VALE", "order_id": "3fca3da3-dcb6-4d12-acfd-9eff6e71c4e0", "requested_qty": 31, "reference": 12.35, "side": "buy", "estimated_risk": 4.9, "spread_percent": 0.081}
 {"timestamp": "2026-10-23T17:55:18+00:00", "action": "exit_accepted", "symbol": "VALE", "order_id": "8e2a7e87-f0a3-455a-9595-a612a1c72fe4", "qty": 31}
+{"timestamp": "2026-10-23T18:13:38+00:00", "action": "entry_submitted", "symbol": "U", "order_id": "fb08755c-8566-49f9-b3aa-0a5fcb84c658", "requested_qty": 9, "reference": 41.18, "side": "sell", "estimated_risk": 4.54, "spread_percent": 0.024}
+{"timestamp": "2026-10-23T18:13:46+00:00", "action": "exit_accepted", "symbol": "U", "order_id": "64fe146e-fdee-4d38-915d-437db226c50e", "qty": 9}
+{"timestamp": "2026-10-23T18:32:03+00:00", "action": "closed", "symbol": "PTON", "entry": 5.35, "exit": 5.36, "qty": 67.0, "side": "buy", "pnl": 0.67, "pnl_pct": 0.187, "reason": "trailing stop"}
+{"timestamp": "2026-10-23T18:36:42+00:00", "action": "entry_submitted", "symbol": "NOK", "order_id": "e30702f1-f71c-4a1a-afee-a8d42b9e2e4f", "requested_qty": 46, "reference": 8.15, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.123}
+{"timestamp": "2026-10-23T18:36:47+00:00", "action": "exit_accepted", "symbol": "NOK", "order_id": "57385984-082b-4640-8779-98ed9b800e61", "qty": 46}
+{"timestamp": "2026-10-23T18:41:25+00:00", "action": "entry_submitted", "symbol": "CHWY", "order_id": "cf4db7aa-0c45-4103-bb3d-c7a5ad164e82", "requested_qty": 18, "reference": 21.81, "side": "sell", "estimated_risk": 4.89, "spread_percent": 0.046}
+{"timestamp": "2026-10-23T18:41:29+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "e077da9c-99c3-4f3d-b49e-aed0a046e63e", "qty": 18}
+{"timestamp": "2026-10-23T18:59:51+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "c3ecb34e-76aa-4e29-beba-21229740a39d", "requested_qty": 36, "reference": 10.64, "side": "buy", "estimated_risk": 4.96, "spread_percent": 0.094}
+{"timestamp": "2026-10-23T18:59:57+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "387420cc-b384-4b3f-b91b-20b765ba94f4", "qty": 33}
+{"timestamp": "2026-10-23T19:09:06+00:00", "action": "closed", "symbol": "CHWY", "entry": 21.81, "exit": 22.01, "qty": 18.0, "side": "sell", "pnl": -3.6, "pnl_pct": -0.917, "reason": "trailing stop"}
+{"timestamp": "2026-10-23T19:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "f7a123d5-b19e-4c41-a4e2-5b9d17f66f4c"}
+{"timestamp": "2026-10-23T19:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "3fe56635-b1a7-4b01-917f-9e20990d5105"}
+{"timestamp": "2026-10-23T19:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "387420cc-b384-4b3f-b91b-20b765ba94f4"}
+{"timestamp": "2026-10-23T19:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "57385984-082b-4640-8779-98ed9b800e61"}
+{"timestamp": "2026-10-23T19:45:10+00:00", "action": "eod_stop_cancel_requested", "symbol": "QBTS", "id": "b1f11d2f-1223-4f93-a25d-8f98c001eed9"}
+{"timestamp": "2026-10-23T19:45:11+00:00", "action": "eod_stop_cancel_requested", "symbol": "U", "id": "64fe146e-fdee-4d38-915d-437db226c50e"}
+{"timestamp": "2026-10-23T19:45:13+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "8e2a7e87-f0a3-455a-9595-a612a1c72fe4"}
+{"timestamp": "2026-10-23T19:45:47+00:00", "action": "eod_close_submitted", "symbol": "BB", "qty": 43, "order_id": "e671e5a5-6a96-439e-a722-09f9d6640eac"}
+{"timestamp": "2026-10-23T19:45:48+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 4, "order_id": "242c279d-fa67-4248-b935-e08d0a1dce30"}
+{"timestamp": "2026-10-23T19:45:50+00:00", "action": "eod_close_submitted", "symbol": "LUNR", "qty": 33, "order_id": "b338a477-ab43-4efd-8470-61adde97f854"}
+{"timestamp": "2026-10-23T19:45:52+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 46, "order_id": "aea61891-816c-42e6-beb6-874a2dd779dd"}
+{"timestamp": "2026-10-23T19:45:53+00:00", "action": "eod_close_submitted", "symbol": "QBTS", "qty": 33, "order_id": "6a1672f7-c249-4ce2-9144-c14031fa9138"}
+{"timestamp": "2026-10-23T19:45:55+00:00", "action": "eod_close_submitted", "symbol": "U", "qty": 9, "order_id": "50c53746-93b5-4012-a892-47d709aaf73b"}
+{"timestamp": "2026-10-23T19:45:57+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 31, "order_id": "a5c66b82-7aaa-4825-bd19-1fce5c972333"}
+{"timestamp": "2026-10-23T19:46:30+00:00", "action": "closed", "symbol": "BB", "entry": 8.85, "exit": 8.89, "qty": 43.0, "side": "sell", "pnl": -1.72, "pnl_pct": -0.452, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:32+00:00", "action": "closed", "symbol": "GME", "entry": 25.17, "exit": 24.83, "qty": 4.0, "side": "sell", "pnl": 1.36, "pnl_pct": 1.351, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:33+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.64, "exit": 10.55, "qty": 33.0, "side": "buy", "pnl": -2.97, "pnl_pct": -0.846, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:34+00:00", "action": "closed", "symbol": "NOK", "entry": 8.15, "exit": 8.11, "qty": 46.0, "side": "buy", "pnl": -1.84, "pnl_pct": -0.491, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:35+00:00", "action": "closed", "symbol": "QBTS", "entry": 11.46, "exit": 11.56, "qty": 33.0, "side": "buy", "pnl": 3.3, "pnl_pct": 0.873, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:36+00:00", "action": "closed", "symbol": "U", "entry": 41.172222, "exit": 40.83, "qty": 9.0, "side": "sell", "pnl": 3.08, "pnl_pct": 0.831, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T19:46:37+00:00", "action": "closed", "symbol": "VALE", "entry": 12.35, "exit": 12.36, "qty": 31.0, "side": "buy", "pnl": 0.31, "pnl_pct": 0.081, "reason": "koniec seansy"}
