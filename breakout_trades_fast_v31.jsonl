@@ -44,3 +44,5 @@
 {"timestamp": "2026-10-22T19:46:54+00:00", "action": "closed", "symbol": "F", "entry": 11.97, "exit": 11.96, "qty": 32.0, "side": "buy", "pnl": -0.32, "pnl_pct": -0.084, "reason": "koniec seansy"}
 {"timestamp": "2026-10-22T19:46:55+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.31, "exit": 10.26, "qty": 37.0, "side": "buy", "pnl": -1.85, "pnl_pct": -0.485, "reason": "koniec seansy"}
 {"timestamp": "2026-10-22T19:46:56+00:00", "action": "closed", "symbol": "NOK", "entry": 8.26, "exit": 7.8, "qty": 45.0, "side": "sell", "pnl": 20.7, "pnl_pct": 5.569, "reason": "koniec seansy"}
+{"timestamp": "2026-10-23T14:52:21+00:00", "action": "entry_submitted", "symbol": "PTON", "order_id": "a7aeb428-69a4-43f0-bd73-9f9136c35852", "requested_qty": 67, "reference": 5.35, "side": "buy", "estimated_risk": 4.97, "spread_percent": 0.187}
+{"timestamp": "2026-10-23T14:52:25+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "4bf3f2c4-5199-474a-bd7e-87ced64d7d3e", "qty": 67}
