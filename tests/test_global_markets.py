@@ -169,6 +169,14 @@ class BrokerSafetyTests(unittest.TestCase):
         self.assertEqual(payload["side"],"sell")
         self.assertEqual(payload["client_order_id"],"CRPT1T_BTCUSD_a")
 
+
+    def test_broker_order_queries_are_crypto_only(self):
+        with patch.object(paper,"api",return_value=[]) as get:
+            paper.orders("all")
+        self.assertEqual(get.call_args.args,("GET","/orders"))
+        self.assertEqual(get.call_args.kwargs["params"]["symbols"],
+                         "BTCUSD,ETHUSD,SOLUSD")
+
     def test_crypto_virtual_and_broker_are_distinct(self):
         self.assertEqual(crypto.SYMBOLS,tuple(paper.SYMBOLS))
         self.assertNotIn('api("POST"',Path(crypto.__file__).read_text(encoding="utf-8"))

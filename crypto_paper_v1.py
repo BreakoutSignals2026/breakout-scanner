@@ -95,7 +95,11 @@ def positions():
             if normalize(p.get("symbol")) in {normalize(s) for s in SYMBOLS}}
 
 def orders(status="open",after=None):
-    params={"status":status,"limit":500,"nested":"false"}
+    # Query only THIS strategy's three crypto symbols. The shared PAPER
+    # account has many historical US stock orders, often >500 in total.
+    # Unfiltered history incorrectly made recovery fail closed.
+    params={"status":status,"limit":500,"nested":"false",
+            "symbols":",".join(normalize(sym) for sym in SYMBOLS)}
     if after: params["after"]=after
     rows=api("GET","/orders",params=params)
     if not isinstance(rows,list) or len(rows)>=500:
