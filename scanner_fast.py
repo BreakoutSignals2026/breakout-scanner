@@ -12,8 +12,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
+import fast_virtual
 
-VERSION = "3.3.0"
+VERSION = "3.3.1"
 API = "https://paper-api.alpaca.markets/v2"
 DATA = "https://data.alpaca.markets/v2/stocks"
 NY = ZoneInfo("America/New_York")
@@ -44,7 +45,7 @@ MIN_REL_VOLUME = 1.50
 ATR_PERIOD = 14
 RISK_PER_TRADE = 3.00
 TRAIL_PERCENT = 1.20
-MAX_DAILY_ENTRIES = 4
+MAX_DAILY_ENTRIES = 8
 MAX_OPEN_FAST_POSITIONS = 2
 DAILY_LOSS_STOP_USD = 12.00
 MAX_SIGNAL_AGE_MINUTES = 8
@@ -269,9 +270,10 @@ def get_bars(symbol):
     return data.json().get("bars", {}).get(symbol, [])
 
 
-def analyze_symbol(symbol):
+def analyze_symbol(symbol, bars=None):
     try:
-        bars = get_bars(symbol)
+        if bars is None:
+            bars = get_bars(symbol)
         required = max(BREAKOUT_LOOKBACK, VOLUME_LOOKBACK, ATR_PERIOD) + 3
         if len(bars) < required:
             return None
@@ -926,14 +928,29 @@ def main():
     orders = get_open_orders()
 
     if session and now_utc().astimezone(NY) >= session["liquidate_at"]:
-        # Most important: do NOT enter reconcile, which can rearm a stop
-        # while the EOD handler is trying to cancel it.
+        # Closing PAPER positions has first priority. Virtual tracking follows.
         close_fast_before_end(state, session)
         save_state(state)
+        try:
+            fast_virtual.process(session, SYMBOLS, get_bars, analyze_symbol,
+                                 now_utc(), RISK_PER_TRADE, TRAIL_PERCENT,
+                                 workers=MAX_WORKERS)
+        except Exception as exc:
+            print(f"FAST VIRTUAL EOD: {exc}", flush=True)
         return
 
     safe = reconcile(state, positions, orders)
     save_state(state)
+    # Collect independent hypothetical entries/results, even if PAPER entry
+    # has reached its daily cap or is disabled. Never block protection/EOD.
+    simulated_signals = []
+    if session and now_utc().astimezone(NY) >= session["open"]:
+        try:
+            simulated_signals = fast_virtual.process(
+                session, SYMBOLS, get_bars, analyze_symbol, now_utc(),
+                RISK_PER_TRADE, TRAIL_PERCENT, workers=MAX_WORKERS)
+        except Exception as exc:
+            print(f"FAST VIRTUAL ERROR: {exc}; virtual data incomplete", flush=True)
     if not ENABLE_NEW_TRADES:
         print("SAFE MODE: no NEW entries; monitoring/EOD enabled")
         return
@@ -966,12 +983,10 @@ def main():
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
     blocked |= daily["symbols"]
-    available = [s for s in SYMBOLS if s not in blocked]
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        futures = [pool.submit(analyze_symbol, s) for s in available]
-        signals = [f.result() for f in as_completed(futures)]
-    signals = [s for s in signals if s and
-               state["last_signal_bar"].get(s["symbol"]) != s["bar_key"]]
+    # Reuse the exact same analyzed IEX candles as the virtual tracker.
+    # If all feeds were unavailable we fail closed rather than place orders.
+    signals = [s for s in simulated_signals if s["symbol"] not in blocked
+               and state["last_signal_bar"].get(s["symbol"]) != s["bar_key"]]
     signals.sort(key=lambda x: (x["rel_volume"], x["breakout_percent"]), reverse=True)
     for signal in signals:
         try:

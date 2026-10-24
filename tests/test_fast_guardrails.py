@@ -1,4 +1,4 @@
-"""FAST V3.2.4 regression: IEX data-quality failures never imply Alpaca order submission.
+"""FAST V3.3.1 regression: IEX data-quality failures never imply Alpaca order submission.
 
 These tests make no external requests and require no API keys.
 """
@@ -74,7 +74,7 @@ class DataQualityTests(unittest.TestCase):
     def test_paper_endpoint_kept(self):
         self.assertEqual(fast.API, "https://paper-api.alpaca.markets/v2")
         self.assertEqual(fast.RISK_PER_TRADE, 3.00)
-        self.assertEqual(fast.MAX_DAILY_ENTRIES, 4)
+        self.assertEqual(fast.MAX_DAILY_ENTRIES, 8)
         self.assertEqual(fast.MAX_OPEN_FAST_POSITIONS, 2)
         self.assertEqual(fast.DAILY_LOSS_STOP_USD, 12.00)
         self.assertEqual(fast.TRAIL_PERCENT, 1.20)
@@ -108,12 +108,12 @@ class DailyGuardTests(unittest.TestCase):
         with patch.object(fast, "api", return_value=[] if orders is None else orders):
             return fast.daily_entry_guard(self.session, state or {"trades": {}}, positions or {})
 
-    def test_four_entries_in_persisted_journal(self):
-        for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY")):
+    def test_eight_entries_in_persisted_journal(self):
+        for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY", "GME", "LUNR", "U", "QBTS")):
             self.event("entry_submitted", sym, f"order{i}")
         result = self.guard()
         self.assertFalse(result["allowed"])
-        self.assertEqual(result["entries"], 4)
+        self.assertEqual(result["entries"], 8)
 
     def test_no_repeat_for_closed_symbol(self):
         self.event("entry_submitted", "BB", "order1")
@@ -136,7 +136,7 @@ class DailyGuardTests(unittest.TestCase):
     def test_alpaca_history_survives_missing_journal_entry(self):
         orders = [{"id": str(i), "client_order_id": f"FAST31E_{sym}_10231400000000",
                    "symbol": sym, "created_at": "2026-10-23T16:00:00Z"}
-                  for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY"))]
+                  for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY", "GME", "LUNR", "U", "QBTS"))]
         self.assertFalse(self.guard(orders=orders)["allowed"])
 
     def test_alpaca_and_journal_do_not_double_count(self):

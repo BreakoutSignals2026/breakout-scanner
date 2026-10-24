@@ -6,6 +6,10 @@ on:
       - "scanner_orb_v1.py"
       - "tests/test_orb_v1.py"
       - "scanner_fast.py"
+      - "fast_virtual.py"
+      - "scanner_v25_2.py"
+      - "tests/test_classic_diagnostics.py"
+      - "tests/test_fast_virtual.py"
       - "tests/test_fast_guardrails.py"
       - ".github/workflows/fast_scanner.yml"
       - ".github/workflows/orb_scanner.yml"
@@ -28,7 +32,7 @@ jobs:
         run: python -m pip install requests
       - name: Compile strategy and verify no trade calls
         run: |
-          python -m py_compile scanner_fast.py scanner_orb_v1.py tests/test_orb_v1.py tests/test_fast_guardrails.py
+          python -m py_compile scanner_fast.py fast_virtual.py scanner_v25_2.py scanner_orb_v1.py tests/test_*.py
           python scanner_orb_v1.py --self-check
       - name: Run no-credentials simulator tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v

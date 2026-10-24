@@ -1,4 +1,4 @@
-name: FAST Alpaca Scanner V3.3.0 (risk-limited PAPER auto)
+name: FAST Alpaca Scanner V3.3.1 (risk-limited PAPER auto)
 
 on:
   schedule:
@@ -126,9 +126,9 @@ jobs:
             fi
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
+            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl fast_virtual_state_v1.json fast_virtual_signals_v1.jsonl fast_virtual_results_v1.csv 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.3.0 state"
+              git commit -m "Update FAST V3.3.1 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
@@ -193,9 +193,9 @@ jobs:
             fi
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
+            git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl fast_virtual_state_v1.json fast_virtual_signals_v1.jsonl fast_virtual_results_v1.csv 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.3.0 state"
+              git commit -m "Update FAST V3.3.1 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
