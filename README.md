@@ -9,13 +9,21 @@ Nie je tu žiadny LIVE trading workflow.
 
 | Scanner | Python | GitHub Actions | Stratégia |
 | --- | --- | --- | --- |
-| FAST V3.2.4 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
+| FAST V3.3.0 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
 | ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
 
-- Plánované riziko je **5 USD na obchod**, nie garantovaná maximálna strata.
-- **Bez pevného denného limitu vstupov či počtu súčasných pozícií** navyše
-  oproti pôvodným pravidlám. V jednom behu FAST najviac jeden nový vstup.
+- **FAST V3.3.0 PAPER:** plánované riziko **3 USD na obchod** (nie garantované maximum);
+  najviac **4 nové FAST vstupy denne**, **2 súčasné FAST/sledované pozície**
+  a **1 nový vstup do toho istého symbolu denne**.
+- FAST zablokuje nové vstupy, keď zaznamenaný realizovaný denný PnL plus
+  záporný otvorený PnL dosiahne **−12 USD alebo menej**. Nejde o automatické
+  uzatvorenie pozícií ani o zaručenú maximálnu stratu.
+- Limity počíta z obchodného žurnálu aj histórie objednávok Alpaca PAPER,
+  takže prežijú reštart GitHub workflow. Pri chýbajúcich/nesprávnych údajoch
+  nové vstupy blokuje; trailing ochrana a EOD zostávajú aktívne.
+- Klasický BREAKOUT má stále odhadované riziko **5 USD na obchod**;
+  ORB zostáva iba virtuálny.
 - Oba scannery kontrolujú otvorené objednávky a existujúce pozície.
   Nemanipulujte ručne s ich spravovanými pozíciami bez kontroly objednávok.
 - Pred koncom obchodného dňa sa programy snažia ukončiť svoje pozície
@@ -36,14 +44,13 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
 - **Manuálny beh s `one_paper_trade=true`:** jednorazový vstupný test.
   Ak už bola jednorazová skúška použitá, scanner ďalší vstup zablokuje.
 - **Manuálny beh s `full_paper_session=true`:** núdzové spustenie celej
-  PAPER seansy pri vynechanom GitHub `schedule`; bez nového pevného limitu
-  počtu vstupov, stále s pôvodnými ochrannými pravidlami.
+  PAPER seansy pri vynechanom GitHub `schedule`; naďalej so všetkými dennými FAST limitmi a ochrannými pravidlami.
 - Workflow používajú samostatné `concurrency` skupiny, aby sa nekryli dva
   behy **toho istého** scanneru.
 - Pri odovzdávaní prvej a druhej časti seansy používajú oba obchodné scannery
   `actions/checkout` s `ref: main`, aby si načítali **najnovší commitnutý stav**.
   Starý snapshot zo začiatku workflow môže mylne označiť vlastné pozície ako cudzie.
-- FAST V3.2.4 hlási široký IEX spread či starú cenu ako zamietnutý signál
+- FAST V3.3.0 hlási široký IEX spread či starú cenu ako zamietnutý signál
   **pred odoslaním objednávky**, nie ako chybné vykonanie obchodu.
 - ORB začne analyzovať až po vytvorení 15-minútového opening range, teda
   od 09:45 NY. Podrobnosti: [ORB_STRATEGY.md](ORB_STRATEGY.md).

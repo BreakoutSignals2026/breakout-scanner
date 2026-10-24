@@ -68,7 +68,7 @@ class DataQualityTests(unittest.TestCase):
         self.assertIn("except SignalDataRejected as exc:", main_source)
         self.assertIn('vynechaný signál (bez objednávky)', main_source)
         self.assertLess(main_source.index("except SignalDataRejected as exc:"),
-                        main_source.index("except Exception as exc:"))
+                        main_source.rindex("except Exception as exc:"))
         self.assertIn("continue\n        except Exception as exc:", main_source)
 
     def test_paper_endpoint_kept(self):

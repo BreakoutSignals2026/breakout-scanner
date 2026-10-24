@@ -1,10 +1,10 @@
-name: FAST Alpaca Scanner V3.2.4 (28 symbols; PAPER auto)
+name: FAST Alpaca Scanner V3.3.0 (risk-limited PAPER auto)
 
 on:
   schedule:
     # 09:20 America/New_York: 13:20 UTC in EDT, 14:20 UTC in EST.
     # Ten minutes before US market opens (09:30 NY).
-    # Wrong-season invocations at 10:20 NY are rejected by preflight.
+    # Preflight validates the cron against NY daylight savings, even after delays.
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
     # Recovery launches at NY 09:30 (at the regular US market open).
@@ -37,34 +37,43 @@ jobs:
       should_run: ${{ steps.gate.outputs.should_run }}
     steps:
       - id: gate
-        name: Gate duplicate daylight-saving UTC schedule
+        name: Validate DST and allow late GitHub scheduled start
         shell: bash
+        env:
+          SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
+          set -euo pipefail
           NOW_NY=$(TZ=America/New_York date '+%H:%M')
+          OFFSET=$(TZ=America/New_York date '+%z')
           WEEKDAY=$(TZ=America/New_York date '+%u')
           HOUR=${NOW_NY:0:2}
           MINUTE=${NOW_NY:3:2}
           NOW_MIN=$((10#$HOUR * 60 + 10#$MINUTE))
-          echo "New York time: $NOW_NY, weekday: $WEEKDAY"
+          echo "NY=$NOW_NY offset=$OFFSET weekday=$WEEKDAY cron=${SCHEDULE_CRON:-none}"
           if [ "$WEEKDAY" -ge 6 ]; then
             echo "should_run=false" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            # Never start a 6h job overnight: it would time out before the close.
+          elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             if [ "$NOW_MIN" -ge 540 ] && [ "$NOW_MIN" -lt 960 ]; then
               echo "should_run=true" >> "$GITHUB_OUTPUT"
             else
               echo "should_run=false" >> "$GITHUB_OUTPUT"
-              echo "Manual test skipped outside 09:00-16:00 New York."
             fi
-          elif [ "$NOW_MIN" -ge 560 ] && [ "$NOW_MIN" -lt 600 ]; then
-            # Only accept 09:20-09:59 NY. This covers late 09:20 and
-            # 09:30 recovery, but skips wrong-season 10:20/10:30 runs.
-            # Concurrency prevents overlapping workflows for this scanner.
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          elif [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            case "$OFFSET:$SCHEDULE_CRON" in
+              "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5")
+                if [ "$NOW_MIN" -ge 560 ] && [ "$NOW_MIN" -lt 960 ]; then
+                  echo "should_run=true" >> "$GITHUB_OUTPUT"
+                else
+                  echo "should_run=false" >> "$GITHUB_OUTPUT"
+                fi
+                ;;
+              *)
+                echo "Wrong DST regime: no session start"
+                echo "should_run=false" >> "$GITHUB_OUTPUT"
+                ;;
+            esac
           else
-            # Skip delayed/duplicate scheduled triggers outside 09:20-09:59 NY.
             echo "should_run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipped duplicate / late scheduled run."
           fi
 
   first-session:
@@ -119,7 +128,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.2.4 state"
+              git commit -m "Update FAST V3.3.0 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
@@ -186,7 +195,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
-              git commit -m "Update FAST V3.2.4 state"
+              git commit -m "Update FAST V3.3.0 state"
               git pull --no-rebase -X ours origin main
               git push origin main
             fi
