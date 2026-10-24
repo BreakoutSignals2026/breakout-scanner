@@ -247,23 +247,29 @@ def atr(candles):
     return sum(tr[-ATR_PERIOD:]) / ATR_PERIOD
 
 
-def analyze(symbol, candles):
-    if len(candles) < BREAKOUT_LOOKBACK + 1:
+def analyze(symbol, candles, diagnostics=None):
+    """Preserve trading rules; optionally count *why* a symbol was skipped."""
+    def reject(reason):
+        if diagnostics is not None:
+            diagnostics[reason] = diagnostics.get(reason, 0) + 1
         return None
+
+    if len(candles) < BREAKOUT_LOOKBACK + 1:
+        return reject("malo_5min_sviecok")
     last = candles[-1]
     bar_age = (now_ny() - (last["time"] + timedelta(minutes=5))).total_seconds()
     if not -5 <= bar_age <= MAX_SIGNAL_AGE_SECONDS:
-        return None
+        return reject("stara_alebo_neplatna_sviecka")
     earlier = candles[:-1]
     prior = earlier[-BREAKOUT_LOOKBACK:]
     h, l = max(x["h"] for x in prior), min(x["l"] for x in prior)
     previous = [x["v"] for x in earlier[-VOLUME_LOOKBACK:] if x["v"] > 0]
     if len(previous) < MIN_VOLUME_BARS:
-        return None
+        return reject("malo_objemovych_sviecok")
     ref_vol = median(previous)
     relvol = last["v"] / ref_vol
     if relvol < MIN_REL_VOLUME:
-        return None
+        return reject("nizky_relativny_objem")
     side = None
     breakout = 0
     if last["c"] > h:
@@ -273,10 +279,12 @@ def analyze(symbol, candles):
         breakout = (1 - last["c"] / l) * 100
         side = "SELL" if breakout >= MIN_BREAKOUT_PERCENT else None
     if side is None:
-        return None
+        return reject("bez_potvrdeneho_breakoutu")
     distance = min(atr(candles) * ATR_MULTIPLIER, last["c"] * MAX_SL_PERCENT / 100)
     if distance <= 0:
-        return None
+        return reject("neplatny_ATR_stop")
+    if diagnostics is not None:
+        diagnostics["technicky_signal"] = diagnostics.get("technicky_signal", 0) + 1
     return {"symbol": symbol, "side": side, "bar_time": last["time"], "bar_age": bar_age,
             "close": last["c"], "breakout": breakout, "relvol": relvol, "atr": atr(candles),
             "sl_distance": distance}
@@ -668,33 +676,54 @@ def end_of_day(state, session):
 
 
 def scan_for_new(state, session):
+    """Record useful diagnostic data even when no new order is submitted."""
     positions = all_positions()
     blockers = {o.get('symbol') for o in walk_orders(open_orders())} | set(positions)
     blockers |= {t['symbol'] for t in state['trades'].values() if active_record(t)}
+    diagnostics = {"symbols_checked": 0, "blocked_positions": 0,
+                   "technical_signals": 0, "submitted": 0, "exceptions": 0}
+    details = {}
+    started = now_ny()
     for symbol in SYMBOLS:
         if ONE_SHOT_PAPER_TEST and state.get("one_shot_paper_entry_attempted"):
             print("PAPER ONE-SHOT: one attempt already used", flush=True)
-            return
+            break
         if now_ny() >= session["entry_stop"]:
             break
         if symbol in blockers:
+            diagnostics["blocked_positions"] += 1
+            details[symbol] = "position_or_order_blocked"
             continue
+        diagnostics["symbols_checked"] += 1
         try:
             candles = twelve_candles(symbol)
-            signal = analyze(symbol, candles)
+            reasons = {}
+            signal = analyze(symbol, candles, reasons)
             if not signal:
+                why = next(iter(reasons), "no_technical_signal")
+                diagnostics[why] = diagnostics.get(why, 0) + 1
+                details[symbol] = why
                 continue
+            diagnostics["technical_signals"] += 1
             old = dt_parse(state["cooldown"].get(symbol))
             if old and (signal['bar_time'].astimezone(timezone.utc) - old).total_seconds() < 60*COOLDOWN_MINUTES:
+                diagnostics["cooldown"] = diagnostics.get("cooldown", 0) + 1
+                details[symbol] = "cooldown"
                 continue
             live = quote(symbol)
             settings = build_trade_prices(signal, live)
             if not eligible_asset(symbol, signal['side']):
                 print(f"{symbol}: short/trade eligibility failed")
+                diagnostics["asset_not_eligible"] = diagnostics.get("asset_not_eligible", 0) + 1
+                details[symbol] = "asset_not_eligible"
                 continue
             if (now_ny()-(signal['bar_time']+timedelta(minutes=5))).total_seconds() > MAX_SIGNAL_AGE_SECONDS:
+                diagnostics["signal_expired_before_order"] = diagnostics.get("signal_expired_before_order", 0) + 1
+                details[symbol] = "signal_expired_before_order"
                 continue
             if symbol in all_positions() or any(o['symbol'] == symbol for o in walk_orders(open_orders())):
+                diagnostics["position_changed"] = diagnostics.get("position_changed", 0) + 1
+                details[symbol] = "position_changed"
                 continue
             telegram(f"🔔 BREAKOUT V{VERSION} {signal['side']}\n{symbol}\n"
                      f"Breakout: {signal['breakout']:.3f}% | RelVol: {signal['relvol']:.2f}x\n"
@@ -705,12 +734,24 @@ def scan_for_new(state, session):
                 state['cooldown'][symbol] = when(signal['bar_time'])
                 save_state(state)
                 blockers.add(symbol)
+                diagnostics["submitted"] += 1
+                details[symbol] = "order_submitted"
         except Exception as exc:
+            diagnostics["exceptions"] += 1
+            details[symbol] = str(exc)[:160]
             print(f"{symbol} SKIP: {exc}", flush=True)
             if symbol in (t['symbol'] for t in state['trades'].values()
                           if t['status'] in {'submitting','verify_order'}):
                 telegram(f"🚨 BREAKOUT {symbol}: nejasný stav odoslanej objednávky! {exc}")
-                return  # fail closed on uncertain order submission
+                break  # fail closed on uncertain order submission
+
+    diagnostics["time_ny"] = when(now_ny())
+    diagnostics["scan_seconds"] = round((now_ny()-started).total_seconds(), 1)
+    state["last_scan_diagnostics"] = {
+        "date": session["date"], "counts": diagnostics, "symbols": details
+    }
+    save_state(state)
+    print(f"CLASSIC BREAKOUT SCAN DIAGNOSTIKA: {diagnostics} | podrobnosti: {details}", flush=True)
 
 
 def main():
