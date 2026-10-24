@@ -1,6 +1,14 @@
 name: CRYPTO Breakout V1.0 - Alpaca PAPER + independent virtual 24/7
 
 on:
+  # Push smoke test uses SAFE MODE: no new PAPER orders, only reconciliation
+  # and public market-data diagnostics. No secrets are printed.
+  push:
+    paths:
+      - "scanner_crypto_v1.py"
+      - "crypto_paper_v1.py"
+      - "market_virtual_core.py"
+      - ".github/workflows/crypto_scanner.yml"
   schedule:
     # US crypto market runs 24 hours including weekends; GitHub may delay jobs.
     - cron: "*/5 * * * *"

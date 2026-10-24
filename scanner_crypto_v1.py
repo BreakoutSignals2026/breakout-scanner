@@ -12,7 +12,7 @@ from market_virtual_core import VirtualBook, find_signal
 
 SYMBOLS=("BTC/USD","ETH/USD","SOL/USD")
 DATA="https://data.alpaca.markets/v1beta3/crypto/us/bars"
-LOOKBACK=12
+LOOKBACK=12  # Shared 5-min candle breakout research and PAPER candidates
 STOP_PERCENT=1.2
 RISK_USD=3.0
 VIRTUAL_PREFIX="crypto_virtual_v1"
