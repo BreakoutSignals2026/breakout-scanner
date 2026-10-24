@@ -2,8 +2,8 @@
 """Crypto Breakout V1.0 — 24/7 signal scanner and virtual trade engine.
 
 For Alpaca crypto bars (USD pairs) only. This entrypoint never submits an
-Alpaca order. A separate CRYPTO PAPER order module may be enabled only after
-a dedicated protective stop-limit and recovery check passes. No LIVE hosts.
+Alpaca order. The separately imported PAPER module reconciles protective stop-limit orders
+before any virtual-data scan. No LIVE hosts or unsecured margin/short orders.
 """
 import os
 import requests

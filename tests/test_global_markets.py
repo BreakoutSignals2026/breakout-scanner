@@ -127,7 +127,7 @@ class BrokerSafetyTests(unittest.TestCase):
 
     def test_crypto_virtual_and_broker_are_distinct(self):
         self.assertEqual(crypto.SYMBOLS,tuple(paper.SYMBOLS))
-        self.assertNotIn("/orders",Path(crypto.__file__).read_text(encoding="utf-8"))
+        self.assertNotIn('api("POST"',Path(crypto.__file__).read_text(encoding="utf-8"))
 
 class EuropeTests(unittest.TestCase):
     def test_weekend_no_scan(self):

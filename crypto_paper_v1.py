@@ -267,6 +267,46 @@ def reconcile(state):
                 alert(f"🚨 {symbol}: NO VERIFIED PROTECTIVE STOP: {exc}. Check Alpaca PAPER!")
                 safe=False
             continue
+        if trade.get("status")=="tp_canceling":
+            # The server stop must be CONFIRMED cancelled before sending a
+            # SELL market order. A fill during cancellation must not oversell.
+            if protective.get("status") in OPEN:
+                safe=False
+                continue
+            if protective.get("status")=="filled":
+                alert(f"{symbol}: stop filled during profit cancellation; verify position.")
+                safe=False
+                continue
+            if protective.get("status")!="canceled":
+                alert(f"{symbol}: stop cancellation unresolved ({protective.get('status')}).")
+                safe=False
+                continue
+            if this_orders:
+                alert(f"{symbol}: open broker order remains after stop cancel.")
+                safe=False
+                continue
+            if not target:
+                # This ID is immutable. If POST times out, next run queries
+                # Alpaca by client_order_id rather than submitting twice.
+                try:
+                    a=asset(trade["symbol"])
+                    qty=round_step(dec(pos["qty"]),a.get("min_trade_increment") or "0.000000001")
+                    if qty<=0 or qty>dec(entry.get("filled_qty") or 0):
+                        raise RuntimeError("unverifiable own position qty")
+                    payload={"symbol":trade["symbol"],"side":"sell","type":"market",
+                             "time_in_force":"gtc","qty":format(qty,"f"),
+                             "client_order_id":trade["take_cid"]}
+                    save(state)
+                    resp=api("POST","/orders",body=payload)
+                    trade["status"]="tp_sent"
+                    save(state)
+                    log(event="take_profit_sent",symbol=symbol,order_id=resp.get("id"))
+                    alert(f"{symbol}: profit target reached; PAPER market SELL submitted.")
+                except Exception as exc:
+                    alert(f"🚨 {symbol}: profit close failed AFTER stop cancel: {exc}. "
+                          "MANUAL PAPER CHECK REQUIRED!")
+            safe=False
+            continue
         if protective.get("status") not in OPEN:
             alert(f"{symbol}: protection status {protective.get('status')} while position exists.")
             safe=False
@@ -280,6 +320,23 @@ def reconcile(state):
             safe=False
             continue
         trade["status"]="protected"
+        # Crypto has no OCO/bracket. Software TP requires careful cancel-first:
+        # stop stays active until Alpaca confirms cancellation.
+        try:
+            fresh=quote(trade["symbol"])
+            price=float(entry.get("filled_avg_price") or "0")
+            if price>0 and fresh["bid"]>=price*(1+TARGET_PCT/100):
+                if protective.get("id"):
+                    trade["status"]="tp_canceling"
+                    save(state)
+                    api("DELETE","/orders/"+protective["id"])
+                    alert(f"{symbol}: TP threshold reached, awaiting confirmed "
+                          "cancellation of protective stop before market SELL.")
+                    safe=False
+        except Exception as exc:
+            print(f"CRYPTO PAPER TP quote/cancel: {exc}; protective STOP retained if possible",flush=True)
+            # Do not compromise existing protection or open new entries.
+            safe=False
     unknown=[sym for sym in current if sym not in state["trades"] or
              state["trades"][sym].get("status")=="closed"]
     if unknown:
