@@ -125,6 +125,50 @@ class BrokerSafetyTests(unittest.TestCase):
                 "bar_close":now(0).isoformat(),"bar":now(0).isoformat(),
                 "reference_price":100,"relvol":2,"breakout_pct":1}],now(1))
 
+
+    def test_pending_stop_cancellation_cannot_send_take_profit(self):
+        state={"trades":{"BTCUSD":{"symbol":"BTC/USD",
+               "entry_cid":"CRPT1E_BTCUSD_a","stop_cid":"CRPT1S_BTCUSD_a",
+               "take_cid":"CRPT1T_BTCUSD_a","status":"tp_canceling"}}}
+        entry={"status":"filled","filled_qty":"0.001","filled_avg_price":"100000"}
+        stop={"status":"pending_cancel","type":"stop_limit","side":"sell",
+              "qty":"0.001"}
+        def resolve(cid):
+            return entry if "1E_" in cid else stop if "1S_" in cid else None
+        with patch.object(paper,"positions",return_value={"BTCUSD":{"qty":"0.001"}}), \
+             patch.object(paper,"orders",return_value=[]), \
+             patch.object(paper,"bycid",side_effect=resolve), \
+             patch.object(paper,"save"), patch.object(paper,"alert"), \
+             patch.object(paper,"recover_own_missing"), \
+             patch.object(paper,"api",side_effect=AssertionError("NO PAPER MARKET SELL UNTIL CANCEL CONFIRMED")):
+            safe,_=paper.reconcile(state)
+        self.assertFalse(safe)
+
+    def test_confirmed_stop_cancel_allows_single_paper_profit_exit(self):
+        state={"trades":{"BTCUSD":{"symbol":"BTC/USD",
+               "entry_cid":"CRPT1E_BTCUSD_a","stop_cid":"CRPT1S_BTCUSD_a",
+               "take_cid":"CRPT1T_BTCUSD_a","status":"tp_canceling"}}}
+        entry={"status":"filled","filled_qty":"0.001","filled_avg_price":"100000"}
+        stop={"status":"canceled","type":"stop_limit","side":"sell",
+              "qty":"0.001"}
+        def resolve(cid):
+            return entry if "1E_" in cid else stop if "1S_" in cid else None
+        with patch.object(paper,"positions",return_value={"BTCUSD":{"qty":"0.001"}}), \
+             patch.object(paper,"orders",return_value=[]), \
+             patch.object(paper,"bycid",side_effect=resolve), \
+             patch.object(paper,"asset",return_value={"min_trade_increment":"0.000001"}), \
+             patch.object(paper,"save"), patch.object(paper,"log"), \
+             patch.object(paper,"alert"),patch.object(paper,"recover_own_missing"), \
+             patch.object(paper,"api",return_value={"id":"paper-order-1"}) as submit:
+            safe,_=paper.reconcile(state)
+        self.assertFalse(safe)
+        self.assertEqual(state["trades"]["BTCUSD"]["status"],"tp_sent")
+        submit.assert_called_once()
+        self.assertEqual(submit.call_args.args,("POST","/orders"))
+        payload=submit.call_args.kwargs["body"]
+        self.assertEqual(payload["side"],"sell")
+        self.assertEqual(payload["client_order_id"],"CRPT1T_BTCUSD_a")
+
     def test_crypto_virtual_and_broker_are_distinct(self):
         self.assertEqual(crypto.SYMBOLS,tuple(paper.SYMBOLS))
         self.assertNotIn('api("POST"',Path(crypto.__file__).read_text(encoding="utf-8"))

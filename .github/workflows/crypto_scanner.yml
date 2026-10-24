@@ -40,8 +40,8 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           # Never use LIVE brokerage endpoint. Scheduled PAPER auto is enabled
-          # only after offline tests & protective-stop rules are validated.
-          ENABLE_CRYPTO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'false' || (github.event_name == 'workflow_dispatch' && inputs.enable_paper_entries == true && 'true' || 'false') }}
+          # for the PAPER account only, with stop-limit and fail-closed checks.
+          ENABLE_CRYPTO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.enable_paper_entries == true && 'true' || 'false') }}
         shell: bash
         run: |
           set +e

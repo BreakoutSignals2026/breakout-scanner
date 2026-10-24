@@ -116,10 +116,15 @@ a objednávky v Alpaca PAPER pred povolením obchodovania.
   Všetko len PAPER endpoint; cez víkend bez výnimky. Tento STOP-LIMIT
   **nemá zaručené vykonanie** (pri preskoku limitnej ceny ostane pozícia).
   To NIE JE trailing stop; nemá ochranu obchodovania vo výpadku GitHub.
-- Režim objednávok je na začiatku plánovaných behov bezpečne **VYPNUTÝ**.
-  Monitorovanie už vytvorených CRYPTO PAPER objednávok beží vždy.
-  V manuálnom `Run workflow` možno explicitne povoliť `enable_paper_entries`.
-  Automatické vstupy treba zapnúť samostatne až po overení ochrany na PAPER.
+- **Plánované behy majú CRYPTO PAPER nové vstupy povolené**, ale len
+  cez pevný endpoint `paper-api.alpaca.markets` a po overení limitov, dát,
+  vlastných objednávok a ochrannej stop-limit logiky. Pred prvou novou objednávkou
+  musí byť broker stav jednoznačný. Ručný `Run workflow` je v SAFE MODE,
+  pokiaľ nezvolíš `enable_paper_entries`. Monitorovanie existujúcich
+  obchodov a ochrany beží bez ohľadu na režim.
+  **Stop-limit pri prudkom pohybe nemusí uzavrieť pozíciu**; sleduj Telegram
+  varovania. Softvérový ziskový výstup 2,4 % zruší stop najprv a pred market
+  výstupom vyžaduje potvrdenie zrušenia od Alpaca.
   Výsledky: `crypto_paper_state_v1.json`, `crypto_paper_events_v1.jsonl`.
 - Spot kryptomeny v Alpaca sú len LONG, bez SHORT; brakety a serverový
   trailing stop pre crypto nie sú podporované. Broker si účtuje crypto poplatky.
@@ -137,7 +142,7 @@ a objednávky v Alpaca PAPER pred povolením obchodovania.
   `xetra_virtual_v1_signals.jsonl`, `xetra_virtual_v1_trades.csv`.
 - Virtuálny skener nepovažuje údaje Yahoo za uskutočnené obchody na Xetre.
 
-**Čo je aktívne:** 24/7 CRYPTO virtuálny scanner + XETRA virtuálny
-scanner v hodinách burzy. Nové Alpaca CRYPTO PAPER vstupy zostávajú pri
-plánovanom behu vypnuté, kým sa neoverí kompletne automatické uzatváranie
-PAPER pozícií; neprepisujú sa tým doterajšie tri scannery.
+**Čo je aktívne:** 24/7 CRYPTO virtuálny scanner aj oddelený Alpaca CRYPTO
+PAPER režim s obmedzenými novými vstupmi + XETRA virtuálny scanner v hodinách
+burzy. Automatické úspešné vstupy a výstupy závisia od dostupnosti API/dát;
+neprepisujú sa doterajšie US akciové scannery.
