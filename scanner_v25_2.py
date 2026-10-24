@@ -747,11 +747,58 @@ def scan_for_new(state, session):
 
     diagnostics["time_ny"] = when(now_ny())
     diagnostics["scan_seconds"] = round((now_ny()-started).total_seconds(), 1)
+    day = session["open"].date().isoformat()
     state["last_scan_diagnostics"] = {
-        "date": session["open"].date().isoformat(), "counts": diagnostics, "symbols": details
+        "date": day, "counts": diagnostics, "symbols": details
     }
+    # Aggregate every cycle so a Telegram end-of-day report is meaningful.
+    daily = state.get("daily_diagnostics")
+    if not isinstance(daily, dict) or daily.get("date") != day:
+        daily = {"date": day, "scans": 0, "totals": {}}
+    daily["scans"] += 1
+    totals = daily["totals"]
+    for key, value in diagnostics.items():
+        if isinstance(value, int):
+            totals[key] = totals.get(key, 0) + value
+    state["daily_diagnostics"] = daily
     save_state(state)
     print(f"CLASSIC BREAKOUT SCAN DIAGNOSTIKA: {diagnostics} | podrobnosti: {details}", flush=True)
+
+
+def announce_classic_started_once(state, session):
+    """A real scan started, not merely a green GitHub preflight job."""
+    day = session["open"].date().isoformat()
+    if state.get("daily_start_notice") == day:
+        return
+    state["daily_start_notice"] = day
+    save_state(state)
+    telegram(f"📡 BREAKOUT V{VERSION}: spustené skenovanie 10 akcií, "
+             f"NY {now_ny().strftime('%H:%M')}; PAPER nové vstupy povolené. "
+             "Správa potvrdzuje spustenie scanneru, nie existenciu signálu.")
+
+
+def send_classic_daily_diagnostics_once(state, session):
+    """End-of-day visibility; never creates, cancels or modifies an Alpaca order."""
+    day = session["open"].date().isoformat()
+    if state.get("daily_diagnostics_notice") == day:
+        return
+    state["daily_diagnostics_notice"] = day
+    save_state(state)
+    diag = state.get("daily_diagnostics") or {}
+    if diag.get("date") != day:
+        telegram(f"📊 BREAKOUT V{VERSION} {day}: nebol zaznamenaný žiadny "
+                 "diagnostický sken dnes; skontroluj GitHub workflow štart.")
+        return
+    totals = diag.get("totals", {})
+    telegram(f"📊 BREAKOUT V{VERSION} {day} DIAGNOSTIKA\n"
+             f"Počet cyklov: {diag.get('scans', 0)} | kontrolované symboly: {totals.get('symbols_checked', 0)}\n"
+             f"Technické signály: {totals.get('technical_signals', 0)} | odoslané vstupy: {totals.get('submitted', 0)}\n"
+             f"Bez breakoutu: {totals.get('bez_potvrdeneho_breakoutu', 0)} | "
+             f"nízky objem: {totals.get('nizky_relativny_objem', 0)} | "
+             f"málo dát: {totals.get('malo_5min_sviecok', 0)} | "
+             f"staré sviečky: {totals.get('stara_alebo_neplatna_sviecka', 0)} | "
+             f"výnimky: {totals.get('exceptions', 0)}.\n"
+             "Ide o súčty kontrol, nie počet jedinečných obchodov.")
 
 
 def main():
@@ -768,9 +815,12 @@ def main():
             telegram(f"🚨 BREAKOUT V{VERSION}: BURZA JE ZATVORENÁ, "
                      f"nepotvrdené pozície/objednávky: {remaining}. Ručná kontrola!")
         save_state(state)
+        if session:
+            send_classic_daily_diagnostics_once(state, session)
         return
     if session and now_ny() >= session["liquidate_at"]:
         end_of_day(state, session)
+        send_classic_daily_diagnostics_once(state, session)
         return
     positions = all_positions()
     safe = reconcile(state, positions)
@@ -788,6 +838,7 @@ def main():
     if not session or now_ny() < session["open"] or now_ny() >= session["entry_stop"] or not clock_open():
         print("Market outside entry window", flush=True)
         return
+    announce_classic_started_once(state, session)
     scan_for_new(state, session)
 
 

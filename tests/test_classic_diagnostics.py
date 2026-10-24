@@ -31,5 +31,25 @@ class ClassicSignalsTests(unittest.TestCase):
         self.assertIsNone(classic.analyze("AAPL", []))
 
 
+    def test_daily_digest_sent_only_once(self):
+        session = {"open": datetime(2026, 10, 23, 9, 30, tzinfo=ZoneInfo("America/New_York"))}
+        state = {"daily_diagnostics": {
+            "date": "2026-10-23", "scans": 3,
+            "totals": {"symbols_checked": 30, "bez_potvrdeneho_breakoutu": 25}}}
+        with patch.object(classic, "save_state"), patch.object(classic, "telegram") as alert:
+            classic.send_classic_daily_diagnostics_once(state, session)
+            classic.send_classic_daily_diagnostics_once(state, session)
+        alert.assert_called_once()
+        self.assertIn("30", alert.call_args.args[0])
+
+    def test_session_start_alert_only_once(self):
+        session = {"open": datetime(2026, 10, 23, 9, 30, tzinfo=ZoneInfo("America/New_York"))}
+        state = {}
+        with patch.object(classic, "save_state"), patch.object(classic, "telegram") as alert:
+            classic.announce_classic_started_once(state, session)
+            classic.announce_classic_started_once(state, session)
+        alert.assert_called_once()
+
+
 if __name__ == "__main__":
     unittest.main()
