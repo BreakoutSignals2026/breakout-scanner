@@ -1,7 +1,8 @@
 # BreakoutSignals2026 — Alpaca PAPER scannery
 
-Repozitár obsahuje **dva aktívne PAPER obchodné scannery** a **tretí ORB
-V1.0 iba na simuláciu**. FAST a BREAKOUT obchodujú cez
+Repozitár obsahuje **dva aktívne PAPER scannery US akcií**, FAST virtuálne signály,
+**ORB V1.0 iba na simuláciu**, nový **CRYPTO scanner (24/7, oddelený Alpaca PAPER režim)**
+a **európsky XETRA scanner (iba virtuálny)**. FAST a BREAKOUT obchodujú cez
 `https://paper-api.alpaca.markets`; ORB neodosiela do Alpaca žiadne objednávky.
 Nie je tu žiadny LIVE trading workflow.
 
@@ -12,6 +13,8 @@ Nie je tu žiadny LIVE trading workflow.
 | FAST V3.3.1 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
 | ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
+| CRYPTO V1.0 | `scanner_crypto_v1.py` + `crypto_paper_v1.py` | `.github/workflows/crypto_scanner.yml` | BTC/USD ETH/USD SOL/USD 24/7; nezávislé virtuálne obchody + oddelený Alpaca PAPER modul |
+| XETRA V1.0 | `scanner_xetra_v1.py` | `.github/workflows/xetra_scanner.yml` | SAP.DE, SIE.DE, BMW.DE, ALV.DE, BAS.DE, DTE.DE; nemecké akcie, **iba virtuálne** |
 
 - **FAST V3.3.1 PAPER:** plánované riziko **3 USD na obchod** (nie garantované maximum);
   najviac **8 nových FAST vstupov denne**, **2 súčasné FAST/sledované pozície**
@@ -97,3 +100,44 @@ nastavenie je na vetve `backup/2026-10-21-clean-paper-config`.
 ale **nezálohujú** hodnoty Secrets, históriu Actions behu ani objednávky
 a stav účtu uložené v Alpaca. Pri obnove treba overiť aktuálne pozície
 a objednávky v Alpaca PAPER pred povolením obchodovania.
+
+## Nové trhy – spôsob fungovania a obmedzenia
+
+### CRYPTO V1.0 (24 hodín denne, 7 dní v týždni)
+- Dáta: Alpaca Market Data `/v1beta3/crypto/us/bars`, plne uzatvorené 5-minútové sviečky.
+- Počiatočné technické parametre: 12 sviečok, breakout >=0,15 %, RelVol >=1,5.
+- **Virtuálny backtest v reálnom čase**: hypotetický nasledujúci otvorený 5-min
+  bar, SL 1,2 %, TP 2,4 %, odhad poplatkov 0,25 % za stranu a sklzu 0,08 %.
+  Výsledky oddelené: `crypto_virtual_v1_state.json`,
+  `crypto_virtual_v1_signals.jsonl`, `crypto_virtual_v1_trades.csv`.
+- **Alpaca PAPER režim**: pred ďalším novým vstupom overuje cudzie krypto
+  pozície/objednávky a stav svojej ochrannej SELL STOP-LIMIT/GTC. Max 3
+  nové vstupy/UTC deň, 1 otvorená kryptopozícia, odhadované riziko 3 USD.
+  Všetko len PAPER endpoint; cez víkend bez výnimky. Tento STOP-LIMIT
+  **nemá zaručené vykonanie** (pri preskoku limitnej ceny ostane pozícia).
+  To NIE JE trailing stop; nemá ochranu obchodovania vo výpadku GitHub.
+- Režim objednávok je na začiatku plánovaných behov bezpečne **VYPNUTÝ**.
+  Monitorovanie už vytvorených CRYPTO PAPER objednávok beží vždy.
+  V manuálnom `Run workflow` možno explicitne povoliť `enable_paper_entries`.
+  Automatické vstupy treba zapnúť samostatne až po overení ochrany na PAPER.
+  Výsledky: `crypto_paper_state_v1.json`, `crypto_paper_events_v1.jsonl`.
+- Spot kryptomeny v Alpaca sú len LONG, bez SHORT; brakety a serverový
+  trailing stop pre crypto nie sú podporované. Broker si účtuje crypto poplatky.
+  Príkladom je uzatvorenie ochranného príkazu stop-limit, nie garantovaný SL.
+
+### XETRA V1.0 (pracovné dni približne 09:00–17:30 Berlín)
+- Dáta: `query1.finance.yahoo.com/v8/finance/chart/SAP.DE`, 5-minútové
+  sviečky, len pri overení EUR a burzy XETRA/GER. Ide o **neoficiálny,
+  potenciálne oneskorený** zdroj, ktorý môže v GitHub Actions vracať HTTP 429;
+  pri neplatných alebo nedostupných dátach sa obchod nenasimuluje.
+- Len virtuálne vyhodnocovanie (žiadne Alpaca objednávky). Na skutočný
+  európsky PAPER účet cez Xetra potrebujeme iného brokera a legitímny zdroj
+  intradenných dát. Odhadovaný SL 1 %, TP 2 %, riziko 3 EUR.
+- Oddelené súbory `xetra_virtual_v1_state.json`,
+  `xetra_virtual_v1_signals.jsonl`, `xetra_virtual_v1_trades.csv`.
+- Virtuálny skener nepovažuje údaje Yahoo za uskutočnené obchody na Xetre.
+
+**Čo je aktívne:** 24/7 CRYPTO virtuálny scanner + XETRA virtuálny
+scanner v hodinách burzy. Nové Alpaca CRYPTO PAPER vstupy zostávajú pri
+plánovanom behu vypnuté, kým sa neoverí kompletne automatické uzatváranie
+PAPER pozícií; neprepisujú sa tým doterajšie tri scannery.

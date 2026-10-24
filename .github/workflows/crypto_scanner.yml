@@ -1,0 +1,59 @@
+name: CRYPTO Breakout V1.0 - Alpaca PAPER + independent virtual 24/7
+
+on:
+  schedule:
+    # US crypto market runs 24 hours including weekends; GitHub may delay jobs.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      enable_paper_entries:
+        description: "Allow NEW orders in Alpaca PAPER (never LIVE)"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-breakout-v1
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Run 24h Alpaca CRYPTO paper reconciler and virtual scan
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          # Never use LIVE brokerage endpoint. Scheduled PAPER auto is enabled
+          # only after offline tests & protective-stop rules are validated.
+          ENABLE_CRYPTO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'false' || (github.event_name == 'workflow_dispatch' && inputs.enable_paper_entries == true && 'true' || 'false') }}
+        shell: bash
+        run: |
+          set +e
+          python scanner_crypto_v1.py
+          status=$?
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add crypto_virtual_v1_state.json crypto_virtual_v1_signals.jsonl crypto_virtual_v1_trades.csv crypto_paper_state_v1.json crypto_paper_events_v1.jsonl 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update CRYPTO V1 virtual and PAPER state"
+            git pull --no-rebase -X ours origin main
+            git push origin HEAD:main
+          fi
+          exit "$status"

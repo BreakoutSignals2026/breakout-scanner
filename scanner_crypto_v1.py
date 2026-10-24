@@ -81,4 +81,19 @@ def scan_once(now=None):
     return summary, signals
 
 if __name__=="__main__":
-    scan_once()
+    import crypto_paper_v1 as paper
+    # Existing positions/orders must be reconciled even when market data fails.
+    try:
+        paper.run(allow_new=False)
+    except Exception as exc:
+        paper.alert(f"🚨 Broker reconciliation failed: {exc}")
+        raise
+    stats, candidates = scan_once()
+    enabled=os.getenv("ENABLE_CRYPTO_PAPER_TRADING","false").lower()=="true"
+    if enabled:
+        try:
+            paper.run(candidates,allow_new=True)
+        except Exception as exc:
+            paper.alert(f"🚨 PAPER protection/entry failure: {exc}. Check Alpaca!")
+            raise
+

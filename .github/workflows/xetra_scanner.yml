@@ -1,0 +1,46 @@
+name: XETRA Breakout V1.0 - EUROPE VIRTUAL ONLY
+
+on:
+  schedule:
+    # Every 10 minutes during a conservative UTC window; Berlin gate below
+    # handles CET/CEST and actual Xetra regular hours.
+    - cron: "*/10 7-17 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: xetra-breakout-v1
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Virtual Xetra scan (NO Alpaca orders, NO BROKER CREDENTIALS)
+        shell: bash
+        run: |
+          set +e
+          python scanner_xetra_v1.py
+          status=$?
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xetra_virtual_v1_state.json xetra_virtual_v1_signals.jsonl xetra_virtual_v1_trades.csv 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update XETRA V1 independent virtual research"
+            git pull --no-rebase -X ours origin main
+            git push origin HEAD:main
+          fi
+          exit "$status"
