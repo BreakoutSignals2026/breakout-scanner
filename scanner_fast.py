@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FAST BREAKOUT V3.2.4 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $5 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
+"""FAST BREAKOUT V3.3.0 — Alpaca PAPER only, 28-symbol liquidity revision. Entry: market/day after validated 5-minute breakout. Exit: separate, opposite-side Alpaca trailing_stop/gtc (server side). Risk $3 is a sizing *estimate*, NOT a maximum guaranteed loss. IMPORTANT: ENABLE_FAST_TRADING must be explicitly set to 'true' to open NEW positions. Monitoring, recovery and pre-close liquidation of tracked FAST31 trades work while disabled. Keep GitHub Actions workflows NON-OVERLAPPING (concurrency: cancel-in-progress: false). At 15 minutes before the actual NYSE close (from the Alpaca calendar), only tracked FAST entries are liquidated. Never liquidate unrelated account holdings. A missed workflow run, network failure or late fill can leave positions open. """
 
 import json
 import math
@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-VERSION = "3.2.4"
+VERSION = "3.3.0"
 API = "https://paper-api.alpaca.markets/v2"
 DATA = "https://data.alpaca.markets/v2/stocks"
 NY = ZoneInfo("America/New_York")
@@ -42,8 +42,11 @@ MIN_BREAKOUT_PERCENT = 0.15
 VOLUME_LOOKBACK = 12
 MIN_REL_VOLUME = 1.50
 ATR_PERIOD = 14
-RISK_PER_TRADE = 5.00
+RISK_PER_TRADE = 3.00
 TRAIL_PERCENT = 1.20
+MAX_DAILY_ENTRIES = 4
+MAX_OPEN_FAST_POSITIONS = 2
+DAILY_LOSS_STOP_USD = 12.00
 MAX_SIGNAL_AGE_MINUTES = 8
 MAX_ENTRY_CHASE_PERCENT = 0.25
 MAX_TRADE_AGE_SECONDS = 120  # Trade feed can be sparse; quote must be fresher.
@@ -54,7 +57,7 @@ MIN_SIGNAL_BAR_TRADES = 15
 MIN_SIGNAL_BAR_NOTIONAL_USD = 15_000
 MIN_PRIOR_AVG_BAR_NOTIONAL_USD = 8_000
 MIN_VALID_PRIOR_BARS = 9  # Out of 12 reference bars.
-# Quote spread budget is included conservatively in the $5 sizing estimate.
+# Quote spread budget is included conservatively in the $3 sizing estimate.
 ENTRY_WAIT_SECONDS = 25
 MAX_WORKERS = 8
 STATE_FILE = Path("breakout_state_fast_v31.json")
@@ -555,7 +558,7 @@ def report_closed(trade, entry, exit_order, state, reason="trailing stop"):
     save_state(state)
     log_event(action="closed", symbol=trade["symbol"], entry=ep, exit=avg_exit,
               qty=qty, side=trade["side"], pnl=round(pnl, 2), pnl_pct=round(pct, 3),
-              reason=reason)
+              reason=reason, holding_seconds=age_seconds(entry.get("filled_at"), exit_order.get("filled_at")))
     trade_duration = duration(age_seconds(entry.get("filled_at"), exit_order.get("filled_at")))
     notify(f"📊 FAST V{VERSION} UZATVORENÝ OBCHOD\n{trade['symbol']} "
            f"{'LONG' if trade['side'] == 'buy' else 'SHORT'}\n"
@@ -754,7 +757,13 @@ def submit_entry(signal, price, qty, state, live=None):
               requested_qty=qty, reference=price, side=signal["side"],
               estimated_risk=round((price * TRAIL_PERCENT / 100 +
                                     fnum((live or {}).get("spread"))) * qty, 2),
-              spread_percent=round(fnum((live or {}).get("spread_percent")), 3))
+              spread_percent=round(fnum((live or {}).get("spread_percent")), 3),
+              rel_volume=signal.get("rel_volume"),
+              breakout_percent=signal.get("breakout_percent"),
+              bar_notional_usd=signal.get("signal_bar_notional_usd"),
+              quote_age_seconds=(live or {}).get("quote_age_seconds"),
+              chase_percent=(live or {}).get("chase_pct"),
+              signal_age_seconds=signal_age_seconds(signal))
     submitted_at = result.get("submitted_at") or state["trades"][symbol]["submitted_at"]
     notify(f"🚀 FAST V{VERSION} VSTUPNÁ OBJEDNÁVKA ODOSLANÁ\n{symbol} "
            f"{'LONG' if signal['side'] == 'buy' else 'SHORT'} | {qty} ks\n"
@@ -799,6 +808,96 @@ def watch_new_entry(symbol, state):
         time.sleep(2)
     notify(f"🚨 FAST V{VERSION} {symbol}: ochrana NIE JE potvrdená. "
            "Skontroluj Alpaca Orders a Positions OKAMŽITE!")
+
+
+
+def daily_entry_guard(session, state, positions):
+    """Never allow a new entry without a complete daily order/journal check."""
+    if not TRADES_FILE.is_file():
+        raise RuntimeError("FAST obchodný denník chýba")
+    day = session["date"]
+    events = []
+    for idx, line in enumerate(TRADES_FILE.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            event = json.loads(line)
+            timestamp = parse_alpaca_time(event["timestamp"])
+        except (KeyError, TypeError, ValueError) as exc:
+            raise RuntimeError(f"FAST denník je poškodený (riadok {idx})") from exc
+        if timestamp is None:
+            raise RuntimeError(f"FAST denník bez času (riadok {idx})")
+        if timestamp.astimezone(NY).date().isoformat() == day:
+            events.append(event)
+    orders = api("GET", "/orders", params={
+        "status": "all", "limit": 500, "nested": "false",
+        "after": session["open"].astimezone(timezone.utc).isoformat()
+    })
+    if not isinstance(orders, list) or len(orders) >= 500:
+        raise RuntimeError("Alpaca história objednávok je neúplná")
+    entry_ids, symbols = set(), set()
+    for order in orders:
+        if not isinstance(order, dict):
+            raise RuntimeError("Neplatné Alpaca orders")
+        client_id = str(order.get("client_order_id") or "")
+        if not client_id.startswith(ENTRY_PREFIX):
+            continue
+        placed = parse_alpaca_time(order.get("created_at") or order.get("submitted_at"))
+        if placed is None:
+            raise RuntimeError("FAST objednávka bez dátumu")
+        if placed.astimezone(NY).date().isoformat() != day:
+            continue
+        entry_ids.add(str(order.get("id") or client_id))
+        symbols.add(order.get("symbol"))
+    for event in events:
+        if event.get("action") == "entry_submitted":
+            entry_ids.add(str(event.get("order_id") or
+                              "journal:" + event["timestamp"] + ":" + str(event.get("symbol"))))
+            symbols.add(event.get("symbol"))
+    for symbol, item in state["trades"].items():
+        submitted = parse_alpaca_time(item.get("submitted_at"))
+        if submitted and submitted.astimezone(NY).date().isoformat() == day:
+            entry_ids.add(str(item.get("entry_order_id") or item.get("entry_cid") or "pending:" + symbol))
+            symbols.add(symbol)
+    realized = 0.0
+    for event in events:
+        if event.get("action") == "closed":
+            pnl = float(event["pnl"])
+            if not math.isfinite(pnl):
+                raise RuntimeError("Neplatný FAST uzatvorený PnL")
+            realized += pnl
+    current_negative = 0.0
+    for symbol, pos in positions.items():
+        if "unrealized_pl" not in pos:
+            raise RuntimeError(f"Alpaca nemá unrealized_pl pre {symbol}")
+        amount = float(pos["unrealized_pl"])
+        if not math.isfinite(amount):
+            raise RuntimeError(f"Neplatný nerealizovaný PnL pre {symbol}")
+        current_negative += min(0.0, amount)
+    daily_pnl = realized + current_negative
+    if daily_pnl <= -DAILY_LOSS_STOP_USD:
+        reason = f"strata {daily_pnl:+.2f} USD dosiahla denné obmedzenie"
+    elif len(entry_ids) >= MAX_DAILY_ENTRIES:
+        reason = f"dosiahnuté {MAX_DAILY_ENTRIES} FAST vstupy dnes"
+    elif len(positions) >= MAX_OPEN_FAST_POSITIONS:
+        reason = f"dosiahnuté {MAX_OPEN_FAST_POSITIONS} súčasné pozície"
+    else:
+        reason = None
+    return {"allowed": reason is None, "reason": reason,
+            "symbols": symbols, "entries": len(entry_ids),
+            "daily_pnl": round(daily_pnl, 2)}
+
+
+def notify_guard_once(state, session, reason):
+    marker = session["date"] + ":" + reason
+    old = state.setdefault("guard_notice", {}).get(session["date"])
+    if old != marker:
+        state["guard_notice"][session["date"]] = marker
+        save_state(state)
+        notify(f"🛑 FAST V{VERSION}: nové PAPER vstupy zablokované: {reason}. "
+               "Ochrana pozícií a EOD zostávajú aktívne.")
+    else:
+        print(f"FAST risk guard: {reason}", flush=True)
 
 
 def one_shot_already_consumed(state):
@@ -854,8 +953,19 @@ def main():
     if not market_open_now():
         print("US market is closed — no entries")
         return
+    try:
+        daily = daily_entry_guard(session, state, positions)
+    except Exception as exc:
+        notify_guard_once(state, session, f"denné limity nie je možné overiť: {exc}")
+        return
+    if not daily["allowed"]:
+        notify_guard_once(state, session, daily["reason"])
+        return
+    print(f"FAST daily: {daily['entries']}/{MAX_DAILY_ENTRIES} entries, "
+          f"PnL {daily['daily_pnl']:+.2f} USD, open {len(positions)}/{MAX_OPEN_FAST_POSITIONS}")
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
+    blocked |= daily["symbols"]
     available = [s for s in SYMBOLS if s not in blocked]
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
         futures = [pool.submit(analyze_symbol, s) for s in available]
@@ -886,6 +996,21 @@ def main():
             age = signal_age_seconds(signal)
             if age is None or age > MAX_SIGNAL_AGE_MINUTES * 60:
                 print(f"{signal['symbol']}: breakout expired before order submission")
+                continue
+            # Fresh fail-closed check immediately before posting a market order.
+            fresh_positions = get_positions()
+            if any(o.get("symbol") == signal["symbol"] for o in get_open_orders()):
+                continue
+            try:
+                fresh_guard = daily_entry_guard(session, state, fresh_positions)
+            except Exception as exc:
+                notify_guard_once(state, session, f"limity pred vstupom nie je možné overiť: {exc}")
+                return
+            if not fresh_guard["allowed"]:
+                notify_guard_once(state, session, fresh_guard["reason"])
+                return
+            if signal["symbol"] in fresh_guard["symbols"]:
+                print(f"{signal['symbol']}: FAST vstup dnes už existuje")
                 continue
             notify(f"🔔 FAST V{VERSION} BREAKOUT "
                    f"{'BUY' if signal['side'] == 'buy' else 'SELL'}\n"
