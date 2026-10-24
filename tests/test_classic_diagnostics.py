@@ -20,6 +20,7 @@ class ClassicSignalsTests(unittest.TestCase):
             ts = now - timedelta(minutes=5*(24-n))
             bars.append({"time": ts, "o": 100, "h": 101,
                          "l": 99, "c": 100, "v": 2000})
+        bars[-1]["v"] = 5000  # Pass relative-volume filter to test breakout specifically.
         with patch.object(classic, "now_ny", return_value=now):
             diag = {}
             result = classic.analyze("AAPL", bars, diag)
