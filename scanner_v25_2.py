@@ -748,7 +748,7 @@ def scan_for_new(state, session):
     diagnostics["time_ny"] = when(now_ny())
     diagnostics["scan_seconds"] = round((now_ny()-started).total_seconds(), 1)
     state["last_scan_diagnostics"] = {
-        "date": session["date"], "counts": diagnostics, "symbols": details
+        "date": session["open"].date().isoformat(), "counts": diagnostics, "symbols": details
     }
     save_state(state)
     print(f"CLASSIC BREAKOUT SCAN DIAGNOSTIKA: {diagnostics} | podrobnosti: {details}", flush=True)
