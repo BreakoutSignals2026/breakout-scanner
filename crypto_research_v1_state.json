@@ -1,5 +1,52 @@
 {
-  "daily": {},
-  "positions": {},
-  "seen": {}
+  "daily": {
+    "2026-10-25": {
+      "attempts": 2,
+      "symbols": [
+        "BTC/USD",
+        "ETH/USD"
+      ]
+    }
+  },
+  "positions": {
+    "BTC/USD": {
+      "phase": "pending",
+      "signal": {
+        "age_minutes": 0.26,
+        "bar": "2026-10-25T14:50:00+00:00",
+        "bar_close": "2026-10-25T14:55:00+00:00",
+        "breakout_pct": 0.1113,
+        "feed_note": "ALPACA_OHLC_PRICE_ONLY_NOT_PAPER_ELIGIBLE",
+        "reference_price": 80445.643,
+        "relvol": 0.0,
+        "research_only": true,
+        "side": "buy",
+        "symbol": "BTC/USD",
+        "volume_confirmed": false,
+        "zero_volume": false
+      }
+    },
+    "ETH/USD": {
+      "phase": "pending",
+      "signal": {
+        "age_minutes": 0.26,
+        "bar": "2026-10-25T14:50:00+00:00",
+        "bar_close": "2026-10-25T14:55:00+00:00",
+        "breakout_pct": 0.1288,
+        "feed_note": "ALPACA_OHLC_PRICE_ONLY_NOT_PAPER_ELIGIBLE",
+        "reference_price": 2337.93,
+        "relvol": 0.0,
+        "research_only": true,
+        "side": "buy",
+        "symbol": "ETH/USD",
+        "volume_confirmed": false,
+        "zero_volume": true
+      }
+    }
+  },
+  "seen": {
+    "BTC/USD:2026-10-25T14:50:00+00:00:buy": "2026-10-25",
+    "ETH/USD:2026-10-25T14:50:00+00:00:buy": "2026-10-25",
+    "SOL/USD:2026-10-25T14:50:00+00:00:buy": "2026-10-25"
+  }
 }
