@@ -56,7 +56,7 @@ class MicroTradingTests(unittest.TestCase):
             micro.MIN_PROJECTED_PROFIT_USD)
 
     def test_no_over_sizing_and_do_not_fill_bad_small_target(self):
-        nofit=micro.make_entry(signal(),{"t":moment(85),"o":50})
+        nofit=micro.make_entry(signal(),{"t":moment(85),"o":100})
         self.assertIsNone(nofit)
         self.assertIsNone(micro.make_entry(signal(),{"t":moment(85),"o":-1}))
 
