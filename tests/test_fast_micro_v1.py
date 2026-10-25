@@ -54,6 +54,11 @@ class MicroTradingTests(unittest.TestCase):
         self.assertGreaterEqual(
             micro.projected_profit(qty,price,"buy"),
             micro.MIN_PROJECTED_PROFIT_USD)
+        # The spread-aware model lowers permitted size/profit.
+        with_spread=micro.make_entry({**s,"quote_spread":0.01},
+                                     {"t":moment(85),"o":10})
+        self.assertIsNotNone(with_spread)
+        self.assertLessEqual(with_spread["qty"],qty)
 
     def test_no_over_sizing_and_do_not_fill_bad_small_target(self):
         nofit=micro.make_entry(signal(),{"t":moment(85),"o":100})
@@ -126,6 +131,22 @@ class MicroTradingTests(unittest.TestCase):
         self.assertEqual(micro.load(SESSION)["daily"]["attempts"],
                          micro.MAX_DAILY_ATTEMPTS)
         self.assertEqual(micro.load(SESSION)["symbols"]["BB"]["phase"],"watching")
+
+    def test_stale_or_wide_quote_rejects_micro_entry(self):
+        with patch.object(micro,"EVENTS_PATH",micro.EVENTS_PATH):
+            micro.process(SESSION,["BB"],lambda s:[bar(i) for i in range(18)],
+                          lambda s,b:signal(s),moment(85),workers=1,
+                          validate=lambda s: None)
+        self.assertEqual(micro.load(SESSION)["daily"]["attempts"],0)
+        self.assertEqual(len(micro.SIGNALS_PATH.read_text().splitlines()),1)
+
+    def test_approved_quote_records_spread(self):
+        micro.process(SESSION,["BB"],lambda s:[bar(i) for i in range(18)],
+                      lambda s,b:signal(s),moment(85),workers=1,
+                      validate=lambda s:{"spread":0.01,"spread_percent":0.1})
+        state=micro.load(SESSION)
+        self.assertEqual(state["daily"]["attempts"],1)
+        self.assertEqual(state["symbols"]["BB"]["signal"]["quote_spread"],0.01)
 
     def test_max_two_virtual_positions(self):
         symbols=["BB","SOFI","F"]

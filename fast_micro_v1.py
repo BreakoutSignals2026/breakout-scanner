@@ -78,11 +78,12 @@ def completed_bars(raw, now, session):
     return candle_tools.completed_bars(raw, now, session)
 
 
-def projected_profit(qty, entry, side):
+def projected_profit(qty, entry, side, spread=0.0):
     slip = SLIP_PCT / 100
     distance = STOP_PCT * REWARD_R / 100
     raw_exit = entry * (1 + distance if side == "buy" else 1 - distance)
-    exec_exit = raw_exit * (1 - slip if side == "buy" else 1 + slip)
+    exec_exit = (raw_exit * (1 - slip if side == "buy" else 1 + slip)
+                 + (-spread/2 if side == "buy" else spread/2))
     return qty * ((exec_exit - entry) if side == "buy" else (entry - exec_exit))
 
 
@@ -94,11 +95,20 @@ def make_entry(signal, next_bar):
     if raw <= 0 or not math.isfinite(raw):
         return None
     slip = SLIP_PCT / 100
-    entry = raw * (1 + slip if side == "buy" else 1 - slip)
+    spread = float(signal.get("quote_spread", 0))
+    if not math.isfinite(spread) or spread < 0:
+        return None
+    entry = (raw * (1 + slip if side == "buy" else 1 - slip)
+             + (spread/2 if side == "buy" else -spread/2))
+    if entry <= 0:
+        return None
     risk_rate = STOP_PCT / 100 + 2 * slip
-    qty = min(math.floor(RISK_USD / (entry * risk_rate) + 1e-9),
+    # Conservative risk budget; model a full spread round-trip. This is an
+    # IEX quote proxy observed at signal time, NOT actual next-bar NBBO.
+    risk_per_share = entry * risk_rate + spread
+    qty = min(math.floor(RISK_USD / risk_per_share + 1e-9),
               math.floor(MAX_NOTIONAL_USD / entry))
-    if qty < 1 or projected_profit(qty, entry, side) < MIN_PROJECTED_PROFIT_USD:
+    if qty < 1 or projected_profit(qty, entry, side, spread) < MIN_PROJECTED_PROFIT_USD:
         return None
     return {"phase": "open", "signal": signal, "entry_bar": next_bar["t"].isoformat(),
             "entry": entry, "qty": qty, "last_bar": None}
@@ -110,18 +120,19 @@ def exit_check(slot, bar):
     rate = STOP_PCT / 100
     target_rate = rate * REWARD_R
     slip = SLIP_PCT / 100
+    half_spread = float(slot["signal"].get("quote_spread", 0)) / 2
     if side == "buy":
         stop, tp = entry * (1 - rate), entry * (1 + target_rate)
         if bar["l"] <= stop:
-            return min(stop, bar["o"]) * (1 - slip), "SL"
+            return min(stop, bar["o"]) * (1 - slip) - half_spread, "SL"
         if bar["h"] >= tp:
-            return tp * (1 - slip), "TP"
+            return tp * (1 - slip) - half_spread, "TP"
     else:
         stop, tp = entry * (1 + rate), entry * (1 - target_rate)
         if bar["h"] >= stop:
-            return max(stop, bar["o"]) * (1 + slip), "SL"
+            return max(stop, bar["o"]) * (1 + slip) + half_spread, "SL"
         if bar["l"] <= tp:
-            return tp * (1 + slip), "TP"
+            return tp * (1 + slip) + half_spread, "TP"
     return None
 
 
@@ -188,13 +199,16 @@ def advance(slot, completed, now, session, symbol):
                          (eligible[-1]["t"] + timedelta(minutes=BAR_MINUTES))).total_seconds() <= 600:
             bar = eligible[-1]
             slip = SLIP_PCT / 100
-            price = bar["c"] * (1 - slip if slot["signal"]["side"] == "buy"
-                                else 1 + slip)
+            half_spread = float(slot["signal"].get("quote_spread", 0)) / 2
+            price = (bar["c"] * (1 - slip if slot["signal"]["side"] == "buy"
+                                 else 1 + slip)
+                     + (-half_spread if slot["signal"]["side"] == "buy"
+                        else half_spread))
             return {"phase": "closed"}, result(slot, session, symbol, bar, price, "EOD")
     return slot, None
 
 
-def process(session, symbols, fetch, analyze, now, workers=8):
+def process(session, symbols, fetch, analyze, now, workers=8, validate=None):
     """Persist independent virtual results. No Alpaca order endpoints called."""
     if now < session["open"]:
         print("FAST MICRO: waiting for US session open")
@@ -257,10 +271,23 @@ def process(session, symbols, fetch, analyze, now, workers=8):
                     state["daily"]["pnl_usd"] > -MAX_DAILY_REALIZED_LOSS and
                     sum(p.get("phase") in {"pending", "open"}
                         for p in state["symbols"].values()) < MAX_SIMULTANEOUS):
-                slot = {"phase": "pending", "signal": signal}
-                state["symbols"][symbol] = slot
-                state["daily"]["attempts"] += 1
-                print(f"FAST MICRO PENDING {symbol} {signal['side']} (VIRTUAL ONLY)", flush=True)
+                checked = signal
+                if validate is not None:
+                    try:
+                        quote = validate(signal)  # READ-ONLY IEX trade + quote
+                        if not quote or float(quote.get("spread", -1)) < 0:
+                            checked = None
+                        else:
+                            checked = {**signal, "quote_spread": float(quote["spread"]),
+                                       "quote_spread_pct": float(quote["spread_percent"])}
+                    except Exception as exc:
+                        print(f"FAST MICRO quote rejected {symbol}: {exc}", flush=True)
+                        checked = None
+                if checked is not None:
+                    slot = {"phase": "pending", "signal": checked}
+                    state["symbols"][symbol] = slot
+                    state["daily"]["attempts"] += 1
+                    print(f"FAST MICRO PENDING {symbol} {signal['side']} (VIRTUAL ONLY)", flush=True)
         # Save per-symbol so other completed signals survive a partial API fault.
         state["seen"] = sorted(seen)
         persist(state)

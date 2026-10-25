@@ -21,7 +21,8 @@ def main(now=None):
         print("FAST MICRO: NYSE session closed")
         return
     return micro.process(session, fast.SYMBOLS, fast.get_bars,
-                         fast.analyze_symbol, now, workers=8)
+                         fast.analyze_symbol, now, workers=8,
+                         validate=fast.validate_live)
 
 
 if __name__ == "__main__":

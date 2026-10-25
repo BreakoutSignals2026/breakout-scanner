@@ -94,7 +94,9 @@ Ich odstránenie či prepísanie môže narušiť overovanie otvorených pozíci
   vstupné signály sú totožné s FAST V3.3.1 (`scanner_fast.analyze_symbol`).
   **Neobsahuje žiadne API príkazy na obchodovanie, nemá LIVE ani PAPER vstupy.**
 - Virtuálny obchod: `RISK_USD=1`, STOP 0,50 % ceny, TP **2,5R**,
-  0,05 % odhadovaný sklz na každej strane, len celé akcie. Pri
+  0,05 % odhadovaný sklz na každej strane plus aktuálny IEX spread ako
+  odhad nákladov, len celé akcie. Nový vstup sa pred simuláciou overí
+  aj cez čerstvú IEX kotáciu a cenu (`fast.validate_live`). Pri
   hypotetickom plnení môže byť zisk z TP približne **1,50–2 USD**
   (minimálne modelových 1,50 USD pri vstupe); skutočný výsledok môže
   byť aj iný. Odhadovaný risk 1 USD **nie je garantovaný strop**, pri
