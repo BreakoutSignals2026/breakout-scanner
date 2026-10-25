@@ -24,12 +24,15 @@ class CryptoContinuousTests(unittest.TestCase):
         self.assertNotIn('cron: "*/5 * * * *"', yaml)
         self.assertIn("timeout-minutes: 240", yaml)
         self.assertIn("group: crypto-breakout-v1", yaml)
-        self.assertIn("cancel-in-progress: false", yaml)
+        self.assertIn("[crypto-safe-restart]", yaml)
+        self.assertIn("cancel-in-progress: ${{", yaml)
 
-    def test_only_scheduled_runs_loop(self):
+    def test_only_schedule_or_explicit_safe_restart_loops(self):
         yaml = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("CRYPTO_CONTINUOUS:", yaml)
-        self.assertIn("github.event_name == 'schedule' && 'true' || 'false'", yaml)
+        self.assertIn("github.event_name == 'schedule' ||", yaml)
+        self.assertIn("CRYPTO_SAFE_RESTART:", yaml)
+        self.assertIn("ENABLE_CRYPTO_PAPER_TRADING:", yaml)
         self.assertIn("bash scripts/crypto_session_loop.sh", yaml)
         shell = SCRIPT.read_text(encoding="utf-8")
         self.assertIn('if [[ "$continuous" != "true" ]]; then', shell)
@@ -50,6 +53,8 @@ class CryptoContinuousTests(unittest.TestCase):
         shell = SCRIPT.read_text(encoding="utf-8")
         self.assertIn("GITHUB_EVENT_NAME",shell)
         self.assertIn("3 * 3600 + 45 * 60",shell)
+        self.assertIn("25 * 60",shell)
+        self.assertIn('"${ENABLE_CRYPTO_PAPER_TRADING:-false}" != "false"',shell)
         yaml = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("paper-api", (BASE / "crypto_paper_v1.py").read_text())
         self.assertIn("inputs.enable_paper_entries == true",yaml)

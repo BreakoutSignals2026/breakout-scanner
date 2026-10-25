@@ -27,7 +27,9 @@ permissions:
 
 concurrency:
   group: crypto-breakout-v1
-  cancel-in-progress: false
+  # The single explicit smoke restart commit cancels an outdated running version.
+  # Routine scheduled runs and ordinary pushes never cancel active PAPER sessions.
+  cancel-in-progress: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[crypto-safe-restart]') }}
 
 jobs:
   scan:
@@ -51,7 +53,9 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           # Regular scheduled sessions: keep PAPER mode as before, never LIVE.
           ENABLE_CRYPTO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.enable_paper_entries == true && 'true' || 'false') }}
-          # Push tests and default manual runs do a SINGLE safe scan, not hours.
-          CRYPTO_CONTINUOUS: ${{ github.event_name == 'schedule' && 'true' || 'false' }}
+          # Only a specially marked SAFE push performs a short multi-cycle restart.
+          # It NEVER enables PAPER entry (the expression above is false on push).
+          CRYPTO_SAFE_RESTART: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[crypto-safe-restart]') && 'true' || 'false' }}
+          CRYPTO_CONTINUOUS: ${{ (github.event_name == 'schedule' || (github.event_name == 'push' && contains(github.event.head_commit.message, '[crypto-safe-restart]'))) && 'true' || 'false' }}
         shell: bash
         run: bash scripts/crypto_session_loop.sh

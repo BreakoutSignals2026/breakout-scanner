@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 # CRYPTO V1 continuous GitHub Actions runner, no API keys or LIVE endpoints.
 # One job covers up to 3h45m, with planned handover every 3 hours.
-# Triggered push/manual run: exactly ONE scan. Prevent duplicate PAPER writers
-# using the workflow-level concurrency group "crypto-breakout-v1".
+# Ordinary push/manual run: exactly ONE scan. The special safe-restart push
+# runs multiple 5min observation cycles for 25min, never sends new PAPER orders.
+# Workflow concurrency cancels prior session ONLY on this explicit restart.
 set -euo pipefail
 
 continuous="${CRYPTO_CONTINUOUS:-false}"
-if [[ "$continuous" == "true" && "${GITHUB_EVENT_NAME:-}" != "schedule" ]]; then
-  echo "::error::Continuous mode is reserved for scheduled workflow runs."
+safe_restart="${CRYPTO_SAFE_RESTART:-false}"
+if [[ "$safe_restart" == "true" ]]; then
+  if [[ "${GITHUB_EVENT_NAME:-}" != "push" || "${ENABLE_CRYPTO_PAPER_TRADING:-false}" != "false" || "$continuous" != "true" ]]; then
+    echo "::error::CRYPTO safe restart only permits a continuous push with PAPER entries OFF."
+    exit 1
+  fi
+fi
+if [[ "$continuous" == "true" && "${GITHUB_EVENT_NAME:-}" != "schedule" && "$safe_restart" != "true" ]]; then
+  echo "::error::Continuous mode must be a schedule or explicitly SAFE restart."
   exit 1
 fi
 
@@ -17,6 +25,10 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 # A GitHub-hosted job cannot run forever; the workflow times out at 4h.
 # Leave ample time for the final commit and clean handover to queued run.
 deadline_epoch=$(( $(date +%s) + 3 * 3600 + 45 * 60 ))
+if [[ "$safe_restart" == "true" ]]; then
+  deadline_epoch=$(( $(date +%s) + 25 * 60 ))
+  echo "CRYPTO V1.1 SAFE RESTART: max 25min; PAPER new entries disabled; recurring schedule unchanged."
+fi
 cycle=0
 
 while true; do
