@@ -19,6 +19,8 @@ on:
       - "scanner_crypto_v1.py"
       - "scanner_xetra_v1.py"
       - "tests/test_global_markets.py"
+      - "scripts/crypto_session_loop.sh"
+      - "tests/test_crypto_session.py"
       - ".github/workflows/crypto_scanner.yml"
       - ".github/workflows/xetra_scanner.yml"
   workflow_dispatch:
@@ -40,6 +42,7 @@ jobs:
       - name: Compile strategy and verify no trade calls
         run: |
           python -m py_compile scanner_fast.py fast_virtual.py scanner_v25_2.py scanner_orb_v1.py market_virtual_core.py crypto_paper_v1.py scanner_crypto_v1.py scanner_xetra_v1.py tests/test_*.py
+          bash -n scripts/crypto_session_loop.sh
           python scanner_orb_v1.py --self-check
       - name: Run no-credentials simulator tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v

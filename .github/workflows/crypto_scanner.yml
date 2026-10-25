@@ -10,8 +10,9 @@ on:
       - "market_virtual_core.py"
       - ".github/workflows/crypto_scanner.yml"
   schedule:
-    # US crypto market runs 24 hours including weekends; GitHub may delay jobs.
-    - cron: "*/5 * * * *"
+    # Long-running 5min loop; resync every 3h. Avoid the busy minute 00.
+    # The next run queues behind the previous one (single PAPER writer).
+    - cron: "17 0,3,6,9,12,15,18,21 * * *"
   workflow_dispatch:
     inputs:
       enable_paper_entries:
@@ -30,7 +31,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-24.04
-    timeout-minutes: 4
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v5
         with:
@@ -41,27 +42,15 @@ jobs:
           python-version: "3.12"
       - name: Install requests
         run: python -m pip install requests
-      - name: Run 24h Alpaca CRYPTO paper reconciler and virtual scan
+      - name: Run CRYPTO five-minute loop with PAPER state persistence
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          # Never use LIVE brokerage endpoint. Scheduled PAPER auto is enabled
-          # for the PAPER account only, with stop-limit and fail-closed checks.
+          # Regular scheduled sessions: keep PAPER mode as before, never LIVE.
           ENABLE_CRYPTO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.enable_paper_entries == true && 'true' || 'false') }}
+          # Push tests and default manual runs do a SINGLE safe scan, not hours.
+          CRYPTO_CONTINUOUS: ${{ github.event_name == 'schedule' && 'true' || 'false' }}
         shell: bash
-        run: |
-          set +e
-          python scanner_crypto_v1.py
-          status=$?
-          set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add crypto_virtual_v1_state.json crypto_virtual_v1_signals.jsonl crypto_virtual_v1_trades.csv crypto_paper_state_v1.json crypto_paper_events_v1.jsonl 2>/dev/null || true
-          if ! git diff --cached --quiet; then
-            git commit -m "Update CRYPTO V1 virtual and PAPER state"
-            git pull --no-rebase -X ours origin main
-            git push origin HEAD:main
-          fi
-          exit "$status"
+        run: bash scripts/crypto_session_loop.sh

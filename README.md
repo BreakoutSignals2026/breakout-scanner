@@ -104,6 +104,14 @@ a objednávky v Alpaca PAPER pred povolením obchodovania.
 ## Nové trhy – spôsob fungovania a obmedzenia
 
 ### CRYPTO V1.0 (24 hodín denne, 7 dní v týždni)
+- **Automatický beh:** GitHub Actions spúšťa 3-hodinové nadväzujúce
+  seansy o **00:17, 03:17, 06:17, 09:17, 12:17, 15:17, 18:17 a 21:17 UTC**.
+  Jeden runner skenuje v slučke po **5 minútach (UTC :00/:05/… + 15 s)**,
+  maximálne 3 h 45 min. Po každej kontrole uloží PAPER aj virtuálny stav;
+  `concurrency` zamedzuje dvom súčasným CRYPTO obchodným runnerom. 
+  GitHub štarty môže oneskoriť alebo vynechať, takže to NIE JE garancia
+  absolútne nepretržitej prevádzky. `push` a manuálny štart zostávajú
+  jednorazové (bez hodinovej slučky).
 - Dáta: Alpaca Market Data `/v1beta3/crypto/us/bars`, plne uzatvorené 5-minútové sviečky.
 - Počiatočné technické parametre: 12 sviečok, breakout >=0,15 %, RelVol >=1,5.
 - **Virtuálny backtest v reálnom čase**: hypotetický nasledujúci otvorený 5-min
