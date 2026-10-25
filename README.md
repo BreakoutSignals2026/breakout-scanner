@@ -11,6 +11,7 @@ Nie je tu žiadny LIVE trading workflow.
 | Scanner | Python | GitHub Actions | Stratégia |
 | --- | --- | --- | --- |
 | FAST V3.3.1 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | 28 akcií; breakout, trailing stop 1,2 % |
+| FAST MICRO V1.0 – simulácia | `scanner_fast_micro_v1.py` + `fast_micro_v1.py` | `.github/workflows/fast_micro_scanner.yml` | Tých istých 28 US akcií; hypotetické riziko 1 USD, fixný SL/TP; **BEZ objednávok** |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
 | ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
 | CRYPTO V1.0 | `scanner_crypto_v1.py` + `crypto_paper_v1.py` | `.github/workflows/crypto_scanner.yml` | BTC/USD ETH/USD SOL/USD 24/7; nezávislé virtuálne obchody + oddelený Alpaca PAPER modul |
@@ -82,6 +83,37 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
 
 Súbory so stavom vznikajú alebo sa aktualizujú automaticky počas skenovania.
 Ich odstránenie či prepísanie môže narušiť overovanie otvorených pozícií.
+
+## FAST MICRO V1.0 – skúšobné malé zisky, iba virtuálne
+
+- Nový samostatný GitHub workflow `.github/workflows/fast_micro_scanner.yml`
+  sa spúšťa v pracovné dni: začiatok **09:30 New York**, kontrola na
+  približne päťminútových hraniciach. Od 26.10.2026: **14:30 SK/Poľsko**
+  (26.–30. októbra, kým USA neprejdú na zimný čas).
+- Prečíta z Alpacy iba US market kalendár a IEX päťminútové bary. Technické
+  vstupné signály sú totožné s FAST V3.3.1 (`scanner_fast.analyze_symbol`).
+  **Neobsahuje žiadne API príkazy na obchodovanie, nemá LIVE ani PAPER vstupy.**
+- Virtuálny obchod: `RISK_USD=1`, STOP 0,50 % ceny, TP **2,5R**,
+  0,05 % odhadovaný sklz na každej strane, len celé akcie. Pri
+  hypotetickom plnení môže byť zisk z TP približne **1,50–2 USD**
+  (minimálne modelových 1,50 USD pri vstupe); skutočný výsledok môže
+  byť aj iný. Odhadovaný risk 1 USD **nie je garantovaný strop**, pri
+  preskoku stopu môže byť strata väčšia.
+- Najviac 12 simulovaných vstupných pokusov denne, 2 naraz, 1 pokus
+  na symbol/deň, blokovanie nových pokusov po realizovanom simulovanom
+  dennom poklese 6 USD. Nie je povinnosť vykonať žiadny obchod.
+- Nasledujúci vstup simulujeme až z **nasledujúcej potvrdenej 5m sviečky**;
+  ak sa neobjaví, nesimulujeme vykonanie. Pri súčasnom dotyku SL a TP
+  je výsledkom konzervatívne SL; ak chýbajú EOD dáta, PnL nevymýšľame.
+  Short obchody v simulátore **neoverujú poplatok za vypožičanie akcií**.
+- Oddelené súbory:
+  `fast_micro_state_v1.json`,
+  `fast_micro_signals_v1.jsonl`,
+  `fast_micro_events_v1.jsonl`,
+  `fast_micro_results_v1.csv`.
+  Nesčítavať s Alpaca PAPER výsledkami. Porovnanie spravíme až po
+  dostatočnej vzorke uzatvorených obchodov, s ohľadom na IEX spread a
+  kvalitu trhových dát.
 
 ## GitHub Actions Secrets — iba názvy, NIE hodnoty
 
