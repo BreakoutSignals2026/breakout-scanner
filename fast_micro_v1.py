@@ -2,7 +2,7 @@
 """FAST MICRO V1: independent, 100% virtual IEX breakout trade simulator.
 
 Shares *technical signal filters* with FAST V3.3.1, not its PAPER broker orders.
-A $1 risk budget, 0.50% fixed stop, 2R profit target, 0.05% estimated
+A $1 risk budget, 0.50% fixed stop, 2.5R profit target, 0.05% estimated
 slippage EACH side, whole shares; target is approximate $1-2, not guaranteed.
 A bar high/low that touches both stop and target exits at the STOP (pessimistic).
 A gap beyond stop can lose more than $1. IEX quotes are not consolidated NBBO;
@@ -24,13 +24,13 @@ RESULTS_PATH = Path("fast_micro_results_v1.csv")
 
 RISK_USD = 1.0
 STOP_PCT = 0.50
-REWARD_R = 2.0
+REWARD_R = 2.5
 SLIP_PCT = 0.05
 MAX_NOTIONAL_USD = 300.0
 MAX_DAILY_ATTEMPTS = 12
 MAX_SIMULTANEOUS = 2
 MAX_DAILY_REALIZED_LOSS = 6.0
-MIN_PROJECTED_PROFIT_USD = 1.0
+MIN_PROJECTED_PROFIT_USD = 1.5
 BAR_MINUTES = 5
 
 RESULT_COLUMNS = (
