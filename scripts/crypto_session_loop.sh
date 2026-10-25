@@ -29,9 +29,20 @@ while true; do
 
   # Always save even if scanner failed; its PAPER recovery state and previous
   # signal records must be durable BEFORE another process can trade.
-  git add -- crypto_virtual_v1_state.json crypto_virtual_v1_signals.jsonl \
+  # Fresh accounts have no signals, trades or journal yet. Stage only
+  # files that EXIST: one missing path can otherwise cause git add to fail.
+  changed_state=()
+  for state_file in \
+      crypto_virtual_v1_state.json crypto_virtual_v1_signals.jsonl \
       crypto_virtual_v1_trades.csv crypto_paper_state_v1.json \
-      crypto_paper_events_v1.jsonl 2>/dev/null || true
+      crypto_paper_events_v1.jsonl; do
+    if [[ -f "$state_file" ]]; then
+      changed_state+=("$state_file")
+    fi
+  done
+  if (("${#changed_state[@]}" > 0)); then
+    git add -- "${changed_state[@]}"
+  fi
 
   if ! git diff --cached --quiet; then
     git commit -m "Update CRYPTO V1 PAPER/virtual state (cycle $cycle)"

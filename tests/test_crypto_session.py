@@ -37,12 +37,13 @@ class CryptoContinuousTests(unittest.TestCase):
 
     def test_state_persisted_each_cycle_before_sleep(self):
         shell = SCRIPT.read_text(encoding="utf-8")
-        self.assertLess(shell.index("git add -- crypto_virtual_v1_state.json"),
+        self.assertLess(shell.index("git add --"),
                         shell.index("next_epoch="))
         self.assertIn("git pull --no-rebase -X ours origin main", shell)
         self.assertIn("git push origin HEAD:main", shell)
         self.assertIn("Could not persist PAPER broker state", shell)
         self.assertIn("python -u scanner_crypto_v1.py", shell)
+        self.assertIn('if [[ -f "$state_file" ]]; then', shell)
         self.assertIn("(now_epoch / 300 + 1) * 300 + 15", shell)
 
     def test_safe_startup_guards(self):
