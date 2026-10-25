@@ -123,11 +123,16 @@ class CryptoResearchTests(unittest.TestCase):
         before=START-timedelta(days=15)
         old=[{"t":(before+timedelta(minutes=i*5)).isoformat(),
               "o":100,"h":101,"l":99,"c":100,"v":1,"n":2} for i in range(13)]
+        old_now=before+timedelta(minutes=70)
+        self.assertEqual(obs.record_bars("BTC/USD",old,old_now),13)
         now=START+timedelta(minutes=80)
-        obs.record_bars("BTC/USD",old,now)
+        self.assertEqual(obs.record_bars("BTC/USD",candles(volume=1),now),16)
         with obs.CANDLE_PATH.open(newline="",encoding="utf-8") as f:
             rows=list(csv.DictReader(f))
-        self.assertEqual(len(rows),0)
+        self.assertEqual(len(rows),16)
+        self.assertTrue(all(
+            datetime.fromisoformat(x["bar_utc"])>=now-timedelta(days=14)
+            for x in rows))
 
 if __name__=="__main__":
     unittest.main()
