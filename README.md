@@ -146,7 +146,29 @@ a objednávky v Alpaca PAPER pred povolením obchodovania.
   GitHub štarty môže oneskoriť alebo vynechať, takže to NIE JE garancia
   absolútne nepretržitej prevádzky. `push` a manuálny štart zostávajú
   jednorazové (bez hodinovej slučky).
-- Dáta: Alpaca Market Data `/v1beta3/crypto/us/bars`, plne uzatvorené 5-minútové sviečky.
+- **CRYPTO V1.1 zber dát od 25.10.2026**: ukladá uzavreté **5-min OHLCV**
+  pre BTC/USD, ETH/USD, SOL/USD, aj keď je objem nula a žiadny obchod
+  nevznikol. Posledných **14 dní** drží v `crypto_candles_v1.csv`.
+  Po každej polhodine zapisuje stav dát a dôvod blokovania signálu
+  do `crypto_quality_v1.csv` (tiež 14-dňové okno).
+  Pri vynechanom GitHub behu sa dostupné historické sviečky doplnia až
+  približne 5 hodín dozadu. Tieto dva datasety sú **pozorovania z Alpaca
+  feedu**, nie garantovaný súhrn celého krypto trhu.
+- **Oddelený výskumný simulátor**: `crypto_observer_v1.py` vyhodnocuje
+  experimentálny *PRICE-ONLY* breakout >=0,10 %, pri aktuálne uzavretej
+  neplochej 5m sviečke a bez podmienky objemu. Je to **výlučne virtuálny
+  signál**, nikdy sa neposiela do Alpaca PAPER. Výsledky sú
+  `crypto_research_v1_state.json`, `crypto_research_v1_signals.jsonl`,
+  `crypto_research_v1_trades.csv`. Hypotetické riziko 1,50 USD,
+  TP 2R, SL 1,2 %, poplatok 0,25 % za stranu a sklz 0,08 % za stranu.
+  Takýto výsledok môže byť zavádzajúci pri nulovom volume: nie je to
+  potvrdenie reálnej obchodovateľnosti.
+- Dáta pre existujúce STRICT signály: Alpaca Market Data
+  `/v1beta3/crypto/us/bars`, plne uzatvorené 5-minútové sviečky.
+  **Iba pôvodné objemovo potvrdené STRICT signály** sa môžu dostať
+  k CRYPTO PAPER modulu. Jeho rizikové limity a stop-limit ochrana sa
+  nemenia. Pokiaľ feed neposkytuje dostatočný objem, PAPER nemusí
+  otvoriť žiadnu objednávku.
 - Počiatočné technické parametre: 12 sviečok, breakout >=0,15 %, RelVol >=1,5.
 - **Virtuálny backtest v reálnom čase**: hypotetický nasledujúci otvorený 5-min
   bar, SL 1,2 %, TP 2,4 %, odhad poplatkov 0,25 % za stranu a sklzu 0,08 %.
