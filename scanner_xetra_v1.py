@@ -6,8 +6,10 @@ No broker integration for Xetra on the user's Alpaca PAPER US account;
 do not present virtual fills as executed Xetra orders.
 """
 import math
+import csv
 import requests
 from datetime import datetime, time, timedelta, timezone
+from pathlib import Path
 from zoneinfo import ZoneInfo
 from market_virtual_core import VirtualBook, find_signal, full_bars
 from equity_candle_guard import verify_contiguous
@@ -18,6 +20,8 @@ SYMBOLS=("SAP.DE","SIE.DE","BMW.DE","ALV.DE","BAS.DE","DTE.DE")
 START=time(9,0)
 CLOSE=time(17,30)
 PREFIX="xetra_virtual_v1"
+QUALITY_FILE=Path("xetra_quality_v1.csv")
+QUALITY_COLS=("bucket_utc","symbol","latest_bar_utc","total_bars","grid_offset_minutes","integrity","signal_status")
 HEADERS={"User-Agent":"Mozilla/5.0 (compatible; VirtualResearchScanner/1.0)",
          "Accept":"application/json"}
 
@@ -70,6 +74,36 @@ def yahoo_bars(symbol, now):
                      "c":closes[i],"v":volumes[i]})
     return bars
 
+def log_quality(symbol,bars,now,integrity,signal_status):
+    """Persist one 30min data-quality sample per symbol, including no-signal scans."""
+    bucket=now.replace(minute=(now.minute//30)*30,second=0,microsecond=0)
+    cutoff=now-timedelta(days=14)
+    candles=full_bars(bars,now,5)
+    stamp=candles[-1]["t"].isoformat() if candles else ""
+    existing={}
+    if QUALITY_FILE.exists():
+        with QUALITY_FILE.open(newline="",encoding="utf-8") as handle:
+            for row in csv.DictReader(handle):
+                try:
+                    if datetime.fromisoformat(row["bucket_utc"])>=cutoff:
+                        existing[(row["bucket_utc"],row["symbol"])]=row
+                except (ValueError,TypeError,KeyError):
+                    continue
+    key=(bucket.isoformat(),symbol)
+    if key in existing:
+        return False
+    existing[key]={"bucket_utc":bucket.isoformat(),"symbol":symbol,
+                   "latest_bar_utc":stamp,"total_bars":len(candles),
+                   "grid_offset_minutes":candles[-1]["t"].minute%5 if candles else "",
+                   "integrity":integrity,"signal_status":signal_status}
+    tmp=QUALITY_FILE.with_suffix(".csv.tmp")
+    with tmp.open("w",newline="",encoding="utf-8") as handle:
+        writer=csv.DictWriter(handle,fieldnames=QUALITY_COLS)
+        writer.writeheader()
+        writer.writerows(sorted(existing.values(),key=lambda x:(x["bucket_utc"],x["symbol"])))
+    tmp.replace(QUALITY_FILE)
+    return True
+
 def scan_once(now=None):
     now=now or now_utc()
     if not is_trading_day(now):
@@ -80,7 +114,8 @@ def scan_once(now=None):
                      fee_pct=0.05,slippage_pct=0.05,notional_cap=600,
                      fractional=False,currency="EUR",max_day_entries=6,max_open=2)
     day=now.astimezone(BERLIN).date().isoformat()
-    stats={"symbols":0,"new_signals":0,"entries":0,"exits":0,"errors":0}
+    stats={"symbols":0,"new_signals":0,"entries":0,"exits":0,"errors":0,
+           "invalid_reference":0,"quality_logged":0,"offset_accepted":0}
     for symbol in SYMBOLS:
         try:
             bars=yahoo_bars(symbol,now)
@@ -95,10 +130,16 @@ def scan_once(now=None):
             # NEW simulated signals if the 12-bar reference has a time gap.
             completed=full_bars(bars,now,5)
             good,why=verify_contiguous(completed,key="t",count=13,
-                                        session_open=session_open)
+                                        session_open=session_open,
+                                        allow_fixed_grid_offset=True)
             if not good:
+                stats["invalid_reference"]+=1
+                stats["quality_logged"]+=int(log_quality(symbol,bars,now,why,"ENTRY_BLOCKED"))
                 print(f"XETRA {symbol}: 5Min DATA QUALITY {why}; no new signal",flush=True)
                 continue
+            if why.startswith("OK_fixed_offset_"):
+                stats["offset_accepted"]+=1
+            stats["quality_logged"]+=int(log_quality(symbol,bars,now,why,"REFERENCE_VALID"))
             signal=find_signal(symbol,bars,now,lookback=12,
                                min_breakout=.15,min_relvol=1.5,
                                max_age_minutes=30,allow_short=False)
@@ -114,6 +155,8 @@ def scan_once(now=None):
             print(f"XETRA DATA WARNING {symbol}: {exc} (virtual, no invented fill)",flush=True)
     if stats["symbols"]==0:
         raise RuntimeError("XETRA: no usable stock history; check Yahoo data access/terms")
+    # A successful no-signal run still persists a restart-safe virtual state.
+    book.persist()
     print(f"XETRA V1 {now.astimezone(BERLIN).isoformat()} {stats}. "
           "UNOFFICIAL possibly DELAYED Yahoo IEX? No: Yahoo Xetra research feed; "
           "100% VIRTUAL, NOT Alpaca PAPER fills",flush=True)

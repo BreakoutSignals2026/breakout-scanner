@@ -20,7 +20,7 @@ def parse_time(value):
     return parsed.astimezone(timezone.utc)
 
 
-def verify_contiguous(candles, *, key, count, session_open=None):
+def verify_contiguous(candles, *, key, count, session_open=None, allow_fixed_grid_offset=False):
     """Return (valid, reason), checking the latest COUNT bars.
 
     No requirement of 5-minute bars across overnight or lunch/session breaks
@@ -34,8 +34,11 @@ def verify_contiguous(candles, *, key, count, session_open=None):
         times=[parse_time(c[key]) for c in tail]
     except (ValueError,KeyError,TypeError):
         return False, "invalid_timestamp"
+    # XETRA Yahoo virtual feed may supply a consistent fixed-minute offset.
+    # Only explicit virtual research opt-in permits it. Never retime candles.
+    offset=times[0].minute%5 if allow_fixed_grid_offset else 0
     for t in times:
-        if t.second or t.microsecond or t.minute%5:
+        if t.second or t.microsecond or t.minute%5!=offset:
             return False, "off_grid_timestamp"
     if session_open is not None:
         opened=parse_time(session_open)
@@ -58,7 +61,7 @@ def verify_contiguous(candles, *, key, count, session_open=None):
                 return False,"invalid_volume"
     except (KeyError,TypeError,ValueError,OverflowError):
         return False,"missing_OHLCV"
-    return True,"OK"
+    return True, (f"OK_fixed_offset_{offset}m" if offset else "OK")
 
 
 def fully_closed_iex(bars, now, *, lag_seconds=10):
