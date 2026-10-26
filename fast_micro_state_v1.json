@@ -1,13 +1,14 @@
 {
   "daily": {
     "attempts": 10,
-    "closed": 6,
-    "pnl_usd": -2.43
+    "closed": 7,
+    "pnl_usd": -3.27
   },
   "date": "2026-10-26",
   "seen": [
     "AA:2026-10-26T16:20:00+00:00:buy",
     "AA:2026-10-26T17:55:00+00:00:buy",
+    "CHWY:2026-10-26T19:20:00+00:00:buy",
     "CLF:2026-10-26T17:45:00+00:00:sell",
     "CLSK:2026-10-26T17:00:00+00:00:buy",
     "DKNG:2026-10-26T15:40:00+00:00:sell",
@@ -20,6 +21,7 @@
     "MARA:2026-10-26T17:00:00+00:00:buy",
     "MARA:2026-10-26T18:50:00+00:00:sell",
     "NOK:2026-10-26T15:35:00+00:00:buy",
+    "PATH:2026-10-26T19:20:00+00:00:buy",
     "PTON:2026-10-26T15:50:00+00:00:sell",
     "PTON:2026-10-26T16:10:00+00:00:sell",
     "RGTI:2026-10-26T16:40:00+00:00:sell",
@@ -62,7 +64,7 @@
     "F": {
       "entry": 11.589200000000002,
       "entry_bar": "2026-10-26T17:45:00+00:00",
-      "last_bar": "2026-10-26T19:15:00+00:00",
+      "last_bar": "2026-10-26T19:20:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
@@ -134,26 +136,7 @@
       "phase": "watching"
     },
     "VALE": {
-      "entry": 11.8540675,
-      "entry_bar": "2026-10-26T19:10:00+00:00",
-      "last_bar": "2026-10-26T19:15:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-26T19:05:00+00:00",
-        "breakout_level": 11.89,
-        "breakout_percent": 0.25231286795627533,
-        "entry_close": 11.86,
-        "prior_avg_bar_notional_usd": 1236181.31,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08435259384225885,
-        "rel_volume": 2.696512605448027,
-        "side": "sell",
-        "signal_bar_notional_usd": 3309580.44,
-        "signal_bar_shares": 279054,
-        "signal_bar_trades": 396,
-        "symbol": "VALE"
-      }
+      "phase": "closed"
     }
   }
 }
