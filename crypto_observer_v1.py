@@ -39,17 +39,18 @@ def _load(path):
         return list(csv.DictReader(handle))
 
 
-def record_bars(symbol, raw_bars, now):
+def record_bars(symbol, raw_bars, now, path=None):
     """Backfill available *closed* 5m bars; bounded rolling market-data journal.
 
     Crucially, zero-volume bars are not silently removed or assigned volume.
     The study dataset captures broker-fed OHLCV, not exchange-wide turnover.
     """
+    path = path or CANDLE_PATH
     raw_by_t={str(b.get("t")):b for b in raw_bars}
     valid=full_bars(raw_bars,now,5)
     cutoff=now-timedelta(days=RETENTION_DAYS)
     existing={}
-    for item in _load(CANDLE_PATH):
+    for item in _load(path):
         try:
             if dt(item["bar_utc"])>=cutoff:
                 existing[(item["symbol"],item["bar_utc"])]=item
@@ -74,9 +75,9 @@ def record_bars(symbol, raw_bars, now):
                        "trades":str(count) if count is not None else "",
                        "zero_volume":str(int(volume==0))}
         added+=1
-    if added or (CANDLE_PATH.exists() and len(existing)!=len(_load(CANDLE_PATH))):
+    if added or (path.exists() and len(existing)!=len(_load(path))):
         rows=sorted(existing.values(),key=lambda x:(x["bar_utc"],x["symbol"]))
-        _save(CANDLE_PATH,CANDLE_COLUMNS,rows)
+        _save(path,CANDLE_COLUMNS,rows)
     return added
 
 

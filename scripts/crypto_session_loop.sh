@@ -50,7 +50,10 @@ while true; do
       crypto_paper_events_v1.jsonl \
       crypto_candles_v1.csv crypto_quality_v1.csv \
       crypto_research_v1_state.json crypto_research_v1_signals.jsonl \
-      crypto_research_v1_trades.csv; do
+      crypto_research_v1_trades.csv \
+      crypto_kraken_candles_v1.csv crypto_crossfeed_v1.csv \
+      crypto_trend_v1_state.json crypto_trend_v1_signals.jsonl \
+      crypto_trend_v1_trades.csv; do
     if [[ -f "$state_file" ]]; then
       changed_state+=("$state_file")
     fi

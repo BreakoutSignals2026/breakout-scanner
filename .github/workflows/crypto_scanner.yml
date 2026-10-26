@@ -1,4 +1,4 @@
-name: CRYPTO Breakout V1.0 - Alpaca PAPER + independent virtual 24/7
+name: CRYPTO Breakout V1.2 - Alpaca PAPER + US/Kraken virtual research 24/7
 
 on:
   # Push smoke test uses SAFE MODE: no new PAPER orders, only reconciliation
@@ -7,6 +7,7 @@ on:
     paths:
       - "scanner_crypto_v1.py"
       - "crypto_observer_v1.py"
+      - "crypto_crossfeed_v1.py"
       - "crypto_paper_v1.py"
       - "market_virtual_core.py"
       - ".github/workflows/crypto_scanner.yml"
