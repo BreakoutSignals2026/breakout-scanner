@@ -73,7 +73,7 @@ def save_result(result):
 def completed_bars(bars, now, session):
     """Ignore an in-progress last bar and all outside-session bars."""
     result = []
-    for bar in fully_closed_iex(bars, now):
+    for bar in fully_closed_iex(bars, now, lag_seconds=0):
         t = parse_dt(bar.get("t"))
         if t is None:
             continue

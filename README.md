@@ -117,6 +117,34 @@ toho istého scanneru. GitHub môže plánované spustenia oneskoriť alebo vyne
 Súbory so stavom vznikajú alebo sa aktualizujú automaticky počas skenovania.
 Ich odstránenie či prepísanie môže narušiť overovanie otvorených pozícií.
 
+## Päťminútová integrita akciových dát (26.10.2026)
+
+- Kontrola historických IEX sviečok za **23.10.2026**, riadna US seansa
+  09:30–16:00 NY, 78 intervalov na symbol: z **28 FAST** akcií
+  malo **26 bez chýbajúcich intervalov**, RGTI **77/78** a PTON **74/78**.
+  Ostatných 26 malo 78/78. IEX však nie je konsolidovaný SIP feed:
+  nemeria celý trh, aj keď je rada sviečok kompletná.
+- `equity_candle_guard.py` nepredstiera sviečky ani objem.
+  FAST V3.3.1 a FAST MICRO používajú časové pečiatky uzavretých barov,
+  nie slepé odrátanie posledného záznamu. Nové FAST signály musia mať
+  **15 súvislých 5Min barov** od dnešného riadneho US open;
+  pri medzere, duplicitnom čase, neúplnom OHLCV alebo starej sviečke
+  sa nový vstup preskočí, dôvod vypíše do GitHub logu.
+- Klasický BREAKOUT V2.5.2 (Twelve Data) vyžaduje **21 súvislých
+  5Min barov** od dnešného NY open, v súlade s lookback=20/ATR=14,
+  a chýbajúce súvislosti počíta do existujúcej diagnostiky
+  `nesuvisle_alebo_chybajuce_5min_sviecky`.
+- ORB pred virtuálnym breakout signálom overí presné tri
+  5Min otváracie sviečky (existovalo už predtým), plus nový
+  test bezprostrednej 5Min nadväznosti posledných dvoch barov.
+  XETRA Yahoo virtuálne signály vyžadujú **13 súvislých barov**.
+- **Nemodifikujú sa historické obchody, otvorené PAPER pozície,
+  existujúce stop/trailing ochrany, EOD likvidácia, limity
+  rizika ani nastavenie TP/SL.** Žiadna kontrola sama osebe
+  nezaručuje kladnú výnosnosť; súvislé IEX dáta stále pokrývajú
+  iba obchody na IEX, nie celý trh. Neznáme dátové medzery
+  zvyšujú pravdepodobnosť vynechania signálu, nie vstupu.
+
 ## FAST MICRO V1.0 – skúšobné malé zisky, iba virtuálne
 
 - Nový samostatný GitHub workflow `.github/workflows/fast_micro_scanner.yml`
