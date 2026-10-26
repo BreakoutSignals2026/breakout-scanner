@@ -8,6 +8,7 @@ on:
       - "scanner_crypto_v1.py"
       - "crypto_observer_v1.py"
       - "crypto_crossfeed_v1.py"
+      - "scripts/crypto_session_loop.sh"
       - "crypto_paper_v1.py"
       - "market_virtual_core.py"
       - ".github/workflows/crypto_scanner.yml"
