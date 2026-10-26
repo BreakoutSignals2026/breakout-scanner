@@ -5,6 +5,8 @@
 # Ordinary push/manual run: exactly ONE scan. The special safe-restart push
 # runs multiple 5min observation cycles for 25min, never sends new PAPER orders.
 # Workflow concurrency cancels prior session ONLY on this explicit restart.
+# Operator recovery test on 2026-10-26 after a missed hourly CRYPTO handover;
+# diagnostic push always disables new PAPER entries and expires in 25 minutes.
 set -euo pipefail
 
 continuous="${CRYPTO_CONTINUOUS:-false}"
