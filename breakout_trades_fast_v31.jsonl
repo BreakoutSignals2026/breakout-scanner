@@ -104,3 +104,5 @@
 {"timestamp": "2026-10-26T19:26:44+00:00", "action": "closed", "symbol": "DKNG", "entry": 20.77, "exit": 20.92, "qty": 10.0, "side": "sell", "pnl": -1.5, "pnl_pct": -0.722, "reason": "trailing stop", "holding_seconds": 12958}
 {"timestamp": "2026-10-26T19:26:46+00:00", "action": "entry_submitted", "symbol": "PATH", "order_id": "5899dac7-fdde-4c58-8699-0775a8966141", "requested_qty": 16, "reference": 14.26, "side": "buy", "estimated_risk": 2.9, "spread_percent": 0.07, "rel_volume": 3.6161743743346384, "breakout_percent": 0.2812939521800221, "bar_notional_usd": 714468.78, "quote_age_seconds": 1.153753, "chase_percent": 0.0, "signal_age_seconds": 106}
 {"timestamp": "2026-10-26T19:26:47+00:00", "action": "exit_accepted", "symbol": "PATH", "order_id": "5d0a2227-4aa5-4205-8835-3ef3dab4eed8", "qty": 16}
+{"timestamp": "2026-10-26T19:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "5c330520-5116-4078-bf22-53da432ac989"}
+{"timestamp": "2026-10-26T19:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "5d0a2227-4aa5-4205-8835-3ef3dab4eed8"}
