@@ -19,7 +19,7 @@
     "BTC/USD": {
       "entry": 79887.5934876,
       "entry_at": "2026-10-26T04:15:00+00:00",
-      "last_bar": "2026-10-26T19:25:00+00:00",
+      "last_bar": "2026-10-26T23:00:00+00:00",
       "phase": "open",
       "qty": 0.00100948,
       "signal": {
@@ -35,27 +35,6 @@
         "symbol": "BTC/USD",
         "volume_confirmed": false,
         "zero_volume": false
-      }
-    },
-    "SOL/USD": {
-      "entry": 101.06578799999998,
-      "entry_at": "2026-10-26T04:35:00+00:00",
-      "last_bar": "2026-10-26T19:25:00+00:00",
-      "phase": "open",
-      "qty": 0.79794718,
-      "signal": {
-        "age_minutes": 0.27,
-        "bar": "2026-10-26T04:30:00+00:00",
-        "bar_close": "2026-10-26T04:35:00+00:00",
-        "breakout_pct": 0.1388,
-        "feed_note": "ALPACA_OHLC_PRICE_ONLY_NOT_PAPER_ELIGIBLE",
-        "reference_price": 101.02,
-        "relvol": 0.0,
-        "research_only": true,
-        "side": "buy",
-        "symbol": "SOL/USD",
-        "volume_confirmed": false,
-        "zero_volume": true
       }
     }
   },
