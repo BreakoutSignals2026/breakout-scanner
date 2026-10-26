@@ -4,6 +4,46 @@
     "INTC": "2026-10-22T12:45:00-04:00",
     "NVDA": "2026-10-22T14:55:00-04:00"
   },
+  "daily_diagnostics": {
+    "date": "2026-10-26",
+    "scans": 5,
+    "totals": {
+      "bez_potvrdeneho_breakoutu": 6,
+      "blocked_positions": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 44,
+      "submitted": 0,
+      "symbols_checked": 50,
+      "technical_signals": 0
+    }
+  },
+  "daily_start_notice": "2026-10-26",
+  "last_scan_diagnostics": {
+    "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 81.1,
+      "submitted": 0,
+      "symbols_checked": 10,
+      "technical_signals": 0,
+      "time_ny": "2026-10-26T11:41:34-04:00"
+    },
+    "date": "2026-10-26",
+    "symbols": {
+      "AAPL": "nizky_relativny_objem",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "nizky_relativny_objem",
+      "GOOGL": "nizky_relativny_objem",
+      "INTC": "nizky_relativny_objem",
+      "META": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MSFT": "nizky_relativny_objem",
+      "NVDA": "nizky_relativny_objem",
+      "TSLA": "nizky_relativny_objem"
+    }
+  },
   "trades": {
     "B252_AMZN_202610221430": {
       "client_id": "B252_AMZN_202610221430",

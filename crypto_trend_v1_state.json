@@ -1,5 +1,38 @@
 {
-  "daily": {},
-  "positions": {},
-  "seen": {}
+  "daily": {
+    "2026-10-26": {
+      "attempts": 1,
+      "symbols": [
+        "BTC/USD"
+      ]
+    }
+  },
+  "positions": {
+    "BTC/USD": {
+      "entry": 80555.62498559999,
+      "entry_at": "2026-10-26T15:20:00+00:00",
+      "last_bar": "2026-10-26T15:35:00+00:00",
+      "phase": "open",
+      "qty": 0.00100111,
+      "signal": {
+        "age_minutes": 0.27,
+        "bar": "2026-10-26T15:15:00+00:00",
+        "bar_close": "2026-10-26T15:20:00+00:00",
+        "breakout_pct": 0.1031,
+        "feed_note": "US_KRAKEN_RESEARCH_NEVER_BROKER_SIGNAL",
+        "kraken_trend_confirmed": true,
+        "kraken_volume_confirmed": true,
+        "paper_eligible": false,
+        "reference_price": 80483.66,
+        "relvol": 1.375,
+        "research_only": true,
+        "side": "buy",
+        "symbol": "BTC/USD",
+        "us_kraken_deviation_pct": 0.0002
+      }
+    }
+  },
+  "seen": {
+    "BTC/USD:2026-10-26T15:15:00+00:00:buy": "2026-10-26"
+  }
 }

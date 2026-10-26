@@ -1,0 +1,131 @@
+{
+  "daily": {
+    "attempts": 3,
+    "closed": 0,
+    "pnl_usd": 0.0
+  },
+  "date": "2026-10-26",
+  "seen": [
+    "GME:2026-10-26T15:35:00+00:00:sell",
+    "NOK:2026-10-26T15:35:00+00:00:buy",
+    "RIOT:2026-10-26T15:15:00+00:00:buy",
+    "SNAP:2026-10-26T15:10:00+00:00:sell"
+  ],
+  "symbols": {
+    "AA": {
+      "phase": "watching"
+    },
+    "AAL": {
+      "phase": "watching"
+    },
+    "BB": {
+      "phase": "watching"
+    },
+    "CCL": {
+      "phase": "watching"
+    },
+    "CELH": {
+      "phase": "watching"
+    },
+    "CHWY": {
+      "phase": "watching"
+    },
+    "CLF": {
+      "phase": "watching"
+    },
+    "CLSK": {
+      "phase": "watching"
+    },
+    "DKNG": {
+      "phase": "watching"
+    },
+    "F": {
+      "phase": "watching"
+    },
+    "FSLY": {
+      "phase": "watching"
+    },
+    "GME": {
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:35:00+00:00",
+        "breakout_level": 24.62,
+        "breakout_percent": 0.4061738424045549,
+        "entry_close": 24.52,
+        "prior_avg_bar_notional_usd": 74402.03,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.04077471967380862,
+        "rel_volume": 4.1913875598086126,
+        "side": "sell",
+        "signal_bar_notional_usd": 309663.08,
+        "signal_bar_shares": 12629,
+        "signal_bar_trades": 113,
+        "symbol": "GME"
+      }
+    },
+    "HIMS": {
+      "phase": "watching"
+    },
+    "IREN": {
+      "phase": "watching"
+    },
+    "LUNR": {
+      "phase": "watching"
+    },
+    "MARA": {
+      "phase": "watching"
+    },
+    "NOK": {
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:35:00+00:00",
+        "breakout_level": 8.635,
+        "breakout_percent": 0.23161551823971716,
+        "entry_close": 8.655,
+        "prior_avg_bar_notional_usd": 667079.68,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.11554015020219278,
+        "rel_volume": 1.546304301131573,
+        "side": "buy",
+        "signal_bar_notional_usd": 1043645.86,
+        "signal_bar_shares": 120583,
+        "signal_bar_trades": 411,
+        "symbol": "NOK"
+      }
+    },
+    "NU": {
+      "phase": "watching"
+    },
+    "PATH": {
+      "phase": "watching"
+    },
+    "PTON": {
+      "phase": "watching"
+    },
+    "QBTS": {
+      "phase": "watching"
+    },
+    "RGTI": {
+      "phase": "watching"
+    },
+    "RIOT": {
+      "phase": "watching"
+    },
+    "RIVN": {
+      "phase": "watching"
+    },
+    "SNAP": {
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
+    },
+    "SOFI": {
+      "phase": "watching"
+    },
+    "U": {
+      "phase": "watching"
+    },
+    "VALE": {
+      "phase": "watching"
+    }
+  }
+}
