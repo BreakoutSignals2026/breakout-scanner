@@ -6,12 +6,37 @@
         "BTC/USD",
         "ETH/USD"
       ]
+    },
+    "2026-10-26": {
+      "attempts": 1,
+      "symbols": [
+        "BTC/USD"
+      ]
     }
   },
-  "positions": {},
+  "positions": {
+    "BTC/USD": {
+      "phase": "pending",
+      "signal": {
+        "age_minutes": 0.27,
+        "bar": "2026-10-26T04:10:00+00:00",
+        "bar_close": "2026-10-26T04:15:00+00:00",
+        "breakout_pct": 0.1561,
+        "feed_note": "ALPACA_OHLC_PRICE_ONLY_NOT_PAPER_ELIGIBLE",
+        "reference_price": 79816.9235,
+        "relvol": 0.0,
+        "research_only": true,
+        "side": "buy",
+        "symbol": "BTC/USD",
+        "volume_confirmed": false,
+        "zero_volume": false
+      }
+    }
+  },
   "seen": {
     "BTC/USD:2026-10-25T14:50:00+00:00:buy": "2026-10-25",
     "BTC/USD:2026-10-25T22:00:00+00:00:buy": "2026-10-25",
+    "BTC/USD:2026-10-26T04:10:00+00:00:buy": "2026-10-26",
     "ETH/USD:2026-10-25T14:50:00+00:00:buy": "2026-10-25",
     "ETH/USD:2026-10-25T15:35:00+00:00:buy": "2026-10-25",
     "ETH/USD:2026-10-25T16:55:00+00:00:buy": "2026-10-25",
