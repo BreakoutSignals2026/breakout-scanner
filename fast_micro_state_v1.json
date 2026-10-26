@@ -95,7 +95,11 @@
       "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
-      "phase": "pending",
+      "entry": 14.5027425,
+      "entry_bar": "2026-10-26T16:00:00+00:00",
+      "last_bar": "2026-10-26T16:00:00+00:00",
+      "phase": "open",
+      "qty": 10,
       "signal": {
         "bar_key": "2026-10-26T15:55:00+00:00",
         "breakout_level": 14.555,
