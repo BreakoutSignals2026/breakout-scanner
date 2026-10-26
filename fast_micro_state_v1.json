@@ -6,6 +6,7 @@
   },
   "date": "2026-10-26",
   "seen": [
+    "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell"
   ],
   "symbols": {
@@ -82,22 +83,8 @@
       "phase": "watching"
     },
     "SNAP": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-26T15:10:00+00:00",
-        "breakout_level": 6.195,
-        "breakout_percent": 0.3228410008071099,
-        "entry_close": 6.175,
-        "prior_avg_bar_notional_usd": 345062.26,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.1619433198380532,
-        "rel_volume": 2.215155576845487,
-        "side": "sell",
-        "signal_bar_notional_usd": 754331.82,
-        "signal_bar_shares": 122159,
-        "signal_bar_trades": 61,
-        "symbol": "SNAP"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
       "phase": "watching"
