@@ -108,3 +108,5 @@
 {"timestamp": "2026-10-26T19:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "5d0a2227-4aa5-4205-8835-3ef3dab4eed8"}
 {"timestamp": "2026-10-26T19:46:05+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 26, "order_id": "c9f2106f-3a68-460d-b035-8f93f7d9c5d3"}
 {"timestamp": "2026-10-26T19:46:06+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 16, "order_id": "8e9df9b7-b1d7-4060-a74c-11da17199784"}
+{"timestamp": "2026-10-26T19:46:41+00:00", "action": "closed", "symbol": "NOK", "entry": 8.66, "exit": 8.69, "qty": 26.0, "side": "buy", "pnl": 0.78, "pnl_pct": 0.346, "reason": "koniec seansy", "holding_seconds": 14592}
+{"timestamp": "2026-10-26T19:46:42+00:00", "action": "closed", "symbol": "PATH", "entry": 14.26, "exit": 14.26, "qty": 16.0, "side": "buy", "pnl": 0.0, "pnl_pct": 0.0, "reason": "koniec seansy", "holding_seconds": 1162}
