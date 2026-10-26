@@ -21,22 +21,8 @@
   ],
   "symbols": {
     "AA": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-26T16:20:00+00:00",
-        "breakout_level": 38.51,
-        "breakout_percent": 0.16878732796677443,
-        "entry_close": 38.575,
-        "prior_avg_bar_notional_usd": 67555.31,
-        "quote_spread": 0.030000000000001137,
-        "quote_spread_pct": 0.07777057679844754,
-        "rel_volume": 2.192362361413816,
-        "side": "buy",
-        "signal_bar_notional_usd": 148745.2,
-        "signal_bar_shares": 3856,
-        "signal_bar_trades": 58,
-        "symbol": "AA"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "AAL": {
       "phase": "watching"
