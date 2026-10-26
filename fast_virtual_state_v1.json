@@ -11,6 +11,7 @@
     "NOK:2026-10-26T15:35:00+00:00:buy",
     "PTON:2026-10-26T15:50:00+00:00:sell",
     "PTON:2026-10-26T16:10:00+00:00:sell",
+    "RGTI:2026-10-26T16:40:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell",
     "SOFI:2026-10-26T15:55:00+00:00:sell"
@@ -20,7 +21,7 @@
       "entry": 38.599289999999996,
       "entry_bar": "2026-10-26T16:25:00+00:00",
       "high_water": 38.62,
-      "last_bar": "2026-10-26T16:35:00+00:00",
+      "last_bar": "2026-10-26T16:40:00+00:00",
       "low_water": 38.599289999999996,
       "phase": "open",
       "qty": 6,
@@ -63,7 +64,7 @@
       "entry": 20.799595,
       "entry_bar": "2026-10-26T15:45:00+00:00",
       "high_water": 20.799595,
-      "last_bar": "2026-10-26T16:35:00+00:00",
+      "last_bar": "2026-10-26T16:40:00+00:00",
       "low_water": 20.665,
       "phase": "open",
       "qty": 11,
@@ -91,8 +92,8 @@
       "entry": 24.517735000000002,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 24.517735000000002,
-      "last_bar": "2026-10-26T16:35:00+00:00",
-      "low_water": 23.91,
+      "last_bar": "2026-10-26T16:40:00+00:00",
+      "low_water": 23.88,
       "phase": "open",
       "qty": 9,
       "signal": {
@@ -125,7 +126,7 @@
       "entry": 8.66433,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 8.685,
-      "last_bar": "2026-10-26T16:35:00+00:00",
+      "last_bar": "2026-10-26T16:40:00+00:00",
       "low_water": 8.66433,
       "phase": "open",
       "qty": 27,
@@ -153,7 +154,7 @@
       "entry": 5.25737,
       "entry_bar": "2026-10-26T15:55:00+00:00",
       "high_water": 5.25737,
-      "last_bar": "2026-10-26T16:35:00+00:00",
+      "last_bar": "2026-10-26T16:40:00+00:00",
       "low_water": 5.24,
       "phase": "open",
       "qty": 45,
@@ -175,7 +176,20 @@
       "phase": "watching"
     },
     "RGTI": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T16:40:00+00:00",
+        "breakout_level": 11.535,
+        "breakout_percent": 0.6501950585175491,
+        "entry_close": 11.46,
+        "prior_avg_bar_notional_usd": 42134.51,
+        "rel_volume": 1.7353439977998808,
+        "side": "sell",
+        "signal_bar_notional_usd": 72312.6,
+        "signal_bar_shares": 6310,
+        "signal_bar_trades": 49,
+        "symbol": "RGTI"
+      }
     },
     "RIOT": {
       "phase": "closed"
@@ -190,7 +204,7 @@
       "entry": 14.5077425,
       "entry_bar": "2026-10-26T16:00:00+00:00",
       "high_water": 14.5077425,
-      "last_bar": "2026-10-26T16:35:00+00:00",
+      "last_bar": "2026-10-26T16:40:00+00:00",
       "low_water": 14.485,
       "phase": "open",
       "qty": 16,
