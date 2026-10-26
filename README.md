@@ -14,7 +14,7 @@ Nie je tu žiadny LIVE trading workflow.
 | FAST MICRO V1.0 – simulácia | `scanner_fast_micro_v1.py` + `fast_micro_v1.py` | `.github/workflows/fast_micro_scanner.yml` | Tých istých 28 US akcií; hypotetické riziko 1 USD, fixný SL/TP; **BEZ objednávok** |
 | BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | 10 akcií; breakout, pevný stop + TP 1:2 |
 | ORB V1.0 – simulácia | `scanner_orb_v1.py` | `.github/workflows/orb_scanner.yml` | 28 akcií; prvých 15 minút, hypotetický SL + TP 1:2; **bez objednávok** |
-| CRYPTO V1.0 | `scanner_crypto_v1.py` + `crypto_paper_v1.py` | `.github/workflows/crypto_scanner.yml` | BTC/USD ETH/USD SOL/USD 24/7; nezávislé virtuálne obchody + oddelený Alpaca PAPER modul |
+| CRYPTO V1.2 | `scanner_crypto_v1.py` + `crypto_paper_v1.py` | `.github/workflows/crypto_scanner.yml` | BTC/USD ETH/USD SOL/USD 24/7; nezávislé virtuálne obchody + oddelený Alpaca PAPER modul |
 | XETRA V1.0 | `scanner_xetra_v1.py` | `.github/workflows/xetra_scanner.yml` | SAP.DE, SIE.DE, BMW.DE, ALV.DE, BAS.DE, DTE.DE; nemecké akcie, **iba virtuálne** |
 
 - **FAST V3.3.1 PAPER:** plánované riziko **3 USD na obchod** (nie garantované maximum);
@@ -40,6 +40,40 @@ Nie je tu žiadny LIVE trading workflow.
 - Pred koncom obchodného dňa sa programy snažia ukončiť svoje pozície
   približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca.
   Pri výpadku GitHub Actions alebo Alpaca to **nie je záruka** uzatvorenia.
+
+## CRYPTO V1.2: porovnanie Kraken a trendový virtuálny test
+
+- Dva nezávislé kanály cez Alpaca Crypto Market Data API:
+  **`/v1beta3/crypto/us/bars` (Alpaca US)** a
+  **`/v1beta3/crypto/us-1/bars` (Kraken US)**.
+  Získavame **iba uzavreté päťminútové sviečky** rovnakých symbolov
+  BTC/USD, ETH/USD a SOL/USD. Druhý kanál nie je ďalšia PAPER burza.
+- `crypto_kraken_candles_v1.csv` má oddelenú 14-dňovú históriu
+  Kraken OHLCV. `crypto_crossfeed_v1.csv` každých 30 minút ukladá
+  počet zhodných 5-min sviečok, kvalitu objemu za 12 sviečok,
+  odchýlku zatváracích cien a dôvod prípadného odmietnutia.
+  Pri výpadku Krakenu zaznamená chybu; **nevymýšľa náhradný objem**
+  a pôvodnú STRICT stratégiu nemení.
+- `crypto_trend_v1.py` (vyhodnocovacia logika v
+  `crypto_crossfeed_v1.py`) vytvára **iba experimentálne LONG signály**
+  pri prerazení maxima posledných 12 uzavretých US sviečok o aspoň
+  0,10 %, pri SMA9 nad SMA21 na **oboch** dátových kanáloch,
+  čerstvých časovo zosúladených dátach (bez chýbajúcich 5-min
+  sviečok), odchýlke ceny maximálne 0,75 % a skutočnom
+  Kraken objeme (aspoň 8 z 12 sviečok + relatívny objem >=1,2×).
+  Simuluje zhodné US/Alpaca vstupy až po uzavretí nasledujúcej
+  5-min sviečky, nie vstup na Krakene.
+- Výsledky: `crypto_trend_v1_state.json`,
+  `crypto_trend_v1_signals.jsonl`, `crypto_trend_v1_trades.csv`.
+  Odhadovaný risk 1,50 USD, stop 1,2 %, ziskový cieľ 2R,
+  odhadovaný poplatok 0,25 % za stranu a sklz 0,08 % za stranu,
+  najviac 6 pokusov denne a 2 otvorené modelové obchody.
+  Model je konzervatívny pri nejasnom poradí SL/TP, ale nie je
+  reprodukciou reálneho plnenia alebo budúcej výnosnosti.
+- **ŽIADNY Kraken signál nevstúpi do `crypto_paper_v1.py`.**
+  PAPER modul stále dostáva výhradne pôvodné `STRICT` signály
+  z `find_signal` nad Alpacou US. Pri chýbajúcich dátach
+  Krakenu sa nové trendové vstupy **neuskutočnia**.
 
 ## Automatické spustenie
 

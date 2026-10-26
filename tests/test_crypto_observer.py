@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import crypto_observer_v1 as obs
+import crypto_crossfeed_v1 as cross
 import scanner_crypto_v1 as crypto
 import market_virtual_core as core
 
@@ -36,8 +37,14 @@ class CryptoResearchTests(unittest.TestCase):
             with_patch=patch.object(obs,key,base/p)
             with_patch.start()
             self.addCleanup(with_patch.stop)
+        for attr,filename in (("KRAKEN_CANDLES","kraken_ohlcv.csv"),
+                              ("COMPARE_PATH","crossfeed.csv")):
+            p=patch.object(cross,attr,base/filename)
+            p.start()
+            self.addCleanup(p.stop)
         for k,p in (("VIRTUAL_PREFIX","strict"),
-                    ("RESEARCH_PREFIX","research")):
+                    ("RESEARCH_PREFIX","research"),
+                    ("TREND_PREFIX","trend")):
             pp=patch.object(crypto,k,str(base/p))
             pp.start()
             self.addCleanup(pp.stop)
