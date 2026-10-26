@@ -4,6 +4,7 @@
     "DKNG:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
+    "GME:2026-10-26T15:45:00+00:00:sell",
     "NOK:2026-10-26T15:35:00+00:00:buy",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell"
@@ -34,7 +35,13 @@
       "phase": "watching"
     },
     "DKNG": {
-      "phase": "pending",
+      "entry": 20.799595,
+      "entry_bar": "2026-10-26T15:45:00+00:00",
+      "high_water": 20.799595,
+      "last_bar": "2026-10-26T15:45:00+00:00",
+      "low_water": 20.68,
+      "phase": "open",
+      "qty": 11,
       "signal": {
         "bar_key": "2026-10-26T15:40:00+00:00",
         "breakout_level": 20.895,
@@ -59,8 +66,8 @@
       "entry": 24.517735000000002,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 24.517735000000002,
-      "last_bar": "2026-10-26T15:40:00+00:00",
-      "low_water": 24.36,
+      "last_bar": "2026-10-26T15:45:00+00:00",
+      "low_water": 24.23,
       "phase": "open",
       "qty": 9,
       "signal": {
@@ -93,7 +100,7 @@
       "entry": 8.66433,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 8.66433,
-      "last_bar": "2026-10-26T15:40:00+00:00",
+      "last_bar": "2026-10-26T15:45:00+00:00",
       "low_water": 8.66433,
       "phase": "open",
       "qty": 27,
@@ -127,26 +134,7 @@
       "phase": "watching"
     },
     "RIOT": {
-      "entry": 12.96648,
-      "entry_bar": "2026-10-26T15:20:00+00:00",
-      "high_water": 13.015,
-      "last_bar": "2026-10-26T15:40:00+00:00",
-      "low_water": 12.96648,
-      "phase": "open",
-      "qty": 18,
-      "signal": {
-        "bar_key": "2026-10-26T15:15:00+00:00",
-        "breakout_level": 12.85,
-        "breakout_percent": 0.6225680933852146,
-        "entry_close": 12.93,
-        "prior_avg_bar_notional_usd": 373133.86,
-        "rel_volume": 1.555744766102374,
-        "side": "buy",
-        "signal_bar_notional_usd": 602447.49,
-        "signal_bar_shares": 46593,
-        "signal_bar_trades": 253,
-        "symbol": "RIOT"
-      }
+      "phase": "closed"
     },
     "RIVN": {
       "phase": "watching"
