@@ -102,9 +102,9 @@ class IntegrityTests(unittest.TestCase):
 
     def test_classic_gap_block_reported_in_diagnostics(self):
         bars=[{"time":START.astimezone(classic.NY)+timedelta(minutes=5*i),
-               "o":10.0,"h":10.05 if i!=19 else 10.16,"l":9.95,
-               "c":10.02 if i!=19 else 10.13,
-               "v":3000 if i!=19 else 6500} for i in range(20)]
+               "o":10.0,"h":10.05 if i!=23 else 10.16,"l":9.95,
+               "c":10.02 if i!=23 else 10.13,
+               "v":3000 if i!=23 else 6500} for i in range(24)]
         check=bars[-1]["time"]+timedelta(minutes=5,seconds=30)
         with patch.object(classic,"now_ny",return_value=check):
             good={}
@@ -128,7 +128,7 @@ class IntegrityTests(unittest.TestCase):
           {"t":datetime(2026,10,26,9,50,tzinfo=orb.NY),"o":10.10,
            "h":10.45,"l":10.10,"c":10.30,"v":8000,"n":100}]
         self.assertIsNone(orb.pick_signal("RIOT",gaps,opening,session,
-                          datetime(2026,10,26,9,55,seconds=12,tzinfo=orb.NY)))
+                          datetime(2026,10,26,9,55,12,tzinfo=orb.NY)))
 
 
 if __name__=="__main__":
