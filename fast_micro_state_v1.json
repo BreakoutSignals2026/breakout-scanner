@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 3,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 2,
+    "pnl_usd": 0.9
   },
   "date": "2026-10-26",
   "seen": [
@@ -10,7 +10,9 @@
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:45:00+00:00:sell",
+    "GME:2026-10-26T15:50:00+00:00:sell",
     "NOK:2026-10-26T15:35:00+00:00:buy",
+    "PTON:2026-10-26T15:50:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell"
   ],
@@ -49,26 +51,7 @@
       "phase": "watching"
     },
     "GME": {
-      "entry": 24.512735,
-      "entry_bar": "2026-10-26T15:40:00+00:00",
-      "last_bar": "2026-10-26T15:45:00+00:00",
-      "phase": "open",
-      "qty": 6,
-      "signal": {
-        "bar_key": "2026-10-26T15:35:00+00:00",
-        "breakout_level": 24.62,
-        "breakout_percent": 0.4061738424045549,
-        "entry_close": 24.52,
-        "prior_avg_bar_notional_usd": 74402.03,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.04077471967380862,
-        "rel_volume": 4.1913875598086126,
-        "side": "sell",
-        "signal_bar_notional_usd": 309663.08,
-        "signal_bar_shares": 12629,
-        "signal_bar_trades": 113,
-        "symbol": "GME"
-      }
+      "phase": "closed"
     },
     "HIMS": {
       "phase": "watching"
@@ -83,26 +66,7 @@
       "phase": "watching"
     },
     "NOK": {
-      "entry": 8.669329999999999,
-      "entry_bar": "2026-10-26T15:40:00+00:00",
-      "last_bar": "2026-10-26T15:45:00+00:00",
-      "phase": "open",
-      "qty": 16,
-      "signal": {
-        "bar_key": "2026-10-26T15:35:00+00:00",
-        "breakout_level": 8.635,
-        "breakout_percent": 0.23161551823971716,
-        "entry_close": 8.655,
-        "prior_avg_bar_notional_usd": 667079.68,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.11554015020219278,
-        "rel_volume": 1.546304301131573,
-        "side": "buy",
-        "signal_bar_notional_usd": 1043645.86,
-        "signal_bar_shares": 120583,
-        "signal_bar_trades": 411,
-        "symbol": "NOK"
-      }
+      "phase": "closed"
     },
     "NU": {
       "phase": "watching"
