@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 3,
+    "attempts": 4,
     "closed": 2,
     "pnl_usd": 0.9
   },
@@ -14,7 +14,8 @@
     "NOK:2026-10-26T15:35:00+00:00:buy",
     "PTON:2026-10-26T15:50:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
-    "SNAP:2026-10-26T15:10:00+00:00:sell"
+    "SNAP:2026-10-26T15:10:00+00:00:sell",
+    "SOFI:2026-10-26T15:55:00+00:00:sell"
   ],
   "symbols": {
     "AA": {
@@ -94,7 +95,22 @@
       "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:55:00+00:00",
+        "breakout_level": 14.555,
+        "breakout_percent": 0.24046719340432937,
+        "entry_close": 14.52,
+        "prior_avg_bar_notional_usd": 169143.15,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.06889424733034645,
+        "rel_volume": 2.0089200932293614,
+        "side": "sell",
+        "signal_bar_notional_usd": 337909.44,
+        "signal_bar_shares": 23272,
+        "signal_bar_trades": 92,
+        "symbol": "SOFI"
+      }
     },
     "U": {
       "phase": "watching"
