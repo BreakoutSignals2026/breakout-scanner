@@ -7,14 +7,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-26",
-    "scans": 17,
+    "scans": 18,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 15,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 16,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 154,
+      "nizky_relativny_objem": 162,
       "submitted": 1,
-      "symbols_checked": 170,
+      "symbols_checked": 179,
       "technical_signals": 1
     }
   },
@@ -22,21 +22,21 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 0,
+      "blocked_positions": 1,
       "exceptions": 0,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 82.4,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-10-26T12:52:33-04:00"
+      "scan_seconds": 73.1,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-10-26T12:58:20-04:00"
     },
     "date": "2026-10-26",
     "symbols": {
-      "AAPL": "order_submitted",
-      "AMD": "bez_potvrdeneho_breakoutu",
+      "AAPL": "position_or_order_blocked",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
@@ -55,7 +55,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-10-26T12:45:00-04:00",
-      "status": "pending",
+      "status": "open",
       "stop": 343.63,
       "submitted": "2026-10-26T16:51:52+00:00",
       "symbol": "AAPL",
