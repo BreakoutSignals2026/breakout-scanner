@@ -19,6 +19,7 @@ import os
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
+from equity_candle_guard import verify_contiguous
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -263,6 +264,10 @@ def pick_signal(symbol, bars, opening, session, now):
         return None
     last = bars[-1]
     previous = bars[-2]
+    good, why = verify_contiguous(bars, key="t", count=2)
+    if not good:
+        print(f"ORB {symbol}: IEX 5Min DATA QUALITY: {why}; no new signal",flush=True)
+        return None
     bar_close = last["t"] + timedelta(minutes=5)
     scan_start = session["open"] + timedelta(minutes=15)
     scan_end = session["open"].replace(hour=SCAN_END_HOUR, minute=SCAN_END_MIN)

@@ -9,7 +9,8 @@ import math
 import requests
 from datetime import datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
-from market_virtual_core import VirtualBook, find_signal
+from market_virtual_core import VirtualBook, find_signal, full_bars
+from equity_candle_guard import verify_contiguous
 
 BERLIN=ZoneInfo("Europe/Berlin")
 # Yahoo .DE instruments are labelled XETRA / GER; validate metadata.
@@ -90,7 +91,14 @@ def scan_once(now=None):
                 print(f"XETRA VIRTUAL EXIT {symbol} {result['pnl']:+.2f} EUR {result['reason']}",flush=True)
             if now>=session_close-timedelta(minutes=30):
                 continue
-            # Yahoo may publish delayed data. Record age; never claim live execution.
+            # Yahoo may publish delayed/partial Xetra data. Fail-closed for
+            # NEW simulated signals if the 12-bar reference has a time gap.
+            completed=full_bars(bars,now,5)
+            good,why=verify_contiguous(completed,key="t",count=13,
+                                        session_open=session_open)
+            if not good:
+                print(f"XETRA {symbol}: 5Min DATA QUALITY {why}; no new signal",flush=True)
+                continue
             signal=find_signal(symbol,bars,now,lookback=12,
                                min_breakout=.15,min_relvol=1.5,
                                max_age_minutes=30,allow_short=False)

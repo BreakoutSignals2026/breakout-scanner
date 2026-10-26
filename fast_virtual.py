@@ -13,6 +13,7 @@ import json
 import math
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
+from equity_candle_guard import fully_closed_iex
 from pathlib import Path
 
 VIRTUAL_STATE = Path("fast_virtual_state_v1.json")
@@ -72,7 +73,7 @@ def save_result(result):
 def completed_bars(bars, now, session):
     """Ignore an in-progress last bar and all outside-session bars."""
     result = []
-    for bar in bars[:-1]:
+    for bar in fully_closed_iex(bars, now):
         t = parse_dt(bar.get("t"))
         if t is None:
             continue

@@ -8,6 +8,7 @@ import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
+from equity_candle_guard import fully_closed_iex, verify_contiguous
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -274,11 +275,21 @@ def analyze_symbol(symbol, bars=None):
     try:
         if bars is None:
             bars = get_bars(symbol)
-        required = max(BREAKOUT_LOOKBACK, VOLUME_LOOKBACK, ATR_PERIOD) + 3
-        if len(bars) < required:
+        # Base candles on UTC interval completion, not on bars[:-1].
+        # Some feeds return no in-progress candle, so blindly discarding
+        # the last bar delays signals and may distort the breakout window.
+        now = now_utc()
+        closed = fully_closed_iex(bars, now)
+        required = max(BREAKOUT_LOOKBACK, VOLUME_LOOKBACK, ATR_PERIOD) + 1
+        valid, reason = verify_contiguous(
+            closed, key="t", count=required,
+            session_open=datetime.combine(now.astimezone(NY).date(),
+                                          datetime.min.time().replace(hour=9,minute=30),
+                                          tzinfo=NY))
+        if not valid:
+            print(f"{symbol}: IEX 5Min DATA QUALITY: {reason}; new signal skipped",
+                  flush=True)
             return None
-        # Keep V3 strategy unchanged: use the last fully closed candle only.
-        closed = bars[:-1]
         candle = closed[-1]
         entry_close = fnum(candle["c"])
         if not MIN_PRICE <= entry_close <= MAX_PRICE:

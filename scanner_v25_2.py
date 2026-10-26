@@ -20,6 +20,7 @@ import os
 import sys
 import time
 from datetime import datetime, date, timedelta, timezone
+from equity_candle_guard import verify_contiguous
 from pathlib import Path
 from statistics import median
 from zoneinfo import ZoneInfo
@@ -256,6 +257,18 @@ def analyze(symbol, candles, diagnostics=None):
 
     if len(candles) < BREAKOUT_LOOKBACK + 1:
         return reject("malo_5min_sviecok")
+    # Time jumps in Twelve Data silently change what 12-bar breakout and
+    # ATR(14) mean. Reject NEW entries without touching existing brackets.
+    session_start=datetime.combine(now_ny().date(),datetime.min.time().replace(
+                                   hour=9,minute=30),tzinfo=NY)
+    good,why=verify_contiguous(
+        candles,key="time",
+        count=max(BREAKOUT_LOOKBACK,VOLUME_LOOKBACK,ATR_PERIOD)+1,
+        session_open=session_start)
+    if not good:
+        print(f"{symbol}: TWELVE 5Min DATA QUALITY: {why}; no new entry",
+              flush=True)
+        return reject("nesuvisle_alebo_chybajuce_5min_sviecky")
     last = candles[-1]
     bar_age = (now_ny() - (last["time"] + timedelta(minutes=5))).total_seconds()
     if not -5 <= bar_age <= MAX_SIGNAL_AGE_SECONDS:
