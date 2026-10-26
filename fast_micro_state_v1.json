@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 8,
-    "closed": 5,
-    "pnl_usd": -1.6
+    "closed": 6,
+    "pnl_usd": -2.43
   },
   "date": "2026-10-26",
   "seen": [
@@ -47,26 +47,7 @@
       "phase": "watching"
     },
     "CLSK": {
-      "entry": 8.019005,
-      "entry_bar": "2026-10-26T17:05:00+00:00",
-      "last_bar": "2026-10-26T17:05:00+00:00",
-      "phase": "open",
-      "qty": 17,
-      "signal": {
-        "bar_key": "2026-10-26T17:00:00+00:00",
-        "breakout_level": 7.995,
-        "breakout_percent": 0.1876172607879885,
-        "entry_close": 8.01,
-        "prior_avg_bar_notional_usd": 35178.16,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.12492192379762383,
-        "rel_volume": 3.178183186007147,
-        "side": "buy",
-        "signal_bar_notional_usd": 112796.82,
-        "signal_bar_shares": 14082,
-        "signal_bar_trades": 24,
-        "symbol": "CLSK"
-      }
+      "phase": "closed"
     },
     "DKNG": {
       "phase": "watching"
