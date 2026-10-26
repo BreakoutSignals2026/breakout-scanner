@@ -20,8 +20,9 @@ class CryptoContinuousTests(unittest.TestCase):
 
     def test_scheduled_handover_without_five_minute_cron(self):
         yaml = WORKFLOW.read_text(encoding="utf-8")
-        self.assertIn('cron: "17 0,3,6,9,12,15,18,21 * * *"', yaml)
+        self.assertIn('cron: "17 * * * *"', yaml)
         self.assertNotIn('cron: "*/5 * * * *"', yaml)
+        self.assertIn("ONE active CRYPTO worker", yaml)
         self.assertIn("timeout-minutes: 240", yaml)
         self.assertIn("group: crypto-breakout-v1", yaml)
         self.assertIn("[crypto-safe-restart]", yaml)
