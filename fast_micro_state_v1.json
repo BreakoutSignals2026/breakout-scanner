@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 8,
-    "closed": 4,
-    "pnl_usd": -0.77
+    "closed": 5,
+    "pnl_usd": -1.6
   },
   "date": "2026-10-26",
   "seen": [
@@ -47,7 +47,11 @@
       "phase": "watching"
     },
     "CLSK": {
-      "phase": "pending",
+      "entry": 8.019005,
+      "entry_bar": "2026-10-26T17:05:00+00:00",
+      "last_bar": "2026-10-26T17:05:00+00:00",
+      "phase": "open",
+      "qty": 17,
       "signal": {
         "bar_key": "2026-10-26T17:00:00+00:00",
         "breakout_level": 7.995,
@@ -86,22 +90,7 @@
       "phase": "watching"
     },
     "MARA": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-26T17:00:00+00:00",
-        "breakout_level": 7.03,
-        "breakout_percent": 0.4978662873399735,
-        "entry_close": 7.065,
-        "prior_avg_bar_notional_usd": 53020.55,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.14174344436569508,
-        "rel_volume": 2.297945393918718,
-        "side": "buy",
-        "signal_bar_notional_usd": 122938.07,
-        "signal_bar_shares": 17401,
-        "signal_bar_trades": 63,
-        "symbol": "MARA"
-      }
+      "phase": "closed"
     },
     "NOK": {
       "phase": "closed"
