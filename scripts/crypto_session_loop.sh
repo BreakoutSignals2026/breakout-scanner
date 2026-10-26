@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # CRYPTO V1 continuous GitHub Actions runner, no API keys or LIVE endpoints.
-# One job covers up to 3h45m, with planned handover every 3 hours.
+# One job covers up to 3h45m; the hourly schedule maintains a queued
+# replacement to reduce gaps. Concurrency allows only one PAPER writer.
 # Ordinary push/manual run: exactly ONE scan. The special safe-restart push
 # runs multiple 5min observation cycles for 25min, never sends new PAPER orders.
 # Workflow concurrency cancels prior session ONLY on this explicit restart.
+# Operator recovery test on 2026-10-26 after a missed hourly CRYPTO handover;
+# diagnostic push always disables new PAPER entries and expires in 25 minutes.
 set -euo pipefail
 
 continuous="${CRYPTO_CONTINUOUS:-false}"
@@ -95,7 +98,7 @@ while true; do
   now_epoch=$(date +%s)
   next_epoch=$(( (now_epoch / 300 + 1) * 300 + 15 ))
   if ((next_epoch >= deadline_epoch)); then
-    echo "CRYPTO 3h45 session finished cleanly at $(date -u '+%H:%M:%S') UTC."
+    echo "CRYPTO 3h45 session finished cleanly at $(date -u '+%H:%M:%S') UTC. Hourly recovery runs handle handover."
     break
   fi
   pause=$((next_epoch - now_epoch))

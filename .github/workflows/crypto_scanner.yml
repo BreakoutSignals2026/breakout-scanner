@@ -13,9 +13,12 @@ on:
       - "market_virtual_core.py"
       - ".github/workflows/crypto_scanner.yml"
   schedule:
-    # Long-running 5min loop; resync every 3h. Avoid the busy minute 00.
-    # The next run queues behind the previous one (single PAPER writer).
-    - cron: "17 0,3,6,9,12,15,18,21 * * *"
+    # Hourly retry trigger at minute 17 to reduce gaps if GitHub drops
+    # the intended handover. Each worker still runs up to 3h45m.
+    # Concurrency permits ONE active CRYPTO worker; extra runs remain
+    # pending and do NOT write or submit duplicate PAPER orders.
+    # GitHub cron is best-effort and may still run late.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       enable_paper_entries:
