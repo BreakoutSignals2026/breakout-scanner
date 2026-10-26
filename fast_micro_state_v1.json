@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 6,
-    "closed": 3,
-    "pnl_usd": 0.05
+    "closed": 4,
+    "pnl_usd": -0.77
   },
   "date": "2026-10-26",
   "seen": [
@@ -87,26 +87,7 @@
       "phase": "watching"
     },
     "RGTI": {
-      "entry": 11.449270000000002,
-      "entry_bar": "2026-10-26T16:45:00+00:00",
-      "last_bar": "2026-10-26T16:50:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-26T16:40:00+00:00",
-        "breakout_level": 11.535,
-        "breakout_percent": 0.6501950585175491,
-        "entry_close": 11.46,
-        "prior_avg_bar_notional_usd": 42134.51,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08722197993894275,
-        "rel_volume": 1.7353439977998808,
-        "side": "sell",
-        "signal_bar_notional_usd": 72312.6,
-        "signal_bar_shares": 6310,
-        "signal_bar_trades": 49,
-        "symbol": "RGTI"
-      }
+      "phase": "closed"
     },
     "RIOT": {
       "phase": "watching"
