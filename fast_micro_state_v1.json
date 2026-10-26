@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 5,
+    "attempts": 6,
     "closed": 3,
     "pnl_usd": 0.05
   },
@@ -16,6 +16,7 @@
     "NOK:2026-10-26T15:35:00+00:00:buy",
     "PTON:2026-10-26T15:50:00+00:00:sell",
     "PTON:2026-10-26T16:10:00+00:00:sell",
+    "RGTI:2026-10-26T16:40:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell",
     "SOFI:2026-10-26T15:55:00+00:00:sell"
@@ -86,7 +87,22 @@
       "phase": "watching"
     },
     "RGTI": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T16:40:00+00:00",
+        "breakout_level": 11.535,
+        "breakout_percent": 0.6501950585175491,
+        "entry_close": 11.46,
+        "prior_avg_bar_notional_usd": 42134.51,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08722197993894275,
+        "rel_volume": 1.7353439977998808,
+        "side": "sell",
+        "signal_bar_notional_usd": 72312.6,
+        "signal_bar_shares": 6310,
+        "signal_bar_trades": 49,
+        "symbol": "RGTI"
+      }
     },
     "RIOT": {
       "phase": "watching"
