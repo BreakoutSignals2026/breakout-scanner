@@ -8,15 +8,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-26",
-    "scans": 21,
+    "scans": 22,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 19,
+      "bez_potvrdeneho_breakoutu": 20,
       "blocked_positions": 1,
-      "exceptions": 0,
-      "nizky_relativny_objem": 188,
+      "exceptions": 2,
+      "nizky_relativny_objem": 195,
       "submitted": 2,
-      "symbols_checked": 209,
-      "technical_signals": 2
+      "symbols_checked": 219,
+      "technical_signals": 4
     }
   },
   "daily_start_notice": "2026-10-26",
@@ -24,26 +24,26 @@
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 82.3,
-      "submitted": 1,
+      "exceptions": 2,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 81.4,
+      "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-10-26T13:16:05-04:00"
+      "technical_signals": 2,
+      "time_ny": "2026-10-26T13:22:01-04:00"
     },
     "date": "2026-10-26",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMD": "AMD: IEX spread 3.142% nad 0.3%",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "MRVL: IEX spread 0.428% nad 0.3%",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "order_submitted"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -114,10 +114,10 @@
       "planned_risk": 4.458,
       "qty": 2,
       "reference_entry": 397.6,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-10-26T13:10:00-04:00",
-      "status": "pending",
+      "status": "closed",
       "stop": 396.48,
       "submitted": "2026-10-26T17:15:33+00:00",
       "symbol": "TSLA",
