@@ -1,0 +1,112 @@
+{
+  "daily": {
+    "attempts": 1,
+    "closed": 0,
+    "pnl_usd": 0.0
+  },
+  "date": "2026-10-26",
+  "seen": [
+    "SNAP:2026-10-26T15:10:00+00:00:sell"
+  ],
+  "symbols": {
+    "AA": {
+      "phase": "watching"
+    },
+    "AAL": {
+      "phase": "watching"
+    },
+    "BB": {
+      "phase": "watching"
+    },
+    "CCL": {
+      "phase": "watching"
+    },
+    "CELH": {
+      "phase": "watching"
+    },
+    "CHWY": {
+      "phase": "watching"
+    },
+    "CLF": {
+      "phase": "watching"
+    },
+    "CLSK": {
+      "phase": "watching"
+    },
+    "DKNG": {
+      "phase": "watching"
+    },
+    "F": {
+      "phase": "watching"
+    },
+    "FSLY": {
+      "phase": "watching"
+    },
+    "GME": {
+      "phase": "watching"
+    },
+    "HIMS": {
+      "phase": "watching"
+    },
+    "IREN": {
+      "phase": "watching"
+    },
+    "LUNR": {
+      "phase": "watching"
+    },
+    "MARA": {
+      "phase": "watching"
+    },
+    "NOK": {
+      "phase": "watching"
+    },
+    "NU": {
+      "phase": "watching"
+    },
+    "PATH": {
+      "phase": "watching"
+    },
+    "PTON": {
+      "phase": "watching"
+    },
+    "QBTS": {
+      "phase": "watching"
+    },
+    "RGTI": {
+      "phase": "watching"
+    },
+    "RIOT": {
+      "phase": "watching"
+    },
+    "RIVN": {
+      "phase": "watching"
+    },
+    "SNAP": {
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:10:00+00:00",
+        "breakout_level": 6.195,
+        "breakout_percent": 0.3228410008071099,
+        "entry_close": 6.175,
+        "prior_avg_bar_notional_usd": 345062.26,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.1619433198380532,
+        "rel_volume": 2.215155576845487,
+        "side": "sell",
+        "signal_bar_notional_usd": 754331.82,
+        "signal_bar_shares": 122159,
+        "signal_bar_trades": 61,
+        "symbol": "SNAP"
+      }
+    },
+    "SOFI": {
+      "phase": "watching"
+    },
+    "U": {
+      "phase": "watching"
+    },
+    "VALE": {
+      "phase": "watching"
+    }
+  }
+}
