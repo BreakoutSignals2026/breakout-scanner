@@ -1,0 +1,2 @@
+trade_id,date,symbol,side,signal_bar,entry_bar,exit_bar,entry,exit,qty,pnl_usd,reason,slippage_pct_per_side,trailing_percent,virtual
+2026-10-26-SNAP-2026-10-26T15:10:00+00:00,2026-10-26,SNAP,sell,2026-10-26T15:10:00+00:00,2026-10-26T15:15:00+00:00,2026-10-26T15:35:00+00:00,6.1719,6.2131,38,-1.57,virtual_trailing_stop,0.05,1.2,True
