@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 9,
+    "attempts": 10,
     "closed": 6,
     "pnl_usd": -2.43
   },
@@ -26,7 +26,8 @@
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell",
     "SNAP:2026-10-26T17:15:00+00:00:buy",
-    "SOFI:2026-10-26T15:55:00+00:00:sell"
+    "SOFI:2026-10-26T15:55:00+00:00:sell",
+    "VALE:2026-10-26T19:05:00+00:00:sell"
   ],
   "symbols": {
     "AA": {
@@ -60,7 +61,7 @@
     "F": {
       "entry": 11.589200000000002,
       "entry_bar": "2026-10-26T17:45:00+00:00",
-      "last_bar": "2026-10-26T19:00:00+00:00",
+      "last_bar": "2026-10-26T19:05:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
@@ -132,7 +133,22 @@
       "phase": "watching"
     },
     "VALE": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T19:05:00+00:00",
+        "breakout_level": 11.89,
+        "breakout_percent": 0.25231286795627533,
+        "entry_close": 11.86,
+        "prior_avg_bar_notional_usd": 1236181.31,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08435259384225885,
+        "rel_volume": 2.696512605448027,
+        "side": "sell",
+        "signal_bar_notional_usd": 3309580.44,
+        "signal_bar_shares": 279054,
+        "signal_bar_trades": 396,
+        "symbol": "VALE"
+      }
     }
   }
 }
