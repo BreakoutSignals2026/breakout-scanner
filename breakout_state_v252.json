@@ -8,42 +8,42 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-26",
-    "scans": 21,
+    "scans": 26,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 19,
+      "bez_potvrdeneho_breakoutu": 29,
       "blocked_positions": 1,
-      "exceptions": 0,
-      "nizky_relativny_objem": 188,
+      "exceptions": 3,
+      "nizky_relativny_objem": 225,
       "submitted": 2,
-      "symbols_checked": 209,
-      "technical_signals": 2
+      "symbols_checked": 259,
+      "technical_signals": 5
     }
   },
   "daily_start_notice": "2026-10-26",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
       "exceptions": 0,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 82.3,
-      "submitted": 1,
+      "scan_seconds": 81.4,
+      "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-10-26T13:16:05-04:00"
+      "technical_signals": 0,
+      "time_ny": "2026-10-26T13:45:43-04:00"
     },
     "date": "2026-10-26",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
-      "GOOGL": "nizky_relativny_objem",
+      "AMZN": "nizky_relativny_objem",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "order_submitted"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -114,10 +114,10 @@
       "planned_risk": 4.458,
       "qty": 2,
       "reference_entry": 397.6,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-10-26T13:10:00-04:00",
-      "status": "pending",
+      "status": "closed",
       "stop": 396.48,
       "submitted": "2026-10-26T17:15:33+00:00",
       "symbol": "TSLA",
