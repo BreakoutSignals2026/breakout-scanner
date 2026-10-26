@@ -1,6 +1,7 @@
 {
   "date": "2026-10-26",
   "seen": [
+    "AA:2026-10-26T16:20:00+00:00:buy",
     "DKNG:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
@@ -15,7 +16,20 @@
   ],
   "symbols": {
     "AA": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T16:20:00+00:00",
+        "breakout_level": 38.51,
+        "breakout_percent": 0.16878732796677443,
+        "entry_close": 38.575,
+        "prior_avg_bar_notional_usd": 67555.31,
+        "rel_volume": 2.192362361413816,
+        "side": "buy",
+        "signal_bar_notional_usd": 148745.2,
+        "signal_bar_shares": 3856,
+        "signal_bar_trades": 58,
+        "symbol": "AA"
+      }
     },
     "AAL": {
       "phase": "watching"
@@ -42,7 +56,7 @@
       "entry": 20.799595,
       "entry_bar": "2026-10-26T15:45:00+00:00",
       "high_water": 20.799595,
-      "last_bar": "2026-10-26T16:15:00+00:00",
+      "last_bar": "2026-10-26T16:20:00+00:00",
       "low_water": 20.68,
       "phase": "open",
       "qty": 11,
@@ -70,7 +84,7 @@
       "entry": 24.517735000000002,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 24.517735000000002,
-      "last_bar": "2026-10-26T16:15:00+00:00",
+      "last_bar": "2026-10-26T16:20:00+00:00",
       "low_water": 24.035,
       "phase": "open",
       "qty": 9,
@@ -104,7 +118,7 @@
       "entry": 8.66433,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 8.66433,
-      "last_bar": "2026-10-26T16:15:00+00:00",
+      "last_bar": "2026-10-26T16:20:00+00:00",
       "low_water": 8.66433,
       "phase": "open",
       "qty": 27,
@@ -132,7 +146,7 @@
       "entry": 5.25737,
       "entry_bar": "2026-10-26T15:55:00+00:00",
       "high_water": 5.25737,
-      "last_bar": "2026-10-26T16:15:00+00:00",
+      "last_bar": "2026-10-26T16:20:00+00:00",
       "low_water": 5.24,
       "phase": "open",
       "qty": 45,
@@ -169,7 +183,7 @@
       "entry": 14.5077425,
       "entry_bar": "2026-10-26T16:00:00+00:00",
       "high_water": 14.5077425,
-      "last_bar": "2026-10-26T16:15:00+00:00",
+      "last_bar": "2026-10-26T16:20:00+00:00",
       "low_water": 14.5077425,
       "phase": "open",
       "qty": 16,
