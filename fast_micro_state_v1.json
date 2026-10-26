@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 8,
+    "attempts": 9,
     "closed": 6,
     "pnl_usd": -2.43
   },
@@ -9,6 +9,7 @@
     "AA:2026-10-26T16:20:00+00:00:buy",
     "CLSK:2026-10-26T17:00:00+00:00:buy",
     "DKNG:2026-10-26T15:40:00+00:00:sell",
+    "F:2026-10-26T17:40:00+00:00:sell",
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:45:00+00:00:sell",
@@ -54,7 +55,22 @@
       "phase": "watching"
     },
     "F": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T17:40:00+00:00",
+        "breakout_level": 11.625,
+        "breakout_percent": 0.21505376344086324,
+        "entry_close": 11.6,
+        "prior_avg_bar_notional_usd": 203996.87,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08616975441619806,
+        "rel_volume": 1.6128197320341047,
+        "side": "sell",
+        "signal_bar_notional_usd": 327676.8,
+        "signal_bar_shares": 28248,
+        "signal_bar_trades": 60,
+        "symbol": "F"
+      }
     },
     "FSLY": {
       "phase": "watching"
