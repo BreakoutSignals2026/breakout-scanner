@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 4,
-    "closed": 2,
-    "pnl_usd": 0.9
+    "attempts": 5,
+    "closed": 3,
+    "pnl_usd": 0.05
   },
   "date": "2026-10-26",
   "seen": [
+    "AA:2026-10-26T16:20:00+00:00:buy",
     "DKNG:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
@@ -20,7 +21,22 @@
   ],
   "symbols": {
     "AA": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T16:20:00+00:00",
+        "breakout_level": 38.51,
+        "breakout_percent": 0.16878732796677443,
+        "entry_close": 38.575,
+        "prior_avg_bar_notional_usd": 67555.31,
+        "quote_spread": 0.030000000000001137,
+        "quote_spread_pct": 0.07777057679844754,
+        "rel_volume": 2.192362361413816,
+        "side": "buy",
+        "signal_bar_notional_usd": 148745.2,
+        "signal_bar_shares": 3856,
+        "signal_bar_trades": 58,
+        "symbol": "AA"
+      }
     },
     "AAL": {
       "phase": "watching"
@@ -96,26 +112,7 @@
       "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
-      "entry": 14.5027425,
-      "entry_bar": "2026-10-26T16:00:00+00:00",
-      "last_bar": "2026-10-26T16:15:00+00:00",
-      "phase": "open",
-      "qty": 10,
-      "signal": {
-        "bar_key": "2026-10-26T15:55:00+00:00",
-        "breakout_level": 14.555,
-        "breakout_percent": 0.24046719340432937,
-        "entry_close": 14.52,
-        "prior_avg_bar_notional_usd": 169143.15,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.06889424733034645,
-        "rel_volume": 2.0089200932293614,
-        "side": "sell",
-        "signal_bar_notional_usd": 337909.44,
-        "signal_bar_shares": 23272,
-        "signal_bar_trades": 92,
-        "symbol": "SOFI"
-      }
+      "phase": "closed"
     },
     "U": {
       "phase": "watching"
