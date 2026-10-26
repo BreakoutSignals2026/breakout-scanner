@@ -1,0 +1,57 @@
+name: CRYPTO V1.2 Kraken crossfeed smoke (READ ONLY)
+
+on:
+  push:
+    paths:
+      - ".github/workflows/crypto_crossfeed_smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crypto-crossfeed-readonly-smoke
+  cancel-in-progress: true
+
+jobs:
+  test-public-feeds:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Verify Alpaca US and Kraken US live closed 5Min OHLCV (no broker API)
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          from scanner_crypto_v1 import SYMBOLS, fetch_bars
+          from market_virtual_core import full_bars
+          from crypto_crossfeed_v1 import evaluate
+          now = datetime.now(timezone.utc)
+          ok = 0
+          for symbol in SYMBOLS:
+              us = fetch_bars(symbol, now, loc="us")
+              kraken = fetch_bars(symbol, now, loc="us-1")
+              u = full_bars(us, now)
+              k = full_bars(kraken, now)
+              report, _ = evaluate(symbol, us, kraken, now)
+              print(f"READ ONLY {symbol}: us={len(u)} kraken={len(k)} "
+                    f"aligned_1h={report['aligned_bars_1h']} "
+                    f"us_nonzero_12={report['us_nonzero_12']} "
+                    f"kraken_nonzero_12={report['kraken_nonzero_12']} "
+                    f"reason={report['trend_reason']} "
+                    f"deviation={report['close_deviation_pct']}%")
+              if len(u)>=22 and len(k)>=22 and report["aligned_bars_1h"]>=6:
+                  ok += 1
+          assert ok == len(SYMBOLS), f"Crossfeed incomplete on {len(SYMBOLS)-ok} symbol(s)"
+          print("CRYPTO KRAKEN CROSSFEED: ALL 3 PAIRS VERIFIED; NO BROKER ORDERS")
+          PY
