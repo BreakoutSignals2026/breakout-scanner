@@ -74,6 +74,29 @@ Nie je tu žiadny LIVE trading workflow.
   z `find_signal` nad Alpacou US. Pri chýbajúcich dátach
   Krakenu sa nové trendové vstupy **neuskutočnia**.
 
+## Spoľahlivosť automatických štartov (26.10.2026)
+
+- FAST, BREAKOUT V2.5.2, FAST MICRO a ORB: okrem 09:20 a 09:30 NY
+  majú aj **09:40 a 10:00 NY** ako záložné UTC crony v oboch režimoch
+  letného času. Preflight pustí iba zodpovedajúci DST cron; duplicitné
+  behy toho istého workflow sa nesmú spustiť súčasne.
+- ORB teraz príjme správny oneskorený cron aj po 10:00 NY do 15:45 NY.
+  **Spätne nikdy nevytvára vstupy**, pretože vyžaduje čerstvú uzavretú
+  sviečku; pôvodné ORB nové signály najneskôr do 11:30 NY.
+- XETRA používa menej preťaženú 10-minútovú UTC mriežku (:07/:17/...)
+  a ukladá `xetra_quality_v1.csv` aj bez obchodov. Vie výhradne vo
+  virtuálnom režime spracovať konštantný časový posun 5-min sviečok Yahoo;
+  čas nikdy neposúva ani nedopĺňa chýbajúce sviečky. Pri neplatnej
+  postupnosti nové signály odmietne, pôvodný PAPER a US IEX filter sa nemenia.
+- CRYPTO 24/7 má **každú hodinu o :17** nový záložný spúšťací pokus
+  a stále jeden 3h45m aktívny päťminútový job. Concurrency umožní
+  najviac jeden súčasný PAPER proces; bez paralelných objednávok.
+- **GitHub Actions cron nemá zaručený presný čas vykonania.** Pri
+  preťažení GitHubu môžu aj po týchto úpravách niektoré spustenia
+  meškať či úplne chýbať. Záložné časy znižujú pravdepodobnosť
+  výpadkov, negarantujú 24/7 prevádzku. PAPER ochranné príkazy
+  zostávajú nezmenené; nikdy nepovažovať simulovaný PnL za reálny.
+
 ## Automatické spustenie
 
 GitHub Actions používa štyri UTC crony (`13:20`, `14:20`, `13:30`,

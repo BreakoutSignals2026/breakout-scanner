@@ -1,0 +1,50 @@
+name: XETRA Five-Minute Feed Integrity Check (READ ONLY)
+
+on:
+  push:
+    paths:
+      - ".github/workflows/xetra_data_smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-provider:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Check XETRA Yahoo historical 5m bars without any orders or state writes
+        shell: bash
+        run: |
+          python - <<'PY'
+          from datetime import datetime,timezone
+          from collections import Counter
+          from market_virtual_core import full_bars
+          from equity_candle_guard import verify_contiguous
+          from scanner_xetra_v1 import SYMBOLS,yahoo_bars,xetra_session
+          # A completed period from the current 26 Oct Xetra session.
+          now=datetime(2026,10,26,13,0,tzinfo=timezone.utc)
+          opened,_=xetra_session(now)
+          verified=0
+          for symbol in SYMBOLS:
+              raw=yahoo_bars(symbol,now)
+              bars=full_bars(raw,now,5)
+              last=bars[-13:]
+              offsets=dict(Counter(x["t"].minute%5 for x in last))
+              valid,reason=verify_contiguous(bars,key="t",count=13,
+                      session_open=opened,allow_fixed_grid_offset=True)
+              print(f"{symbol}: bars={len(bars)} latest={bars[-1]['t'] if bars else ''} "
+                    f"offsets={offsets} valid={valid} reason={reason}")
+              verified+=int(valid)
+          print(f"XETRA safe research feed: {verified}/{len(SYMBOLS)} integrity windows valid")
+          assert verified>0, "No usable real historical XETRA 5m windows; inspect feed"
+          PY
