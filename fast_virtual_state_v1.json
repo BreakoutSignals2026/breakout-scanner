@@ -5,7 +5,9 @@
     "GME:2026-10-26T15:35:00+00:00:sell",
     "GME:2026-10-26T15:40:00+00:00:sell",
     "GME:2026-10-26T15:45:00+00:00:sell",
+    "GME:2026-10-26T15:50:00+00:00:sell",
     "NOK:2026-10-26T15:35:00+00:00:buy",
+    "PTON:2026-10-26T15:50:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
     "SNAP:2026-10-26T15:10:00+00:00:sell"
   ],
@@ -38,7 +40,7 @@
       "entry": 20.799595,
       "entry_bar": "2026-10-26T15:45:00+00:00",
       "high_water": 20.799595,
-      "last_bar": "2026-10-26T15:45:00+00:00",
+      "last_bar": "2026-10-26T15:50:00+00:00",
       "low_water": 20.68,
       "phase": "open",
       "qty": 11,
@@ -66,8 +68,8 @@
       "entry": 24.517735000000002,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 24.517735000000002,
-      "last_bar": "2026-10-26T15:45:00+00:00",
-      "low_water": 24.23,
+      "last_bar": "2026-10-26T15:50:00+00:00",
+      "low_water": 24.035,
       "phase": "open",
       "qty": 9,
       "signal": {
@@ -100,7 +102,7 @@
       "entry": 8.66433,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 8.66433,
-      "last_bar": "2026-10-26T15:45:00+00:00",
+      "last_bar": "2026-10-26T15:50:00+00:00",
       "low_water": 8.66433,
       "phase": "open",
       "qty": 27,
@@ -125,7 +127,20 @@
       "phase": "watching"
     },
     "PTON": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:50:00+00:00",
+        "breakout_level": 5.275,
+        "breakout_percent": 0.1895734597156526,
+        "entry_close": 5.265,
+        "prior_avg_bar_notional_usd": 16093.21,
+        "rel_volume": 1.8894527499657112,
+        "side": "sell",
+        "signal_bar_notional_usd": 30221.1,
+        "signal_bar_shares": 5740,
+        "signal_bar_trades": 17,
+        "symbol": "PTON"
+      }
     },
     "QBTS": {
       "phase": "watching"
