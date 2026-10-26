@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 10,
-    "closed": 7,
-    "pnl_usd": -3.27
+    "closed": 8,
+    "pnl_usd": -3.35
   },
   "date": "2026-10-26",
   "seen": [
@@ -62,26 +62,7 @@
       "phase": "watching"
     },
     "F": {
-      "entry": 11.589200000000002,
-      "entry_bar": "2026-10-26T17:45:00+00:00",
-      "last_bar": "2026-10-26T19:35:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-26T17:40:00+00:00",
-        "breakout_level": 11.625,
-        "breakout_percent": 0.21505376344086324,
-        "entry_close": 11.6,
-        "prior_avg_bar_notional_usd": 203996.87,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08616975441619806,
-        "rel_volume": 1.6128197320341047,
-        "side": "sell",
-        "signal_bar_notional_usd": 327676.8,
-        "signal_bar_shares": 28248,
-        "signal_bar_trades": 60,
-        "symbol": "F"
-      }
+      "phase": "closed"
     },
     "FSLY": {
       "phase": "watching"
