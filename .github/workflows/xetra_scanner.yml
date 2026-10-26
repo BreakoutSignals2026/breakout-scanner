@@ -4,7 +4,8 @@ on:
   schedule:
     # Every 10 minutes during a conservative UTC window; Berlin gate below
     # handles CET/CEST and actual Xetra regular hours.
-    - cron: "*/10 7-17 * * 1-5"
+    # Avoid crowded round UTC minute; still once every ten minutes.
+    - cron: "7,17,27,37,47,57 7-17 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -37,10 +38,22 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add xetra_virtual_v1_state.json xetra_virtual_v1_signals.jsonl xetra_virtual_v1_trades.csv 2>/dev/null || true
+          git add xetra_virtual_v1_state.json xetra_virtual_v1_signals.jsonl xetra_virtual_v1_trades.csv xetra_quality_v1.csv 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "Update XETRA V1 independent virtual research"
-            git pull --no-rebase -X ours origin main
-            git push origin HEAD:main
+            git commit -m "Update XETRA V1 independent virtual research and quality"
+            pushed=false
+            for attempt in 1 2 3 4; do
+              git pull --no-rebase -X ours origin main
+              if git push origin HEAD:main; then
+                pushed=true
+                break
+              fi
+              echo "::warning::XETRA state push race; retry $attempt"
+              sleep 2
+            done
+            if [ "$pushed" != "true" ]; then
+              echo "::error::Could not persist XETRA virtual state."
+              exit 1
+            fi
           fi
           exit "$status"

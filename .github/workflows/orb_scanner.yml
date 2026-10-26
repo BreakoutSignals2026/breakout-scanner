@@ -7,6 +7,11 @@ on:
     - cron: "20 14 * * 1-5"
     - cron: "30 13 * * 1-5"
     - cron: "30 14 * * 1-5"
+    # Additional 09:40 and 10:00 NY recovery crons; duplicate runs are serialized.
+    - cron: "40 13 * * 1-5"
+    - cron: "40 14 * * 1-5"
+    - cron: "0 14 * * 1-5"
+    - cron: "0 15 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -25,25 +30,38 @@ jobs:
       - id: gate
         name: Check New York trading hours and duplicate DST schedule
         shell: bash
+        env:
+          SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
-          NY_TIME=$(TZ=America/New_York date +%H%M)
-          NY_DAY=$(TZ=America/New_York date +%u)
-          echo "NY time=$NY_TIME day=$NY_DAY"
-          if [ "$NY_DAY" -ge 6 ]; then
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            if [ "$NY_TIME" -ge 0900 ] && [ "$NY_TIME" -lt 1600 ]; then
-              echo "should_run=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "should_run=false" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          NOW_NY=$(TZ=America/New_York date '+%H:%M')
+          OFFSET=$(TZ=America/New_York date +%z)
+          WEEKDAY=$(TZ=America/New_York date +%u)
+          HH=${NOW_NY:0:2}
+          MM=${NOW_NY:3:2}
+          NOW_MIN=$((10#$HH * 60 + 10#$MM))
+          echo "ORB gate: NY=$NOW_NY offset=$OFFSET event=$GITHUB_EVENT_NAME cron=${SCHEDULE_CRON:-none}"
+          should_run=false
+          if [ "$WEEKDAY" -lt 6 ] && [ "$NOW_MIN" -ge 560 ] && [ "$NOW_MIN" -lt 945 ]; then
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              should_run=true
+            elif [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+              case "$OFFSET:$SCHEDULE_CRON" in
+                "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5")
+                  should_run=true
+                  ;;
+                *)
+                  echo "ORB: wrong US DST schedule rejected."
+                  ;;
+              esac
             fi
-          elif [ "$NY_TIME" -ge 0920 ] && [ "$NY_TIME" -lt 1000 ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-            echo "Duplicate or excessively delayed scheduled run skipped."
           fi
-
+          echo "should_run=$should_run" >> "$GITHUB_OUTPUT"
+          if [ "$should_run" = "true" ]; then
+            echo "ORB accepted current NY session. Fresh 5min signals only; no retroactive fills."
+          else
+            echo "ORB skipped: weekend, EOD, or wrong DST cron."
+          fi
   first-session:
     needs: preflight
     if: ${{ needs.preflight.outputs.should_run == 'true' }}

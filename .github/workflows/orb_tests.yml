@@ -31,6 +31,8 @@ on:
       - "scanner_xetra_v1.py"
       - "tests/test_global_markets.py"
       - "scripts/crypto_session_loop.sh"
+      - "equity_candle_guard.py"
+      - "tests/test_scanner_reliability.py"
       - "tests/test_crypto_session.py"
       - ".github/workflows/crypto_scanner.yml"
       - ".github/workflows/xetra_scanner.yml"

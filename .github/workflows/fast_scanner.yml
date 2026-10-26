@@ -10,6 +10,11 @@ on:
     # Recovery launches at NY 09:30 (at the regular US market open).
     - cron: "30 13 * * 1-5"
     - cron: "30 14 * * 1-5"
+    # Additional 09:40 and 10:00 NY recovery crons; duplicate runs are serialized.
+    - cron: "40 13 * * 1-5"
+    - cron: "40 14 * * 1-5"
+    - cron: "0 14 * * 1-5"
+    - cron: "0 15 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
@@ -60,7 +65,7 @@ jobs:
             fi
           elif [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
             case "$OFFSET:$SCHEDULE_CRON" in
-              "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5")
+              "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5")
                 if [ "$NOW_MIN" -ge 560 ] && [ "$NOW_MIN" -lt 960 ]; then
                   echo "should_run=true" >> "$GITHUB_OUTPUT"
                 else
