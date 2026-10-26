@@ -245,6 +245,7 @@
     "NOK": {
       "bar_key": "2026-10-26T15:35:00+00:00",
       "close_cid": "FAST31C_NOK_10261535000000",
+      "close_order_id": "c9f2106f-3a68-460d-b035-8f93f7d9c5d3",
       "entry_cid": "FAST31E_NOK_10261535000000",
       "entry_fill_price": 8.66,
       "entry_filled_at": "2026-10-26T15:42:55.456099376Z",
@@ -256,13 +257,14 @@
       "requested_qty": 26,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-26T15:42:54+00:00",
       "symbol": "NOK"
     },
     "PATH": {
       "bar_key": "2026-10-26T19:20:00+00:00",
       "close_cid": "FAST31C_PATH_10261920000000",
+      "close_order_id": "8e9df9b7-b1d7-4060-a74c-11da17199784",
       "entry_cid": "FAST31E_PATH_10261920000000",
       "entry_fill_price": 14.26,
       "entry_filled_at": "2026-10-26T19:26:46.46064974Z",
@@ -274,7 +276,7 @@
       "requested_qty": 16,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-26T19:26:46+00:00",
       "symbol": "PATH"
     },

@@ -106,3 +106,5 @@
 {"timestamp": "2026-10-26T19:26:47+00:00", "action": "exit_accepted", "symbol": "PATH", "order_id": "5d0a2227-4aa5-4205-8835-3ef3dab4eed8", "qty": 16}
 {"timestamp": "2026-10-26T19:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "5c330520-5116-4078-bf22-53da432ac989"}
 {"timestamp": "2026-10-26T19:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "5d0a2227-4aa5-4205-8835-3ef3dab4eed8"}
+{"timestamp": "2026-10-26T19:46:05+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 26, "order_id": "c9f2106f-3a68-460d-b035-8f93f7d9c5d3"}
+{"timestamp": "2026-10-26T19:46:06+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 16, "order_id": "8e9df9b7-b1d7-4060-a74c-11da17199784"}
