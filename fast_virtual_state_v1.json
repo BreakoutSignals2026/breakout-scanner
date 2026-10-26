@@ -9,7 +9,8 @@
     "NOK:2026-10-26T15:35:00+00:00:buy",
     "PTON:2026-10-26T15:50:00+00:00:sell",
     "RIOT:2026-10-26T15:15:00+00:00:buy",
-    "SNAP:2026-10-26T15:10:00+00:00:sell"
+    "SNAP:2026-10-26T15:10:00+00:00:sell",
+    "SOFI:2026-10-26T15:55:00+00:00:sell"
   ],
   "symbols": {
     "AA": {
@@ -40,7 +41,7 @@
       "entry": 20.799595,
       "entry_bar": "2026-10-26T15:45:00+00:00",
       "high_water": 20.799595,
-      "last_bar": "2026-10-26T15:50:00+00:00",
+      "last_bar": "2026-10-26T15:55:00+00:00",
       "low_water": 20.68,
       "phase": "open",
       "qty": 11,
@@ -68,7 +69,7 @@
       "entry": 24.517735000000002,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 24.517735000000002,
-      "last_bar": "2026-10-26T15:50:00+00:00",
+      "last_bar": "2026-10-26T15:55:00+00:00",
       "low_water": 24.035,
       "phase": "open",
       "qty": 9,
@@ -102,7 +103,7 @@
       "entry": 8.66433,
       "entry_bar": "2026-10-26T15:40:00+00:00",
       "high_water": 8.66433,
-      "last_bar": "2026-10-26T15:50:00+00:00",
+      "last_bar": "2026-10-26T15:55:00+00:00",
       "low_water": 8.66433,
       "phase": "open",
       "qty": 27,
@@ -127,7 +128,13 @@
       "phase": "watching"
     },
     "PTON": {
-      "phase": "pending",
+      "entry": 5.25737,
+      "entry_bar": "2026-10-26T15:55:00+00:00",
+      "high_water": 5.25737,
+      "last_bar": "2026-10-26T15:55:00+00:00",
+      "low_water": 5.25737,
+      "phase": "open",
+      "qty": 45,
       "signal": {
         "bar_key": "2026-10-26T15:50:00+00:00",
         "breakout_level": 5.275,
@@ -158,7 +165,20 @@
       "phase": "closed"
     },
     "SOFI": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-26T15:55:00+00:00",
+        "breakout_level": 14.555,
+        "breakout_percent": 0.24046719340432937,
+        "entry_close": 14.52,
+        "prior_avg_bar_notional_usd": 169143.15,
+        "rel_volume": 2.0089200932293614,
+        "side": "sell",
+        "signal_bar_notional_usd": 337909.44,
+        "signal_bar_shares": 23272,
+        "signal_bar_trades": 92,
+        "symbol": "SOFI"
+      }
     },
     "U": {
       "phase": "watching"
