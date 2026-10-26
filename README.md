@@ -54,8 +54,7 @@ Nie je tu žiadny LIVE trading workflow.
   odchýlku zatváracích cien a dôvod prípadného odmietnutia.
   Pri výpadku Krakenu zaznamená chybu; **nevymýšľa náhradný objem**
   a pôvodnú STRICT stratégiu nemení.
-- `crypto_trend_v1.py` (vyhodnocovacia logika v
-  `crypto_crossfeed_v1.py`) vytvára **iba experimentálne LONG signály**
+- `crypto_crossfeed_v1.py` vytvára **iba experimentálne LONG signály**
   pri prerazení maxima posledných 12 uzavretých US sviečok o aspoň
   0,10 %, pri SMA9 nad SMA21 na **oboch** dátových kanáloch,
   čerstvých časovo zosúladených dátach (bez chýbajúcich 5-min

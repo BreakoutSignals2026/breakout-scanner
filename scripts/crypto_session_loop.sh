@@ -27,7 +27,7 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 deadline_epoch=$(( $(date +%s) + 3 * 3600 + 45 * 60 ))
 if [[ "$safe_restart" == "true" ]]; then
   deadline_epoch=$(( $(date +%s) + 25 * 60 ))
-  echo "CRYPTO V1.1 SAFE RESTART: max 25min; PAPER new entries disabled; recurring schedule unchanged."
+  echo "CRYPTO V1.2 SAFE RESTART: max 25min; PAPER new entries disabled; recurring schedule unchanged."
 fi
 cycle=0
 
@@ -63,7 +63,7 @@ while true; do
   fi
 
   if ! git diff --cached --quiet; then
-    git commit -m "Update CRYPTO V1 PAPER/virtual state (cycle $cycle)"
+    git commit -m "Update CRYPTO V1.2 PAPER/virtual state (cycle $cycle)"
     pushed=false
     # US stock scanners can push their own journal files in parallel.
     # Merge their newest commit; retry non-fast-forward push briefly.
