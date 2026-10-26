@@ -118,7 +118,10 @@ class ScannerScheduleTests(unittest.TestCase):
         self.assertNotIn('NY_TIME" -lt 1000',w)
         self.assertIn("SCHEDULE_CRON:",w)
         self.assertIn("scripts/",(ROOT/".github/workflows/fast_micro_scanner.yml").read_text())
-        self.assertNotIn("paper-api", (ROOT/"scanner_orb_v1.py").read_text())
+        orb_src=(ROOT/"scanner_orb_v1.py").read_text()
+        self.assertNotIn("/orders",orb_src)
+        self.assertNotIn("requests.delete(",orb_src)
+        self.assertNotIn("requests.patch(",orb_src)
 
     def test_xetra_workflow_persists_quality(self):
         w=(ROOT/".github/workflows/xetra_scanner.yml").read_text()
