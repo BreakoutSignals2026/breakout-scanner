@@ -15,7 +15,11 @@
   },
   "positions": {
     "SOL/USD": {
-      "phase": "pending",
+      "entry": 100.17807839999999,
+      "entry_at": "2026-10-27T07:55:00+00:00",
+      "last_bar": "2026-10-27T07:55:00+00:00",
+      "phase": "open",
+      "qty": 0.80501804,
       "signal": {
         "age_minutes": 0.28,
         "bar": "2026-10-27T07:50:00+00:00",
