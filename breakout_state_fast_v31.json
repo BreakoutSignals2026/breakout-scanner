@@ -21,6 +21,7 @@
     "HIMS": "2026-10-23T17:15:00+00:00",
     "IREN": "2026-10-22T15:05:00+00:00",
     "LUNR": "2026-10-27T16:15:00+00:00",
+    "MARA": "2026-10-27T17:50:00+00:00",
     "NOK": "2026-10-26T15:35:00+00:00",
     "PATH": "2026-10-26T19:20:00+00:00",
     "PTON": "2026-10-23T14:45:00+00:00",
@@ -238,6 +239,23 @@
       "status": "closed",
       "submitted_at": "2026-10-27T16:21:00+00:00",
       "symbol": "LUNR"
+    },
+    "MARA": {
+      "bar_key": "2026-10-27T17:50:00+00:00",
+      "entry_cid": "FAST31E_MARA_10271750000000",
+      "entry_fill_price": 7.04,
+      "entry_filled_at": "2026-10-27T17:57:06.303888925Z",
+      "entry_order_id": "aea6b917-5b5e-4d07-a85f-a71156488b8d",
+      "exit_cid": "FAST31X_MARA_10271750000000",
+      "exit_order_id": "dc141c3b-7ee7-4725-b9a8-0a72a5c87275",
+      "filled_qty": 31,
+      "reference_price": 7.04,
+      "requested_qty": 31,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-10-27T17:57:05+00:00",
+      "symbol": "MARA"
     },
     "NOK": {
       "bar_key": "2026-10-26T15:35:00+00:00",
