@@ -74,6 +74,46 @@ def yahoo_bars(symbol, now):
                      "c":closes[i],"v":volumes[i]})
     return bars
 
+def drop_unstable_tail(raw,now,opened):
+    """Reject at most 2 late/off-grid Yahoo updates, NEVER fabricate/retime.
+
+    Some live Yahoo /chart bars have a moving provisional timestamp while
+    completed historical regular-session 5m bars are exactly on the UTC grid.
+    Discard ONLY a provisional *trailing* anomaly when at least 13 preceding
+    fully closed and contiguous regular-session bars validate. Internal
+    missing/off-grid bars are never repaired or silently ignored.
+    """
+    if len(raw)<14:
+        return raw,0
+    for removed in (1,2):
+        tail=raw[-removed:]
+        if any(datetime.fromisoformat(str(b["t"]).replace("Z","+00:00")).minute%5==0
+               and datetime.fromisoformat(str(b["t"]).replace("Z","+00:00")).second==0
+               for b in tail):
+            break
+        valid=raw[:-removed]
+        completed=full_bars(valid,now,5)
+        good,_=verify_contiguous(completed,key="t",count=13,session_open=opened)
+        if not good:
+            continue
+        if not completed:
+            continue
+        last=completed[-1]["t"]
+        try:
+            tail_times=[datetime.fromisoformat(str(b["t"]).replace("Z","+00:00"))
+                        for b in tail]
+            if not all(last<t<=now for t in tail_times):
+                continue
+        except (ValueError,KeyError,TypeError):
+            continue
+        if now-(last+timedelta(minutes=5))>timedelta(minutes=5):
+            continue
+        print(f"XETRA provisional off-grid tail dropped: {removed} "
+              f"raw timestamp(s) after last confirmed 5m {last.isoformat()}",
+              flush=True)
+        return valid,removed
+    return raw,0
+
 def log_quality(symbol,bars,now,integrity,signal_status):
     """Persist one 30min data-quality sample per symbol, including no-signal scans."""
     bucket=now.replace(minute=(now.minute//30)*30,second=0,microsecond=0)
@@ -115,10 +155,13 @@ def scan_once(now=None):
                      fractional=False,currency="EUR",max_day_entries=6,max_open=2)
     day=now.astimezone(BERLIN).date().isoformat()
     stats={"symbols":0,"new_signals":0,"entries":0,"exits":0,"errors":0,
-           "invalid_reference":0,"quality_logged":0,"offset_accepted":0}
+           "invalid_reference":0,"quality_logged":0,"offset_accepted":0,
+           "provisional_tail_dropped":0}
     for symbol in SYMBOLS:
         try:
             bars=yahoo_bars(symbol,now)
+            bars,removed=drop_unstable_tail(bars,now,session_open)
+            stats["provisional_tail_dropped"]+=removed
             stats["symbols"]+=1
             result=book.progress(symbol,bars,now,session_end=session_close if now>=session_close else None)
             if result:
@@ -144,7 +187,7 @@ def scan_once(now=None):
             stats["quality_logged"]+=int(log_quality(symbol,bars,now,why,"REFERENCE_VALID"))
             signal=find_signal(symbol,bars,now,lookback=12,
                                min_breakout=.15,min_relvol=1.5,
-                               max_age_minutes=30,allow_short=False)
+                               max_age_minutes=5,allow_short=False)
             if signal:
                 if book.signal(signal,day):
                     stats["new_signals"]+=1
