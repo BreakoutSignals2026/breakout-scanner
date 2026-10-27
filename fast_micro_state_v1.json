@@ -1,13 +1,16 @@
 {
   "daily": {
-    "attempts": 2,
+    "attempts": 3,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-10-27",
   "seen": [
+    "CCL:2026-10-27T15:00:00+00:00:buy",
     "LUNR:2026-10-27T14:50:00+00:00:buy",
     "NU:2026-10-27T14:45:00+00:00:sell",
+    "QBTS:2026-10-27T15:00:00+00:00:buy",
+    "RGTI:2026-10-27T15:00:00+00:00:buy",
     "RIVN:2026-10-27T14:45:00+00:00:buy",
     "U:2026-10-27T14:55:00+00:00:buy"
   ],
@@ -22,7 +25,22 @@
       "phase": "watching"
     },
     "CCL": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T15:00:00+00:00",
+        "breakout_level": 27.565,
+        "breakout_percent": 0.7074188282241983,
+        "entry_close": 27.76,
+        "prior_avg_bar_notional_usd": 326117.67,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.03604253018562467,
+        "rel_volume": 1.7320261894613274,
+        "side": "buy",
+        "signal_bar_notional_usd": 573410.56,
+        "signal_bar_shares": 20656,
+        "signal_bar_trades": 101,
+        "symbol": "CCL"
+      }
     },
     "CELH": {
       "phase": "watching"
@@ -67,7 +85,7 @@
     "NU": {
       "entry": 12.448770000000003,
       "entry_bar": "2026-10-27T14:50:00+00:00",
-      "last_bar": "2026-10-27T14:55:00+00:00",
+      "last_bar": "2026-10-27T15:00:00+00:00",
       "phase": "open",
       "qty": 11,
       "signal": {
