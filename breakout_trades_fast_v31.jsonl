@@ -116,3 +116,5 @@
 {"timestamp": "2026-10-27T15:02:47+00:00", "action": "exit_accepted", "symbol": "U", "order_id": "8180037f-b7fd-49e4-b9ba-9148fa0c3442", "qty": 4}
 {"timestamp": "2026-10-27T16:02:41+00:00", "action": "closed", "symbol": "RIVN", "entry": 11.83, "exit": 11.729444, "qty": 18.0, "side": "buy", "pnl": -1.81, "pnl_pct": -0.85, "reason": "trailing stop", "holding_seconds": 4014}
 {"timestamp": "2026-10-27T16:02:42+00:00", "action": "closed", "symbol": "U", "entry": 40.97, "exit": 40.67, "qty": 4.0, "side": "buy", "pnl": -1.2, "pnl_pct": -0.732, "reason": "trailing stop", "holding_seconds": 3478}
+{"timestamp": "2026-10-27T16:11:49+00:00", "action": "entry_submitted", "symbol": "RGTI", "order_id": "fb4403fa-74e2-410a-8590-e3c242423bc6", "requested_qty": 18, "reference": 12.33, "side": "buy", "estimated_risk": 2.84, "spread_percent": 0.081, "rel_volume": 2.458896733277492, "breakout_percent": 0.488997555012229, "bar_notional_usd": 253369.17, "quote_age_seconds": 0.138165, "chase_percent": 0.0, "signal_age_seconds": 110}
+{"timestamp": "2026-10-27T16:11:52+00:00", "action": "exit_accepted", "symbol": "RGTI", "order_id": "a4f695f8-d141-426e-aa1c-30786896f665", "qty": 2}
