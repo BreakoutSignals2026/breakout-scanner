@@ -9,15 +9,23 @@
       "phase": "watching"
     },
     "BB": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.315,
+        "entry": 9.534764999999998,
+        "entry_bar": "2026-10-27T11:20:00-04:00",
+        "last_evaluated_bar": "2026-10-27T11:20:00-04:00",
         "orb_high": 9.51,
         "orb_low": 9.215,
+        "qty": 48,
         "rel_vol": 1.259,
+        "risk_estimate_usd": 4.96,
         "side": "LONG",
         "signal_bar": "2026-10-27T11:15:00-04:00",
-        "symbol": "BB"
+        "stop": 9.43625,
+        "symbol": "BB",
+        "tp": 9.731794999999996,
+        "trade_id": "20261027-BB-20261027T1115000400"
       }
     },
     "CCL": {
@@ -92,15 +100,23 @@
       "phase": "watching"
     },
     "RGTI": {
-      "phase": "pending",
-      "signal": {
+      "phase": "open",
+      "trade": {
         "breakout_pct": 0.248,
+        "entry": 12.1510725,
+        "entry_bar": "2026-10-27T11:20:00-04:00",
+        "last_evaluated_bar": "2026-10-27T11:20:00-04:00",
         "orb_high": 12.12,
         "orb_low": 11.61,
+        "qty": 30,
         "rel_vol": 1.238,
+        "risk_estimate_usd": 4.94,
         "side": "LONG",
         "signal_bar": "2026-10-27T11:15:00-04:00",
-        "symbol": "RGTI"
+        "stop": 11.9925,
+        "symbol": "RGTI",
+        "tp": 12.4682175,
+        "trade_id": "20261027-RGTI-20261027T1115000400"
       }
     },
     "RIOT": {
@@ -121,7 +137,7 @@
         "breakout_pct": 0.22,
         "entry": 41.100539999999995,
         "entry_bar": "2026-10-27T11:15:00-04:00",
-        "last_evaluated_bar": "2026-10-27T11:15:00-04:00",
+        "last_evaluated_bar": "2026-10-27T11:20:00-04:00",
         "orb_high": 41.0,
         "orb_low": 40.44,
         "qty": 19,
