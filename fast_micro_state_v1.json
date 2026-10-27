@@ -42,7 +42,7 @@
     "CCL": {
       "entry": 27.748865000000002,
       "entry_bar": "2026-10-27T15:05:00+00:00",
-      "last_bar": "2026-10-27T16:45:00+00:00",
+      "last_bar": "2026-10-27T16:50:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
@@ -83,7 +83,11 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "pending",
+      "entry": 23.3932925,
+      "entry_bar": "2026-10-27T16:50:00+00:00",
+      "last_bar": "2026-10-27T16:50:00+00:00",
+      "phase": "open",
+      "qty": 6,
       "signal": {
         "bar_key": "2026-10-27T16:45:00+00:00",
         "breakout_level": 23.51,
