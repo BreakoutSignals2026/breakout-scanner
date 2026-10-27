@@ -149,8 +149,22 @@ jobs:
             git add breakout_state_v252.json breakout_results_v252.csv 2>/dev/null || true
             if ! git diff --cached --quiet; then
               git commit -m "Update classic Breakout V2.5.2 state"
-              git pull --rebase origin main
-              git push origin HEAD:main
+              # Other scanners push to main simultaneously. Retry transient
+              # non-fast-forward errors; never force push or erase broker state.
+              pushed=0
+              for attempt in 1 2 3 4 5 6 7 8; do
+                if ! git pull --rebase origin main; then
+                  echo "::error::BREAKOUT state rebase failed; preserve local changes and fail closed."
+                  exit 1
+                fi
+                if git push origin HEAD:main; then pushed=1; break; fi
+                echo "::warning::Classic state push conflict (attempt $attempt); retrying"
+                sleep $((attempt * 2))
+              done
+              if [ "$pushed" -ne 1 ]; then
+                echo "::error::BREAKOUT state failed 8 pushes; abort rather than discard a trade."
+                exit 1
+              fi
             fi
             if [ "$status" -ne 0 ]; then
               echo "Scanner error $status; retrying in 30s"
@@ -211,8 +225,20 @@ jobs:
             git add breakout_state_v252.json breakout_results_v252.csv 2>/dev/null || true
             if ! git diff --cached --quiet; then
               git commit -m "Update classic Breakout V2.5.2 state and EOD"
-              git pull --rebase origin main
-              git push origin HEAD:main
+              pushed=0
+              for attempt in 1 2 3 4 5 6 7 8; do
+                if ! git pull --rebase origin main; then
+                  echo "::error::BREAKOUT EOD state rebase failed; preserve state for manual recovery."
+                  exit 1
+                fi
+                if git push origin HEAD:main; then pushed=1; break; fi
+                echo "::warning::Classic EOD push conflict (attempt $attempt); retrying"
+                sleep $((attempt * 2))
+              done
+              if [ "$pushed" -ne 1 ]; then
+                echo "::error::BREAKOUT EOD state failed 8 pushes; abort rather than discard a trade."
+                exit 1
+              fi
             fi
             if [ "$(date +%s)" -ge "$((close_epoch + 120))" ]; then
               echo "End of EOD monitoring; inspect any Telegram warnings."
