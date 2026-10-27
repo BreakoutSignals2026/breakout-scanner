@@ -59,6 +59,30 @@ class VenueCandleGuardTests(unittest.TestCase):
         off=sample(datetime(2026,10,26,13,2,tzinfo=UTC))
         self.assertEqual(verify_contiguous(off,key="t",count=13)[1],"off_grid_timestamp")
 
+
+    def test_live_offgrid_tail_is_dropped_without_rewriting_prices(self):
+        first=datetime(2026,10,27,13,30,tzinfo=UTC)
+        raw=sample(first,14)
+        original=[dict(x) for x in raw]
+        raw.append({"t":(first+timedelta(minutes=71)).isoformat(),
+                    "o":100,"h":101,"l":99,"c":100.3,"v":200})
+        now=first+timedelta(minutes=74)
+        good,removed=xetra.drop_unstable_tail(raw,now,first)
+        self.assertEqual(removed,1)
+        self.assertEqual(good,original)
+        self.assertEqual(len(raw),15)
+
+    def test_internal_gap_must_not_be_repaired(self):
+        first=datetime(2026,10,27,13,30,tzinfo=UTC)
+        raw=sample(first,14)
+        raw.pop(6)
+        raw.append({"t":(first+timedelta(minutes=71)).isoformat(),
+                    "o":100,"h":101,"l":99,"c":100.3,"v":200})
+        clean,removed=xetra.drop_unstable_tail(raw,
+                         first+timedelta(minutes=77),first)
+        self.assertEqual(removed,0)
+        self.assertEqual(clean,raw)
+
     def test_xetra_quality_journal_dedup(self):
         with tempfile.TemporaryDirectory() as tmp:
             quality=Path(tmp)/"quality.csv"
