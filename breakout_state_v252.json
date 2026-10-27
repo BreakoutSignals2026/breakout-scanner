@@ -8,15 +8,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-27",
-    "scans": 13,
+    "scans": 14,
     "totals": {
       "bez_potvrdeneho_breakoutu": 5,
-      "blocked_positions": 5,
+      "blocked_positions": 6,
       "exceptions": 3,
       "malo_5min_sviecok": 58,
-      "nizky_relativny_objem": 58,
+      "nizky_relativny_objem": 67,
       "submitted": 1,
-      "symbols_checked": 125,
+      "symbols_checked": 134,
       "technical_signals": 4
     }
   },
@@ -25,13 +25,13 @@
   "last_scan_diagnostics": {
     "counts": {
       "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 72.6,
+      "exceptions": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 72.5,
       "submitted": 0,
       "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-10-27T11:55:41-04:00"
+      "technical_signals": 0,
+      "time_ny": "2026-10-27T12:01:29-04:00"
     },
     "date": "2026-10-27",
     "symbols": {
@@ -43,7 +43,7 @@
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "NVDA: IEX spread 0.328% nad 0.3%",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "position_or_order_blocked"
     }
   },
