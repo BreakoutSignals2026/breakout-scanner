@@ -129,3 +129,7 @@
 {"timestamp": "2026-10-27T19:10:14+00:00", "action": "closed", "symbol": "MARA", "entry": 7.04, "exit": 7.09, "qty": 31.0, "side": "sell", "pnl": -1.55, "pnl_pct": -0.71, "reason": "trailing stop", "holding_seconds": 4126}
 {"timestamp": "2026-10-27T19:10:16+00:00", "action": "entry_submitted", "symbol": "IREN", "order_id": "24dba29a-29d4-4545-ba62-3026755637bc", "requested_qty": 8, "reference": 27.36, "side": "buy", "estimated_risk": 2.71, "spread_percent": 0.037, "rel_volume": 1.8739128238799938, "breakout_percent": 0.31175499724922373, "bar_notional_usd": 422803.65, "quote_age_seconds": 0.160522, "chase_percent": 0.03656307129798175, "signal_age_seconds": 16}
 {"timestamp": "2026-10-27T19:10:19+00:00", "action": "exit_accepted", "symbol": "IREN", "order_id": "e4512538-1ac7-45cb-9940-3d36789117ef", "qty": 8}
+{"timestamp": "2026-10-27T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "8c20cd07-54bc-460d-b2d5-c0ef0b0175ba"}
+{"timestamp": "2026-10-27T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "IREN", "id": "e4512538-1ac7-45cb-9940-3d36789117ef"}
+{"timestamp": "2026-10-27T19:46:07+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 10, "order_id": "642259ae-db26-4993-9bc6-25d63f15ec9c"}
+{"timestamp": "2026-10-27T19:46:08+00:00", "action": "eod_close_submitted", "symbol": "IREN", "qty": 8, "order_id": "64d40dd4-caa8-4050-8d8b-c2a1c5b9af61"}
