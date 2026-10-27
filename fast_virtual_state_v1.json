@@ -11,7 +11,9 @@
     "NU:2026-10-27T14:45:00+00:00:sell",
     "QBTS:2026-10-27T15:00:00+00:00:buy",
     "RGTI:2026-10-27T15:00:00+00:00:buy",
+    "RGTI:2026-10-27T16:00:00+00:00:buy",
     "RIVN:2026-10-27T14:45:00+00:00:buy",
+    "RIVN:2026-10-27T16:00:00+00:00:sell",
     "U:2026-10-27T14:55:00+00:00:buy",
     "U:2026-10-27T15:10:00+00:00:buy"
   ],
@@ -25,8 +27,8 @@
     "BB": {
       "entry": 9.534764999999998,
       "entry_bar": "2026-10-27T15:20:00+00:00",
-      "high_water": 9.55,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "high_water": 9.555,
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 9.534764999999998,
       "phase": "open",
       "qty": 25,
@@ -47,8 +49,8 @@
     "CCL": {
       "entry": 27.743865,
       "entry_bar": "2026-10-27T15:05:00+00:00",
-      "high_water": 27.97,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "high_water": 28.015,
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 27.743865,
       "phase": "open",
       "qty": 8,
@@ -72,8 +74,8 @@
     "CHWY": {
       "entry": 21.335662499999998,
       "entry_bar": "2026-10-27T15:25:00+00:00",
-      "high_water": 21.355,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "high_water": 21.375,
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 21.335662499999998,
       "phase": "open",
       "qty": 11,
@@ -110,8 +112,8 @@
       "entry": 23.753117500000002,
       "entry_bar": "2026-10-27T15:35:00+00:00",
       "high_water": 23.753117500000002,
-      "last_bar": "2026-10-27T15:55:00+00:00",
-      "low_water": 23.595,
+      "last_bar": "2026-10-27T16:00:00+00:00",
+      "low_water": 23.555,
       "phase": "open",
       "qty": 10,
       "signal": {
@@ -138,7 +140,7 @@
       "entry": 11.290642499999999,
       "entry_bar": "2026-10-27T14:55:00+00:00",
       "high_water": 11.57,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 11.290642499999999,
       "phase": "open",
       "qty": 21,
@@ -166,7 +168,7 @@
       "entry": 12.453770000000002,
       "entry_bar": "2026-10-27T14:50:00+00:00",
       "high_water": 12.453770000000002,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 12.375,
       "phase": "open",
       "qty": 19,
@@ -194,7 +196,7 @@
       "entry": 12.056025,
       "entry_bar": "2026-10-27T15:05:00+00:00",
       "high_water": 12.075,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 12.056025,
       "phase": "open",
       "qty": 19,
@@ -215,8 +217,8 @@
     "RGTI": {
       "entry": 12.136065,
       "entry_bar": "2026-10-27T15:05:00+00:00",
-      "high_water": 12.22,
-      "last_bar": "2026-10-27T15:55:00+00:00",
+      "high_water": 12.27,
+      "last_bar": "2026-10-27T16:00:00+00:00",
       "low_water": 12.136065,
       "phase": "open",
       "qty": 19,
@@ -238,26 +240,7 @@
       "phase": "watching"
     },
     "RIVN": {
-      "entry": 11.830912499999998,
-      "entry_bar": "2026-10-27T14:50:00+00:00",
-      "high_water": 11.865,
-      "last_bar": "2026-10-27T15:55:00+00:00",
-      "low_water": 11.830912499999998,
-      "phase": "open",
-      "qty": 20,
-      "signal": {
-        "bar_key": "2026-10-27T14:45:00+00:00",
-        "breakout_level": 11.775,
-        "breakout_percent": 0.3821656050955408,
-        "entry_close": 11.82,
-        "prior_avg_bar_notional_usd": 134328.53,
-        "rel_volume": 2.653849494744766,
-        "side": "buy",
-        "signal_bar_notional_usd": 361124.64,
-        "signal_bar_shares": 30552,
-        "signal_bar_trades": 101,
-        "symbol": "RIVN"
-      }
+      "phase": "closed"
     },
     "SNAP": {
       "phase": "watching"
@@ -266,26 +249,7 @@
       "phase": "watching"
     },
     "U": {
-      "entry": 40.910444999999996,
-      "entry_bar": "2026-10-27T15:00:00+00:00",
-      "high_water": 41.17,
-      "last_bar": "2026-10-27T15:55:00+00:00",
-      "low_water": 40.910444999999996,
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-27T14:55:00+00:00",
-        "breakout_level": 40.81,
-        "breakout_percent": 0.23278608184268282,
-        "entry_close": 40.905,
-        "prior_avg_bar_notional_usd": 92128.09,
-        "rel_volume": 5.171239148749129,
-        "side": "buy",
-        "signal_bar_notional_usd": 481247.33,
-        "signal_bar_shares": 11765,
-        "signal_bar_trades": 159,
-        "symbol": "U"
-      }
+      "phase": "closed"
     },
     "VALE": {
       "phase": "watching"
