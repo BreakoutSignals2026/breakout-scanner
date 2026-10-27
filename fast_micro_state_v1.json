@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 5,
-    "closed": 2,
-    "pnl_usd": -1.63
+    "closed": 4,
+    "pnl_usd": -1.86
   },
   "date": "2026-10-27",
   "seen": [
@@ -57,26 +57,7 @@
       "phase": "watching"
     },
     "CCL": {
-      "entry": 27.748865000000002,
-      "entry_bar": "2026-10-27T15:05:00+00:00",
-      "last_bar": "2026-10-27T19:35:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-27T15:00:00+00:00",
-        "breakout_level": 27.565,
-        "breakout_percent": 0.7074188282241983,
-        "entry_close": 27.76,
-        "prior_avg_bar_notional_usd": 326117.67,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.03604253018562467,
-        "rel_volume": 1.7320261894613274,
-        "side": "buy",
-        "signal_bar_notional_usd": 573410.56,
-        "signal_bar_shares": 20656,
-        "signal_bar_trades": 101,
-        "symbol": "CCL"
-      }
+      "phase": "closed"
     },
     "CELH": {
       "phase": "closed"
@@ -100,26 +81,7 @@
       "phase": "watching"
     },
     "GME": {
-      "entry": 23.3932925,
-      "entry_bar": "2026-10-27T16:50:00+00:00",
-      "last_bar": "2026-10-27T19:35:00+00:00",
-      "phase": "open",
-      "qty": 6,
-      "signal": {
-        "bar_key": "2026-10-27T16:45:00+00:00",
-        "breakout_level": 23.51,
-        "breakout_percent": 0.38281582305401896,
-        "entry_close": 23.42,
-        "prior_avg_bar_notional_usd": 111231.87,
-        "quote_spread": 0.019999999999999574,
-        "quote_spread_pct": 0.08536064874092861,
-        "rel_volume": 2.062294269635083,
-        "side": "sell",
-        "signal_bar_notional_usd": 227431.62,
-        "signal_bar_shares": 9711,
-        "signal_bar_trades": 104,
-        "symbol": "GME"
-      }
+      "phase": "closed"
     },
     "HIMS": {
       "phase": "watching"
