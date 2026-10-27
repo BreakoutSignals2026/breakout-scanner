@@ -1,8 +1,8 @@
 {
   "daily": {
-    "attempts": 4,
-    "closed": 1,
-    "pnl_usd": -0.81
+    "attempts": 5,
+    "closed": 2,
+    "pnl_usd": -1.63
   },
   "date": "2026-10-27",
   "seen": [
@@ -12,6 +12,7 @@
     "CHWY:2026-10-27T15:20:00+00:00:buy",
     "GME:2026-10-27T15:30:00+00:00:sell",
     "GME:2026-10-27T15:45:00+00:00:sell",
+    "GME:2026-10-27T16:45:00+00:00:sell",
     "LUNR:2026-10-27T14:50:00+00:00:buy",
     "LUNR:2026-10-27T15:15:00+00:00:buy",
     "LUNR:2026-10-27T16:10:00+00:00:buy",
@@ -41,7 +42,7 @@
     "CCL": {
       "entry": 27.748865000000002,
       "entry_bar": "2026-10-27T15:05:00+00:00",
-      "last_bar": "2026-10-27T16:40:00+00:00",
+      "last_bar": "2026-10-27T16:45:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
@@ -61,26 +62,7 @@
       }
     },
     "CELH": {
-      "entry": 27.983980000000003,
-      "entry_bar": "2026-10-27T16:25:00+00:00",
-      "last_bar": "2026-10-27T16:40:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-27T16:20:00+00:00",
-        "breakout_level": 27.895,
-        "breakout_percent": 0.26886538806237426,
-        "entry_close": 27.97,
-        "prior_avg_bar_notional_usd": 80628.36,
-        "quote_spread": 0.019999999999999574,
-        "quote_spread_pct": 0.07158196134573935,
-        "rel_volume": 2.771665281082476,
-        "side": "buy",
-        "signal_bar_notional_usd": 225354.29,
-        "signal_bar_shares": 8057,
-        "signal_bar_trades": 70,
-        "symbol": "CELH"
-      }
+      "phase": "closed"
     },
     "CHWY": {
       "phase": "watching"
@@ -101,7 +83,22 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T16:45:00+00:00",
+        "breakout_level": 23.51,
+        "breakout_percent": 0.38281582305401896,
+        "entry_close": 23.42,
+        "prior_avg_bar_notional_usd": 111231.87,
+        "quote_spread": 0.019999999999999574,
+        "quote_spread_pct": 0.08536064874092861,
+        "rel_volume": 2.062294269635083,
+        "side": "sell",
+        "signal_bar_notional_usd": 227431.62,
+        "signal_bar_shares": 9711,
+        "signal_bar_trades": 104,
+        "symbol": "GME"
+      }
     },
     "HIMS": {
       "phase": "watching"
