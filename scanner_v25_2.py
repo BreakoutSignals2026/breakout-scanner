@@ -516,6 +516,10 @@ def verify_owned_position(t, pos, parent):
         eod = order_by_id(t["eod_order_id"])
         if eod:
             exit_qty += qty_of(eod)
+    if t.get("external_exit_order_id"):
+        ext = order_by_id(t["external_exit_order_id"])
+        if ext:
+            exit_qty += qty_of(ext)
     remaining = filled - exit_qty
     if (remaining <= 0 or position_qty * expected_direction <= 0
             or not same_qty(abs(position_qty), remaining)):
@@ -537,6 +541,12 @@ def report_close_if_verified(t, parent, state):
         o = order_by_id(t["eod_order_id"])
         if o:
             exit_records.append(o)
+    if t.get("external_exit_order_id"):
+        o = order_by_id(t["external_exit_order_id"])
+        if o:
+            if o.get("symbol") != t["symbol"] or o.get("side") != ("sell" if t["side"] == "BUY" else "buy"):
+                raise RuntimeError(f"{t['symbol']}: unrelated external exit ID")
+            exit_records.append(o)
     filled_exits = [(qty_of(o), float(o.get("filled_avg_price") or 0), o.get("filled_at"), o.get("type"))
                     for o in exit_records if qty_of(o) > 0]
     if any(p <= 0 for qty, p, _, _ in filled_exits):
@@ -550,7 +560,8 @@ def report_close_if_verified(t, parent, state):
               "qty": entry_qty, "entry": entry_price, "exit": exit_price, "pnl_usd": round(pnl, 4),
               "submitted_at": t["submitted"],
               "closed_at": max((z for _,_,z,_ in filled_exits if z), default=""),
-              "exit_reason": "EOD" if t.get("eod_order_id") else "BRACKET_SL_OR_TP"}
+              "exit_reason": ("MANUAL_NEXT_SESSION" if t.get("external_exit_order_id")
+                              else "EOD" if t.get("eod_order_id") else "BRACKET_SL_OR_TP")}
     existing = set()
     if RESULTS_FILE.exists():
         with RESULTS_FILE.open(newline="", encoding="utf-8") as f:
@@ -589,6 +600,29 @@ def reconcile(state, positions, *, is_eod=False):
             t["entry_id"] = parent["id"]
         filled = qty_of(parent)
         pos = positions.get(symbol)
+        if t.get("external_exit_order_id"):
+            # A separately authorized user-requested close may be queued for
+            # next session. Never submit a second SELL or treat absent bracket
+            # legs as an emergency while that exact order is pending.
+            ext = order_by_id(t["external_exit_order_id"])
+            expected_side = "sell" if t["side"] == "BUY" else "buy"
+            if not ext or ext.get("symbol") != symbol or ext.get("side") != expected_side:
+                safe = False
+                print(f"BREAKOUT {symbol}: manual exit ID unavailable/mismatched; NO NEW ORDER", flush=True)
+                continue
+            if not pos and ext.get("status") == "filled":
+                try:
+                    report_close_if_verified(t, parent, state)
+                except Exception as exc:
+                    safe = False
+                    print(f"BREAKOUT {symbol}: manual exit filled but PnL unresolved: {exc}", flush=True)
+                continue
+            safe = False
+            if ext.get("status") in {"canceled", "expired", "rejected"}:
+                print(f"BREAKOUT {symbol}: manual exit {ext['status']}, needs human review", flush=True)
+            else:
+                print(f"BREAKOUT {symbol}: authorized manual exit {ext.get('status')} pending; NO DUPLICATE", flush=True)
+            continue
         if t.get("status") == "eod_sent":
             eod = order_by_id(t.get("eod_order_id")) if t.get("eod_order_id") else order_by_client(t["eod_client_id"])
             if eod and not t.get("eod_order_id"):
@@ -660,6 +694,8 @@ def cancel_order(order):
 
 def eod_close_trade(t, state):
     symbol = t["symbol"]
+    if t.get("external_exit_order_id"):
+        return  # user-authorized next-session exit; NEVER submit duplicate
     parent = get_tracked_order(t)
     if not parent:
         raise RuntimeError("Pôvodná objednávka nedostupná; nič nezatváram naslepo")
@@ -717,7 +753,8 @@ def eod_close_trade(t, state):
 def end_of_day(state, session):
     print(f"BREAKOUT V{VERSION} EOD: close={session['close']}, liquidation={session['liquidate_at']}")
     for t in state["trades"].values():
-        if not active_record(t) or t.get("status") == "eod_sent":
+        if (not active_record(t) or t.get("status") == "eod_sent"
+                or t.get("external_exit_order_id")):
             continue
         try:
             eod_close_trade(t, state)

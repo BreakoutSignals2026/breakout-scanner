@@ -133,11 +133,15 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-10-27T11:20:00-04:00",
-      "status": "open",
+      "status": "external_exit_pending",
       "stop": 403.7,
       "submitted": "2026-10-27T15:26:23+00:00",
       "symbol": "TSLA",
-      "tp": 409.07
+      "tp": 409.07,
+      "external_exit_order_id": "bc94fcfc-1d01-4d78-92a5-53c0fdd2676e",
+      "external_exit_client_id": "28065525-a1f0-4c9c-a93c-f4a641c1b2f9",
+      "external_exit_submitted_at": "2026-10-27T20:45:06Z",
+      "external_exit_reason": "User-authorized queued PAPER market SELL 2 after 2026-10-27 close"
     }
   },
   "version": "2.5.2"

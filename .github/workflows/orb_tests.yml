@@ -19,6 +19,8 @@ on:
       - "fast_virtual.py"
       - "scanner_v25_2.py"
       - "tests/test_classic_diagnostics.py"
+      - "tests/test_breakout_recovery.py"
+      - ".github/workflows/scanner.yml"
       - "tests/test_fast_virtual.py"
       - "tests/test_fast_guardrails.py"
       - ".github/workflows/fast_scanner.yml"
