@@ -66,7 +66,7 @@ class VenueCandleGuardTests(unittest.TestCase):
         original=[dict(x) for x in raw]
         raw.append({"t":(first+timedelta(minutes=71)).isoformat(),
                     "o":100,"h":101,"l":99,"c":100.3,"v":200})
-        now=first+timedelta(minutes=77)
+        now=first+timedelta(minutes=74)
         good,removed=xetra.drop_unstable_tail(raw,now,first)
         self.assertEqual(removed,1)
         self.assertEqual(good,original)
