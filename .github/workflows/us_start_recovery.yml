@@ -6,6 +6,10 @@ on:
       - "EQUITY IEX 5Min recorder + quality (READ ONLY)"
       - "ORB + FAST guardrail regression tests (NO TRADING)"
     types: [completed]
+  push:
+    paths:
+      - ".github/workflows/us_start_recovery.yml"
+      - "scripts/us_start_recovery.py"
   workflow_dispatch:
 
 permissions:
@@ -19,6 +23,7 @@ concurrency:
 jobs:
   recover-starts:
     if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
        github.event.workflow_run.head_branch == 'main')
