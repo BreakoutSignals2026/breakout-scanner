@@ -142,6 +142,23 @@
       "external_exit_client_id": "28065525-a1f0-4c9c-a93c-f4a641c1b2f9",
       "external_exit_submitted_at": "2026-10-27T20:45:06Z",
       "external_exit_reason": "User-authorized queued PAPER market SELL 2 after 2026-10-27 close"
+    },
+    "B252_INTC_202610271200": {
+      "symbol": "INTC",
+      "side": "BUY",
+      "client_id": "B252_INTC_202610271200",
+      "entry_id": "5b1f9d55-ee0c-44cc-bfc0-f82a9741d6d0",
+      "status": "closed",
+      "submitted": "2026-10-27T16:06:10.934718986Z",
+      "signal_candle": "2026-10-27T12:00:00-04:00",
+      "reference_entry": 94.19,
+      "stop": 93.68,
+      "tp": 95.21,
+      "qty": 8,
+      "planned_risk": 4.08,
+      "result_logged": true,
+      "recovered_from_verified_alpaca_bracket": true,
+      "exit_order_id": "6786990d-5128-4015-ab57-14891419f285"
     }
   },
   "version": "2.5.2"
