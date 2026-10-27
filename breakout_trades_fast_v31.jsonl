@@ -131,3 +131,5 @@
 {"timestamp": "2026-10-27T19:10:19+00:00", "action": "exit_accepted", "symbol": "IREN", "order_id": "e4512538-1ac7-45cb-9940-3d36789117ef", "qty": 8}
 {"timestamp": "2026-10-27T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "8c20cd07-54bc-460d-b2d5-c0ef0b0175ba"}
 {"timestamp": "2026-10-27T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "IREN", "id": "e4512538-1ac7-45cb-9940-3d36789117ef"}
+{"timestamp": "2026-10-27T19:46:07+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 10, "order_id": "642259ae-db26-4993-9bc6-25d63f15ec9c"}
+{"timestamp": "2026-10-27T19:46:08+00:00", "action": "eod_close_submitted", "symbol": "IREN", "qty": 8, "order_id": "64d40dd4-caa8-4050-8d8b-c2a1c5b9af61"}
