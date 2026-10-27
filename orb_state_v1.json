@@ -1,49 +1,9 @@
 {
-  "daily_summary_sent": true,
-  "session_date": "2026-10-23",
+  "daily_summary_sent": false,
+  "session_date": "2026-10-27",
   "symbols": {
     "AA": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 38.1809,
-        "entry_bar": "2026-10-23T10:15:00-04:00",
-        "exit": 38.443,
-        "exit_bar": "2026-10-23T10:40:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.996,
-        "gross_pnl_usd": -4.98,
-        "orb_high": 38.705,
-        "orb_low": 38.33,
-        "qty": 19,
-        "risk_estimate_usd": 4.98,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:10:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 38.4237,
-        "symbol": "AA",
-        "tp": 37.6952,
-        "trade_id": "20261023-AA-20261023T1010000400"
-      },
-      "trade": {
-        "breakout_pct": 0.261,
-        "entry": 38.18090000000001,
-        "entry_bar": "2026-10-23T10:15:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:40:00-04:00",
-        "orb_high": 38.705,
-        "orb_low": 38.33,
-        "qty": 19,
-        "rel_vol": 1.263,
-        "risk_estimate_usd": 4.98,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:10:00-04:00",
-        "stop": 38.42375,
-        "symbol": "AA",
-        "tp": 37.69520000000003,
-        "trade_id": "20261023-AA-20261023T1010000400"
-      }
+      "phase": "watching"
     },
     "AAL": {
       "phase": "watching"
@@ -58,93 +18,13 @@
       "phase": "watching"
     },
     "CHWY": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 21.7291,
-        "entry_bar": "2026-10-23T10:35:00-04:00",
-        "exit": 21.9009,
-        "exit_bar": "2026-10-23T11:05:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.997,
-        "gross_pnl_usd": -4.98,
-        "orb_high": 22.1,
-        "orb_low": 21.82,
-        "qty": 29,
-        "risk_estimate_usd": 4.98,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:30:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 21.89,
-        "symbol": "CHWY",
-        "tp": 21.4074,
-        "trade_id": "20261023-CHWY-20261023T1030000400"
-      },
-      "trade": {
-        "breakout_pct": 0.39,
-        "entry": 21.72913,
-        "entry_bar": "2026-10-23T10:35:00-04:00",
-        "last_evaluated_bar": "2026-10-23T11:05:00-04:00",
-        "orb_high": 22.1,
-        "orb_low": 21.82,
-        "qty": 29,
-        "rel_vol": 2.139,
-        "risk_estimate_usd": 4.98,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:30:00-04:00",
-        "stop": 21.89,
-        "symbol": "CHWY",
-        "tp": 21.407390000000003,
-        "trade_id": "20261023-CHWY-20261023T1030000400"
-      }
+      "phase": "watching"
     },
     "CLF": {
       "phase": "watching"
     },
     "CLSK": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 8.2691,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "exit": 8.1709,
-        "exit_bar": "2026-10-23T09:55:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -1.1,
-        "gross_pnl_usd": -5.5,
-        "orb_high": 8.24,
-        "orb_low": 8.02,
-        "qty": 56,
-        "risk_estimate_usd": 4.94,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 8.185,
-        "symbol": "CLSK",
-        "tp": 8.4374,
-        "trade_id": "20261023-CLSK-20261023T0945000400"
-      },
-      "trade": {
-        "breakout_pct": 0.607,
-        "entry": 8.2691325,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T09:55:00-04:00",
-        "orb_high": 8.24,
-        "orb_low": 8.02,
-        "qty": 56,
-        "rel_vol": 1.674,
-        "risk_estimate_usd": 4.94,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "stop": 8.185,
-        "symbol": "CLSK",
-        "tp": 8.437397499999998,
-        "trade_id": "20261023-CLSK-20261023T0945000400"
-      }
+      "phase": "watching"
     },
     "DKNG": {
       "phase": "watching"
@@ -156,225 +36,25 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 25.2574,
-        "entry_bar": "2026-10-23T10:10:00-04:00",
-        "exit": 25.4277,
-        "exit_bar": "2026-10-23T10:40:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.988,
-        "gross_pnl_usd": -4.94,
-        "orb_high": 25.61,
-        "orb_low": 25.35,
-        "qty": 29,
-        "risk_estimate_usd": 4.94,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:05:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 25.415,
-        "symbol": "GME",
-        "tp": 24.9421,
-        "trade_id": "20261023-GME-20261023T1005000400"
-      },
-      "trade": {
-        "breakout_pct": 0.197,
-        "entry": 25.257365,
-        "entry_bar": "2026-10-23T10:10:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:40:00-04:00",
-        "orb_high": 25.61,
-        "orb_low": 25.35,
-        "qty": 29,
-        "rel_vol": 1.876,
-        "risk_estimate_usd": 4.94,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:05:00-04:00",
-        "stop": 25.415,
-        "symbol": "GME",
-        "tp": 24.942095000000002,
-        "trade_id": "20261023-GME-20261023T1005000400"
-      }
+      "phase": "watching"
     },
     "HIMS": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 27.6262,
-        "entry_bar": "2026-10-23T10:30:00-04:00",
-        "exit": 28.004,
-        "exit_bar": "2026-10-23T10:40:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.982,
-        "gross_pnl_usd": -4.91,
-        "orb_high": 28.89,
-        "orb_low": 27.69,
-        "qty": 13,
-        "risk_estimate_usd": 4.91,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:25:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 27.99,
-        "symbol": "HIMS",
-        "tp": 26.8985,
-        "trade_id": "20261023-HIMS-20261023T1025000400"
-      },
-      "trade": {
-        "breakout_pct": 0.343,
-        "entry": 27.62618,
-        "entry_bar": "2026-10-23T10:30:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:40:00-04:00",
-        "orb_high": 28.89,
-        "orb_low": 27.69,
-        "qty": 13,
-        "rel_vol": 1.788,
-        "risk_estimate_usd": 4.91,
-        "side": "SHORT",
-        "signal_bar": "2026-10-23T10:25:00-04:00",
-        "stop": 27.990000000000002,
-        "symbol": "HIMS",
-        "tp": 26.89854,
-        "trade_id": "20261023-HIMS-20261023T1025000400"
-      }
+      "phase": "watching"
     },
     "IREN": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 26.3432,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "exit": 25.9195,
-        "exit_bar": "2026-10-23T09:55:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.932,
-        "gross_pnl_usd": -4.66,
-        "orb_high": 26.18,
-        "orb_low": 25.19,
-        "qty": 11,
-        "risk_estimate_usd": 4.66,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 25.9325,
-        "symbol": "IREN",
-        "tp": 27.1645,
-        "trade_id": "20261023-IREN-20261023T0945000400"
-      },
-      "trade": {
-        "breakout_pct": 0.668,
-        "entry": 26.343164999999996,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T09:55:00-04:00",
-        "orb_high": 26.18,
-        "orb_low": 25.19,
-        "qty": 11,
-        "rel_vol": 2.242,
-        "risk_estimate_usd": 4.66,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "stop": 25.9325,
-        "symbol": "IREN",
-        "tp": 27.164494999999985,
-        "trade_id": "20261023-IREN-20261023T0945000400"
-      }
+      "phase": "watching"
     },
     "LUNR": {
       "phase": "watching"
     },
     "MARA": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 7.4637,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "exit": 7.3163,
-        "exit_bar": "2026-10-23T10:10:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -1.061,
-        "gross_pnl_usd": -5.31,
-        "orb_high": 7.38,
-        "orb_low": 7.18,
-        "qty": 36,
-        "risk_estimate_usd": 4.95,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 7.33,
-        "symbol": "MARA",
-        "tp": 7.7312,
-        "trade_id": "20261023-MARA-20261023T0945000400"
-      },
-      "trade": {
-        "breakout_pct": 1.287,
-        "entry": 7.46373,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:10:00-04:00",
-        "orb_high": 7.38,
-        "orb_low": 7.18,
-        "qty": 36,
-        "rel_vol": 1.894,
-        "risk_estimate_usd": 4.95,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "stop": 7.33,
-        "symbol": "MARA",
-        "tp": 7.73119,
-        "trade_id": "20261023-MARA-20261023T0945000400"
-      }
+      "phase": "watching"
     },
     "NOK": {
       "phase": "watching"
     },
     "NU": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 14.8224,
-        "entry_bar": "2026-10-23T11:05:00-04:00",
-        "exit": 15.0172,
-        "exit_bar": "2026-10-23T13:55:00-04:00",
-        "exit_reason": "TP",
-        "gross_pnl_r": 1.792,
-        "gross_pnl_usd": 8.96,
-        "orb_high": 14.765,
-        "orb_low": 14.59,
-        "qty": 46,
-        "risk_estimate_usd": 4.99,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T11:00:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 14.7213,
-        "symbol": "NU",
-        "tp": 15.0247,
-        "trade_id": "20261023-NU-20261023T1100000400"
-      },
-      "trade": {
-        "breakout_pct": 0.237,
-        "entry": 14.822407499999999,
-        "entry_bar": "2026-10-23T11:05:00-04:00",
-        "last_evaluated_bar": "2026-10-23T13:55:00-04:00",
-        "orb_high": 14.765,
-        "orb_low": 14.59,
-        "qty": 46,
-        "rel_vol": 1.137,
-        "risk_estimate_usd": 4.99,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T11:00:00-04:00",
-        "stop": 14.721250000000001,
-        "symbol": "NU",
-        "tp": 15.024722499999994,
-        "trade_id": "20261023-NU-20261023T1100000400"
-      }
+      "phase": "watching"
     },
     "PATH": {
       "phase": "watching"
@@ -389,93 +69,13 @@
       "phase": "watching"
     },
     "RIOT": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 12.9765,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "exit": 12.8311,
-        "exit_bar": "2026-10-23T09:50:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.989,
-        "gross_pnl_usd": -4.94,
-        "orb_high": 12.91,
-        "orb_low": 12.62,
-        "qty": 34,
-        "risk_estimate_usd": 4.95,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 12.8375,
-        "symbol": "RIOT",
-        "tp": 13.2545,
-        "trade_id": "20261023-RIOT-20261023T0945000400"
-      },
-      "trade": {
-        "breakout_pct": 0.465,
-        "entry": 12.976485,
-        "entry_bar": "2026-10-23T09:50:00-04:00",
-        "last_evaluated_bar": "2026-10-23T09:50:00-04:00",
-        "orb_high": 12.91,
-        "orb_low": 12.62,
-        "qty": 34,
-        "rel_vol": 2.998,
-        "risk_estimate_usd": 4.95,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:45:00-04:00",
-        "stop": 12.8375,
-        "symbol": "RIOT",
-        "tp": 13.254455,
-        "trade_id": "20261023-RIOT-20261023T0945000400"
-      }
+      "phase": "watching"
     },
     "RIVN": {
       "phase": "watching"
     },
     "SNAP": {
-      "phase": "closed",
-      "result": {
-        "ambiguous_stop_first": false,
-        "date": "2026-10-23",
-        "entry": 6.3532,
-        "entry_bar": "2026-10-23T09:55:00-04:00",
-        "exit": 6.3068,
-        "exit_bar": "2026-10-23T10:05:00-04:00",
-        "exit_reason": "SL",
-        "gross_pnl_r": -0.991,
-        "gross_pnl_usd": -4.96,
-        "orb_high": 6.33,
-        "orb_low": 6.25,
-        "qty": 107,
-        "risk_estimate_usd": 4.96,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:50:00-04:00",
-        "simulated": true,
-        "slippage_pct_per_side": 0.05,
-        "stop": 6.31,
-        "symbol": "SNAP",
-        "tp": 6.4395,
-        "trade_id": "20261023-SNAP-20261023T0950000400"
-      },
-      "trade": {
-        "breakout_pct": 0.395,
-        "entry": 6.353174999999999,
-        "entry_bar": "2026-10-23T09:55:00-04:00",
-        "last_evaluated_bar": "2026-10-23T10:05:00-04:00",
-        "orb_high": 6.33,
-        "orb_low": 6.25,
-        "qty": 107,
-        "rel_vol": 1.128,
-        "risk_estimate_usd": 4.96,
-        "side": "LONG",
-        "signal_bar": "2026-10-23T09:50:00-04:00",
-        "stop": 6.3100000000000005,
-        "symbol": "SNAP",
-        "tp": 6.439524999999997,
-        "trade_id": "20261023-SNAP-20261023T0950000400"
-      }
+      "phase": "watching"
     },
     "SOFI": {
       "phase": "watching"
