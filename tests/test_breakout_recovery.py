@@ -26,7 +26,7 @@ def parent(exit_status="filled", exit_qty="8", entry_qty="8"):
 
 class RecoveryTests(unittest.TestCase):
     def check_case(self, order, positions=None, open_orders=None, blocked=False):
-        with patch.object(scanner, "api", return_value=[{"client_order_id": CID}]), \
+        with patch.object(scanner, "api", return_value=[{"id": "entry-1", "client_order_id": CID}]), \
              patch.object(scanner, "order_by_client", return_value=order), \
              patch.object(scanner, "order_by_id", return_value=order), \
              patch.object(scanner, "all_positions", return_value=positions or {}), \
