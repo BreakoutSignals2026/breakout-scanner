@@ -132,6 +132,8 @@ def scan_once(now=None):
             good,why=verify_contiguous(completed,key="t",count=13,
                                         session_open=session_open,
                                         allow_fixed_grid_offset=True)
+            if good and why.startswith("OK_fixed_offset_"):
+                print(f"XETRA {symbol}: validated Yahoo fixed-grid offset {why}; original timestamps retained",flush=True)
             if not good:
                 stats["invalid_reference"]+=1
                 stats["quality_logged"]+=int(log_quality(symbol,bars,now,why,"ENTRY_BLOCKED"))
