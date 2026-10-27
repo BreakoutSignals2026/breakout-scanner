@@ -6,6 +6,10 @@ on:
     # handles CET/CEST and actual Xetra regular hours.
     # Avoid crowded round UTC minute; still once every ten minutes.
     - cron: "7,17,27,37,47,57 7-17 * * 1-5"
+  push:
+    paths:
+      - "scanner_xetra_v1.py"
+      - ".github/workflows/xetra_scanner.yml"
   workflow_dispatch:
 
 permissions:
