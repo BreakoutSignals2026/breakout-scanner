@@ -8,16 +8,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-27",
-    "scans": 12,
+    "scans": 13,
     "totals": {
       "bez_potvrdeneho_breakoutu": 5,
-      "blocked_positions": 4,
-      "exceptions": 2,
+      "blocked_positions": 5,
+      "exceptions": 3,
       "malo_5min_sviecok": 58,
-      "nizky_relativny_objem": 50,
+      "nizky_relativny_objem": 58,
       "submitted": 1,
-      "symbols_checked": 116,
-      "technical_signals": 3
+      "symbols_checked": 125,
+      "technical_signals": 4
     }
   },
   "daily_diagnostics_notice": "2026-10-26",
@@ -27,23 +27,23 @@
       "blocked_positions": 1,
       "exceptions": 1,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 72.4,
+      "scan_seconds": 72.6,
       "submitted": 0,
       "symbols_checked": 9,
       "technical_signals": 1,
-      "time_ny": "2026-10-27T11:49:56-04:00"
+      "time_ny": "2026-10-27T11:55:41-04:00"
     },
     "date": "2026-10-27",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "AMD: IEX spread 5.265% nad 0.3%",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "nizky_relativny_objem",
+      "NVDA": "NVDA: IEX spread 0.328% nad 0.3%",
       "TSLA": "position_or_order_blocked"
     }
   },
