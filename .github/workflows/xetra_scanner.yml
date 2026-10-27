@@ -42,7 +42,14 @@ jobs:
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add xetra_virtual_v1_state.json xetra_virtual_v1_signals.jsonl xetra_virtual_v1_trades.csv xetra_quality_v1.csv 2>/dev/null || true
+          # git add with missing paths can fail atomically, dropping even
+          # successfully generated quality/state files. Stage existing only.
+          existing=()
+          for state in xetra_virtual_v1_state.json xetra_virtual_v1_signals.jsonl \
+                       xetra_virtual_v1_trades.csv xetra_quality_v1.csv; do
+            if [[ -f "$state" ]]; then existing+=("$state"); fi
+          done
+          if ((${#existing[@]})); then git add -- "${existing[@]}"; fi
           if ! git diff --cached --quiet; then
             git commit -m "Update XETRA V1 independent virtual research and quality"
             pushed=false

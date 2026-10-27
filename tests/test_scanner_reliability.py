@@ -83,6 +83,16 @@ class VenueCandleGuardTests(unittest.TestCase):
         self.assertEqual(removed,0)
         self.assertEqual(clean,raw)
 
+    def test_xetra_stale_live_provider_tail_is_dropped_without_fill(self):
+        first=datetime(2026,10,27,8,0,tzinfo=UTC)
+        raw=sample(first,20)
+        raw.append({"t":(first+timedelta(minutes=97,seconds=20)).isoformat(),
+                    "o":100,"h":101,"l":99,"c":100.3,"v":200})
+        valid,removed=xetra.drop_unstable_tail(raw,
+                         first+timedelta(minutes=112),first)
+        self.assertEqual(removed,1)
+        self.assertEqual(valid,raw[:-1])
+
     def test_xetra_quality_journal_dedup(self):
         with tempfile.TemporaryDirectory() as tmp:
             quality=Path(tmp)/"quality.csv"

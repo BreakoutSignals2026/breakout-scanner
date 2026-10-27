@@ -106,7 +106,10 @@ def drop_unstable_tail(raw,now,opened):
                 continue
         except (ValueError,KeyError,TypeError):
             continue
-        if now-(last+timedelta(minutes=5))>timedelta(minutes=5):
+        # Historical 5m provider feed can be delayed by 15+ min.
+        # We may discard an anomalous trailing update for diagnostics,
+        # but a separate freshness gate below NEVER uses it for a signal.
+        if now-(last+timedelta(minutes=5))>timedelta(hours=2):
             continue
         print(f"XETRA provisional off-grid tail dropped: {removed} "
               f"raw timestamp(s) after last confirmed 5m {last.isoformat()}",
@@ -172,6 +175,15 @@ def scan_once(now=None):
             # Yahoo may publish delayed/partial Xetra data. Fail-closed for
             # NEW simulated signals if the 12-bar reference has a time gap.
             completed=full_bars(bars,now,5)
+            if completed:
+                age=(now-(completed[-1]["t"]+timedelta(minutes=5))).total_seconds()/60
+                if age>5:
+                    stats["invalid_reference"]+=1
+                    stats["quality_logged"]+=int(log_quality(
+                        symbol,bars,now,f"STALE_YAHOO_FEED_{age:.1f}min","ENTRY_BLOCKED"))
+                    print(f"XETRA {symbol}: Yahoo latest completed bar is {age:.1f}min stale; "
+                          "new research signal disabled (no price interpolation)",flush=True)
+                    continue
             good,why=verify_contiguous(completed,key="t",count=13,
                                         session_open=session_open,
                                         allow_fixed_grid_offset=True)
