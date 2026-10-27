@@ -1,8 +1,11 @@
 {
   "date": "2026-10-27",
   "seen": [
+    "CCL:2026-10-27T15:00:00+00:00:buy",
     "LUNR:2026-10-27T14:50:00+00:00:buy",
     "NU:2026-10-27T14:45:00+00:00:sell",
+    "QBTS:2026-10-27T15:00:00+00:00:buy",
+    "RGTI:2026-10-27T15:00:00+00:00:buy",
     "RIVN:2026-10-27T14:45:00+00:00:buy",
     "U:2026-10-27T14:55:00+00:00:buy"
   ],
@@ -17,7 +20,20 @@
       "phase": "watching"
     },
     "CCL": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T15:00:00+00:00",
+        "breakout_level": 27.565,
+        "breakout_percent": 0.7074188282241983,
+        "entry_close": 27.76,
+        "prior_avg_bar_notional_usd": 326117.67,
+        "rel_volume": 1.7320261894613274,
+        "side": "buy",
+        "signal_bar_notional_usd": 573410.56,
+        "signal_bar_shares": 20656,
+        "signal_bar_trades": 101,
+        "symbol": "CCL"
+      }
     },
     "CELH": {
       "phase": "watching"
@@ -52,8 +68,8 @@
     "LUNR": {
       "entry": 11.290642499999999,
       "entry_bar": "2026-10-27T14:55:00+00:00",
-      "high_water": 11.38,
-      "last_bar": "2026-10-27T14:55:00+00:00",
+      "high_water": 11.44,
+      "last_bar": "2026-10-27T15:00:00+00:00",
       "low_water": 11.290642499999999,
       "phase": "open",
       "qty": 21,
@@ -81,7 +97,7 @@
       "entry": 12.453770000000002,
       "entry_bar": "2026-10-27T14:50:00+00:00",
       "high_water": 12.453770000000002,
-      "last_bar": "2026-10-27T14:55:00+00:00",
+      "last_bar": "2026-10-27T15:00:00+00:00",
       "low_water": 12.44,
       "phase": "open",
       "qty": 19,
@@ -106,10 +122,36 @@
       "phase": "watching"
     },
     "QBTS": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T15:00:00+00:00",
+        "breakout_level": 11.92,
+        "breakout_percent": 1.090604026845644,
+        "entry_close": 12.05,
+        "prior_avg_bar_notional_usd": 83187.93,
+        "rel_volume": 2.61890359168242,
+        "side": "buy",
+        "signal_bar_notional_usd": 222587.6,
+        "signal_bar_shares": 18472,
+        "signal_bar_trades": 55,
+        "symbol": "QBTS"
+      }
     },
     "RGTI": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T15:00:00+00:00",
+        "breakout_level": 12.035,
+        "breakout_percent": 0.7478188616535094,
+        "entry_close": 12.125,
+        "prior_avg_bar_notional_usd": 87241.11,
+        "rel_volume": 1.877331151341584,
+        "side": "buy",
+        "signal_bar_notional_usd": 166912.75,
+        "signal_bar_shares": 13766,
+        "signal_bar_trades": 60,
+        "symbol": "RGTI"
+      }
     },
     "RIOT": {
       "phase": "watching"
@@ -118,7 +160,7 @@
       "entry": 11.830912499999998,
       "entry_bar": "2026-10-27T14:50:00+00:00",
       "high_water": 11.865,
-      "last_bar": "2026-10-27T14:55:00+00:00",
+      "last_bar": "2026-10-27T15:00:00+00:00",
       "low_water": 11.830912499999998,
       "phase": "open",
       "qty": 20,
@@ -143,7 +185,13 @@
       "phase": "watching"
     },
     "U": {
-      "phase": "pending",
+      "entry": 40.910444999999996,
+      "entry_bar": "2026-10-27T15:00:00+00:00",
+      "high_water": 40.98,
+      "last_bar": "2026-10-27T15:00:00+00:00",
+      "low_water": 40.910444999999996,
+      "phase": "open",
+      "qty": 5,
       "signal": {
         "bar_key": "2026-10-27T14:55:00+00:00",
         "breakout_level": 40.81,
