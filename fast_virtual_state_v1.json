@@ -3,7 +3,8 @@
   "seen": [
     "LUNR:2026-10-27T14:50:00+00:00:buy",
     "NU:2026-10-27T14:45:00+00:00:sell",
-    "RIVN:2026-10-27T14:45:00+00:00:buy"
+    "RIVN:2026-10-27T14:45:00+00:00:buy",
+    "U:2026-10-27T14:55:00+00:00:buy"
   ],
   "symbols": {
     "AA": {
@@ -49,7 +50,13 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "pending",
+      "entry": 11.290642499999999,
+      "entry_bar": "2026-10-27T14:55:00+00:00",
+      "high_water": 11.38,
+      "last_bar": "2026-10-27T14:55:00+00:00",
+      "low_water": 11.290642499999999,
+      "phase": "open",
+      "qty": 21,
       "signal": {
         "bar_key": "2026-10-27T14:50:00+00:00",
         "breakout_level": 11.21,
@@ -74,8 +81,8 @@
       "entry": 12.453770000000002,
       "entry_bar": "2026-10-27T14:50:00+00:00",
       "high_water": 12.453770000000002,
-      "last_bar": "2026-10-27T14:50:00+00:00",
-      "low_water": 12.445,
+      "last_bar": "2026-10-27T14:55:00+00:00",
+      "low_water": 12.44,
       "phase": "open",
       "qty": 19,
       "signal": {
@@ -110,8 +117,8 @@
     "RIVN": {
       "entry": 11.830912499999998,
       "entry_bar": "2026-10-27T14:50:00+00:00",
-      "high_water": 11.855,
-      "last_bar": "2026-10-27T14:50:00+00:00",
+      "high_water": 11.865,
+      "last_bar": "2026-10-27T14:55:00+00:00",
       "low_water": 11.830912499999998,
       "phase": "open",
       "qty": 20,
@@ -136,7 +143,20 @@
       "phase": "watching"
     },
     "U": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T14:55:00+00:00",
+        "breakout_level": 40.81,
+        "breakout_percent": 0.23278608184268282,
+        "entry_close": 40.905,
+        "prior_avg_bar_notional_usd": 92128.09,
+        "rel_volume": 5.171239148749129,
+        "side": "buy",
+        "signal_bar_notional_usd": 481247.33,
+        "signal_bar_shares": 11765,
+        "signal_bar_trades": 159,
+        "symbol": "U"
+      }
     },
     "VALE": {
       "phase": "watching"
