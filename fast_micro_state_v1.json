@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 1,
+    "attempts": 2,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-10-27",
   "seen": [
+    "LUNR:2026-10-27T14:50:00+00:00:buy",
     "NU:2026-10-27T14:45:00+00:00:sell",
     "RIVN:2026-10-27T14:45:00+00:00:buy"
   ],
@@ -53,7 +54,22 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T14:50:00+00:00",
+        "breakout_level": 11.21,
+        "breakout_percent": 0.9812667261373722,
+        "entry_close": 11.32,
+        "prior_avg_bar_notional_usd": 56399.61,
+        "quote_spread": 0.019999999999999574,
+        "quote_spread_pct": 0.1768346595932765,
+        "rel_volume": 4.082301859892424,
+        "side": "buy",
+        "signal_bar_notional_usd": 237697.36,
+        "signal_bar_shares": 20998,
+        "signal_bar_trades": 168,
+        "symbol": "LUNR"
+      }
     },
     "MARA": {
       "phase": "watching"
@@ -62,7 +78,11 @@
       "phase": "watching"
     },
     "NU": {
-      "phase": "pending",
+      "entry": 12.448770000000003,
+      "entry_bar": "2026-10-27T14:50:00+00:00",
+      "last_bar": "2026-10-27T14:50:00+00:00",
+      "phase": "open",
+      "qty": 11,
       "signal": {
         "bar_key": "2026-10-27T14:45:00+00:00",
         "breakout_level": 12.5,
