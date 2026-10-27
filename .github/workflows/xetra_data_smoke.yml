@@ -56,4 +56,22 @@ jobs:
               verified+=int(valid)
           print(f"XETRA safe research feed: {verified}/{len(SYMBOLS)} integrity windows valid")
           assert verified>0, "No usable real historical XETRA 5m windows; inspect feed"
+          print("LIVE YAHOO TIMESTAMP DIAGNOSTIC (READ-ONLY, NO TRADING)")
+          live=datetime.now(timezone.utc)
+          if live.astimezone(ZoneInfo("Europe/Berlin")).time()<time(17,30):
+              from scanner_xetra_v1 import drop_unstable_tail
+              for symbol in SYMBOLS:
+                  try:
+                      raw=yahoo_bars(symbol,live)
+                      opened,_=xetra_session(live)
+                      stable,dropped=drop_unstable_tail(raw,live,opened)
+                      completed=full_bars(stable,live,5)
+                      good,reason=verify_contiguous(completed,key="t",count=13,
+                             session_open=opened,allow_fixed_grid_offset=True)
+                      print(f"LIVE {symbol}: now={live.isoformat()} raw={len(raw)} "
+                            f"last18={[x['t'] for x in raw[-18:]]} "
+                            f"dropped={dropped} full={len(completed)} "
+                            f"valid={good} reason={reason}",flush=True)
+                  except Exception as exc:
+                      print(f"LIVE {symbol} diagnostic failure={type(exc).__name__}: {exc}")
           PY
