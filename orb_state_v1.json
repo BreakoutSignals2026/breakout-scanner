@@ -65,7 +65,7 @@
         "breakout_pct": 0.285,
         "entry": 5.2976475,
         "entry_bar": "2026-10-27T11:00:00-04:00",
-        "last_evaluated_bar": "2026-10-27T11:05:00-04:00",
+        "last_evaluated_bar": "2026-10-27T11:10:00-04:00",
         "orb_high": 5.27,
         "orb_low": 5.24,
         "qty": 132,
@@ -98,7 +98,16 @@
       "phase": "watching"
     },
     "U": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "breakout_pct": 0.22,
+        "orb_high": 41.0,
+        "orb_low": 40.44,
+        "rel_vol": 9.532,
+        "side": "LONG",
+        "signal_bar": "2026-10-27T11:10:00-04:00",
+        "symbol": "U"
+      }
     },
     "VALE": {
       "phase": "watching"
