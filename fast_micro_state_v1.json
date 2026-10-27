@@ -1,41 +1,17 @@
 {
   "daily": {
-    "attempts": 10,
-    "closed": 8,
-    "pnl_usd": -3.35
+    "attempts": 1,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "seen": [
-    "AA:2026-10-26T16:20:00+00:00:buy",
-    "AA:2026-10-26T17:55:00+00:00:buy",
-    "CHWY:2026-10-26T19:20:00+00:00:buy",
-    "CLF:2026-10-26T17:45:00+00:00:sell",
-    "CLSK:2026-10-26T17:00:00+00:00:buy",
-    "DKNG:2026-10-26T15:40:00+00:00:sell",
-    "F:2026-10-26T17:40:00+00:00:sell",
-    "GME:2026-10-26T15:35:00+00:00:sell",
-    "GME:2026-10-26T15:40:00+00:00:sell",
-    "GME:2026-10-26T15:45:00+00:00:sell",
-    "GME:2026-10-26T15:50:00+00:00:sell",
-    "GME:2026-10-26T16:35:00+00:00:sell",
-    "MARA:2026-10-26T17:00:00+00:00:buy",
-    "MARA:2026-10-26T18:50:00+00:00:sell",
-    "NOK:2026-10-26T15:35:00+00:00:buy",
-    "PATH:2026-10-26T19:20:00+00:00:buy",
-    "PTON:2026-10-26T15:50:00+00:00:sell",
-    "PTON:2026-10-26T16:10:00+00:00:sell",
-    "RGTI:2026-10-26T16:40:00+00:00:sell",
-    "RIOT:2026-10-26T15:15:00+00:00:buy",
-    "SNAP:2026-10-26T15:10:00+00:00:sell",
-    "SNAP:2026-10-26T17:15:00+00:00:buy",
-    "SNAP:2026-10-26T19:10:00+00:00:buy",
-    "SOFI:2026-10-26T15:55:00+00:00:sell",
-    "VALE:2026-10-26T19:05:00+00:00:sell"
+    "NU:2026-10-27T14:45:00+00:00:sell",
+    "RIVN:2026-10-27T14:45:00+00:00:buy"
   ],
   "symbols": {
     "AA": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "AAL": {
       "phase": "watching"
@@ -56,19 +32,19 @@
       "phase": "watching"
     },
     "CLSK": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "DKNG": {
       "phase": "watching"
     },
     "F": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "FSLY": {
       "phase": "watching"
     },
     "GME": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "HIMS": {
       "phase": "watching"
@@ -80,13 +56,28 @@
       "phase": "watching"
     },
     "MARA": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "NOK": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "NU": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T14:45:00+00:00",
+        "breakout_level": 12.5,
+        "breakout_percent": 0.35999999999999943,
+        "entry_close": 12.455,
+        "prior_avg_bar_notional_usd": 1124103.83,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08009611533840438,
+        "rel_volume": 1.6043655594215709,
+        "side": "sell",
+        "signal_bar_notional_usd": 1778424.54,
+        "signal_bar_shares": 142788,
+        "signal_bar_trades": 189,
+        "symbol": "NU"
+      }
     },
     "PATH": {
       "phase": "watching"
@@ -98,7 +89,7 @@
       "phase": "watching"
     },
     "RGTI": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "RIOT": {
       "phase": "watching"
@@ -107,17 +98,16 @@
       "phase": "watching"
     },
     "SNAP": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "SOFI": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "U": {
       "phase": "watching"
     },
     "VALE": {
-      "phase": "closed"
+      "phase": "watching"
     }
   }
 }
