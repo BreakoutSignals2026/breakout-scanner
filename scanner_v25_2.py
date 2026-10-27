@@ -386,17 +386,58 @@ def active_record(t):
 
 
 def ensure_no_untracked_classic_orders(state):
-    """Even after a lost file, do not submit when a previous B252 order exists in Alpaca."""
+    """Fail closed for unknown active orders; recognize fully exited historic brackets.
+
+    A lost GitHub state commit must not make an old, verified flat trade block
+    the scanner forever. Never infer closure solely from the parent being filled.
+    """
     after = (datetime.now(timezone.utc) - timedelta(days=8)).isoformat()
     records = api("GET", "/orders", params={"status": "all", "limit": 500,
-                                                    "after": after, "nested": "true"})
+                                             "after": after, "nested": "true"})
+    if not isinstance(records, list):
+        raise RuntimeError("História Alpaca objednávok nie je dostupná")
     known = {t["client_id"] for t in state["trades"].values()}
-    extras = [o.get("client_order_id") for o in walk_orders(records)
-              if str(o.get("client_order_id", "")).startswith("B252_")
-              and o.get("client_order_id") not in known
-              and not o.get("parent_order_id")]
+    positions = all_positions()
+    live = open_orders()
+    extras = []
+    for o in records:
+        cid = str(o.get("client_order_id") or "")
+        if not cid.startswith("B252_") or cid.startswith("B252_EOD_") or cid in known:
+            continue
+        # Query the canonical parent and its legs: historical list responses
+        # can omit legs or include incomplete snapshots.
+        parent = order_by_client(cid)
+        if not parent or parent.get("id") != o.get("id"):
+            extras.append(cid)
+            continue
+        parent = order_by_id(parent["id"]) or parent
+        legs = parent.get("legs") or []
+        entry_qty = qty_of(parent)
+        exits = [leg for leg in legs if leg.get("side") != parent.get("side")]
+        exit_qty = sum(qty_of(leg) for leg in exits)
+        symbol = parent.get("symbol")
+        has_live_order = any(
+            x.get("symbol") == symbol and x.get("status") not in TERMINAL
+            for x in walk_orders(live)
+        )
+        fully_closed = (
+            parent.get("status") == "filled"
+            and entry_qty > 0
+            and exits
+            and same_qty(exit_qty, entry_qty)
+            and all(leg.get("status") in TERMINAL for leg in legs)
+            and symbol not in positions
+            and not has_live_order
+        )
+        if fully_closed:
+            print(f"BREAKOUT recovered closed historical order {cid}; "
+                  "not reopening or modifying Alpaca order", flush=True)
+            continue
+        extras.append(cid)
     if extras:
-        raise RuntimeError(f"Neznáme predchádzajúce BREAKOUT objednávky: {extras[:6]} – ručná kontrola")
+        raise RuntimeError(
+            f"Neznáme alebo neuzavreté BREAKOUT objednávky: {extras[:6]} – ručná kontrola"
+        )
 
 
 def one_shot_already_consumed(state):
