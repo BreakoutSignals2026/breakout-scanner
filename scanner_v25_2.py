@@ -694,11 +694,11 @@ def cancel_order(order):
 
 def eod_close_trade(t, state):
     symbol = t["symbol"]
+    if t.get("external_exit_order_id"):
+        return  # user-authorized next-session exit; NEVER submit duplicate
     parent = get_tracked_order(t)
     if not parent:
         raise RuntimeError("Pôvodná objednávka nedostupná; nič nezatváram naslepo")
-    if t.get("external_exit_order_id"):
-        return  # user-authorized next-session exit; NEVER submit duplicate
     if t.get("status") == "eod_sent":
         return  # reconcile only, don't send duplicate market exits
     if parent.get("status") != "filled":
