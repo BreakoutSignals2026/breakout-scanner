@@ -10,6 +10,9 @@ on:
     # Recovery launches at NY 09:30 (at the regular US market open).
     - cron: "30 13 * * 1-5"
     - cron: "30 14 * * 1-5"
+    # Extra recovery at 09:40/09:50 New York if GitHub delays opening triggers.
+    - cron: "40,50 13 * * 1-5"
+    - cron: "40,50 14 * * 1-5"
     # Additional 09:40 and 10:00 NY recovery crons; duplicate runs are serialized.
     - cron: "40 13 * * 1-5"
     - cron: "40 14 * * 1-5"
