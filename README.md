@@ -97,6 +97,40 @@ Nie je tu žiadny LIVE trading workflow.
   výpadkov, negarantujú 24/7 prevádzku. PAPER ochranné príkazy
   zostávajú nezmenené; nikdy nepovažovať simulovaný PnL za reálny.
 
+## Október 2026: spoľahlivý štart a zber sviečok
+
+- **Zmeškané americké štarty:** `.github/workflows/us_start_recovery.yml`
+  sleduje úspešné diagnostické workflow a kontroluje, či sa počas amerického
+  obchodného dňa skutočne spustila prvá/druhá relácia FAST, BREAKOUT,
+  FAST MICRO a ORB. Ak GitHub naplánovaný beh úplne vynechal, v konzervatívnom
+  okne **09:40–12:30 New York** (iba s potvrdeným otvoreným trhom od Alpaca)
+  vyvolá náhradné `workflow_dispatch`. FAST a BREAKOUT používajú svoje
+  **existujúce PAPER risk/EOD ochrany**, nič tu nezadáva brokerovi priamo.
+  Skryté čakajúce alebo bežiace relácie nespúšťame duplicitne.
+  GitHub Actions aj napriek tejto oprave **negeneruje garantované presné časy**.
+- **Akciové päťminútovky:** `scanner_equity_observer_v1.py` na samostatnom,
+  iba čítacom workflow `.github/workflows/equity_observer.yml` archivuje
+  pôvodné uzavreté sviečky 38 amerických akcií v
+  `equity_iex_candles_v1.csv`, 14 dní, bez dosadzovania chýbajúcich cien
+  či objemu. `equity_iex_quality_v1.csv` zaznamenáva počet reálnych
+  sviečok, chýbajúce päťminútové intervaly, nulové objemy a vek údajov.
+  IEX nie je celý US trh a oddelené dáta Twelve Data z klasického
+  BREAKOUT scanneru nemožno vydávať za totožný zdroj.
+- **Experiment stratégií bez objednávok:** `equity_iex_research_v1.py`
+  z archivovaných sviečok vytvára `equity_iex_research_v1.csv` iba
+  po dostupnosti 30-minútového budúceho pozorovania. Porovnáva proxy
+  prierazov s a bez EMA9/EMA21 + silného uzavretia sviečky, počíta
+  modelový výnos pri 0,05 % sklze *na každej strane*.
+  Neobsahuje reálny bid/ask spread, poplatky za short ani plnenie orderov,
+  a preto sa tieto výnosy **nesmú miešať s Alpaca PAPER PnL**.
+  Nezasahuje do FAST/BREAKOUT PAPER stratégie.
+- **XETRA:** Yahoo živé sviečky bývajú oneskorené približne 15 minút.
+  Scanner môže bezpečne odmietnuť iba preukázateľnú nepravidelnú koncovú
+  aktualizáciu, ale **neotvorí ani virtuálny nový obchod** na starej
+  potvrdenej sviečke. Diagnostika sa zapisuje v
+  `xetra_quality_v1.csv`; načítať historické ceny != mať spoľahlivý
+  real-time obchodný feed.
+
 ## Automatické spustenie
 
 GitHub Actions používa štyri UTC crony (`13:20`, `14:20`, `13:30`,
