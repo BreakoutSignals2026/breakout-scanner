@@ -1,11 +1,16 @@
 {
   "daily": {
-    "attempts": 0,
+    "attempts": 2,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-10-27",
-  "seen": [],
+  "seen": [
+    "LUNR:2026-10-27T14:50:00+00:00:buy",
+    "NU:2026-10-27T14:45:00+00:00:sell",
+    "RIVN:2026-10-27T14:45:00+00:00:buy",
+    "U:2026-10-27T14:55:00+00:00:buy"
+  ],
   "symbols": {
     "AA": {
       "phase": "watching"
@@ -50,7 +55,8 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "watching"
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "MARA": {
       "phase": "watching"
@@ -59,7 +65,26 @@
       "phase": "watching"
     },
     "NU": {
-      "phase": "watching"
+      "entry": 12.448770000000003,
+      "entry_bar": "2026-10-27T14:50:00+00:00",
+      "last_bar": "2026-10-27T14:55:00+00:00",
+      "phase": "open",
+      "qty": 11,
+      "signal": {
+        "bar_key": "2026-10-27T14:45:00+00:00",
+        "breakout_level": 12.5,
+        "breakout_percent": 0.35999999999999943,
+        "entry_close": 12.455,
+        "prior_avg_bar_notional_usd": 1124103.83,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08009611533840438,
+        "rel_volume": 1.6043655594215709,
+        "side": "sell",
+        "signal_bar_notional_usd": 1778424.54,
+        "signal_bar_shares": 142788,
+        "signal_bar_trades": 189,
+        "symbol": "NU"
+      }
     },
     "PATH": {
       "phase": "watching"

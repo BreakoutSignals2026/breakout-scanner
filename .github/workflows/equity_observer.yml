@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scanner_equity_observer_v1.py"
+      - "equity_iex_research_v1.py"
       - ".github/workflows/equity_observer.yml"
   schedule:
     # Independent read-only observer; backfills all of today's regular session.
@@ -38,10 +39,11 @@ jobs:
         run: |
           set -euo pipefail
           python -u scanner_equity_observer_v1.py
+          python -u equity_iex_research_v1.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           added=()
-          for f in equity_iex_candles_v1.csv equity_iex_quality_v1.csv; do
+          for f in equity_iex_candles_v1.csv equity_iex_quality_v1.csv equity_iex_research_v1.csv; do
             if [[ -f "$f" ]]; then added+=("$f"); fi
           done
           if ((${#added[@]})); then git add -- "${added[@]}"; fi
