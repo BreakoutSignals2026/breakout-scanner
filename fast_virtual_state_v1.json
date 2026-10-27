@@ -5,12 +5,14 @@
     "CCL:2026-10-27T15:00:00+00:00:buy",
     "CELH:2026-10-27T16:20:00+00:00:buy",
     "CHWY:2026-10-27T15:20:00+00:00:buy",
+    "CLSK:2026-10-27T19:00:00+00:00:buy",
     "DKNG:2026-10-27T17:15:00+00:00:buy",
     "FSLY:2026-10-27T17:00:00+00:00:buy",
     "FSLY:2026-10-27T17:05:00+00:00:buy",
     "GME:2026-10-27T15:30:00+00:00:sell",
     "GME:2026-10-27T15:45:00+00:00:sell",
     "GME:2026-10-27T16:45:00+00:00:sell",
+    "IREN:2026-10-27T19:00:00+00:00:buy",
     "LUNR:2026-10-27T14:50:00+00:00:buy",
     "LUNR:2026-10-27T15:15:00+00:00:buy",
     "LUNR:2026-10-27T16:10:00+00:00:buy",
@@ -21,6 +23,7 @@
     "NOK:2026-10-27T16:25:00+00:00:buy",
     "NU:2026-10-27T14:45:00+00:00:sell",
     "QBTS:2026-10-27T15:00:00+00:00:buy",
+    "QBTS:2026-10-27T18:55:00+00:00:buy",
     "RGTI:2026-10-27T15:00:00+00:00:buy",
     "RGTI:2026-10-27T16:00:00+00:00:buy",
     "RGTI:2026-10-27T16:05:00+00:00:buy",
@@ -44,32 +47,13 @@
       "phase": "closed"
     },
     "CCL": {
-      "entry": 27.743865,
-      "entry_bar": "2026-10-27T15:05:00+00:00",
-      "high_water": 28.075,
-      "last_bar": "2026-10-27T18:50:00+00:00",
-      "low_water": 27.743865,
-      "phase": "open",
-      "qty": 8,
-      "signal": {
-        "bar_key": "2026-10-27T15:00:00+00:00",
-        "breakout_level": 27.565,
-        "breakout_percent": 0.7074188282241983,
-        "entry_close": 27.76,
-        "prior_avg_bar_notional_usd": 326117.67,
-        "rel_volume": 1.7320261894613274,
-        "side": "buy",
-        "signal_bar_notional_usd": 573410.56,
-        "signal_bar_shares": 20656,
-        "signal_bar_trades": 101,
-        "symbol": "CCL"
-      }
+      "phase": "closed"
     },
     "CELH": {
       "entry": 27.97398,
       "entry_bar": "2026-10-27T16:25:00+00:00",
       "high_water": 28.05,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 27.97398,
       "phase": "open",
       "qty": 8,
@@ -91,7 +75,7 @@
       "entry": 21.335662499999998,
       "entry_bar": "2026-10-27T15:25:00+00:00",
       "high_water": 21.455,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 21.335662499999998,
       "phase": "open",
       "qty": 11,
@@ -113,7 +97,20 @@
       "phase": "watching"
     },
     "CLSK": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T19:00:00+00:00",
+        "breakout_level": 8.12,
+        "breakout_percent": 0.36945812807883177,
+        "entry_close": 8.15,
+        "prior_avg_bar_notional_usd": 37855.86,
+        "rel_volume": 7.191159198490943,
+        "side": "buy",
+        "signal_bar_notional_usd": 274451.25,
+        "signal_bar_shares": 33675,
+        "signal_bar_trades": 60,
+        "symbol": "CLSK"
+      }
     },
     "DKNG": {
       "phase": "closed"
@@ -125,7 +122,7 @@
       "entry": 27.3086475,
       "entry_bar": "2026-10-27T17:05:00+00:00",
       "high_water": 27.88,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 27.3086475,
       "phase": "open",
       "qty": 8,
@@ -147,7 +144,7 @@
       "entry": 23.753117500000002,
       "entry_bar": "2026-10-27T15:35:00+00:00",
       "high_water": 23.753117500000002,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 23.32,
       "phase": "open",
       "qty": 10,
@@ -169,7 +166,20 @@
       "phase": "watching"
     },
     "IREN": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-27T19:00:00+00:00",
+        "breakout_level": 27.11,
+        "breakout_percent": 0.46108447067502767,
+        "entry_close": 27.235,
+        "prior_avg_bar_notional_usd": 212475.01,
+        "rel_volume": 1.9167037578686335,
+        "side": "buy",
+        "signal_bar_notional_usd": 410485.92,
+        "signal_bar_shares": 15072,
+        "signal_bar_trades": 114,
+        "symbol": "IREN"
+      }
     },
     "LUNR": {
       "phase": "closed"
@@ -181,7 +191,7 @@
       "entry": 8.914455,
       "entry_bar": "2026-10-27T16:30:00+00:00",
       "high_water": 8.955,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 8.914455,
       "phase": "open",
       "qty": 26,
@@ -224,7 +234,7 @@
       "entry": 6.1580775,
       "entry_bar": "2026-10-27T17:15:00+00:00",
       "high_water": 6.17,
-      "last_bar": "2026-10-27T18:50:00+00:00",
+      "last_bar": "2026-10-27T19:00:00+00:00",
       "low_water": 6.1580775,
       "phase": "open",
       "qty": 38,
