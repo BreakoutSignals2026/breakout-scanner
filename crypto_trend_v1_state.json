@@ -7,17 +7,37 @@
       ]
     },
     "2026-10-27": {
-      "attempts": 1,
+      "attempts": 2,
       "symbols": [
-        "SOL/USD"
+        "SOL/USD",
+        "BTC/USD"
       ]
     }
   },
   "positions": {
+    "BTC/USD": {
+      "phase": "pending",
+      "signal": {
+        "age_minutes": 0.27,
+        "bar": "2026-10-27T15:20:00+00:00",
+        "bar_close": "2026-10-27T15:25:00+00:00",
+        "breakout_pct": 0.135,
+        "feed_note": "US_KRAKEN_RESEARCH_NEVER_BROKER_SIGNAL",
+        "kraken_trend_confirmed": true,
+        "kraken_volume_confirmed": true,
+        "paper_eligible": false,
+        "reference_price": 80467.15,
+        "relvol": 7.478,
+        "research_only": true,
+        "side": "buy",
+        "symbol": "BTC/USD",
+        "us_kraken_deviation_pct": 0.002
+      }
+    },
     "SOL/USD": {
       "entry": 100.17807839999999,
       "entry_at": "2026-10-27T07:55:00+00:00",
-      "last_bar": "2026-10-27T15:15:00+00:00",
+      "last_bar": "2026-10-27T15:20:00+00:00",
       "phase": "open",
       "qty": 0.80501804,
       "signal": {
@@ -40,6 +60,8 @@
   },
   "seen": {
     "BTC/USD:2026-10-26T15:15:00+00:00:buy": "2026-10-26",
+    "BTC/USD:2026-10-27T15:20:00+00:00:buy": "2026-10-27",
+    "ETH/USD:2026-10-27T15:20:00+00:00:buy": "2026-10-27",
     "SOL/USD:2026-10-27T07:50:00+00:00:buy": "2026-10-27"
   }
 }
