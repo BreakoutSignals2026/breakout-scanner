@@ -2,22 +2,20 @@ name: Breakout Scanner V2.5.2 (PAPER auto)
 
 on:
   schedule:
-    # 09:20 / 09:30 New York launches for both DST regimes.
-    # Preflight checks github.event.schedule against the actual NY UTC offset,
-    # so a GitHub delay cannot turn the wrong-season 10:20/10:30 cron into a trade.
+    # 09:20 NY primary; 09:30/09:40/09:50/10:00 NY retries, Monday-Friday.
+    # UTC schedules cover both US DST regimes; preflight selects the correct one.
+    # Each retry is separate so github.event.schedule matches its allowlist.
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
     - cron: "30 13 * * 1-5"
     - cron: "30 14 * * 1-5"
-    # Extra recovery at 09:40/09:50 New York if GitHub delays opening triggers.
-    - cron: "40,50 13 * * 1-5"
-    - cron: "40,50 14 * * 1-5"
-    # Additional 09:40 and 10:00 NY recovery crons; duplicate runs are serialized.
     - cron: "40 13 * * 1-5"
     - cron: "40 14 * * 1-5"
+    - cron: "50 13 * * 1-5"
+    - cron: "50 14 * * 1-5"
     - cron: "0 14 * * 1-5"
     - cron: "0 15 * * 1-5"
-    # Independent end-of-day recovery launch at 15:45 NY, even if earlier jobs fail.
+    # Retain classic BREAKOUT end-of-day recovery at 15:45 New York.
     - cron: "45 19 * * 1-5"
     - cron: "45 20 * * 1-5"
   workflow_dispatch:
@@ -47,7 +45,7 @@ jobs:
       run: ${{ steps.gate.outputs.run }}
     steps:
       - id: gate
-        name: Validate DST cron and allow delayed NY-session start
+        name: Validate weekday, NY time window and original DST schedule
         shell: bash
         env:
           SCHEDULE_CRON: ${{ github.event.schedule }}
@@ -61,41 +59,27 @@ jobs:
           now_min=$((10#$ny_hour * 60 + 10#$ny_minute))
           echo "NY time=$ny_time offset=$ny_offset weekday=$ny_weekday event=$GITHUB_EVENT_NAME cron=${SCHEDULE_CRON:-none}"
 
-          # Preserve manual recovery: its PAPER trading mode is controlled by
-          # the existing workflow_dispatch inputs, unchanged below.
-          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            exit 0
+          # Shared gate: weekdays, manual 09:00-16:00 NY, scheduled 09:20-16:00 NY.
+          # The scanner's Alpaca calendar still handles holidays and actual early closes.
+          allow=false
+          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -ge 540 ] && [ "$now_min" -lt 960 ]; then
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              allow=true
+            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 560 ]; then
+              # Validate the original cron against today's NY UTC offset, not arrival hour.
+              # Correct-season late arrivals are accepted until 16:00 NY; unknown crons fail closed.
+              case "$ny_offset:$SCHEDULE_CRON" in
+                "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:50 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:50 14 * * 1-5"|"-0500:0 15 * * 1-5"|"-0400:45 19 * * 1-5"|"-0500:45 20 * * 1-5")
+                  allow=true
+                  ;;
+                *)
+                  echo "Skipped: wrong DST-season or unknown cron."
+                  ;;
+              esac
+            fi
           fi
-          if [ "$GITHUB_EVENT_NAME" != "schedule" ] || [ "$ny_weekday" -ge 6 ]; then
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          # Accept only the cron belonging to today's New York DST regime.
-          # A late 09:20/09:30 launch stays valid even if GitHub starts it
-          # after 10:00; the 10:20/10:30 wrong-season launch stays blocked.
-          case "$ny_offset:$SCHEDULE_CRON" in
-            "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5"|"-0400:45 19 * * 1-5"|"-0500:45 20 * * 1-5")
-              echo "Correct DST-season schedule."
-              ;;
-            *)
-              echo "Skipped wrong-season or unknown schedule."
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              exit 0
-              ;;
-          esac
-
-          # Permit GitHub Actions delays throughout the NY trading session.
-          # After the close, delayed/queued invocations cannot start a new run.
-          # Existing scanner code still enforces the exchange calendar,
-          # last-entry cutoff, order safeguards and EOD liquidation.
-          if [ "$now_min" -ge 560 ] && [ "$now_min" -lt 960 ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Skipped: outside 09:20-16:00 New York."
-            echo "run=false" >> "$GITHUB_OUTPUT"
-          fi
+          echo "Gate: allow=$allow"
+          echo "run=$allow" >> "$GITHUB_OUTPUT"
 
   first-session:
     needs: preflight
