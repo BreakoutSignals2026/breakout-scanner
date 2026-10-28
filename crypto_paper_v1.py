@@ -222,7 +222,7 @@ def reconcile(state):
         target=bycid(trade["take_cid"])
         if target:
             if target.get("status")=="filled" and not pos:
-                finish_trade(state,trade,entry,target,"TAKE_PROFIT")
+                finish_trade(state,trade,entry,target,"TAKE_PROFIT",recent,open_orders)
                 continue
             if target.get("status") in OPEN:
                 safe=False
@@ -233,7 +233,7 @@ def reconcile(state):
                 continue
         if not pos:
             if protective and protective.get("status")=="filled":
-                finish_trade(state,trade,entry,protective,"STOP_LIMIT")
+                finish_trade(state,trade,entry,protective,"STOP_LIMIT",recent,open_orders)
             else:
                 alert(f"{symbol}: position missing but no confirmed crypto exit.")
                 safe=False
@@ -349,21 +349,99 @@ def reconcile(state):
     save(state)
     return safe,current
 
-def finish_trade(state,trade,entry,exit_order,reason):
-    qty=float(entry.get("filled_qty") or 0)
-    xqty=float(exit_order.get("filled_qty") or 0)
-    ep=float(entry.get("filled_avg_price") or 0)
-    xp=float(exit_order.get("filled_avg_price") or 0)
-    if qty<=0 or abs(qty-xqty)>0.0000001 or ep<=0 or xp<=0:
+# Alpaca charges crypto buy taker fees in the credited BASE asset (e.g. BTC).
+# The executed SELL qty can therefore be slightly smaller than the BUY fill
+# while the entire owned position was sold. Never treat a large/unknown gap
+# as a fee: reject it and require broker review.
+MAX_INFERRED_BASE_FEE_RATE=dec("0.0035")  # conservative 0.35% cap, NOT an assumed rate
+CRYPTO_QTY_ROUNDING_TOL=dec("0.000000001")
+
+
+def verified_closed_crypto_fills(trade, entry, exit_order, recent, open_orders):
+    """Validate exact owned entry + exit and return Decimal accounting values.
+
+    No realized result is recorded without confirmed *filled* broker orders,
+    the correct unique client IDs, an empty position, and no unexplained
+    additional filled orders for this symbol. Base fee is only inferred from
+    the BUY/SELL quantity gap, not reported as a confirmed Alpaca fee.
+    """
+    symbol=normalize(trade["symbol"])
+    wanted_exit=(trade["stop_cid"] if exit_order.get("client_order_id")==trade["stop_cid"]
+                 else trade["take_cid"])
+    if (entry.get("client_order_id")!=trade["entry_cid"] or
+        exit_order.get("client_order_id")!=wanted_exit or
+        entry.get("status")!="filled" or exit_order.get("status")!="filled" or
+        normalize(entry.get("symbol"))!=symbol or
+        normalize(exit_order.get("symbol"))!=symbol or
+        entry.get("side")!="buy" or exit_order.get("side")!="sell"):
+        raise RuntimeError("Crypto closed order identity/status mismatch; no estimated PnL")
+    qty=dec(entry.get("filled_qty") or "0")
+    xqty=dec(exit_order.get("filled_qty") or "0")
+    ep=dec(entry.get("filled_avg_price") or "0")
+    xp=dec(exit_order.get("filled_avg_price") or "0")
+    if (not all(x.is_finite() for x in (qty,xqty,ep,xp)) or
+        min(qty,xqty,ep,xp)<=0):
         raise RuntimeError("Cannot calculate reliable crypto order fills")
-    pnl=round(qty*(xp-ep),2)   # Fees are NOT in this gross PnL
+    shortfall=qty-xqty
+    if (shortfall < -CRYPTO_QTY_ROUNDING_TOL or
+        shortfall > qty*MAX_INFERRED_BASE_FEE_RATE+CRYPTO_QTY_ROUNDING_TOL):
+        raise RuntimeError("Crypto exit/entry quantity difference is NOT a plausible base-asset fee")
+    # Another trade, manual sale or deposit could explain a missing position.
+    # If observed, preserve unresolved state rather than guess a PnL.
+    if any(normalize(o.get("symbol"))==symbol for o in open_orders):
+        raise RuntimeError("Open crypto broker order still exists; no final PnL")
+    entry_time=parse_time(entry.get("created_at") or entry.get("submitted_at"))
+    if (not exit_order.get("filled_at") or
+        parse_time(exit_order["filled_at"])<entry_time):
+        raise RuntimeError("Crypto exit fill timestamp missing/earlier than entry")
+    allowed={trade["entry_cid"],trade["stop_cid"],trade["take_cid"]}
+    for order in recent:
+        if (normalize(order.get("symbol"))!=symbol or
+            order.get("client_order_id") in allowed or
+            dec(order.get("filled_qty") or "0")<=0):
+            continue
+        event_time=order.get("created_at") or order.get("submitted_at")
+        if not event_time or parse_time(event_time)>=entry_time:
+            raise RuntimeError("Other filled crypto order after entry; cannot attribute close")
+    return {
+        "entry_qty": qty, "exit_qty": xqty,
+        "entry_price": ep, "exit_price": xp,
+        "implied_base_fee_qty": max(dec("0"),shortfall),
+        "price_only_pnl": xqty*(xp-ep),
+        "pnl_after_entry_fee_before_exit_fee": xqty*xp-qty*ep,
+    }
+
+
+def finish_trade(state,trade,entry,exit_order,reason,recent,open_orders):
+    data=verified_closed_crypto_fills(trade,entry,exit_order,recent,open_orders)
+    # Confirm absence of even a very recent manual/crypto position change.
+    if normalize(trade["symbol"]) in positions():
+        raise RuntimeError("Crypto position reappeared during reconciliation; no final PnL")
+    other_cid=(trade["take_cid"] if reason=="STOP_LIMIT" else trade["stop_cid"])
+    other=bycid(other_cid)
+    if other and dec(other.get("filled_qty") or "0")>0:
+        raise RuntimeError("Both crypto exits have filled qty; manual reconciliation required")
+    gross=round(float(data["price_only_pnl"]),2)
+    after_entry=round(float(data["pnl_after_entry_fee_before_exit_fee"]),2)
     trade["status"]="closed"
-    trade["pnl_before_fees"]=pnl
+    trade["pnl_before_fees"]=gross
+    trade["pnl_after_entry_fee_before_exit_fee"]=after_entry
+    trade["entry_base_fee_inferred_qty"]=format(data["implied_base_fee_qty"],"f")
+    trade["entry_fee_is_inferred_not_confirmed"]=True
+    trade["exit_usd_fee_not_yet_confirmed"]=True
+    trade["exit_order_id"]=exit_order["id"]
     trade["closed_at"]=utcnow().isoformat()
     save(state)
-    log(event="closed",symbol=trade["symbol"],pnl_before_fees=pnl,
-        reason=reason,qty=qty,entry=ep,exit=xp)
-    alert(f"{trade['symbol']} closed: {pnl:+.2f} USD BEFORE CRYPTO FEES ({reason}).")
+    log(event="closed",symbol=trade["symbol"],
+        pnl_before_fees=gross,pnl_after_entry_fee_before_exit_fee=after_entry,
+        entry_fee_inferred_base_qty=trade["entry_base_fee_inferred_qty"],
+        exit_usd_fee_unconfirmed=True,
+        reason=reason,entry_qty=format(data["entry_qty"],"f"),
+        exit_qty=format(data["exit_qty"],"f"),
+        entry=float(data["entry_price"]),exit=float(data["exit_price"]))
+    alert(f"{trade['symbol']} closed ({reason}): price move {gross:+.2f} USD; "
+          f"estimated result after inferred BASE entry fee, before USD exit fee "
+          f"{after_entry:+.2f} USD. Exact fees still require broker activities.")
 
 def submit_one(state,signals,now):
     if not signals: return
@@ -371,7 +449,8 @@ def submit_one(state,signals,now):
     if current: return
     day,history=history_today(now)
     if len(history)>=DAILY_ENTRIES: return
-    realized=sum(float(t.get("pnl_before_fees",0)) for t in state["trades"].values()
+    realized=sum(float(t.get("pnl_after_entry_fee_before_exit_fee",
+                             t.get("pnl_before_fees",0))) for t in state["trades"].values()
                  if t.get("status")=="closed" and
                  str(t.get("closed_at","")).startswith(day))
     if realized<=-DAILY_LOSS_STOP: return
