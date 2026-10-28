@@ -1,50 +1,18 @@
 {
   "daily": {
-    "attempts": 5,
-    "closed": 4,
-    "pnl_usd": -1.86
+    "attempts": 2,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "seen": [
-    "BB:2026-10-27T15:15:00+00:00:buy",
-    "CCL:2026-10-27T15:00:00+00:00:buy",
-    "CELH:2026-10-27T16:20:00+00:00:buy",
-    "CHWY:2026-10-27T15:20:00+00:00:buy",
-    "CLSK:2026-10-27T19:00:00+00:00:buy",
-    "DKNG:2026-10-27T17:15:00+00:00:buy",
-    "DKNG:2026-10-27T19:20:00+00:00:buy",
-    "F:2026-10-27T19:15:00+00:00:buy",
-    "FSLY:2026-10-27T17:00:00+00:00:buy",
-    "FSLY:2026-10-27T17:05:00+00:00:buy",
-    "FSLY:2026-10-27T19:15:00+00:00:sell",
-    "GME:2026-10-27T15:30:00+00:00:sell",
-    "GME:2026-10-27T15:45:00+00:00:sell",
-    "GME:2026-10-27T16:45:00+00:00:sell",
-    "IREN:2026-10-27T19:00:00+00:00:buy",
-    "IREN:2026-10-27T19:05:00+00:00:buy",
-    "LUNR:2026-10-27T14:50:00+00:00:buy",
-    "LUNR:2026-10-27T15:15:00+00:00:buy",
-    "LUNR:2026-10-27T16:10:00+00:00:buy",
-    "LUNR:2026-10-27T16:15:00+00:00:buy",
-    "MARA:2026-10-27T16:05:00+00:00:buy",
-    "MARA:2026-10-27T17:50:00+00:00:sell",
-    "MARA:2026-10-27T18:05:00+00:00:sell",
-    "MARA:2026-10-27T19:05:00+00:00:buy",
-    "NOK:2026-10-27T16:25:00+00:00:buy",
-    "NU:2026-10-27T14:45:00+00:00:sell",
-    "QBTS:2026-10-27T15:00:00+00:00:buy",
-    "QBTS:2026-10-27T18:55:00+00:00:buy",
-    "RGTI:2026-10-27T15:00:00+00:00:buy",
-    "RGTI:2026-10-27T16:00:00+00:00:buy",
-    "RGTI:2026-10-27T16:05:00+00:00:buy",
-    "RIVN:2026-10-27T14:45:00+00:00:buy",
-    "RIVN:2026-10-27T16:00:00+00:00:sell",
-    "RIVN:2026-10-27T17:50:00+00:00:sell",
-    "RIVN:2026-10-27T18:50:00+00:00:buy",
-    "SNAP:2026-10-27T17:10:00+00:00:buy",
-    "U:2026-10-27T14:55:00+00:00:buy",
-    "U:2026-10-27T15:10:00+00:00:buy",
-    "U:2026-10-27T18:00:00+00:00:sell"
+    "F:2026-10-28T18:35:00+00:00:buy",
+    "FSLY:2026-10-28T18:30:00+00:00:buy",
+    "IREN:2026-10-28T18:35:00+00:00:buy",
+    "LUNR:2026-10-28T18:35:00+00:00:buy",
+    "MARA:2026-10-28T18:35:00+00:00:buy",
+    "RGTI:2026-10-28T18:30:00+00:00:buy",
+    "RIOT:2026-10-28T18:35:00+00:00:buy"
   ],
   "symbols": {
     "AA": {
@@ -57,10 +25,10 @@
       "phase": "watching"
     },
     "CCL": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CELH": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CHWY": {
       "phase": "watching"
@@ -75,13 +43,28 @@
       "phase": "watching"
     },
     "F": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-28T18:35:00+00:00",
+        "breakout_level": 11.905,
+        "breakout_percent": 0.16799664006721002,
+        "entry_close": 11.925,
+        "prior_avg_bar_notional_usd": 344720.46,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08371703641690906,
+        "rel_volume": 2.7299132413678455,
+        "side": "buy",
+        "signal_bar_notional_usd": 946511.1,
+        "signal_bar_shares": 79372,
+        "signal_bar_trades": 147,
+        "symbol": "F"
+      }
     },
     "FSLY": {
       "phase": "watching"
     },
     "GME": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "HIMS": {
       "phase": "watching"
@@ -90,8 +73,7 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "MARA": {
       "phase": "watching"
@@ -100,7 +82,7 @@
       "phase": "watching"
     },
     "NU": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "PATH": {
       "phase": "watching"
@@ -115,7 +97,22 @@
       "phase": "watching"
     },
     "RIOT": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-28T18:35:00+00:00",
+        "breakout_level": 14.005,
+        "breakout_percent": 0.21420921099606824,
+        "entry_close": 14.035,
+        "prior_avg_bar_notional_usd": 301685.8,
+        "quote_spread": 0.019999999999999574,
+        "quote_spread_pct": 0.14224751066856028,
+        "rel_volume": 1.6799481721986276,
+        "side": "buy",
+        "signal_bar_notional_usd": 518621.32,
+        "signal_bar_shares": 36952,
+        "signal_bar_trades": 186,
+        "symbol": "RIOT"
+      }
     },
     "RIVN": {
       "phase": "watching"

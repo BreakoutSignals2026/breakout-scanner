@@ -7,44 +7,44 @@
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
-    "date": "2026-10-27",
-    "scans": 14,
+    "date": "2026-10-28",
+    "scans": 1,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 5,
-      "blocked_positions": 6,
+      "bez_potvrdeneho_breakoutu": 4,
+      "blocked_positions": 0,
       "exceptions": 3,
-      "malo_5min_sviecok": 58,
-      "nizky_relativny_objem": 67,
-      "submitted": 1,
-      "symbols_checked": 134,
-      "technical_signals": 4
+      "nizky_relativny_objem": 3,
+      "submitted": 0,
+      "symbols_checked": 10,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-10-26",
-  "daily_start_notice": "2026-10-27",
+  "daily_start_notice": "2026-10-28",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 1,
-      "exceptions": 0,
-      "nizky_relativny_objem": 9,
-      "scan_seconds": 72.5,
+      "bez_potvrdeneho_breakoutu": 4,
+      "blocked_positions": 0,
+      "exceptions": 3,
+      "nizky_relativny_objem": 3,
+      "scan_seconds": 82.1,
       "submitted": 0,
-      "symbols_checked": 9,
-      "technical_signals": 0,
-      "time_ny": "2026-10-27T12:01:29-04:00"
+      "symbols_checked": 10,
+      "technical_signals": 3,
+      "time_ny": "2026-10-28T14:36:56-04:00"
     },
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "AMD": "AMD: IEX spread 5.986% nad 0.3%",
+      "AMZN": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "INTC": "INTC: cena mimo signálu (0.264%)",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "position_or_order_blocked"
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "TSLA: cena mimo signálu (0.285%)"
     }
   },
   "trades": {
@@ -94,6 +94,23 @@
       "symbol": "INTC",
       "tp": 84.91
     },
+    "B252_INTC_202610271200": {
+      "client_id": "B252_INTC_202610271200",
+      "entry_id": "5b1f9d55-ee0c-44cc-bfc0-f82a9741d6d0",
+      "exit_order_id": "6786990d-5128-4015-ab57-14891419f285",
+      "planned_risk": 4.08,
+      "qty": 8,
+      "recovered_from_verified_alpaca_bracket": true,
+      "reference_entry": 94.19,
+      "result_logged": true,
+      "side": "BUY",
+      "signal_candle": "2026-10-27T12:00:00-04:00",
+      "status": "closed",
+      "stop": 93.68,
+      "submitted": "2026-10-27T16:06:10.934718986Z",
+      "symbol": "INTC",
+      "tp": 95.21
+    },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",
       "entry_id": "4eed6722-d915-4eeb-ad80-dec2f4fe6e1b",
@@ -127,38 +144,21 @@
     "B252_TSLA_202610271120": {
       "client_id": "B252_TSLA_202610271120",
       "entry_id": "7d0caf3a-e8da-46e9-88a2-8f49ec1164b7",
+      "external_exit_client_id": "28065525-a1f0-4c9c-a93c-f4a641c1b2f9",
+      "external_exit_order_id": "bc94fcfc-1d01-4d78-92a5-53c0fdd2676e",
+      "external_exit_reason": "User-authorized queued PAPER market SELL 2 after 2026-10-27 close",
+      "external_exit_submitted_at": "2026-10-27T20:45:06Z",
       "planned_risk": 4.385,
       "qty": 2,
       "reference_entry": 405.49,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-10-27T11:20:00-04:00",
-      "status": "external_exit_pending",
+      "status": "closed",
       "stop": 403.7,
       "submitted": "2026-10-27T15:26:23+00:00",
       "symbol": "TSLA",
-      "tp": 409.07,
-      "external_exit_order_id": "bc94fcfc-1d01-4d78-92a5-53c0fdd2676e",
-      "external_exit_client_id": "28065525-a1f0-4c9c-a93c-f4a641c1b2f9",
-      "external_exit_submitted_at": "2026-10-27T20:45:06Z",
-      "external_exit_reason": "User-authorized queued PAPER market SELL 2 after 2026-10-27 close"
-    },
-    "B252_INTC_202610271200": {
-      "symbol": "INTC",
-      "side": "BUY",
-      "client_id": "B252_INTC_202610271200",
-      "entry_id": "5b1f9d55-ee0c-44cc-bfc0-f82a9741d6d0",
-      "status": "closed",
-      "submitted": "2026-10-27T16:06:10.934718986Z",
-      "signal_candle": "2026-10-27T12:00:00-04:00",
-      "reference_entry": 94.19,
-      "stop": 93.68,
-      "tp": 95.21,
-      "qty": 8,
-      "planned_risk": 4.08,
-      "result_logged": true,
-      "recovered_from_verified_alpaca_bracket": true,
-      "exit_order_id": "6786990d-5128-4015-ab57-14891419f285"
+      "tp": 409.07
     }
   },
   "version": "2.5.2"
