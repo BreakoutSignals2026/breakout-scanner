@@ -138,3 +138,4 @@
 {"timestamp": "2026-10-28T18:41:14+00:00", "action": "entry_submitted", "symbol": "F", "order_id": "cf7cae22-9f4e-42c2-9dff-85289a7b3b50", "requested_qty": 19, "reference": 11.94, "side": "buy", "estimated_risk": 2.91, "spread_percent": 0.084, "rel_volume": 2.7299132413678455, "breakout_percent": 0.16799664006721002, "bar_notional_usd": 946511.1, "quote_age_seconds": 0.051777, "chase_percent": 0.12578616352200245, "signal_age_seconds": 74}
 {"timestamp": "2026-10-28T18:41:17+00:00", "action": "exit_accepted", "symbol": "F", "order_id": "8cf13518-f4ca-41a9-a822-28653f00870f", "qty": 19}
 {"timestamp": "2026-10-28T19:45:01+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "8cf13518-f4ca-41a9-a822-28653f00870f"}
+{"timestamp": "2026-10-28T19:45:34+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 19, "order_id": "fc2cf1a0-eaf9-4398-bd7e-46fe78a94544"}

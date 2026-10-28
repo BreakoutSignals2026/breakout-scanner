@@ -154,6 +154,7 @@
     "F": {
       "bar_key": "2026-10-28T18:35:00+00:00",
       "close_cid": "FAST31C_F_10281835000000",
+      "close_order_id": "fc2cf1a0-eaf9-4398-bd7e-46fe78a94544",
       "entry_cid": "FAST31E_F_10281835000000",
       "entry_fill_price": 11.94,
       "entry_filled_at": "2026-10-28T18:41:15.335035415Z",
@@ -165,7 +166,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-28T18:41:14+00:00",
       "symbol": "F"
     },
