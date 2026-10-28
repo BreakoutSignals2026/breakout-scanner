@@ -41,7 +41,11 @@
       "phase": "watching"
     },
     "DKNG": {
-      "phase": "pending",
+      "entry": 20.07995,
+      "entry_bar": "2026-10-28T18:55:00+00:00",
+      "last_bar": "2026-10-28T18:55:00+00:00",
+      "phase": "open",
+      "qty": 7,
       "signal": {
         "bar_key": "2026-10-28T18:50:00+00:00",
         "breakout_level": 20.155,
@@ -61,7 +65,7 @@
     "F": {
       "entry": 11.945967499999998,
       "entry_bar": "2026-10-28T18:40:00+00:00",
-      "last_bar": "2026-10-28T18:50:00+00:00",
+      "last_bar": "2026-10-28T18:55:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
