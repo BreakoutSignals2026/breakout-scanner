@@ -33,6 +33,7 @@ on:
       - ".github/workflows/orb_tests.yml"
       - "market_virtual_core.py"
       - "crypto_paper_v1.py"
+      - "tests/test_crypto_paper_fills.py"
       - "scanner_crypto_v1.py"
       - "crypto_observer_v1.py"
       - "crypto_crossfeed_v1.py"
