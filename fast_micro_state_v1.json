@@ -1,50 +1,13 @@
 {
   "daily": {
-    "attempts": 5,
-    "closed": 4,
-    "pnl_usd": -1.86
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "seen": [
-    "BB:2026-10-27T15:15:00+00:00:buy",
-    "CCL:2026-10-27T15:00:00+00:00:buy",
-    "CELH:2026-10-27T16:20:00+00:00:buy",
-    "CHWY:2026-10-27T15:20:00+00:00:buy",
-    "CLSK:2026-10-27T19:00:00+00:00:buy",
-    "DKNG:2026-10-27T17:15:00+00:00:buy",
-    "DKNG:2026-10-27T19:20:00+00:00:buy",
-    "F:2026-10-27T19:15:00+00:00:buy",
-    "FSLY:2026-10-27T17:00:00+00:00:buy",
-    "FSLY:2026-10-27T17:05:00+00:00:buy",
-    "FSLY:2026-10-27T19:15:00+00:00:sell",
-    "GME:2026-10-27T15:30:00+00:00:sell",
-    "GME:2026-10-27T15:45:00+00:00:sell",
-    "GME:2026-10-27T16:45:00+00:00:sell",
-    "IREN:2026-10-27T19:00:00+00:00:buy",
-    "IREN:2026-10-27T19:05:00+00:00:buy",
-    "LUNR:2026-10-27T14:50:00+00:00:buy",
-    "LUNR:2026-10-27T15:15:00+00:00:buy",
-    "LUNR:2026-10-27T16:10:00+00:00:buy",
-    "LUNR:2026-10-27T16:15:00+00:00:buy",
-    "MARA:2026-10-27T16:05:00+00:00:buy",
-    "MARA:2026-10-27T17:50:00+00:00:sell",
-    "MARA:2026-10-27T18:05:00+00:00:sell",
-    "MARA:2026-10-27T19:05:00+00:00:buy",
-    "NOK:2026-10-27T16:25:00+00:00:buy",
-    "NU:2026-10-27T14:45:00+00:00:sell",
-    "QBTS:2026-10-27T15:00:00+00:00:buy",
-    "QBTS:2026-10-27T18:55:00+00:00:buy",
-    "RGTI:2026-10-27T15:00:00+00:00:buy",
-    "RGTI:2026-10-27T16:00:00+00:00:buy",
-    "RGTI:2026-10-27T16:05:00+00:00:buy",
-    "RIVN:2026-10-27T14:45:00+00:00:buy",
-    "RIVN:2026-10-27T16:00:00+00:00:sell",
-    "RIVN:2026-10-27T17:50:00+00:00:sell",
-    "RIVN:2026-10-27T18:50:00+00:00:buy",
-    "SNAP:2026-10-27T17:10:00+00:00:buy",
-    "U:2026-10-27T14:55:00+00:00:buy",
-    "U:2026-10-27T15:10:00+00:00:buy",
-    "U:2026-10-27T18:00:00+00:00:sell"
+    "FSLY:2026-10-28T18:30:00+00:00:buy",
+    "RGTI:2026-10-28T18:30:00+00:00:buy"
   ],
   "symbols": {
     "AA": {
@@ -57,10 +20,10 @@
       "phase": "watching"
     },
     "CCL": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CELH": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CHWY": {
       "phase": "watching"
@@ -81,7 +44,7 @@
       "phase": "watching"
     },
     "GME": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "HIMS": {
       "phase": "watching"
@@ -90,8 +53,7 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "MARA": {
       "phase": "watching"
@@ -100,7 +62,7 @@
       "phase": "watching"
     },
     "NU": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "PATH": {
       "phase": "watching"
