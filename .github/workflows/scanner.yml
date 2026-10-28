@@ -17,6 +17,9 @@ on:
     - cron: "40 14 * * 1-5"
     - cron: "0 14 * * 1-5"
     - cron: "0 15 * * 1-5"
+    # Independent end-of-day recovery launch at 15:45 NY, even if earlier jobs fail.
+    - cron: "45 19 * * 1-5"
+    - cron: "45 20 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
@@ -73,7 +76,7 @@ jobs:
           # A late 09:20/09:30 launch stays valid even if GitHub starts it
           # after 10:00; the 10:20/10:30 wrong-season launch stays blocked.
           case "$ny_offset:$SCHEDULE_CRON" in
-            "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5")
+            "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5"|"-0400:45 19 * * 1-5"|"-0500:45 20 * * 1-5")
               echo "Correct DST-season schedule."
               ;;
             *)
@@ -179,8 +182,8 @@ jobs:
 
   second-session:
     needs: [preflight, first-session]
-    # Keep EOD monitor after scan failure but honor explicit run cancellation.
-    if: ${{ !cancelled() && needs.preflight.outputs.run == 'true' }}
+    # Run EOD even after first-session failure; never restart an explicitly canceled session.
+    if: ${{ always() && !cancelled() && needs.preflight.outputs.run == 'true' && needs.first-session.result != 'cancelled' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
