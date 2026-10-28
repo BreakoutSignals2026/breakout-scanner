@@ -1,0 +1,2 @@
+trade_id,symbol,side,signal_at,entry_at,exit_at,qty,entry,exit,pnl,reason,currency,simulated
+BTC/USD:2026-10-28T08:35:00+00:00,BTC/USD,buy,2026-10-28T08:35:00+00:00,2026-10-28T08:40:00+00:00,2026-10-28T12:30:00+00:00,0.00197622,81615.33958,80369.856851,-2.86,SL,USD,True

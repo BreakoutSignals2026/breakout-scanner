@@ -24,7 +24,7 @@
     "BTC/USD": {
       "entry": 80537.8868064,
       "entry_at": "2026-10-27T15:25:00+00:00",
-      "last_bar": "2026-10-28T09:15:00+00:00",
+      "last_bar": "2026-10-28T12:40:00+00:00",
       "phase": "open",
       "qty": 0.00100133,
       "signal": {
@@ -42,29 +42,6 @@
         "side": "buy",
         "symbol": "BTC/USD",
         "us_kraken_deviation_pct": 0.002
-      }
-    },
-    "SOL/USD": {
-      "entry": 102.9793176,
-      "entry_at": "2026-10-28T08:30:00+00:00",
-      "last_bar": "2026-10-28T09:15:00+00:00",
-      "phase": "open",
-      "qty": 0.78311998,
-      "signal": {
-        "age_minutes": 0.26,
-        "bar": "2026-10-28T08:25:00+00:00",
-        "bar_close": "2026-10-28T08:30:00+00:00",
-        "breakout_pct": 0.4588,
-        "feed_note": "US_KRAKEN_RESEARCH_NEVER_BROKER_SIGNAL",
-        "kraken_trend_confirmed": true,
-        "kraken_volume_confirmed": true,
-        "paper_eligible": false,
-        "reference_price": 102.9085,
-        "relvol": 1.911,
-        "research_only": true,
-        "side": "buy",
-        "symbol": "SOL/USD",
-        "us_kraken_deviation_pct": 0.0228
       }
     }
   },

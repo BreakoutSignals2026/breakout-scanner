@@ -30,7 +30,7 @@
     "BTC/USD": {
       "entry": 79887.5934876,
       "entry_at": "2026-10-26T04:15:00+00:00",
-      "last_bar": "2026-10-28T09:15:00+00:00",
+      "last_bar": "2026-10-28T12:40:00+00:00",
       "phase": "open",
       "qty": 0.00100948,
       "signal": {
@@ -44,27 +44,6 @@
         "research_only": true,
         "side": "buy",
         "symbol": "BTC/USD",
-        "volume_confirmed": false,
-        "zero_volume": false
-      }
-    },
-    "ETH/USD": {
-      "entry": 2374.0972596,
-      "entry_at": "2026-10-28T08:30:00+00:00",
-      "last_bar": "2026-10-28T09:15:00+00:00",
-      "phase": "open",
-      "qty": 0.03396876,
-      "signal": {
-        "age_minutes": 0.26,
-        "bar": "2026-10-28T08:25:00+00:00",
-        "bar_close": "2026-10-28T08:30:00+00:00",
-        "breakout_pct": 0.3268,
-        "feed_note": "ALPACA_OHLC_PRICE_ONLY_NOT_PAPER_ELIGIBLE",
-        "reference_price": 2372.4785,
-        "relvol": 0.0,
-        "research_only": true,
-        "side": "buy",
-        "symbol": "ETH/USD",
         "volume_confirmed": false,
         "zero_volume": false
       }
