@@ -43,7 +43,11 @@
       "phase": "watching"
     },
     "F": {
-      "phase": "pending",
+      "entry": 11.945967499999998,
+      "entry_bar": "2026-10-28T18:40:00+00:00",
+      "last_bar": "2026-10-28T18:40:00+00:00",
+      "phase": "open",
+      "qty": 12,
       "signal": {
         "bar_key": "2026-10-28T18:35:00+00:00",
         "breakout_level": 11.905,
@@ -97,22 +101,8 @@
       "phase": "watching"
     },
     "RIOT": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-28T18:35:00+00:00",
-        "breakout_level": 14.005,
-        "breakout_percent": 0.21420921099606824,
-        "entry_close": 14.035,
-        "prior_avg_bar_notional_usd": 301685.8,
-        "quote_spread": 0.019999999999999574,
-        "quote_spread_pct": 0.14224751066856028,
-        "rel_volume": 1.6799481721986276,
-        "side": "buy",
-        "signal_bar_notional_usd": 518621.32,
-        "signal_bar_shares": 36952,
-        "signal_bar_trades": 186,
-        "symbol": "RIOT"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "RIVN": {
       "phase": "watching"
