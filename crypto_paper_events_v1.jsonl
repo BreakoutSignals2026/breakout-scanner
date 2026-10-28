@@ -1,0 +1,2 @@
+{"at": "2026-10-28T08:40:18.502685+00:00", "event": "entry_submitted", "symbol": "BTC/USD", "cid": "CRPT1E_BTCUSD_20261028T0835", "order_id": "3a468763-c775-46c6-b2c9-42b4f235d71b", "qty": "0.001839213", "estimated_risk_usd": 3.0}
+{"at": "2026-10-28T08:40:20.391631+00:00", "event": "stop_submitted", "symbol": "BTCUSD", "cid": "CRPT1S_BTCUSD_20261028T0835", "order_id": "6fb8d101-a38e-4c6e-a024-415afe0d3a9a", "stop": "80570.4875820"}
