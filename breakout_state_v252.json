@@ -8,14 +8,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-28",
-    "scans": 2,
+    "scans": 3,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 9,
+      "bez_potvrdeneho_breakoutu": 12,
       "blocked_positions": 0,
       "exceptions": 6,
-      "nizky_relativny_objem": 5,
+      "nizky_relativny_objem": 12,
       "submitted": 0,
-      "symbols_checked": 20,
+      "symbols_checked": 30,
       "technical_signals": 6
     }
   },
@@ -23,27 +23,27 @@
   "daily_start_notice": "2026-10-28",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 5,
+      "bez_potvrdeneho_breakoutu": 3,
       "blocked_positions": 0,
-      "exceptions": 3,
-      "nizky_relativny_objem": 2,
-      "scan_seconds": 82.2,
+      "exceptions": 0,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 80.8,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 3,
-      "time_ny": "2026-10-28T14:42:51-04:00"
+      "technical_signals": 0,
+      "time_ny": "2026-10-28T14:48:56-04:00"
     },
     "date": "2026-10-28",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "AMD: IEX spread 2.592% nad 0.3%",
-      "AMZN": "bez_potvrdeneho_breakoutu",
-      "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "INTC: cena mimo signálu (0.442%)",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "nizky_relativny_objem",
+      "GOOGL": "nizky_relativny_objem",
+      "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 0.791% nad 0.3%",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
