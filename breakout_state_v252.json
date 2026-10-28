@@ -8,14 +8,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-28",
-    "scans": 9,
+    "scans": 10,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 19,
+      "bez_potvrdeneho_breakoutu": 21,
       "blocked_positions": 0,
       "exceptions": 8,
-      "nizky_relativny_objem": 63,
+      "nizky_relativny_objem": 69,
       "submitted": 0,
-      "symbols_checked": 90,
+      "symbols_checked": 98,
       "technical_signals": 6
     }
   },
@@ -23,26 +23,24 @@
   "daily_start_notice": "2026-10-28",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 81.1,
+      "exceptions": 0,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 64.8,
       "submitted": 0,
-      "symbols_checked": 10,
+      "symbols_checked": 8,
       "technical_signals": 0,
-      "time_ny": "2026-10-28T15:24:24-04:00"
+      "time_ny": "2026-10-28T15:30:02-04:00"
     },
     "date": "2026-10-28",
     "symbols": {
-      "AAPL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
-      "AMD": "nizky_relativny_objem",
+      "AAPL": "nizky_relativny_objem",
+      "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "nizky_relativny_objem",
+      "MRVL": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
