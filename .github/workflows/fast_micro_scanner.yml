@@ -2,18 +2,17 @@ name: FAST MICRO V1.0 - US stock virtual $1 risk (NO ALPACA ORDERS)
 
 on:
   schedule:
-    # Primary 09:20 NY + recovery 09:30 NY in both US DST seasons.
-    # Monday-Friday. Alpaca calendar gate rejects NYSE market holidays.
+    # 09:20 NY primary; 09:30/09:40/09:50/10:00 NY retries, Monday-Friday.
+    # UTC schedules cover both US DST regimes; preflight selects the correct one.
+    # Each retry is separate so github.event.schedule matches its allowlist.
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
     - cron: "30 13 * * 1-5"
     - cron: "30 14 * * 1-5"
-    # Extra recovery at 09:40/09:50 New York if GitHub delays opening triggers.
-    - cron: "40,50 13 * * 1-5"
-    - cron: "40,50 14 * * 1-5"
-    # Additional 09:40 and 10:00 NY recovery crons; duplicate runs are serialized.
     - cron: "40 13 * * 1-5"
     - cron: "40 14 * * 1-5"
+    - cron: "50 13 * * 1-5"
+    - cron: "50 14 * * 1-5"
     - cron: "0 14 * * 1-5"
     - cron: "0 15 * * 1-5"
   workflow_dispatch:
@@ -32,36 +31,41 @@ jobs:
       should_run: ${{ steps.gate.outputs.should_run }}
     steps:
       - id: gate
+        name: Validate weekday, NY time window and original DST schedule
         shell: bash
-        name: Reject weekend and wrong US-DST duplicate schedule
         env:
           SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
           set -euo pipefail
-          NY_NOW=$(TZ=America/New_York date '+%H:%M')
-          NY_WEEKDAY=$(TZ=America/New_York date '+%u')
-          NY_OFFSET=$(TZ=America/New_York date '+%z')
-          HH=${NY_NOW:0:2}
-          MM=${NY_NOW:3:2}
-          NY_MIN=$((10#$HH * 60 + 10#$MM))
-          echo "MICRO gate: New York $NY_NOW, offset $NY_OFFSET, cron $SCHEDULE_CRON"
-          if [ "$NY_WEEKDAY" -ge 6 ] || [ "$NY_MIN" -lt 560 ] || [ "$NY_MIN" -ge 960 ]; then
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-          elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          elif [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
-            case "$NY_OFFSET:$SCHEDULE_CRON" in
-              "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:0 15 * * 1-5")
-                echo "should_run=true" >> "$GITHUB_OUTPUT"
-                ;;
-              *)
-                echo "MICRO: wrong DST cron (skip duplicate)"
-                echo "should_run=false" >> "$GITHUB_OUTPUT"
-                ;;
-            esac
-          else
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          ny_time=$(TZ=America/New_York date +%H:%M)
+          ny_offset=$(TZ=America/New_York date +%z)
+          ny_weekday=$(TZ=America/New_York date +%u)
+          ny_hour=${ny_time%:*}
+          ny_minute=${ny_time#*:}
+          now_min=$((10#$ny_hour * 60 + 10#$ny_minute))
+          echo "NY time=$ny_time offset=$ny_offset weekday=$ny_weekday event=$GITHUB_EVENT_NAME cron=${SCHEDULE_CRON:-none}"
+
+          # Shared gate: weekdays, manual 09:00-16:00 NY, scheduled 09:20-16:00 NY.
+          # The scanner's Alpaca calendar still handles holidays and actual early closes.
+          allow=false
+          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -ge 540 ] && [ "$now_min" -lt 960 ]; then
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              allow=true
+            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 560 ]; then
+              # Validate the original cron against today's NY UTC offset, not arrival hour.
+              # Correct-season late arrivals are accepted until 16:00 NY; unknown crons fail closed.
+              case "$ny_offset:$SCHEDULE_CRON" in
+                "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:50 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:50 14 * * 1-5"|"-0500:0 15 * * 1-5")
+                  allow=true
+                  ;;
+                *)
+                  echo "Skipped: wrong DST-season or unknown cron."
+                  ;;
+              esac
+            fi
           fi
+          echo "Gate: allow=$allow"
+          echo "should_run=$allow" >> "$GITHUB_OUTPUT"
 
   first-session:
     needs: preflight
