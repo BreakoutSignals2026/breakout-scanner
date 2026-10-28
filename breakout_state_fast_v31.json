@@ -162,11 +162,12 @@
       "exit_cid": "FAST31X_F_10281835000000",
       "exit_order_id": "8cf13518-f4ca-41a9-a822-28653f00870f",
       "filled_qty": 19,
+      "realized_pnl": -0.76,
       "reference_price": 11.94,
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_closing",
+      "status": "closed",
       "submitted_at": "2026-10-28T18:41:14+00:00",
       "symbol": "F"
     },
