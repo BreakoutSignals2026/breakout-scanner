@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 3,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 1,
+    "pnl_usd": -0.85
   },
   "date": "2026-10-28",
   "seen": [
@@ -43,7 +43,7 @@
     "DKNG": {
       "entry": 20.07995,
       "entry_bar": "2026-10-28T18:55:00+00:00",
-      "last_bar": "2026-10-28T19:05:00+00:00",
+      "last_bar": "2026-10-28T19:10:00+00:00",
       "phase": "open",
       "qty": 7,
       "signal": {
@@ -63,26 +63,7 @@
       }
     },
     "F": {
-      "entry": 11.945967499999998,
-      "entry_bar": "2026-10-28T18:40:00+00:00",
-      "last_bar": "2026-10-28T19:05:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-28T18:35:00+00:00",
-        "breakout_level": 11.905,
-        "breakout_percent": 0.16799664006721002,
-        "entry_close": 11.925,
-        "prior_avg_bar_notional_usd": 344720.46,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08371703641690906,
-        "rel_volume": 2.7299132413678455,
-        "side": "buy",
-        "signal_bar_notional_usd": 946511.1,
-        "signal_bar_shares": 79372,
-        "signal_bar_trades": 147,
-        "symbol": "F"
-      }
+      "phase": "closed"
     },
     "FSLY": {
       "phase": "watching"
