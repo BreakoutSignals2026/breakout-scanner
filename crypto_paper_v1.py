@@ -5,6 +5,8 @@ US crypto spot is long-only; protection is server-side SELL STOP-LIMIT/GTC,
 NOT an equities trailing stop nor guaranteed fill. A gap below the limit may
 leave the position open. No bracket/OCO, no borrowing, no manual positions.
 State and broker order IDs are reconciled before allowing new entries.
+Alpaca fees on BUY crypto reduce the credited BASE quantity. Closed-trade PnL
+is now verified with the net SOLD quantity and fee-aware audit fields.
 """
 import json
 import math
