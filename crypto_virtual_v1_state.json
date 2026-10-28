@@ -9,7 +9,11 @@
   },
   "positions": {
     "BTC/USD": {
-      "phase": "pending",
+      "entry": 81615.33957959998,
+      "entry_at": "2026-10-28T08:40:00+00:00",
+      "last_bar": "2026-10-28T08:40:00+00:00",
+      "phase": "open",
+      "qty": 0.00197622,
       "signal": {
         "age_minutes": 0.27,
         "bar": "2026-10-28T08:35:00+00:00",
