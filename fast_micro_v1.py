@@ -12,10 +12,10 @@ import csv
 import json
 import math
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-import fast_virtual as candle_tools
+from equity_candle_guard import fully_closed_iex
 
 STATE_PATH = Path("fast_micro_state_v1.json")
 SIGNALS_PATH = Path("fast_micro_signals_v1.jsonl")
@@ -72,11 +72,27 @@ def load(session):
             "daily": {"attempts": 0, "closed": 0, "pnl_usd": 0.0}}
 
 
-def completed_bars(raw, now, session):
-    # Reuse same conservative IEX interpretation as shadow FAST; the final
-    # potentially forming bar is never treated as a completed candle.
-    return candle_tools.completed_bars(raw, now, session)
+def parse_dt(value):
+    if not value:
+        return None
+    try:
+        x = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        return x if x.tzinfo else x.replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return None
 
+def completed_bars(bars, now, session):
+    """Ignore an in-progress last bar and all outside-session bars."""
+    result = []
+    for bar in fully_closed_iex(bars, now, lag_seconds=0):
+        t = parse_dt(bar.get("t"))
+        if t is None:
+            continue
+        if session["open"] <= t.astimezone(session["open"].tzinfo) < session["close"] and t + timedelta(minutes=5) <= now:
+            if all(k in bar for k in ("o", "h", "l", "c")):
+                result.append({"t": t, "o": float(bar["o"]), "h": float(bar["h"]),
+                               "l": float(bar["l"]), "c": float(bar["c"])})
+    return sorted(result, key=lambda x: x["t"])
 
 def projected_profit(qty, entry, side, spread=0.0):
     slip = SLIP_PCT / 100
@@ -168,7 +184,7 @@ def append_result(outcome):
 def advance(slot, completed, now, session, symbol):
     """Process ONLY previously confirmed five-minute bars, no fabricated fills."""
     if slot.get("phase") == "pending":
-        expected = candle_tools.parse_dt(slot["signal"]["bar_key"]) + timedelta(minutes=BAR_MINUTES)
+        expected = parse_dt(slot["signal"]["bar_key"]) + timedelta(minutes=BAR_MINUTES)
         next_bar = next((b for b in completed if b["t"] >= expected), None)
         if next_bar is None:
             return slot, None
@@ -180,8 +196,8 @@ def advance(slot, completed, now, session, symbol):
         slot = opened
     if slot.get("phase") != "open":
         return slot, None
-    last = candle_tools.parse_dt(slot.get("last_bar"))
-    start = candle_tools.parse_dt(slot["entry_bar"])
+    last = parse_dt(slot.get("last_bar"))
+    start = parse_dt(slot["entry_bar"])
     for bar in completed:
         if bar["t"] < start or (last is not None and bar["t"] <= last):
             continue
@@ -252,7 +268,7 @@ def process(session, symbols, fetch, analyze, now, workers=8, validate=None):
             except Exception as exc:
                 print(f"FAST MICRO signal error {symbol}: {exc}", flush=True)
         if signal:
-            signal_time = candle_tools.parse_dt(signal.get("bar_key"))
+            signal_time = parse_dt(signal.get("bar_key"))
             if signal_time is None or signal_time < session["open"] or (
                 signal_time + timedelta(minutes=BAR_MINUTES) > now
             ):

@@ -13,7 +13,6 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
-import fast_virtual
 
 VERSION = "3.3.1"
 API = "https://paper-api.alpaca.markets/v2"
@@ -930,6 +929,30 @@ def one_shot_already_consumed(state):
                for order in recent)
 
 
+def collect_signals():
+    """Analyze current IEX bars without running or persisting a simulation."""
+    samples = {}
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = {pool.submit(get_bars, symbol): symbol for symbol in SYMBOLS}
+        for future in as_completed(futures):
+            symbol = futures[future]
+            try:
+                samples[symbol] = future.result()
+            except Exception as exc:
+                print(f"FAST {symbol}: IEX request failed: {exc}", flush=True)
+    signals = []
+    for symbol in SYMBOLS:
+        if symbol not in samples:
+            continue
+        try:
+            signal = analyze_symbol(symbol, samples[symbol])
+            if signal:
+                signals.append(signal)
+        except Exception as exc:
+            print(f"FAST {symbol}: signal analysis failed: {exc}", flush=True)
+    return signals
+
+
 def main():
     print(f"FAST V{VERSION} PAPER | {stamp()} | entry enabled={ENABLE_NEW_TRADES} | one-shot={ONE_SHOT_PAPER_TEST} | "
           f"risk ${RISK_PER_TRADE:.2f}, trail {TRAIL_PERCENT:.2f}%")
@@ -939,29 +962,13 @@ def main():
     orders = get_open_orders()
 
     if session and now_utc().astimezone(NY) >= session["liquidate_at"]:
-        # Closing PAPER positions has first priority. Virtual tracking follows.
+        # Closing PAPER positions has first priority.
         close_fast_before_end(state, session)
         save_state(state)
-        try:
-            fast_virtual.process(session, SYMBOLS, get_bars, analyze_symbol,
-                                 now_utc(), RISK_PER_TRADE, TRAIL_PERCENT,
-                                 workers=MAX_WORKERS)
-        except Exception as exc:
-            print(f"FAST VIRTUAL EOD: {exc}", flush=True)
         return
 
     safe = reconcile(state, positions, orders)
     save_state(state)
-    # Collect independent hypothetical entries/results, even if PAPER entry
-    # has reached its daily cap or is disabled. Never block protection/EOD.
-    simulated_signals = []
-    if session and now_utc().astimezone(NY) >= session["open"]:
-        try:
-            simulated_signals = fast_virtual.process(
-                session, SYMBOLS, get_bars, analyze_symbol, now_utc(),
-                RISK_PER_TRADE, TRAIL_PERCENT, workers=MAX_WORKERS)
-        except Exception as exc:
-            print(f"FAST VIRTUAL ERROR: {exc}; virtual data incomplete", flush=True)
     if not ENABLE_NEW_TRADES:
         print("SAFE MODE: no NEW entries; monitoring/EOD enabled")
         return
@@ -994,9 +1001,9 @@ def main():
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
     blocked |= daily["symbols"]
-    # Reuse the exact same analyzed IEX candles as the virtual tracker.
-    # If all feeds were unavailable we fail closed rather than place orders.
-    signals = [s for s in simulated_signals if s["symbol"] not in blocked
+    # Preserve the existing technical filters without the removed simulator.
+    # If all feeds are unavailable, collect_signals returns no candidates.
+    signals = [s for s in collect_signals() if s["symbol"] not in blocked
                and state["last_signal_bar"].get(s["symbol"]) != s["bar_key"]]
     signals.sort(key=lambda x: (x["rel_volume"], x["breakout_percent"]), reverse=True)
     for signal in signals:
