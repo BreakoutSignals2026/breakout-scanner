@@ -20,7 +20,13 @@ PAPER workflow používajú výhradne `https://paper-api.alpaca.markets`. Riziko
 
 ## Automatické spustenie
 
-Tri workflow majú pracovnodňové plánované štarty od 09:20 New York a vlastné záložné crony. Kontrolujú americký letný čas; samostatné concurrency skupiny bránia súčasným behom toho istého skenera. GitHub môže plánované spustenie oneskoriť alebo vynechať. Samostatný watchdog na obnovu štartov bol odstránený.
+Všetky tri workflow majú rovnaké pracovnodňové štarty podľa New Yorku: **09:20**, záložné **09:30, 09:40, 09:50 a 10:00**. Každý UTC cron je uvedený iba raz; úvodná kontrola povoľuje iba zápis zodpovedajúci aktuálnemu americkému letnému/zimnému času. Správny oneskorený štart prijme do 16:00 NY. Manuálne štarty sú povolené v pracovné dni od 09:00 do 16:00 NY. Samotné skenery naďalej kontrolujú kalendár Alpaca, sviatky, skrátenú seansu a existujúce hranice vstupov či EOD ochrany.
+
+Samostatné concurrency skupiny povoľujú najviac jeden súčasný beh toho istého skenera a záložný štart neruší aktívny beh. Čakajúci pokus sa môže vykonať neskôr; pri príchode po 16:00 NY ho časová kontrola odmietne. BREAKOUT má navyše zachované samostatné EOD pokusy o 15:45 NY; FAST a FAST MICRO ich nemajú.
+
+Na Slovensku sú ranné štarty väčšinu roka o **15:20, 15:30, 15:40, 15:50 a 16:00**. Počas rozdielnych dátumov prechodu USA a Európy na letný/zimný čas, vrátane 26.–30.10.2026, sú o hodinu skôr.
+
+GitHub môže plánované spustenie oneskoriť alebo vynechať. Úprava cronov negarantuje presný čas vykonania. Samostatný watchdog na obnovu štartov zostáva odstránený.
 
 PAPER skenery zachovávajú monitorovanie, ochranu sledovaných pozícií a pokus o ich uzatvorenie približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca. Výpadok runnera alebo API môže zabrániť uzatvoreniu.
 
