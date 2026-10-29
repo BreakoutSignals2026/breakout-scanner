@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 5,
-    "closed": 4,
-    "pnl_usd": -3.35
+    "closed": 5,
+    "pnl_usd": -4.16
   },
   "date": "2026-10-29",
   "seen": [
@@ -19,6 +19,7 @@
     "IREN:2026-10-29T15:30:00+00:00:buy",
     "LUNR:2026-10-29T15:45:00+00:00:buy",
     "LUNR:2026-10-29T15:55:00+00:00:buy",
+    "LUNR:2026-10-29T16:45:00+00:00:sell",
     "MARA:2026-10-29T15:30:00+00:00:buy",
     "MARA:2026-10-29T16:30:00+00:00:sell",
     "PTON:2026-10-29T15:10:00+00:00:buy",
@@ -55,26 +56,7 @@
       "phase": "watching"
     },
     "F": {
-      "entry": 12.411200000000001,
-      "entry_bar": "2026-10-29T16:10:00+00:00",
-      "last_bar": "2026-10-29T16:40:00+00:00",
-      "phase": "open",
-      "qty": 11,
-      "signal": {
-        "bar_key": "2026-10-29T16:05:00+00:00",
-        "breakout_level": 12.355,
-        "breakout_percent": 0.3642250101173608,
-        "entry_close": 12.4,
-        "prior_avg_bar_notional_usd": 354146.28,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08061265618701964,
-        "rel_volume": 2.0429818202905277,
-        "side": "buy",
-        "signal_bar_notional_usd": 728090.8,
-        "signal_bar_shares": 58717,
-        "signal_bar_trades": 100,
-        "symbol": "F"
-      }
+      "phase": "closed"
     },
     "FSLY": {
       "phase": "watching"
