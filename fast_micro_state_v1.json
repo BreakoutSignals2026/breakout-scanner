@@ -1,19 +1,13 @@
 {
   "daily": {
-    "attempts": 3,
-    "closed": 2,
-    "pnl_usd": -1.69
+    "attempts": 1,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "seen": [
-    "DKNG:2026-10-28T18:50:00+00:00:sell",
-    "F:2026-10-28T18:35:00+00:00:buy",
-    "FSLY:2026-10-28T18:30:00+00:00:buy",
-    "IREN:2026-10-28T18:35:00+00:00:buy",
-    "LUNR:2026-10-28T18:35:00+00:00:buy",
-    "MARA:2026-10-28T18:35:00+00:00:buy",
-    "RGTI:2026-10-28T18:30:00+00:00:buy",
-    "RIOT:2026-10-28T18:35:00+00:00:buy"
+    "CELH:2026-10-29T15:10:00+00:00:buy",
+    "PTON:2026-10-29T15:10:00+00:00:buy"
   ],
   "symbols": {
     "AA": {
@@ -29,7 +23,22 @@
       "phase": "watching"
     },
     "CELH": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T15:10:00+00:00",
+        "breakout_level": 28.33,
+        "breakout_percent": 0.21178962230851492,
+        "entry_close": 28.39,
+        "prior_avg_bar_notional_usd": 34634.12,
+        "quote_spread": 0.019999999999999574,
+        "quote_spread_pct": 0.07044734061289036,
+        "rel_volume": 2.4167969015424338,
+        "side": "buy",
+        "signal_bar_notional_usd": 84147.96,
+        "signal_bar_shares": 2964,
+        "signal_bar_trades": 35,
+        "symbol": "CELH"
+      }
     },
     "CHWY": {
       "phase": "watching"
@@ -41,10 +50,10 @@
       "phase": "watching"
     },
     "DKNG": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "F": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "FSLY": {
       "phase": "watching"
@@ -83,8 +92,7 @@
       "phase": "watching"
     },
     "RIOT": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "RIVN": {
       "phase": "watching"
