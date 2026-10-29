@@ -2,6 +2,8 @@ name: FAST Alpaca Scanner V3.3.1 (risk-limited PAPER auto)
 
 on:
   schedule:
+    # Temporary schedule diagnostic; date checked again in preflight.
+    - cron: "35 15 29 10 *"
     # Restore the original daily launch pair used before the recovery-cron changes.
     # 13:10 UTC is 09:10 NY in EDT; 14:10 UTC is 09:10 NY in EST.
     # The other slot is a backup: concurrency prevents overlapping sessions.
@@ -24,7 +26,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: fast-scanner
+  group: ${{ github.event_name == 'schedule' && github.event.schedule == '35 15 29 10 *' && format('fast-schedule-probe-{0}', github.run_id) || 'fast-scanner' }}
   cancel-in-progress: false
 
 jobs:
@@ -32,12 +34,24 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       should_run: ${{ steps.gate.outputs.should_run }}
+      is_probe: ${{ steps.gate.outputs.is_probe }}
     steps:
       - id: gate
         name: Check New York session window and accept delayed launches
         shell: bash
+        env:
+          IS_PROBE_TRIGGER: ${{ github.event_name == 'schedule' && github.event.schedule == '35 15 29 10 *' && 'true' || 'false' }}
         run: |
           set -euo pipefail
+          echo "is_probe=false" >> "$GITHUB_OUTPUT"
+          if [ "$IS_PROBE_TRIGGER" = "true" ]; then
+            if [ "$(date -u +%F)" = "2026-10-29" ]; then
+              echo "is_probe=true" >> "$GITHUB_OUTPUT"
+            fi
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Schedule diagnostic only: trading sessions disabled."
+            exit 0
+          fi
           ny_time=$(TZ=America/New_York date +%H:%M)
           ny_weekday=$(TZ=America/New_York date +%u)
           ny_hour=${ny_time%:*}
@@ -192,3 +206,16 @@ jobs:
             PAUSE=$(python scanner_fast.py --sleep-seconds)
             sleep "$PAUSE"
           done
+
+  schedule-probe:
+    needs: preflight
+    if: ${{ needs.preflight.outputs.is_probe == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    permissions: {}
+    steps:
+      - name: Confirm scheduled event reached a runner without starting trading
+        shell: bash
+        run: |
+          echo "FAST SCHEDULE PROBE OK at $(date -u --iso-8601=seconds)"
+          echo "No scanner executed and no broker credentials used."
