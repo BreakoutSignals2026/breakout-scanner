@@ -161,3 +161,4 @@
 {"timestamp": "2026-10-29T19:19:33+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "72eb6062-152c-4c23-b18e-7de418099f95", "qty": 25}
 {"timestamp": "2026-10-29T19:33:09+00:00", "action": "closed", "symbol": "RIVN", "entry": 11.53, "exit": 11.65, "qty": 20.0, "side": "sell", "pnl": -2.4, "pnl_pct": -1.041, "reason": "trailing stop", "holding_seconds": 1520}
 {"timestamp": "2026-10-29T19:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "72eb6062-152c-4c23-b18e-7de418099f95"}
+{"timestamp": "2026-10-29T19:46:04+00:00", "action": "eod_close_submitted", "symbol": "BB", "qty": 25, "order_id": "ea6c26ef-0484-4e54-b010-fe7982a10d24"}

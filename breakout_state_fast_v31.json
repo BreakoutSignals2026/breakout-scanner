@@ -42,6 +42,7 @@
     "BB": {
       "bar_key": "2026-10-29T19:10:00+00:00",
       "close_cid": "FAST31C_BB_10291910000000",
+      "close_order_id": "ea6c26ef-0484-4e54-b010-fe7982a10d24",
       "entry_cid": "FAST31E_BB_10291910000000",
       "entry_fill_price": 9.12,
       "entry_filled_at": "2026-10-29T19:19:31.320163545Z",
@@ -53,7 +54,7 @@
       "requested_qty": 25,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-29T19:19:29+00:00",
       "symbol": "BB"
     },
