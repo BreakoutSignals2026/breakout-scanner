@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 6,
+    "attempts": 7,
     "closed": 5,
     "pnl_usd": -4.16
   },
@@ -18,15 +18,20 @@
     "HIMS:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T17:05:00+00:00:sell",
+    "IREN:2026-10-29T17:10:00+00:00:sell",
     "LUNR:2026-10-29T15:45:00+00:00:buy",
     "LUNR:2026-10-29T15:55:00+00:00:buy",
     "LUNR:2026-10-29T16:45:00+00:00:sell",
     "MARA:2026-10-29T15:30:00+00:00:buy",
     "MARA:2026-10-29T16:30:00+00:00:sell",
+    "MARA:2026-10-29T17:10:00+00:00:sell",
     "PTON:2026-10-29T15:10:00+00:00:buy",
     "QBTS:2026-10-29T15:30:00+00:00:buy",
+    "QBTS:2026-10-29T17:10:00+00:00:sell",
+    "RGTI:2026-10-29T17:10:00+00:00:sell",
     "RIOT:2026-10-29T15:30:00+00:00:buy",
-    "RIVN:2026-10-29T15:55:00+00:00:buy"
+    "RIVN:2026-10-29T15:55:00+00:00:buy",
+    "VALE:2026-10-29T17:10:00+00:00:sell"
   ],
   "symbols": {
     "AA": {
@@ -69,7 +74,11 @@
       "phase": "watching"
     },
     "IREN": {
-      "phase": "pending",
+      "entry": 26.646667500000003,
+      "entry_bar": "2026-10-29T17:10:00+00:00",
+      "last_bar": "2026-10-29T17:30:00+00:00",
+      "phase": "open",
+      "qty": 5,
       "signal": {
         "bar_key": "2026-10-29T17:05:00+00:00",
         "breakout_level": 26.775,
@@ -90,7 +99,8 @@
       "phase": "closed"
     },
     "MARA": {
-      "phase": "watching"
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "NOK": {
       "phase": "watching"
