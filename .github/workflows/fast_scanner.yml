@@ -2,19 +2,11 @@ name: FAST Alpaca Scanner V3.3.1 (risk-limited PAPER auto)
 
 on:
   schedule:
-    # 09:20 NY primary; 09:30/09:40/09:50/10:00 NY retries, Monday-Friday.
-    # UTC schedules cover both US DST regimes; preflight selects the correct one.
-    # Each retry is separate so github.event.schedule matches its allowlist.
-    - cron: "20 13 * * 1-5"
-    - cron: "20 14 * * 1-5"
-    - cron: "30 13 * * 1-5"
-    - cron: "30 14 * * 1-5"
-    - cron: "40 13 * * 1-5"
-    - cron: "40 14 * * 1-5"
-    - cron: "50 13 * * 1-5"
-    - cron: "50 14 * * 1-5"
-    - cron: "0 14 * * 1-5"
-    - cron: "0 15 * * 1-5"
+    # Restore the original daily launch pair used before the recovery-cron changes.
+    # 13:10 UTC is 09:10 NY in EDT; 14:10 UTC is 09:10 NY in EST.
+    # The other slot is a backup: concurrency prevents overlapping sessions.
+    - cron: "10 13 * * 1-5"
+    - cron: "10 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:
@@ -42,37 +34,26 @@ jobs:
       should_run: ${{ steps.gate.outputs.should_run }}
     steps:
       - id: gate
-        name: Validate weekday, NY time window and original DST schedule
+        name: Check New York session window and accept delayed launches
         shell: bash
-        env:
-          SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
           set -euo pipefail
           ny_time=$(TZ=America/New_York date +%H:%M)
-          ny_offset=$(TZ=America/New_York date +%z)
           ny_weekday=$(TZ=America/New_York date +%u)
           ny_hour=${ny_time%:*}
           ny_minute=${ny_time#*:}
           now_min=$((10#$ny_hour * 60 + 10#$ny_minute))
-          echo "NY time=$ny_time offset=$ny_offset weekday=$ny_weekday event=$GITHUB_EVENT_NAME cron=${SCHEDULE_CRON:-none}"
+          echo "NY time=$ny_time weekday=$ny_weekday event=$GITHUB_EVENT_NAME"
 
-          # Shared gate: weekdays, manual 09:00-16:00 NY, scheduled 09:20-16:00 NY.
-          # The scanner's Alpaca calendar still handles holidays and actual early closes.
+          # Use the original local-time gate, without rejecting an arriving
+          # backup/delayed run based on its UTC cron or DST-season allowlist.
+          # First-session waits for 09:30 NY; scanners enforce the Alpaca calendar.
           allow=false
-          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -ge 540 ] && [ "$now_min" -lt 960 ]; then
-            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -lt 960 ]; then
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$now_min" -ge 540 ]; then
               allow=true
-            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 560 ]; then
-              # Validate the original cron against today's NY UTC offset, not arrival hour.
-              # Correct-season late arrivals are accepted until 16:00 NY; unknown crons fail closed.
-              case "$ny_offset:$SCHEDULE_CRON" in
-                "-0400:20 13 * * 1-5"|"-0400:30 13 * * 1-5"|"-0400:40 13 * * 1-5"|"-0400:50 13 * * 1-5"|"-0400:0 14 * * 1-5"|"-0500:20 14 * * 1-5"|"-0500:30 14 * * 1-5"|"-0500:40 14 * * 1-5"|"-0500:50 14 * * 1-5"|"-0500:0 15 * * 1-5")
-                  allow=true
-                  ;;
-                *)
-                  echo "Skipped: wrong DST-season or unknown cron."
-                  ;;
-              esac
+            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 530 ]; then
+              allow=true
             fi
           fi
           echo "Gate: allow=$allow"

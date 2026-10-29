@@ -20,13 +20,15 @@ PAPER workflow používajú výhradne `https://paper-api.alpaca.markets`. Riziko
 
 ## Automatické spustenie
 
-Všetky tri workflow majú rovnaké pracovnodňové štarty podľa New Yorku: **09:20**, záložné **09:30, 09:40, 09:50 a 10:00**. Každý UTC cron je uvedený iba raz; úvodná kontrola povoľuje iba zápis zodpovedajúci aktuálnemu americkému letnému/zimnému času. Správny oneskorený štart prijme do 16:00 NY. Manuálne štarty sú povolené v pracovné dni od 09:00 do 16:00 NY. Samotné skenery naďalej kontrolujú kalendár Alpaca, sviatky, skrátenú seansu a existujúce hranice vstupov či EOD ochrany.
+Od 29.10.2026 je obnovený pôvodný denný pár cronov **13:10 a 14:10 UTC**, pondelok až piatok. Pri letnom čase USA ide o 09:10 a 10:10 New York, pri zimnom o 08:10 a 09:10. Plánovaný beh sa prijme iba od 08:50 do 16:00 NY; príliš skorý zimný pokus sa preskočí. Manuálny beh sa prijme od 09:00 do 16:00 NY. Horná hranica 16:00 je vylúčená.
 
-Samostatné concurrency skupiny povoľujú najviac jeden súčasný beh toho istého skenera a záložný štart neruší aktívny beh. Čakajúci pokus sa môže vykonať neskôr; pri príchode po 16:00 NY ho časová kontrola odmietne. BREAKOUT má navyše zachované samostatné EOD pokusy o 15:45 NY; FAST a FAST MICRO ich nemajú.
+Úvodná kontrola už neporovnáva pôvodný zápis cronu s letným/zimným časom: oneskorený alebo záložný pokus môže začať aj neskôr počas seansy. Prvá úloha čaká na otvorenie trhu; skenery naďalej kontrolujú kalendár Alpaca, sviatky, skrátené seansy a existujúce hranice vstupov či EOD ochrany.
 
-Na Slovensku sú ranné štarty väčšinu roka o **15:20, 15:30, 15:40, 15:50 a 16:00**. Počas rozdielnych dátumov prechodu USA a Európy na letný/zimný čas, vrátane 26.–30.10.2026, sú o hodinu skôr.
+Na Slovensku sú UTC pokusy tento týždeň o **14:10 a 15:10**. Počas slovenského letného času sú o **15:10 a 16:10**. Nejde o pravidelné päťminútové spúšťanie workflow: po prijatom dennom štarte pokračujú pôvodné dve nadväzujúce úlohy a vnútorné skenovacie slučky.
 
-GitHub môže plánované spustenie oneskoriť alebo vynechať. Úprava cronov negarantuje presný čas vykonania. Samostatný watchdog na obnovu štartov zostáva odstránený.
+Samostatné concurrency skupiny povoľujú najviac jeden súčasný beh toho istého skenera; záložný pokus neruší aktívny beh. BREAKOUT má zachované EOD pokusy o 19:45 a 20:45 UTC. FAST a FAST MICRO ich nemajú. Samostatný watchdog zostáva odstránený.
+
+GitHub môže vytvorenie plánovaného behu oneskoriť alebo vynechať. Návrat k pôvodnému rozvrhu a jednoduchšej časovej kontrole negarantuje presný štart; úspech treba overiť na skutočnom automatickom behu.
 
 PAPER skenery zachovávajú monitorovanie, ochranu sledovaných pozícií a pokus o ich uzatvorenie približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca. Výpadok runnera alebo API môže zabrániť uzatvoreniu.
 
