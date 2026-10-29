@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 4,
+    "attempts": 5,
     "closed": 3,
     "pnl_usd": -2.5
   },
@@ -10,6 +10,7 @@
     "BB:2026-10-29T15:55:00+00:00:buy",
     "CELH:2026-10-29T15:10:00+00:00:buy",
     "CLSK:2026-10-29T15:30:00+00:00:buy",
+    "F:2026-10-29T16:05:00+00:00:buy",
     "FSLY:2026-10-29T15:45:00+00:00:sell",
     "GME:2026-10-29T15:25:00+00:00:buy",
     "HIMS:2026-10-29T15:30:00+00:00:buy",
@@ -51,7 +52,22 @@
       "phase": "watching"
     },
     "F": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T16:05:00+00:00",
+        "breakout_level": 12.355,
+        "breakout_percent": 0.3642250101173608,
+        "entry_close": 12.4,
+        "prior_avg_bar_notional_usd": 354146.28,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08061265618701964,
+        "rel_volume": 2.0429818202905277,
+        "side": "buy",
+        "signal_bar_notional_usd": 728090.8,
+        "signal_bar_shares": 58717,
+        "signal_bar_trades": 100,
+        "symbol": "F"
+      }
     },
     "FSLY": {
       "phase": "watching"
@@ -68,7 +84,7 @@
     "LUNR": {
       "entry": 12.0059975,
       "entry_bar": "2026-10-29T15:50:00+00:00",
-      "last_bar": "2026-10-29T16:00:00+00:00",
+      "last_bar": "2026-10-29T16:05:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
