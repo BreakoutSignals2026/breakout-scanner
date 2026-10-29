@@ -160,3 +160,4 @@
 {"timestamp": "2026-10-29T19:19:29+00:00", "action": "entry_submitted", "symbol": "BB", "order_id": "6b3905ce-baae-41b8-9644-b91d9fd25f35", "requested_qty": 25, "reference": 9.12, "side": "sell", "estimated_risk": 2.99, "spread_percent": 0.11, "rel_volume": 5.663080576715937, "breakout_percent": 0.8169934640522798, "bar_notional_usd": 331103.33, "quote_age_seconds": 6.192234, "chase_percent": 0.16474464579899825, "signal_age_seconds": 269}
 {"timestamp": "2026-10-29T19:19:33+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "72eb6062-152c-4c23-b18e-7de418099f95", "qty": 25}
 {"timestamp": "2026-10-29T19:33:09+00:00", "action": "closed", "symbol": "RIVN", "entry": 11.53, "exit": 11.65, "qty": 20.0, "side": "sell", "pnl": -2.4, "pnl_pct": -1.041, "reason": "trailing stop", "holding_seconds": 1520}
+{"timestamp": "2026-10-29T19:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "72eb6062-152c-4c23-b18e-7de418099f95"}
