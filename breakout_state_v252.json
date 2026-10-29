@@ -10,15 +10,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 46,
+    "scans": 48,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 40,
-      "blocked_positions": 17,
+      "bez_potvrdeneho_breakoutu": 45,
+      "blocked_positions": 18,
       "exceptions": 3,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 350,
+      "nizky_relativny_objem": 364,
       "submitted": 3,
-      "symbols_checked": 443,
+      "symbols_checked": 462,
       "technical_signals": 6
     }
   },
@@ -27,14 +27,14 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 73.5,
+      "blocked_positions": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.1,
       "submitted": 0,
-      "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-10-29T15:16:05-04:00"
+      "symbols_checked": 10,
+      "technical_signals": 0,
+      "time_ny": "2026-10-29T15:27:47-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
@@ -42,10 +42,10 @@
       "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "position_or_order_blocked",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 0.888% nad 0.3%",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -120,10 +120,10 @@
       "planned_risk": 4.791,
       "qty": 11,
       "reference_entry": 91.13,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-10-29T14:00:00-04:00",
-      "status": "open",
+      "status": "closed",
       "stop": 91.51,
       "submitted": "2026-10-29T18:05:19+00:00",
       "symbol": "INTC",
