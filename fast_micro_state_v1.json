@@ -76,7 +76,7 @@
     "IREN": {
       "entry": 26.646667500000003,
       "entry_bar": "2026-10-29T17:10:00+00:00",
-      "last_bar": "2026-10-29T17:10:00+00:00",
+      "last_bar": "2026-10-29T17:15:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
@@ -99,22 +99,8 @@
       "phase": "closed"
     },
     "MARA": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-29T17:10:00+00:00",
-        "breakout_level": 7.21,
-        "breakout_percent": 0.20804438280165993,
-        "entry_close": 7.195,
-        "prior_avg_bar_notional_usd": 50252.53,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.13898540653231115,
-        "rel_volume": 1.8510784680563435,
-        "side": "sell",
-        "signal_bar_notional_usd": 91952.1,
-        "signal_bar_shares": 12780,
-        "signal_bar_trades": 39,
-        "symbol": "MARA"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "NOK": {
       "phase": "watching"
