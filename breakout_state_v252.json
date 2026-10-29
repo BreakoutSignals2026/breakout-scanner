@@ -2,38 +2,38 @@
   "cooldown": {
     "AAPL": "2026-10-26T12:45:00-04:00",
     "AMZN": "2026-10-22T14:30:00-04:00",
-    "INTC": "2026-10-22T12:45:00-04:00",
+    "INTC": "2026-10-29T14:00:00-04:00",
     "META": "2026-10-29T12:30:00-04:00",
+    "MRVL": "2026-10-29T14:35:00-04:00",
     "NVDA": "2026-10-22T14:55:00-04:00",
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 30,
+    "scans": 41,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 15,
-      "blocked_positions": 4,
-      "exceptions": 0,
+      "bez_potvrdeneho_breakoutu": 29,
+      "blocked_positions": 12,
+      "exceptions": 2,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 233,
-      "submitted": 1,
-      "symbols_checked": 296,
-      "technical_signals": 1
+      "nizky_relativny_objem": 317,
+      "submitted": 3,
+      "symbols_checked": 398,
+      "technical_signals": 5
     }
   },
   "daily_diagnostics_notice": "2026-10-28",
   "daily_start_notice": "2026-10-29",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
+      "blocked_positions": 2,
       "exceptions": 0,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 81.3,
+      "scan_seconds": 65.0,
       "submitted": 0,
-      "symbols_checked": 10,
+      "symbols_checked": 8,
       "technical_signals": 0,
-      "time_ny": "2026-10-29T13:42:50-04:00"
+      "time_ny": "2026-10-29T14:47:10-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
@@ -41,12 +41,12 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "position_or_order_blocked",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MRVL": "position_or_order_blocked",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -113,6 +113,21 @@
       "symbol": "INTC",
       "tp": 95.21
     },
+    "B252_INTC_202610291400": {
+      "client_id": "B252_INTC_202610291400",
+      "entry_id": "f8ba1d0e-dd0e-42f9-be4d-fcb1735e5b28",
+      "planned_risk": 4.791,
+      "qty": 11,
+      "reference_entry": 91.13,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-29T14:00:00-04:00",
+      "status": "open",
+      "stop": 91.51,
+      "submitted": "2026-10-29T18:05:19+00:00",
+      "symbol": "INTC",
+      "tp": 90.37
+    },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
       "entry_id": "9c57a021-0871-4507-8598-8af511a77e8e",
@@ -127,6 +142,21 @@
       "submitted": "2026-10-29T16:37:41+00:00",
       "symbol": "META",
       "tp": 639.25
+    },
+    "B252_MRVL_202610291435": {
+      "client_id": "B252_MRVL_202610291435",
+      "entry_id": "692a4d14-2ca9-474f-9240-3c2dae519626",
+      "planned_risk": 4.764,
+      "qty": 3,
+      "reference_entry": 216.0,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-29T14:35:00-04:00",
+      "status": "open",
+      "stop": 217.14,
+      "submitted": "2026-10-29T18:40:26+00:00",
+      "symbol": "MRVL",
+      "tp": 213.72
     },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",

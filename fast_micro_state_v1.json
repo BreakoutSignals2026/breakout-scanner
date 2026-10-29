@@ -1,20 +1,28 @@
 {
   "daily": {
-    "attempts": 8,
-    "closed": 5,
-    "pnl_usd": -4.16
+    "attempts": 11,
+    "closed": 6,
+    "pnl_usd": -2.59
   },
   "date": "2026-10-29",
   "seen": [
+    "AA:2026-10-29T17:50:00+00:00:sell",
     "AAL:2026-10-29T16:30:00+00:00:sell",
     "BB:2026-10-29T15:20:00+00:00:buy",
     "BB:2026-10-29T15:55:00+00:00:buy",
+    "BB:2026-10-29T18:00:00+00:00:sell",
     "CELH:2026-10-29T15:10:00+00:00:buy",
     "CLF:2026-10-29T16:30:00+00:00:sell",
     "CLSK:2026-10-29T15:30:00+00:00:buy",
+    "CLSK:2026-10-29T18:20:00+00:00:sell",
+    "CLSK:2026-10-29T18:25:00+00:00:sell",
+    "CLSK:2026-10-29T18:30:00+00:00:sell",
+    "DKNG:2026-10-29T18:10:00+00:00:buy",
+    "DKNG:2026-10-29T18:15:00+00:00:buy",
     "F:2026-10-29T16:05:00+00:00:buy",
     "FSLY:2026-10-29T15:45:00+00:00:sell",
     "GME:2026-10-29T15:25:00+00:00:buy",
+    "GME:2026-10-29T18:20:00+00:00:buy",
     "HIMS:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T17:05:00+00:00:sell",
@@ -22,27 +30,55 @@
     "LUNR:2026-10-29T15:45:00+00:00:buy",
     "LUNR:2026-10-29T15:55:00+00:00:buy",
     "LUNR:2026-10-29T16:45:00+00:00:sell",
+    "LUNR:2026-10-29T18:30:00+00:00:sell",
     "MARA:2026-10-29T15:30:00+00:00:buy",
     "MARA:2026-10-29T16:30:00+00:00:sell",
     "MARA:2026-10-29T17:10:00+00:00:sell",
+    "MARA:2026-10-29T18:20:00+00:00:sell",
+    "PATH:2026-10-29T18:10:00+00:00:sell",
     "PTON:2026-10-29T15:10:00+00:00:buy",
     "QBTS:2026-10-29T15:30:00+00:00:buy",
     "QBTS:2026-10-29T17:10:00+00:00:sell",
+    "QBTS:2026-10-29T17:50:00+00:00:sell",
     "RGTI:2026-10-29T17:10:00+00:00:sell",
+    "RGTI:2026-10-29T18:30:00+00:00:sell",
     "RIOT:2026-10-29T15:30:00+00:00:buy",
+    "RIOT:2026-10-29T18:20:00+00:00:sell",
+    "RIOT:2026-10-29T18:25:00+00:00:sell",
     "RIVN:2026-10-29T15:55:00+00:00:buy",
     "SNAP:2026-10-29T17:35:00+00:00:sell",
+    "SNAP:2026-10-29T17:45:00+00:00:sell",
     "VALE:2026-10-29T17:10:00+00:00:sell"
   ],
   "symbols": {
     "AA": {
-      "phase": "watching"
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "AAL": {
       "phase": "watching"
     },
     "BB": {
-      "phase": "watching"
+      "entry": 9.25037,
+      "entry_bar": "2026-10-29T18:05:00+00:00",
+      "last_bar": "2026-10-29T18:45:00+00:00",
+      "phase": "open",
+      "qty": 15,
+      "signal": {
+        "bar_key": "2026-10-29T18:00:00+00:00",
+        "breakout_level": 9.29,
+        "breakout_percent": 0.21528525296016765,
+        "entry_close": 9.27,
+        "prior_avg_bar_notional_usd": 69083.01,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.10781671159029421,
+        "rel_volume": 1.963925872616049,
+        "side": "sell",
+        "signal_bar_notional_usd": 134915.58,
+        "signal_bar_shares": 14554,
+        "signal_bar_trades": 27,
+        "symbol": "BB"
+      }
     },
     "CCL": {
       "phase": "watching"
@@ -75,26 +111,7 @@
       "phase": "watching"
     },
     "IREN": {
-      "entry": 26.646667500000003,
-      "entry_bar": "2026-10-29T17:10:00+00:00",
-      "last_bar": "2026-10-29T17:35:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-29T17:05:00+00:00",
-        "breakout_level": 26.775,
-        "breakout_percent": 0.4108309990662911,
-        "entry_close": 26.665,
-        "prior_avg_bar_notional_usd": 272918.91,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.037432154220467945,
-        "rel_volume": 2.4170776104583815,
-        "side": "sell",
-        "signal_bar_notional_usd": 649132.76,
-        "signal_bar_shares": 24344,
-        "signal_bar_trades": 133,
-        "symbol": "IREN"
-      }
+      "phase": "closed"
     },
     "LUNR": {
       "phase": "closed"
@@ -116,7 +133,26 @@
       "phase": "watching"
     },
     "QBTS": {
-      "phase": "watching"
+      "entry": 11.509240000000002,
+      "entry_bar": "2026-10-29T17:55:00+00:00",
+      "last_bar": "2026-10-29T18:45:00+00:00",
+      "phase": "open",
+      "qty": 12,
+      "signal": {
+        "bar_key": "2026-10-29T17:50:00+00:00",
+        "breakout_level": 11.55,
+        "breakout_percent": 0.2597402597402696,
+        "entry_close": 11.52,
+        "prior_avg_bar_notional_usd": 37317.01,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08676789587852311,
+        "rel_volume": 1.9687353934043106,
+        "side": "sell",
+        "signal_bar_notional_usd": 72783.36,
+        "signal_bar_shares": 6318,
+        "signal_bar_trades": 36,
+        "symbol": "QBTS"
+      }
     },
     "RGTI": {
       "phase": "watching"
@@ -128,22 +164,8 @@
       "phase": "closed"
     },
     "SNAP": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-29T17:35:00+00:00",
-        "breakout_level": 5.71,
-        "breakout_percent": 0.2626970227670697,
-        "entry_close": 5.695,
-        "prior_avg_bar_notional_usd": 94905.68,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.17559262510974163,
-        "rel_volume": 13.672456800761939,
-        "side": "sell",
-        "signal_bar_notional_usd": 1287628.11,
-        "signal_bar_shares": 226098,
-        "signal_bar_trades": 146,
-        "symbol": "SNAP"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
       "phase": "watching"
