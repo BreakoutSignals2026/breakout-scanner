@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 3,
-    "closed": 1,
-    "pnl_usd": -0.84
+    "closed": 2,
+    "pnl_usd": -1.66
   },
   "date": "2026-10-29",
   "seen": [
@@ -54,26 +54,7 @@
       "phase": "watching"
     },
     "GME": {
-      "entry": 23.886934999999998,
-      "entry_bar": "2026-10-29T15:30:00+00:00",
-      "last_bar": "2026-10-29T15:45:00+00:00",
-      "phase": "open",
-      "qty": 6,
-      "signal": {
-        "bar_key": "2026-10-29T15:25:00+00:00",
-        "breakout_level": 23.775,
-        "breakout_percent": 0.48370136698213245,
-        "entry_close": 23.89,
-        "prior_avg_bar_notional_usd": 49921.32,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.04184975936387533,
-        "rel_volume": 9.833794575788724,
-        "side": "buy",
-        "signal_bar_notional_usd": 495191.92,
-        "signal_bar_shares": 20728,
-        "signal_bar_trades": 135,
-        "symbol": "GME"
-      }
+      "phase": "closed"
     },
     "HIMS": {
       "phase": "watching"
@@ -82,7 +63,11 @@
       "phase": "watching"
     },
     "LUNR": {
-      "phase": "pending",
+      "entry": 12.0059975,
+      "entry_bar": "2026-10-29T15:50:00+00:00",
+      "last_bar": "2026-10-29T15:50:00+00:00",
+      "phase": "open",
+      "qty": 12,
       "signal": {
         "bar_key": "2026-10-29T15:45:00+00:00",
         "breakout_level": 11.93,
