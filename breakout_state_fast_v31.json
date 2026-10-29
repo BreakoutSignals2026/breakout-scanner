@@ -217,11 +217,12 @@
       "exit_cid": "FAST31X_IREN_10291705000000",
       "exit_order_id": "d302f22a-0a50-4b02-849e-87786277a5fe",
       "filled_qty": 7,
+      "realized_pnl": 3.36,
       "reference_price": 26.71,
       "requested_qty": 9,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-10-29T17:12:04+00:00",
       "symbol": "IREN"
     },
