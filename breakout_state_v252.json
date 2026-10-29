@@ -8,15 +8,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 14,
+    "scans": 15,
     "totals": {
       "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
       "exceptions": 0,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 91,
+      "nizky_relativny_objem": 101,
       "submitted": 0,
-      "symbols_checked": 140,
+      "symbols_checked": 150,
       "technical_signals": 0
     }
   },
@@ -27,11 +27,11 @@
       "blocked_positions": 0,
       "exceptions": 0,
       "nizky_relativny_objem": 10,
-      "scan_seconds": 81.2,
+      "scan_seconds": 81.1,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-10-29T12:08:31-04:00"
+      "time_ny": "2026-10-29T12:14:26-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
