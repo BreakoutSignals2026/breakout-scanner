@@ -10,15 +10,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 47,
+    "scans": 48,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 43,
+      "bez_potvrdeneho_breakoutu": 45,
       "blocked_positions": 18,
       "exceptions": 3,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 356,
+      "nizky_relativny_objem": 364,
       "submitted": 3,
-      "symbols_checked": 452,
+      "symbols_checked": 462,
       "technical_signals": 6
     }
   },
@@ -26,28 +26,28 @@
   "daily_start_notice": "2026-10-29",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 3,
-      "blocked_positions": 1,
+      "bez_potvrdeneho_breakoutu": 2,
+      "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 74.2,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.1,
       "submitted": 0,
-      "symbols_checked": 9,
+      "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-10-29T15:21:52-04:00"
+      "time_ny": "2026-10-29T15:27:47-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "position_or_order_blocked",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -120,10 +120,10 @@
       "planned_risk": 4.791,
       "qty": 11,
       "reference_entry": 91.13,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-10-29T14:00:00-04:00",
-      "status": "open",
+      "status": "closed",
       "stop": 91.51,
       "submitted": "2026-10-29T18:05:19+00:00",
       "symbol": "INTC",
