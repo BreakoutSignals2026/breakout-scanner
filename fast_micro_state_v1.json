@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 4,
-    "closed": 2,
-    "pnl_usd": -1.66
+    "closed": 3,
+    "pnl_usd": -2.5
   },
   "date": "2026-10-29",
   "seen": [
@@ -68,7 +68,7 @@
     "LUNR": {
       "entry": 12.0059975,
       "entry_bar": "2026-10-29T15:50:00+00:00",
-      "last_bar": "2026-10-29T15:55:00+00:00",
+      "last_bar": "2026-10-29T16:00:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
@@ -112,22 +112,7 @@
       "phase": "watching"
     },
     "RIVN": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-29T15:55:00+00:00",
-        "breakout_level": 11.805,
-        "breakout_percent": 0.33883947479882187,
-        "entry_close": 11.845,
-        "prior_avg_bar_notional_usd": 108819.64,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08456659619450138,
-        "rel_volume": 4.13767425128159,
-        "side": "buy",
-        "signal_bar_notional_usd": 454125.46,
-        "signal_bar_shares": 38339,
-        "signal_bar_trades": 139,
-        "symbol": "RIVN"
-      }
+      "phase": "closed"
     },
     "SNAP": {
       "phase": "watching"
