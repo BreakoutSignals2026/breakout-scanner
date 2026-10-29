@@ -4,21 +4,22 @@
     "AMZN": "2026-10-22T14:30:00-04:00",
     "INTC": "2026-10-29T14:00:00-04:00",
     "META": "2026-10-29T12:30:00-04:00",
+    "MRVL": "2026-10-29T14:35:00-04:00",
     "NVDA": "2026-10-22T14:55:00-04:00",
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 39,
+    "scans": 40,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 28,
-      "blocked_positions": 9,
+      "bez_potvrdeneho_breakoutu": 29,
+      "blocked_positions": 10,
       "exceptions": 2,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 302,
-      "submitted": 2,
-      "symbols_checked": 381,
-      "technical_signals": 4
+      "nizky_relativny_objem": 309,
+      "submitted": 3,
+      "symbols_checked": 390,
+      "technical_signals": 5
     }
   },
   "daily_diagnostics_notice": "2026-10-28",
@@ -27,24 +28,24 @@
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 1,
-      "exceptions": 1,
+      "exceptions": 0,
       "nizky_relativny_objem": 7,
-      "scan_seconds": 73.2,
-      "submitted": 0,
+      "scan_seconds": 74.2,
+      "submitted": 1,
       "symbols_checked": 9,
       "technical_signals": 1,
-      "time_ny": "2026-10-29T14:35:27-04:00"
+      "time_ny": "2026-10-29T14:41:15-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
+      "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
       "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: cena mimo signálu (0.443%)",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MRVL": "order_submitted",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -142,6 +143,21 @@
       "submitted": "2026-10-29T16:37:41+00:00",
       "symbol": "META",
       "tp": 639.25
+    },
+    "B252_MRVL_202610291435": {
+      "client_id": "B252_MRVL_202610291435",
+      "entry_id": "692a4d14-2ca9-474f-9240-3c2dae519626",
+      "planned_risk": 4.764,
+      "qty": 3,
+      "reference_entry": 216.0,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-29T14:35:00-04:00",
+      "status": "pending",
+      "stop": 217.14,
+      "submitted": "2026-10-29T18:40:26+00:00",
+      "symbol": "MRVL",
+      "tp": 213.72
     },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",
