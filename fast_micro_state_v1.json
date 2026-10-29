@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 8,
-    "closed": 5,
-    "pnl_usd": -4.16
+    "closed": 6,
+    "pnl_usd": -2.59
   },
   "date": "2026-10-29",
   "seen": [
@@ -32,6 +32,7 @@
     "RIOT:2026-10-29T15:30:00+00:00:buy",
     "RIVN:2026-10-29T15:55:00+00:00:buy",
     "SNAP:2026-10-29T17:35:00+00:00:sell",
+    "SNAP:2026-10-29T17:45:00+00:00:sell",
     "VALE:2026-10-29T17:10:00+00:00:sell"
   ],
   "symbols": {
@@ -75,26 +76,7 @@
       "phase": "watching"
     },
     "IREN": {
-      "entry": 26.646667500000003,
-      "entry_bar": "2026-10-29T17:10:00+00:00",
-      "last_bar": "2026-10-29T17:40:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-29T17:05:00+00:00",
-        "breakout_level": 26.775,
-        "breakout_percent": 0.4108309990662911,
-        "entry_close": 26.665,
-        "prior_avg_bar_notional_usd": 272918.91,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.037432154220467945,
-        "rel_volume": 2.4170776104583815,
-        "side": "sell",
-        "signal_bar_notional_usd": 649132.76,
-        "signal_bar_shares": 24344,
-        "signal_bar_trades": 133,
-        "symbol": "IREN"
-      }
+      "phase": "closed"
     },
     "LUNR": {
       "phase": "closed"
