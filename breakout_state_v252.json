@@ -3,46 +3,48 @@
     "AAPL": "2026-10-26T12:45:00-04:00",
     "AMZN": "2026-10-22T14:30:00-04:00",
     "INTC": "2026-10-22T12:45:00-04:00",
+    "META": "2026-10-29T12:30:00-04:00",
     "NVDA": "2026-10-22T14:55:00-04:00",
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-29",
-    "scans": 18,
+    "scans": 19,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 4,
+      "bez_potvrdeneho_breakoutu": 6,
       "blocked_positions": 0,
       "exceptions": 0,
       "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 129,
-      "submitted": 0,
-      "symbols_checked": 180,
-      "technical_signals": 0
+      "nizky_relativny_objem": 136,
+      "submitted": 1,
+      "symbols_checked": 190,
+      "technical_signals": 1
     }
   },
   "daily_diagnostics_notice": "2026-10-28",
   "daily_start_notice": "2026-10-29",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 10,
-      "scan_seconds": 81.3,
-      "submitted": 0,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 82.2,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-10-29T12:32:10-04:00"
+      "technical_signals": 1,
+      "time_ny": "2026-10-29T12:38:06-04:00"
     },
     "date": "2026-10-29",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
+      "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
+      "META": "order_submitted",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -110,6 +112,21 @@
       "submitted": "2026-10-27T16:06:10.934718986Z",
       "symbol": "INTC",
       "tp": 95.21
+    },
+    "B252_META_202610291230": {
+      "client_id": "B252_META_202610291230",
+      "entry_id": "9c57a021-0871-4507-8598-8af511a77e8e",
+      "planned_risk": 3.207,
+      "qty": 1,
+      "reference_entry": 634.55,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-10-29T12:30:00-04:00",
+      "status": "pending",
+      "stop": 632.2,
+      "submitted": "2026-10-29T16:37:41+00:00",
+      "symbol": "META",
+      "tp": 639.25
     },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",
