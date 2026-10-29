@@ -77,7 +77,7 @@
     "IREN": {
       "entry": 26.646667500000003,
       "entry_bar": "2026-10-29T17:10:00+00:00",
-      "last_bar": "2026-10-29T17:35:00+00:00",
+      "last_bar": "2026-10-29T17:40:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
@@ -128,22 +128,8 @@
       "phase": "closed"
     },
     "SNAP": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-10-29T17:35:00+00:00",
-        "breakout_level": 5.71,
-        "breakout_percent": 0.2626970227670697,
-        "entry_close": 5.695,
-        "prior_avg_bar_notional_usd": 94905.68,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.17559262510974163,
-        "rel_volume": 13.672456800761939,
-        "side": "sell",
-        "signal_bar_notional_usd": 1287628.11,
-        "signal_bar_shares": 226098,
-        "signal_bar_trades": 146,
-        "symbol": "SNAP"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "SOFI": {
       "phase": "watching"
