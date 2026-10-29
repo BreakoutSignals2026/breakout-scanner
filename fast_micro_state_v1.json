@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 11,
-    "closed": 7,
-    "pnl_usd": -1.0
+    "closed": 8,
+    "pnl_usd": -0.48
   },
   "date": "2026-10-29",
   "seen": [
@@ -117,26 +117,7 @@
       "phase": "watching"
     },
     "QBTS": {
-      "entry": 11.509240000000002,
-      "entry_bar": "2026-10-29T17:55:00+00:00",
-      "last_bar": "2026-10-29T19:35:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-29T17:50:00+00:00",
-        "breakout_level": 11.55,
-        "breakout_percent": 0.2597402597402696,
-        "entry_close": 11.52,
-        "prior_avg_bar_notional_usd": 37317.01,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08676789587852311,
-        "rel_volume": 1.9687353934043106,
-        "side": "sell",
-        "signal_bar_notional_usd": 72783.36,
-        "signal_bar_shares": 6318,
-        "signal_bar_trades": 36,
-        "symbol": "QBTS"
-      }
+      "phase": "closed"
     },
     "RGTI": {
       "phase": "watching"
