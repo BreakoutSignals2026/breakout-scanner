@@ -1,8 +1,8 @@
 {
   "daily": {
-    "attempts": 5,
-    "closed": 3,
-    "pnl_usd": -2.5
+    "attempts": 6,
+    "closed": 5,
+    "pnl_usd": -4.16
   },
   "date": "2026-10-29",
   "seen": [
@@ -17,8 +17,10 @@
     "GME:2026-10-29T15:25:00+00:00:buy",
     "HIMS:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T15:30:00+00:00:buy",
+    "IREN:2026-10-29T17:05:00+00:00:sell",
     "LUNR:2026-10-29T15:45:00+00:00:buy",
     "LUNR:2026-10-29T15:55:00+00:00:buy",
+    "LUNR:2026-10-29T16:45:00+00:00:sell",
     "MARA:2026-10-29T15:30:00+00:00:buy",
     "MARA:2026-10-29T16:30:00+00:00:sell",
     "PTON:2026-10-29T15:10:00+00:00:buy",
@@ -55,26 +57,7 @@
       "phase": "watching"
     },
     "F": {
-      "entry": 12.411200000000001,
-      "entry_bar": "2026-10-29T16:10:00+00:00",
-      "last_bar": "2026-10-29T16:35:00+00:00",
-      "phase": "open",
-      "qty": 11,
-      "signal": {
-        "bar_key": "2026-10-29T16:05:00+00:00",
-        "breakout_level": 12.355,
-        "breakout_percent": 0.3642250101173608,
-        "entry_close": 12.4,
-        "prior_avg_bar_notional_usd": 354146.28,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08061265618701964,
-        "rel_volume": 2.0429818202905277,
-        "side": "buy",
-        "signal_bar_notional_usd": 728090.8,
-        "signal_bar_shares": 58717,
-        "signal_bar_trades": 100,
-        "symbol": "F"
-      }
+      "phase": "closed"
     },
     "FSLY": {
       "phase": "watching"
@@ -86,29 +69,25 @@
       "phase": "watching"
     },
     "IREN": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T17:05:00+00:00",
+        "breakout_level": 26.775,
+        "breakout_percent": 0.4108309990662911,
+        "entry_close": 26.665,
+        "prior_avg_bar_notional_usd": 272918.91,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.037432154220467945,
+        "rel_volume": 2.4170776104583815,
+        "side": "sell",
+        "signal_bar_notional_usd": 649132.76,
+        "signal_bar_shares": 24344,
+        "signal_bar_trades": 133,
+        "symbol": "IREN"
+      }
     },
     "LUNR": {
-      "entry": 12.0059975,
-      "entry_bar": "2026-10-29T15:50:00+00:00",
-      "last_bar": "2026-10-29T16:35:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-10-29T15:45:00+00:00",
-        "breakout_level": 11.93,
-        "breakout_percent": 0.5867560771165155,
-        "entry_close": 12.0,
-        "prior_avg_bar_notional_usd": 49070.13,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.0831600831600814,
-        "rel_volume": 1.7782485311163516,
-        "side": "buy",
-        "signal_bar_notional_usd": 88980.0,
-        "signal_bar_shares": 7415,
-        "signal_bar_trades": 37,
-        "symbol": "LUNR"
-      }
+      "phase": "closed"
     },
     "MARA": {
       "phase": "watching"
