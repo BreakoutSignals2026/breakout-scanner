@@ -140,3 +140,5 @@
 {"timestamp": "2026-10-28T19:45:01+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "8cf13518-f4ca-41a9-a822-28653f00870f"}
 {"timestamp": "2026-10-28T19:45:34+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 19, "order_id": "fc2cf1a0-eaf9-4398-bd7e-46fe78a94544"}
 {"timestamp": "2026-10-28T19:46:08+00:00", "action": "closed", "symbol": "F", "entry": 11.94, "exit": 11.9, "qty": 19.0, "side": "buy", "pnl": -0.76, "pnl_pct": -0.335, "reason": "koniec seansy", "holding_seconds": 3860}
+{"timestamp": "2026-10-29T15:17:55+00:00", "action": "entry_submitted", "symbol": "PTON", "order_id": "f4669ae8-5d7e-4ed0-b9cf-c94c2be20c03", "requested_qty": 40, "reference": 5.33, "side": "buy", "estimated_risk": 2.96, "spread_percent": 0.188, "rel_volume": 2.741024059222702, "breakout_percent": 0.1881467544684814, "bar_notional_usd": 29575.05, "quote_age_seconds": 2.252839, "chase_percent": 0.09389671361502147, "signal_age_seconds": 175}
+{"timestamp": "2026-10-29T15:18:00+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "38c8f35a-36b1-40b0-a21a-b1774e0866fa", "qty": 40}
