@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 2,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 1,
+    "pnl_usd": -0.84
   },
   "date": "2026-10-29",
   "seen": [
@@ -31,26 +31,7 @@
       "phase": "watching"
     },
     "CELH": {
-      "entry": 28.414195,
-      "entry_bar": "2026-10-29T15:15:00+00:00",
-      "last_bar": "2026-10-29T15:35:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-10-29T15:10:00+00:00",
-        "breakout_level": 28.33,
-        "breakout_percent": 0.21178962230851492,
-        "entry_close": 28.39,
-        "prior_avg_bar_notional_usd": 34634.12,
-        "quote_spread": 0.019999999999999574,
-        "quote_spread_pct": 0.07044734061289036,
-        "rel_volume": 2.4167969015424338,
-        "side": "buy",
-        "signal_bar_notional_usd": 84147.96,
-        "signal_bar_shares": 2964,
-        "signal_bar_trades": 35,
-        "symbol": "CELH"
-      }
+      "phase": "closed"
     },
     "CHWY": {
       "phase": "watching"
@@ -73,7 +54,7 @@
     "GME": {
       "entry": 23.886934999999998,
       "entry_bar": "2026-10-29T15:30:00+00:00",
-      "last_bar": "2026-10-29T15:35:00+00:00",
+      "last_bar": "2026-10-29T15:40:00+00:00",
       "phase": "open",
       "qty": 6,
       "signal": {
