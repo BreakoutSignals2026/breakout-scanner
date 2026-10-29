@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 5,
+    "attempts": 6,
     "closed": 5,
     "pnl_usd": -4.16
   },
@@ -17,6 +17,7 @@
     "GME:2026-10-29T15:25:00+00:00:buy",
     "HIMS:2026-10-29T15:30:00+00:00:buy",
     "IREN:2026-10-29T15:30:00+00:00:buy",
+    "IREN:2026-10-29T17:05:00+00:00:sell",
     "LUNR:2026-10-29T15:45:00+00:00:buy",
     "LUNR:2026-10-29T15:55:00+00:00:buy",
     "LUNR:2026-10-29T16:45:00+00:00:sell",
@@ -68,7 +69,22 @@
       "phase": "watching"
     },
     "IREN": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T17:05:00+00:00",
+        "breakout_level": 26.775,
+        "breakout_percent": 0.4108309990662911,
+        "entry_close": 26.665,
+        "prior_avg_bar_notional_usd": 272918.91,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.037432154220467945,
+        "rel_volume": 2.4170776104583815,
+        "side": "sell",
+        "signal_bar_notional_usd": 649132.76,
+        "signal_bar_shares": 24344,
+        "signal_bar_trades": 133,
+        "symbol": "IREN"
+      }
     },
     "LUNR": {
       "phase": "closed"
