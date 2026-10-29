@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 8,
+    "attempts": 10,
     "closed": 6,
     "pnl_usd": -2.59
   },
   "date": "2026-10-29",
   "seen": [
+    "AA:2026-10-29T17:50:00+00:00:sell",
     "AAL:2026-10-29T16:30:00+00:00:sell",
     "BB:2026-10-29T15:20:00+00:00:buy",
     "BB:2026-10-29T15:55:00+00:00:buy",
@@ -28,6 +29,7 @@
     "PTON:2026-10-29T15:10:00+00:00:buy",
     "QBTS:2026-10-29T15:30:00+00:00:buy",
     "QBTS:2026-10-29T17:10:00+00:00:sell",
+    "QBTS:2026-10-29T17:50:00+00:00:sell",
     "RGTI:2026-10-29T17:10:00+00:00:sell",
     "RIOT:2026-10-29T15:30:00+00:00:buy",
     "RIVN:2026-10-29T15:55:00+00:00:buy",
@@ -37,7 +39,22 @@
   ],
   "symbols": {
     "AA": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T17:50:00+00:00",
+        "breakout_level": 40.195,
+        "breakout_percent": 0.2363478044532874,
+        "entry_close": 40.1,
+        "prior_avg_bar_notional_usd": 81807.26,
+        "quote_spread": 0.04999999999999716,
+        "quote_spread_pct": 0.1246416552411745,
+        "rel_volume": 2.2317223270698285,
+        "side": "sell",
+        "signal_bar_notional_usd": 181773.3,
+        "signal_bar_shares": 4533,
+        "signal_bar_trades": 47,
+        "symbol": "AA"
+      }
     },
     "AAL": {
       "phase": "watching"
@@ -98,7 +115,22 @@
       "phase": "watching"
     },
     "QBTS": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-29T17:50:00+00:00",
+        "breakout_level": 11.55,
+        "breakout_percent": 0.2597402597402696,
+        "entry_close": 11.52,
+        "prior_avg_bar_notional_usd": 37317.01,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08676789587852311,
+        "rel_volume": 1.9687353934043106,
+        "side": "sell",
+        "signal_bar_notional_usd": 72783.36,
+        "signal_bar_shares": 6318,
+        "signal_bar_trades": 36,
+        "symbol": "QBTS"
+      }
     },
     "RGTI": {
       "phase": "watching"
