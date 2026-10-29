@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 11,
-    "closed": 6,
-    "pnl_usd": -2.59
+    "closed": 7,
+    "pnl_usd": -1.0
   },
   "date": "2026-10-29",
   "seen": [
@@ -11,6 +11,7 @@
     "BB:2026-10-29T15:20:00+00:00:buy",
     "BB:2026-10-29T15:55:00+00:00:buy",
     "BB:2026-10-29T18:00:00+00:00:sell",
+    "BB:2026-10-29T19:10:00+00:00:sell",
     "CELH:2026-10-29T15:10:00+00:00:buy",
     "CLF:2026-10-29T16:30:00+00:00:sell",
     "CLSK:2026-10-29T15:30:00+00:00:buy",
@@ -61,26 +62,7 @@
       "phase": "watching"
     },
     "BB": {
-      "entry": 9.25037,
-      "entry_bar": "2026-10-29T18:05:00+00:00",
-      "last_bar": "2026-10-29T19:05:00+00:00",
-      "phase": "open",
-      "qty": 15,
-      "signal": {
-        "bar_key": "2026-10-29T18:00:00+00:00",
-        "breakout_level": 9.29,
-        "breakout_percent": 0.21528525296016765,
-        "entry_close": 9.27,
-        "prior_avg_bar_notional_usd": 69083.01,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.10781671159029421,
-        "rel_volume": 1.963925872616049,
-        "side": "sell",
-        "signal_bar_notional_usd": 134915.58,
-        "signal_bar_shares": 14554,
-        "signal_bar_trades": 27,
-        "symbol": "BB"
-      }
+      "phase": "closed"
     },
     "CCL": {
       "phase": "watching"
@@ -137,7 +119,7 @@
     "QBTS": {
       "entry": 11.509240000000002,
       "entry_bar": "2026-10-29T17:55:00+00:00",
-      "last_bar": "2026-10-29T19:05:00+00:00",
+      "last_bar": "2026-10-29T19:10:00+00:00",
       "phase": "open",
       "qty": 12,
       "signal": {
