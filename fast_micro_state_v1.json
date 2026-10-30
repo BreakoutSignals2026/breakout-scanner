@@ -1,144 +1,48 @@
 {
   "daily": {
-    "attempts": 11,
-    "closed": 8,
-    "pnl_usd": -0.48
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "seen": [
-    "AA:2026-10-29T17:50:00+00:00:sell",
-    "AAL:2026-10-29T16:30:00+00:00:sell",
-    "BB:2026-10-29T15:20:00+00:00:buy",
-    "BB:2026-10-29T15:55:00+00:00:buy",
-    "BB:2026-10-29T18:00:00+00:00:sell",
-    "BB:2026-10-29T19:10:00+00:00:sell",
-    "CELH:2026-10-29T15:10:00+00:00:buy",
-    "CLF:2026-10-29T16:30:00+00:00:sell",
-    "CLSK:2026-10-29T15:30:00+00:00:buy",
-    "CLSK:2026-10-29T18:20:00+00:00:sell",
-    "CLSK:2026-10-29T18:25:00+00:00:sell",
-    "CLSK:2026-10-29T18:30:00+00:00:sell",
-    "DKNG:2026-10-29T18:10:00+00:00:buy",
-    "DKNG:2026-10-29T18:15:00+00:00:buy",
-    "F:2026-10-29T16:05:00+00:00:buy",
-    "FSLY:2026-10-29T15:45:00+00:00:sell",
-    "GME:2026-10-29T15:25:00+00:00:buy",
-    "GME:2026-10-29T18:20:00+00:00:buy",
-    "HIMS:2026-10-29T15:30:00+00:00:buy",
-    "IREN:2026-10-29T15:30:00+00:00:buy",
-    "IREN:2026-10-29T17:05:00+00:00:sell",
-    "IREN:2026-10-29T17:10:00+00:00:sell",
-    "LUNR:2026-10-29T15:45:00+00:00:buy",
-    "LUNR:2026-10-29T15:55:00+00:00:buy",
-    "LUNR:2026-10-29T16:45:00+00:00:sell",
-    "LUNR:2026-10-29T18:30:00+00:00:sell",
-    "MARA:2026-10-29T15:30:00+00:00:buy",
-    "MARA:2026-10-29T16:30:00+00:00:sell",
-    "MARA:2026-10-29T17:10:00+00:00:sell",
-    "MARA:2026-10-29T18:20:00+00:00:sell",
-    "PATH:2026-10-29T18:10:00+00:00:sell",
-    "PTON:2026-10-29T15:10:00+00:00:buy",
-    "QBTS:2026-10-29T15:30:00+00:00:buy",
-    "QBTS:2026-10-29T17:10:00+00:00:sell",
-    "QBTS:2026-10-29T17:50:00+00:00:sell",
-    "RGTI:2026-10-29T17:10:00+00:00:sell",
-    "RGTI:2026-10-29T18:30:00+00:00:sell",
-    "RIOT:2026-10-29T15:30:00+00:00:buy",
-    "RIOT:2026-10-29T18:20:00+00:00:sell",
-    "RIOT:2026-10-29T18:25:00+00:00:sell",
-    "RIVN:2026-10-29T15:55:00+00:00:buy",
-    "RIVN:2026-10-29T19:00:00+00:00:sell",
-    "SNAP:2026-10-29T17:35:00+00:00:sell",
-    "SNAP:2026-10-29T17:45:00+00:00:sell",
-    "VALE:2026-10-29T17:10:00+00:00:sell",
-    "VALE:2026-10-29T18:50:00+00:00:buy"
+    "UPST:2026-10-30T15:35:00+00:00:sell"
   ],
   "symbols": {
-    "AA": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
-    },
-    "AAL": {
+    "AG": {
       "phase": "watching"
     },
-    "BB": {
-      "phase": "closed"
-    },
-    "CCL": {
+    "CDE": {
       "phase": "watching"
     },
-    "CELH": {
-      "phase": "closed"
-    },
-    "CHWY": {
+    "HBAN": {
       "phase": "watching"
     },
-    "CLF": {
+    "HPQ": {
       "phase": "watching"
     },
-    "CLSK": {
+    "KEY": {
       "phase": "watching"
     },
-    "DKNG": {
+    "KGC": {
       "phase": "watching"
     },
-    "F": {
-      "phase": "closed"
-    },
-    "FSLY": {
+    "LYFT": {
       "phase": "watching"
     },
-    "GME": {
-      "phase": "closed"
-    },
-    "HIMS": {
+    "NCLH": {
       "phase": "watching"
     },
-    "IREN": {
-      "phase": "closed"
-    },
-    "LUNR": {
-      "phase": "closed"
-    },
-    "MARA": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
-    },
-    "NOK": {
+    "PFE": {
       "phase": "watching"
     },
-    "NU": {
+    "T": {
       "phase": "watching"
     },
-    "PATH": {
+    "UPST": {
       "phase": "watching"
     },
-    "PTON": {
-      "phase": "watching"
-    },
-    "QBTS": {
-      "phase": "closed"
-    },
-    "RGTI": {
-      "phase": "watching"
-    },
-    "RIOT": {
-      "phase": "watching"
-    },
-    "RIVN": {
-      "phase": "closed"
-    },
-    "SNAP": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
-    },
-    "SOFI": {
-      "phase": "watching"
-    },
-    "U": {
-      "phase": "watching"
-    },
-    "VALE": {
+    "XPEV": {
       "phase": "watching"
     }
   }
