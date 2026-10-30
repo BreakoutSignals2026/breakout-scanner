@@ -163,3 +163,5 @@
 {"timestamp": "2026-10-29T19:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "72eb6062-152c-4c23-b18e-7de418099f95"}
 {"timestamp": "2026-10-29T19:46:04+00:00", "action": "eod_close_submitted", "symbol": "BB", "qty": 25, "order_id": "ea6c26ef-0484-4e54-b010-fe7982a10d24"}
 {"timestamp": "2026-10-29T19:46:37+00:00", "action": "closed", "symbol": "BB", "entry": 9.12, "exit": 9.12, "qty": 25.0, "side": "sell", "pnl": 0.0, "pnl_pct": 0.0, "reason": "koniec seansy", "holding_seconds": 1595}
+{"timestamp": "2026-10-30T15:41:01+00:00", "action": "entry_submitted", "symbol": "RIVN", "order_id": "add8b5f4-9776-4b17-b616-a34ae4abfadb", "requested_qty": 19, "reference": 11.91, "side": "sell", "estimated_risk": 2.91, "spread_percent": 0.084, "rel_volume": 1.8748629806638313, "breakout_percent": 0.3759398496240595, "bar_notional_usd": 509913.0, "quote_age_seconds": 0.199856, "chase_percent": 0.12578616352201735, "signal_age_seconds": 61}
+{"timestamp": "2026-10-30T15:41:05+00:00", "action": "exit_accepted", "symbol": "RIVN", "order_id": "2cd4432e-3fb5-4f73-a1d4-e05bc1307721", "qty": 19}
