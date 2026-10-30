@@ -5,47 +5,47 @@
     "INTC": "2026-10-29T14:00:00-04:00",
     "META": "2026-10-29T12:30:00-04:00",
     "MRVL": "2026-10-29T14:35:00-04:00",
-    "NVDA": "2026-10-22T14:55:00-04:00",
+    "NVDA": "2026-10-30T12:10:00-04:00",
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 6,
+    "scans": 7,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 3,
+      "bez_potvrdeneho_breakoutu": 7,
       "blocked_positions": 0,
-      "exceptions": 2,
-      "nizky_relativny_objem": 55,
-      "submitted": 0,
-      "symbols_checked": 60,
-      "technical_signals": 2
+      "exceptions": 3,
+      "nizky_relativny_objem": 59,
+      "submitted": 1,
+      "symbols_checked": 70,
+      "technical_signals": 4
     }
   },
   "daily_diagnostics_notice": "2026-10-29",
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 4,
       "blocked_positions": 0,
-      "exceptions": 2,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 81.0,
-      "submitted": 0,
+      "exceptions": 1,
+      "nizky_relativny_objem": 4,
+      "scan_seconds": 81.7,
+      "submitted": 1,
       "symbols_checked": 10,
       "technical_signals": 2,
-      "time_ny": "2026-10-30T12:10:51-04:00"
+      "time_ny": "2026-10-30T12:16:46-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "AMD: IEX spread 0.476% nad 0.3%",
+      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AMD": "AMD: IEX spread 1.098% nad 0.3%",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "INTC: cena mimo signálu (0.363%)",
-      "META": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
-      "NVDA": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
+      "NVDA": "order_submitted",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -172,6 +172,21 @@
       "submitted": "2026-10-22T19:02:00+00:00",
       "symbol": "NVDA",
       "tp": 210.15
+    },
+    "B252_NVDA_202610301210": {
+      "client_id": "B252_NVDA_202610301210",
+      "entry_id": "82158555-481d-4bfb-902a-11c6927261cd",
+      "planned_risk": 4.514,
+      "qty": 6,
+      "reference_entry": 204.76,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-30T12:10:00-04:00",
+      "status": "pending",
+      "stop": 205.37,
+      "submitted": "2026-10-30T16:15:49+00:00",
+      "symbol": "NVDA",
+      "tp": 203.54
     },
     "B252_TSLA_202610261310": {
       "client_id": "B252_TSLA_202610261310",
