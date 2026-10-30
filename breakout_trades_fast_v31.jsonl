@@ -197,3 +197,4 @@
 {"timestamp": "2026-10-30T18:44:46+00:00", "action": "exit_accepted", "symbol": "MARA", "order_id": "e1517f8c-9b0e-4424-98de-666f424acf3b", "qty": 33}
 {"timestamp": "2026-10-30T18:49:19+00:00", "action": "closed", "symbol": "HIMS", "entry": 27.0, "exit": 27.01, "qty": 8.0, "side": "sell", "pnl": -0.08, "pnl_pct": -0.037, "reason": "trailing stop", "holding_seconds": 5310}
 {"timestamp": "2026-10-30T18:49:20+00:00", "action": "closed", "symbol": "IREN", "entry": 23.71, "exit": 23.346667, "qty": 3.0, "side": "sell", "pnl": 1.09, "pnl_pct": 1.532, "reason": "trailing stop", "holding_seconds": 6628}
+{"timestamp": "2026-10-30T19:07:34+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.29, "exit": 10.41, "qty": 22.0, "side": "sell", "pnl": -2.64, "pnl_pct": -1.166, "reason": "trailing stop", "holding_seconds": 1910}
