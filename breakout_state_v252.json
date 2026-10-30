@@ -10,14 +10,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 7,
+    "scans": 8,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 7,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 10,
+      "blocked_positions": 1,
       "exceptions": 3,
-      "nizky_relativny_objem": 59,
+      "nizky_relativny_objem": 65,
       "submitted": 1,
-      "symbols_checked": 70,
+      "symbols_checked": 79,
       "technical_signals": 4
     }
   },
@@ -25,28 +25,28 @@
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 4,
-      "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 4,
-      "scan_seconds": 81.7,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 2,
-      "time_ny": "2026-10-30T12:16:46-04:00"
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 1,
+      "exceptions": 0,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 72.7,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-10-30T12:22:32-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
-      "AMD": "AMD: IEX spread 1.098% nad 0.3%",
+      "AAPL": "nizky_relativny_objem",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "bez_potvrdeneho_breakoutu",
+      "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "order_submitted",
-      "TSLA": "nizky_relativny_objem"
+      "NVDA": "position_or_order_blocked",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -182,7 +182,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-10-30T12:10:00-04:00",
-      "status": "pending",
+      "status": "open",
       "stop": 205.37,
       "submitted": "2026-10-30T16:15:49+00:00",
       "symbol": "NVDA",
