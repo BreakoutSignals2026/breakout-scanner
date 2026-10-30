@@ -10,14 +10,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 10,
+    "scans": 11,
     "totals": {
       "bez_potvrdeneho_breakoutu": 11,
-      "blocked_positions": 3,
+      "blocked_positions": 4,
       "exceptions": 4,
-      "nizky_relativny_objem": 81,
+      "nizky_relativny_objem": 90,
       "submitted": 1,
-      "symbols_checked": 97,
+      "symbols_checked": 106,
       "technical_signals": 5
     }
   },
@@ -26,18 +26,18 @@
   "last_scan_diagnostics": {
     "counts": {
       "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 72.8,
+      "exceptions": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 72.6,
       "submitted": 0,
       "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-10-30T12:34:03-04:00"
+      "technical_signals": 0,
+      "time_ny": "2026-10-30T12:39:48-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "AMD: IEX spread 0.572% nad 0.3%",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
