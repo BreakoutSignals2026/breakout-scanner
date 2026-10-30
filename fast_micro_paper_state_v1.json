@@ -1,6 +1,22 @@
 {
   "account_id": "8170b7f6-0fee-4e91-b2c9-7cade87dad84",
   "cooldown": {},
-  "trades": {},
+  "trades": {
+    "MICRO1_LYFT_202610301250": {
+      "client_id": "MICRO1_LYFT_202610301250",
+      "entry_id": "d47edc4c-15c8-48a7-8256-d466315ab383",
+      "planned_risk": 0.953,
+      "qty": 9,
+      "reference_entry": 15.91,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-30T16:50:00+00:00",
+      "status": "open",
+      "stop": 15.99,
+      "submitted": "2026-10-30T16:55:48+00:00",
+      "symbol": "LYFT",
+      "tp": 15.71
+    }
+  },
   "version": "MICRO_PAPER_1"
 }
