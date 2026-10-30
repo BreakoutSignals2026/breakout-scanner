@@ -20,15 +20,17 @@ PAPER workflow používajú výhradne `https://paper-api.alpaca.markets`. Riziko
 
 ## Automatické spustenie
 
-Od 29.10.2026 je obnovený pôvodný denný pár cronov **13:10 a 14:10 UTC**, pondelok až piatok. Pri letnom čase USA ide o 09:10 a 10:10 New York, pri zimnom o 08:10 a 09:10. Plánovaný beh sa prijme iba od 08:50 do 16:00 NY; príliš skorý zimný pokus sa preskočí. Manuálny beh sa prijme od 09:00 do 16:00 NY. Horná hranica 16:00 je vylúčená.
+Od 30.10.2026 workflow neobsahujú úlohu `preflight` ani závislosti od jej výstupov. Plánovaný alebo manuálny beh ide priamo do `first-session`; po nej nasleduje `second-session`. Druhá úloha môže pokračovať po chybe prvej, ale rešpektuje zrušenie celého behu.
 
-Úvodná kontrola už neporovnáva pôvodný zápis cronu s letným/zimným časom: oneskorený alebo záložný pokus môže začať aj neskôr počas seansy. Prvá úloha čaká na otvorenie trhu; skenery naďalej kontrolujú kalendár Alpaca, sviatky, skrátené seansy a existujúce hranice vstupov či EOD ochrany.
+Zostáva pôvodný denný pár cronov **13:10 a 14:10 UTC**, pondelok až piatok. Pri letnom čase USA ide o 09:10 a 10:10 New York, pri zimnom o 08:10 a 09:10. Nie je tu ďalšia kontrola, ktorá by beh odmietla podľa zápisu cronu alebo sezóny. Čas otvorenia trhu, sviatky, existujúce hranice vstupov a EOD ochrany kontrolujú pôvodné slučky a samotné programy.
 
-Na Slovensku sú UTC pokusy tento týždeň o **14:10 a 15:10**. Počas slovenského letného času sú o **15:10 a 16:10**. Nejde o pravidelné päťminútové spúšťanie workflow: po prijatom dennom štarte pokračujú pôvodné dve nadväzujúce úlohy a vnútorné skenovacie slučky.
+Na Slovensku sú UTC pokusy počas slovenského zimného času o **14:10 a 15:10**, počas letného o **15:10 a 16:10**. Po prijatom dennom štarte pokračujú vnútorné skenovacie slučky; nejde o nové workflow každých päť minút.
 
-Samostatné concurrency skupiny povoľujú najviac jeden súčasný beh toho istého skenera; záložný pokus neruší aktívny beh. BREAKOUT má zachované EOD pokusy o 19:45 a 20:45 UTC. FAST a FAST MICRO ich nemajú. Samostatný watchdog zostáva odstránený.
+Odovzdanie prvej a druhej relácie je najneskôr o 12:00 NY (pri skrátenej seanse môže byť klasický BREAKOUT odovzdaný skôr). Prvá FAST a MICRO úloha má limit 300 minút, aby zvládla aj zimný skorý UTC štart o 08:10 NY. Žiadna úloha neprekračuje šesťhodinový limit runnera.
 
-GitHub môže vytvorenie plánovaného behu oneskoriť alebo vynechať. Návrat k pôvodnému rozvrhu a jednoduchšej časovej kontrole negarantuje presný štart; úspech treba overiť na skutočnom automatickom behu.
+Samostatné concurrency skupiny povoľujú najviac jeden súčasný beh toho istého skenera; záložný pokus neruší aktívny beh. BREAKOUT má zachované EOD pokusy o 19:45 a 20:45 UTC. Samostatný watchdog zostáva odstránený.
+
+GitHub môže vytvorenie plánovaného behu oneskoriť alebo vynechať. Odstránenie `preflight` odstráni jednu možnosť preskočenia skenovacích úloh, ale samo osebe nedokazuje opravu doručovania udalostí `schedule`. Funkčnosť treba overiť na skutočnom automatickom behu.
 
 PAPER skenery zachovávajú monitorovanie, ochranu sledovaných pozícií a pokus o ich uzatvorenie približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca. Výpadok runnera alebo API môže zabrániť uzatvoreniu.
 

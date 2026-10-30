@@ -17,42 +17,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  preflight:
-    runs-on: ubuntu-24.04
-    outputs:
-      should_run: ${{ steps.gate.outputs.should_run }}
-    steps:
-      - id: gate
-        name: Check New York session window and accept delayed launches
-        shell: bash
-        run: |
-          set -euo pipefail
-          ny_time=$(TZ=America/New_York date +%H:%M)
-          ny_weekday=$(TZ=America/New_York date +%u)
-          ny_hour=${ny_time%:*}
-          ny_minute=${ny_time#*:}
-          now_min=$((10#$ny_hour * 60 + 10#$ny_minute))
-          echo "NY time=$ny_time weekday=$ny_weekday event=$GITHUB_EVENT_NAME"
-
-          # Use the original local-time gate, without rejecting an arriving
-          # backup/delayed run based on its UTC cron or DST-season allowlist.
-          # First-session waits for 09:30 NY; scanners enforce the Alpaca calendar.
-          allow=false
-          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -lt 960 ]; then
-            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$now_min" -ge 540 ]; then
-              allow=true
-            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 530 ]; then
-              allow=true
-            fi
-          fi
-          echo "Gate: allow=$allow"
-          echo "should_run=$allow" >> "$GITHUB_OUTPUT"
-
   first-session:
-    needs: preflight
-    if: ${{ needs.preflight.outputs.should_run == 'true' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 235
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v5
         with:
@@ -72,8 +39,8 @@ jobs:
         run: bash scripts/fast_micro_session.sh
 
   second-session:
-    needs: [preflight, first-session]
-    if: ${{ !cancelled() && needs.preflight.outputs.should_run == 'true' }}
+    needs: first-session
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
     timeout-minutes: 280
     steps:

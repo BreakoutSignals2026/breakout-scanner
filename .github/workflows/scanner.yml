@@ -31,40 +31,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  preflight:
-    runs-on: ubuntu-24.04
-    outputs:
-      run: ${{ steps.gate.outputs.run }}
-    steps:
-      - id: gate
-        name: Check New York session window and accept delayed launches
-        shell: bash
-        run: |
-          set -euo pipefail
-          ny_time=$(TZ=America/New_York date +%H:%M)
-          ny_weekday=$(TZ=America/New_York date +%u)
-          ny_hour=${ny_time%:*}
-          ny_minute=${ny_time#*:}
-          now_min=$((10#$ny_hour * 60 + 10#$ny_minute))
-          echo "NY time=$ny_time weekday=$ny_weekday event=$GITHUB_EVENT_NAME"
-
-          # Use the original local-time gate, without rejecting an arriving
-          # backup/delayed run based on its UTC cron or DST-season allowlist.
-          # First-session waits for 09:30 NY; scanners enforce the Alpaca calendar.
-          allow=false
-          if [ "$ny_weekday" -lt 6 ] && [ "$now_min" -lt 960 ]; then
-            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "$now_min" -ge 540 ]; then
-              allow=true
-            elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$now_min" -ge 530 ]; then
-              allow=true
-            fi
-          fi
-          echo "Gate: allow=$allow"
-          echo "run=$allow" >> "$GITHUB_OUTPUT"
-
   first-session:
-    needs: preflight
-    if: ${{ needs.preflight.outputs.run == 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -97,8 +64,8 @@ jobs:
               echo "No trading session today"
               break
             fi
-            # Handover no later than 14:45 NY or 60 minutes before early close.
-            regular_handover=$(TZ=America/New_York date -d "$(TZ=America/New_York date +%F) 14:45:00" +%s)
+            # Handover no later than 12:00 NY or 60 minutes before early close.
+            regular_handover=$(TZ=America/New_York date -d "$(TZ=America/New_York date +%F) 12:00:00" +%s)
             eod_handover=$((close_epoch - 3600))
             handover=$regular_handover
             if [ "$eod_handover" -lt "$handover" ]; then handover=$eod_handover; fi
@@ -146,9 +113,9 @@ jobs:
           done
 
   second-session:
-    needs: [preflight, first-session]
+    needs: first-session
     # Run EOD even after first-session failure; never restart an explicitly canceled session.
-    if: ${{ always() && !cancelled() && needs.preflight.outputs.run == 'true' && needs.first-session.result != 'cancelled' }}
+    if: ${{ always() && !cancelled() && needs.first-session.result != 'cancelled' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
