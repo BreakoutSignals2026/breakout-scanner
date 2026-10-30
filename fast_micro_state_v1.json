@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 2,
+    "attempts": 4,
     "closed": 2,
     "pnl_usd": -1.7
   },
@@ -12,8 +12,11 @@
     "CDE:2026-10-30T18:15:00+00:00:sell",
     "HPQ:2026-10-30T17:55:00+00:00:sell",
     "HPQ:2026-10-30T18:10:00+00:00:sell",
+    "HPQ:2026-10-30T19:20:00+00:00:buy",
     "KGC:2026-10-30T18:15:00+00:00:sell",
+    "KGC:2026-10-30T19:20:00+00:00:buy",
     "LYFT:2026-10-30T16:50:00+00:00:sell",
+    "LYFT:2026-10-30T19:20:00+00:00:buy",
     "PFE:2026-10-30T16:20:00+00:00:buy",
     "PFE:2026-10-30T18:00:00+00:00:buy",
     "UPST:2026-10-30T15:35:00+00:00:sell",
@@ -32,13 +35,43 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-30T19:20:00+00:00",
+        "breakout_level": 28.55,
+        "breakout_percent": 0.35026269702275964,
+        "entry_close": 28.65,
+        "prior_avg_bar_notional_usd": 321994.38,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.034837136387394406,
+        "rel_volume": 1.5026079301617576,
+        "side": "buy",
+        "signal_bar_notional_usd": 489026.85,
+        "signal_bar_shares": 17069,
+        "signal_bar_trades": 168,
+        "symbol": "HPQ"
+      }
     },
     "KEY": {
       "phase": "watching"
     },
     "KGC": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-10-30T19:20:00+00:00",
+        "breakout_level": 19.855,
+        "breakout_percent": 0.17627801561319636,
+        "entry_close": 19.89,
+        "prior_avg_bar_notional_usd": 507098.14,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.05021340697967142,
+        "rel_volume": 2.768709294095493,
+        "side": "buy",
+        "signal_bar_notional_usd": 1413462.96,
+        "signal_bar_shares": 71064,
+        "signal_bar_trades": 231,
+        "symbol": "KGC"
+      }
     },
     "LYFT": {
       "phase": "closed"
