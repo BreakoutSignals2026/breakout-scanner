@@ -7,33 +7,34 @@
     "META": "2026-10-29T12:30:00-04:00",
     "MRVL": "2026-10-29T14:35:00-04:00",
     "NVDA": "2026-10-30T12:10:00-04:00",
-    "TSLA": "2026-10-27T11:20:00-04:00"
+    "TSLA": "2026-10-30T13:10:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 17,
+    "scans": 18,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 16,
-      "blocked_positions": 10,
-      "exceptions": 5,
-      "nizky_relativny_objem": 137,
-      "submitted": 2,
-      "symbols_checked": 160,
-      "technical_signals": 7
+      "bez_potvrdeneho_breakoutu": 17,
+      "blocked_positions": 11,
+      "exceptions": 6,
+      "nizky_relativny_objem": 143,
+      "submitted": 3,
+      "symbols_checked": 169,
+      "technical_signals": 9
     }
   },
   "daily_diagnostics_notice": "2026-10-29",
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 1,
       "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 73.1,
-      "submitted": 0,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 73.7,
+      "submitted": 1,
       "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-10-30T13:14:23-04:00"
+      "technical_signals": 2,
+      "time_ny": "2026-10-30T13:20:09-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
@@ -41,12 +42,12 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "position_or_order_blocked",
-      "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 1.137% nad 0.3%",
+      "INTC": "INTC: cena mimo signálu (0.701%)",
+      "META": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "order_submitted"
     }
   },
   "trades": {
@@ -236,6 +237,21 @@
       "submitted": "2026-10-27T15:26:23+00:00",
       "symbol": "TSLA",
       "tp": 409.07
+    },
+    "B252_TSLA_202610301310": {
+      "client_id": "B252_TSLA_202610301310",
+      "entry_id": "394a79c8-8ddd-4726-bb46-472cc290b9b8",
+      "planned_risk": 3.718,
+      "qty": 2,
+      "reference_entry": 398.01,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-30T13:10:00-04:00",
+      "status": "pending",
+      "stop": 399.58,
+      "submitted": "2026-10-30T17:19:44+00:00",
+      "symbol": "TSLA",
+      "tp": 394.87
     }
   },
   "version": "2.5.2"
