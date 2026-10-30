@@ -7,9 +7,6 @@ on:
     # The other slot is a backup: concurrency prevents overlapping sessions.
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
-    # Keep existing classic BREAKOUT end-of-day recovery.
-    - cron: "45 19 * * 1-5"
-    - cron: "45 20 * * 1-5"
   workflow_dispatch:
 
 permissions:
