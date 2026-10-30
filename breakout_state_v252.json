@@ -7,37 +7,38 @@
     "META": "2026-10-29T12:30:00-04:00",
     "MRVL": "2026-10-29T14:35:00-04:00",
     "NVDA": "2026-10-30T12:10:00-04:00",
-    "TSLA": "2026-10-30T13:10:00-04:00"
+    "TSLA": "2026-10-30T13:55:00-04:00"
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 20,
+    "scans": 26,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 18,
-      "blocked_positions": 15,
-      "exceptions": 6,
-      "nizky_relativny_objem": 158,
-      "submitted": 3,
-      "symbols_checked": 185,
-      "technical_signals": 9
+      "bez_potvrdeneho_breakoutu": 29,
+      "blocked_positions": 26,
+      "exceptions": 8,
+      "nizky_relativny_objem": 193,
+      "submitted": 4,
+      "symbols_checked": 234,
+      "technical_signals": 12
     }
   },
   "daily_diagnostics_notice": "2026-10-29",
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 2,
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 64.6,
-      "submitted": 0,
-      "symbols_checked": 8,
-      "technical_signals": 0,
-      "time_ny": "2026-10-30T13:31:24-04:00"
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 73.4,
+      "submitted": 1,
+      "symbols_checked": 9,
+      "technical_signals": 1,
+      "time_ny": "2026-10-30T14:05:20-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "position_or_order_blocked",
@@ -46,7 +47,7 @@
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "position_or_order_blocked"
+      "TSLA": "order_submitted"
     }
   },
   "trades": {
@@ -243,14 +244,29 @@
       "planned_risk": 3.718,
       "qty": 2,
       "reference_entry": 398.01,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-10-30T13:10:00-04:00",
-      "status": "open",
+      "status": "closed",
       "stop": 399.58,
       "submitted": "2026-10-30T17:19:44+00:00",
       "symbol": "TSLA",
       "tp": 394.87
+    },
+    "B252_TSLA_202610301355": {
+      "client_id": "B252_TSLA_202610301355",
+      "entry_id": "c7877af9-d3cd-45d1-9adf-3f7008a0ba07",
+      "planned_risk": 2.517,
+      "qty": 1,
+      "reference_entry": 394.5,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-30T13:55:00-04:00",
+      "status": "pending",
+      "stop": 395.9,
+      "submitted": "2026-10-30T18:04:56+00:00",
+      "symbol": "TSLA",
+      "tp": 391.7
     }
   },
   "version": "2.5.2"
