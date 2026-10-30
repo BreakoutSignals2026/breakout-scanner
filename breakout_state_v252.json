@@ -11,14 +11,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 13,
+    "scans": 14,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 13,
-      "blocked_positions": 6,
+      "bez_potvrdeneho_breakoutu": 15,
+      "blocked_positions": 7,
       "exceptions": 4,
-      "nizky_relativny_objem": 105,
+      "nizky_relativny_objem": 112,
       "submitted": 2,
-      "symbols_checked": 124,
+      "symbols_checked": 133,
       "technical_signals": 6
     }
   },
@@ -26,26 +26,27 @@
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 73.5,
-      "submitted": 1,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 72.6,
+      "submitted": 0,
       "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-10-30T12:51:20-04:00"
+      "technical_signals": 0,
+      "time_ny": "2026-10-30T12:57:05-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "order_submitted",
+      "AMZN": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "position_or_order_blocked",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "position_or_order_blocked",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -89,7 +90,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-10-30T12:45:00-04:00",
-      "status": "pending",
+      "status": "open",
       "stop": 279.85,
       "submitted": "2026-10-30T16:51:19+00:00",
       "symbol": "GOOGL",
@@ -194,10 +195,10 @@
       "planned_risk": 4.514,
       "qty": 6,
       "reference_entry": 204.76,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-10-30T12:10:00-04:00",
-      "status": "open",
+      "status": "closed",
       "stop": 205.37,
       "submitted": "2026-10-30T16:15:49+00:00",
       "symbol": "NVDA",
