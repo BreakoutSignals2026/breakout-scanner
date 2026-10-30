@@ -6,13 +6,13 @@ Repozitár od 28.10.2026 obsahuje iba tri vybrané skenery.
 | --- | --- | --- | --- |
 | Klasický BREAKOUT V2.5.2 | `scanner_v25_2.py` | `.github/workflows/scanner.yml` | Alpaca PAPER, 10 US akcií, pevný SL a TP 1:2 |
 | FAST V3.3.1 | `scanner_fast.py` | `.github/workflows/fast_scanner.yml` | Alpaca PAPER, 28 US akcií, trailing stop 1,2 % |
-| FAST MICRO V1.1 | `scanner_fast_micro_v1.py` + `fast_micro_paper.py` + `fast_micro_v1.py` | `.github/workflows/fast_micro_scanner.yml` | Samostatný Alpaca PAPER účet + oddelená virtuálna simulácia |
+| FAST MICRO V1.1 | `scanner_fast_micro_v1.py` + `fast_micro_paper.py` + `fast_micro_v1.py` | `.github/workflows/fast_micro_scanner.yml` | Spoločný Alpaca PAPER účet, vlastné akcie + oddelená virtuálna simulácia |
 
 ## Fungovanie
 
 - Klasický BREAKOUT používa päťminútové dáta Twelve Data. Odhadované riziko je 5 USD na obchod.
 - FAST používa päťminútové IEX dáta. Odhadované riziko je 3 USD na obchod, trailing stop 1,2 %. Nemá pevný limit počtu súčasných pozícií, celkového počtu denných vstupov ani dennú stratovú brzdu. Ochrana duplicitných signálov a najviac jeden vstup do toho istého symbolu za deň ostáva zachovaná. Platia limity brokera a buying power.
-- FAST MICRO má nový PAPER modul na samostatnom účte, odhadované riziko 1 USD, brokerový bracket SL 0,50 % a TP 2,5R. Limity: 12 pokusov denne, 2 súčasné MICRO pozície, 1 pokus na symbol/deň a denná stratová ochrana 6 USD (realizovaný plus záporný otvorený PnL). Pôvodný virtuálny simulátor ostáva oddelený s vlastnými modelovými nákladmi a výsledkami. Bez nových MICRO kľúčov pokračuje len virtuálny zber.
+- FAST MICRO má nový PAPER modul na spoločnom účte FAST/BREAKOUT, odhadované riziko 1 USD, brokerový bracket SL 0,50 % a TP 2,5R. Limity: 12 pokusov denne, 2 súčasné MICRO pozície, 1 pokus na symbol/deň a denná stratová ochrana 6 USD (realizovaný plus záporný otvorený PnL). Pôvodný virtuálny simulátor ostáva oddelený s vlastnými modelovými nákladmi a výsledkami. Používa existujúce `ALPACA_API_KEY` a `ALPACA_SECRET_KEY`.
 - `equity_candle_guard.py` je spoločná kontrola uzavretých a súvislých päťminútových sviečok. `scripts/fast_micro_session.sh` spúšťa a ukladá FAST MICRO.
 - Samostatný FAST virtuálny tracker bol odstránený. FAST analyzuje pôvodné technické signály priamo; FAST MICRO má potrebné funkcie na spracovanie sviečok vo vlastnom module.
 
@@ -28,7 +28,13 @@ Samostatné concurrency skupiny zabraňujú dvom súčasným behom toho istého 
 
 PAPER skenery zachovávajú monitorovanie, ochranu sledovaných pozícií a pokus o ich uzatvorenie približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca. Výpadok runnera alebo API môže zabrániť uzatvoreniu.
 
-Pri manuálnom spustení vyberte vetvu `main` a kliknite na **Run workflow**. Nie sú potrebné žiadne políčka: BREAKOUT, FAST aj MICRO automaticky povoľujú bežnú PAPER seansu. MICRO vyžaduje samostatné PAPER kľúče a odlišné ID účtu od FAST; bez nových kľúčov pokračuje len virtuálny zber.
+Pri manuálnom spustení vyberte vetvu `main` a kliknite na **Run workflow**. Nie sú potrebné žiadne políčka: BREAKOUT, FAST aj MICRO automaticky povoľujú bežnú PAPER seansu. MICRO používa rovnaké PAPER kľúče ako FAST/BREAKOUT a vlastný zoznam akcií.
+
+## Akcie MICRO na spoločnom účte
+
+MICRO PAPER aj jeho virtuálny zber používajú: **PFE, T, LYFT, UPST, KGC, CDE, HPQ, XPEV, NCLH, AG, HBAN, KEY**. Žiadna sa neprekrýva s FAST alebo BREAKOUT. Pri prekrytí po budúcej úprave zoznamov sa MICRO zastaví. Pred vstupom kontroluje existujúce pozície/objednávky; cudzie nepreberá. Vlastné objednávky rozlišuje prefixom `MICRO1_` a výsledky ukladá oddelene. Na týchto symboloch neobchodujte ručne súčasne s MICRO.
+
+Stratégie zdieľajú buying power. Výsledky na rôznych akciách nie sú čistým porovnaním samotných stratégií. Staré virtuálne výsledky zostali zachované a patria pôvodnému zoznamu; nový zoznam platí od nasadenia tejto zmeny 30.10.2026.
 
 ## Zachované stavy a výsledky
 
@@ -45,7 +51,7 @@ Tieto súbory sa aktualizujú automaticky. História a stav ponechaných skenero
 
 Python 3.12 a balík `requests`; workflow ho inštalujú automaticky.
 
-GitHub Actions Secrets: `ALPACA_API_KEY`, `ALPACA_SECRET_KEY`, `TELEGRAM_TOKEN`, `CHAT_ID` a pre klasický BREAKOUT aj `TWELVE_API_KEY`. Pre nový MICRO PAPER účet navyše `MICRO_ALPACA_API_KEY` a `MICRO_ALPACA_SECRET_KEY`. Kľúče musia patriť odlišnému PAPER účtu. Hodnoty kľúčov nepatria do kódu. Podrobná aktivácia je v [EXTERNAL_START.md](EXTERNAL_START.md).
+GitHub Actions Secrets: `ALPACA_API_KEY`, `ALPACA_SECRET_KEY`, `TELEGRAM_TOKEN`, `CHAT_ID` a pre klasický BREAKOUT aj `TWELVE_API_KEY`. Všetky tri stratégie používajú ten istý PAPER účet; MICRO nepotrebuje ďalšie kľúče. Hodnoty kľúčov nepatria do kódu. Podrobná aktivácia je v [EXTERNAL_START.md](EXTERNAL_START.md).
 
 ## Záloha pred čistením
 

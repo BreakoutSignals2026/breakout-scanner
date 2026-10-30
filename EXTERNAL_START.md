@@ -2,7 +2,7 @@
 
 ## Stav nasadenia
 
-Kód a konfigurácia v repozitári sú pripravené. **Externý časovač nie je aktívny, kým nevytvoríte účet/úlohy podľa tohto návodu. MICRO PAPER neotvára nové obchody bez samostatných kľúčov.** Úspešná odpoveď na dispatch ešte nie je dôkaz spustenia runnera alebo obchodu.
+Kód a konfigurácia v repozitári sú pripravené. **Externý časovač nie je aktívny, kým nevytvoríte účet/úlohy podľa tohto návodu. MICRO PAPER používa existujúce kľúče spoločného PAPER účtu.** Úspešná odpoveď na dispatch ešte nie je dôkaz spustenia runnera alebo obchodu.
 
 ## 1. Externý časovač: cron-job.org
 
@@ -55,20 +55,15 @@ Prvý príkaz iba vypíše konfiguráciu s maskovaným tokenom. Druhý si tokeny
 
 Po aktivácii skontrolujte v časovači čas vykonania, HTTP výsledok a v GitHube nový `workflow_dispatch` beh. Ak GitHub prijme požiadavku, ale skener nezačne, problém je v ďalšej fáze (fronta runnera, súbežnosť alebo chyba programu). Samotná HTTP odpoveď nepreukazuje vykonaný obchod.
 
-## 2. Oddelený MICRO PAPER účet
+## 2. MICRO na spoločnom PAPER účte
 
-V Alpaca PAPER dashboarde rozbaľte číslo účtu vľavo hore → **Open New Paper Account**. Pôvodný účet nemažte ani neresetujte. Pre nový účet vytvorte jeho API kľúče.
+Všetky tri stratégie používajú existujúce `ALPACA_API_KEY` a `ALPACA_SECRET_KEY`. Nový účet ani `MICRO_ALPACA_*` kľúče nie sú potrebné. MICRO PAPER aj virtuálny zber sledujú výhradne **PFE, T, LYFT, UPST, KGC, CDE, HPQ, XPEV, NCLH, AG, HBAN, KEY**. Zo zoznamov FAST a BREAKOUT sa neprekrýva žiadny symbol; kontrola prekrytia sa vykonáva pred štartom. Vlastné objednávky majú prefix `MICRO1_`, vlastný stav a výsledky. Cudzie pozície ani objednávky MICRO nepreberá a pri obsadenom symbole neotvorí vstup. Na MICRO symboloch počas jeho prevádzky neobchodujte ručne.
 
-Do GitHub repozitára → Settings → Secrets and variables → Actions pridajte:
-
-- `MICRO_ALPACA_API_KEY`
-- `MICRO_ALPACA_SECRET_KEY`
-
-Pôvodné `ALPACA_API_KEY` a `ALPACA_SECRET_KEY` ostávajú pre FAST/BREAKOUT a čítanie IEX dát. MICRO pred prvou zmenou objednávok porovná identity účtov a **odmietne rovnaký účet ako FAST**. Tým sa nebudú miešať pozície rovnakých akcií a porovnanie zostane zmysluplné.
+Spoločná je buying power. Porovnanie odráža aj rozdielny výber akcií. Historické virtuálne dáta sa nemažú; nový zoznam platí od nasadenia 30.10.2026.
 
 MICRO používa odhadované riziko **1 USD**, pevný SL **0,50 %**, TP **2,5R**, najviac **12 pokusov denne**, **2 súčasné MICRO pozície**, jeden pokus na symbol/deň a dennú stratovú ochranu **6 USD** (realizovaný PnL plus záporný otvorený PnL). Riziko nie je garantovaným stropom; trhový sklz a gapy ho môžu prekročiť. Objednávky sú celé akcie s brokerovým bracket SL/TP, nie trailing stop. Na konci seansy sa obsluhujú iba preukázateľne vlastnené MICRO pozície, približne 15 minút pred skutočným close.
 
-Bez nových kľúčov pokračuje virtuálny zber a v logu je `MICRO PAPER NOT CONFIGURED`. Ručné, plánované aj externé štarty povoľujú nové MICRO PAPER vstupy, ak sú nakonfigurované samostatné kľúče.
+Bez existujúcich spoločných kľúčov nie je PAPER nakonfigurovaný a v logu je `MICRO PAPER NOT CONFIGURED`. Ručné, plánované aj externé štarty povoľujú nové MICRO PAPER vstupy, ak sú nakonfigurované spoločné kľúče.
 
 ## Oddelenie výsledkov
 

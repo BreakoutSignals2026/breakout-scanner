@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""US FAST MICRO 5m: separate PAPER account plus independent virtual comparison."""
+"""US FAST MICRO 5m: shared PAPER account, exclusive symbols plus independent virtual comparison."""
 import sys
 from datetime import datetime, timezone
 import fast_micro_paper as paper
 
 import scanner_fast as fast
 import fast_micro_v1 as micro
+from micro_symbols import SYMBOLS, validate_universe
 
 
 def main(now=None):
+    validate_universe()
     now = now or datetime.now(timezone.utc)
     session = fast.market_session_today()  # Alpaca PAPER CALENDAR GET, never orders
     if session is None:
@@ -26,7 +28,7 @@ def main(now=None):
     if now > session["close"]:
         print("FAST MICRO: NYSE session closed")
         return
-    result = micro.process(session, fast.SYMBOLS, fast.get_bars,
+    result = micro.process(session, SYMBOLS, fast.get_bars,
                          fast.analyze_symbol, now, workers=8,
                          validate=fast.validate_live)
     if paper_error is not None:

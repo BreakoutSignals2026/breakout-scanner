@@ -1,4 +1,4 @@
-name: FAST MICRO V1.1 - separate Alpaca PAPER + virtual comparison
+name: FAST MICRO V1.1 - shared Alpaca PAPER, exclusive symbols + virtual comparison
 
 on:
   schedule:
@@ -34,8 +34,6 @@ jobs:
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          MICRO_ALPACA_API_KEY: ${{ secrets.MICRO_ALPACA_API_KEY }}
-          MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ENABLE_MICRO_PAPER_TRADING: "true"
@@ -62,8 +60,6 @@ jobs:
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          MICRO_ALPACA_API_KEY: ${{ secrets.MICRO_ALPACA_API_KEY }}
-          MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ENABLE_MICRO_PAPER_TRADING: "true"

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""MICRO PAPER execution on a separate Alpaca PAPER account.
+"""MICRO PAPER execution on the shared Alpaca PAPER account.
 
 Reuse the classic scanner's bracket reconciliation/EOD implementation in an
 isolated module instance. Virtual MICRO results remain in their original files.
-No fallback to FAST's trading credentials and no LIVE endpoint are permitted.
+MICRO owns an exclusive symbol universe and tagged orders; no LIVE endpoint.
 """
 import csv
 import importlib.util
@@ -14,6 +14,7 @@ from pathlib import Path
 
 import fast_micro_v1 as micro
 import scanner_fast as fast
+from micro_symbols import SYMBOLS, validate_universe
 
 STATE_FILE = Path("fast_micro_paper_state_v1.json")
 RESULTS_FILE = Path("fast_micro_paper_results_v1.csv")
@@ -23,11 +24,12 @@ ENABLED = os.getenv("ENABLE_MICRO_PAPER_TRADING", "false").lower() == "true"
 
 
 def configured():
-    return bool(os.getenv("MICRO_ALPACA_API_KEY", "").strip()
-                and os.getenv("MICRO_ALPACA_SECRET_KEY", "").strip())
+    return bool(os.getenv("ALPACA_API_KEY", "").strip()
+                and os.getenv("ALPACA_SECRET_KEY", "").strip())
 
 
 def create_engine():
+    validate_universe()
     spec = importlib.util.spec_from_file_location(
         "_micro_bracket_engine", Path(__file__).with_name("scanner_v25_2.py"))
     engine = importlib.util.module_from_spec(spec)
@@ -40,13 +42,13 @@ def create_engine():
     engine.ONE_SHOT_PAPER_TEST = False
     engine.RISK_PER_TRADE = micro.RISK_USD
     engine.RISK_REWARD = micro.REWARD_R
-    engine.SYMBOLS = list(fast.SYMBOLS)
+    engine.SYMBOLS = list(SYMBOLS)
 
     def headers():
         if not configured():
-            raise RuntimeError("MICRO PAPER account keys are missing; no fallback to FAST account")
-        return {"APCA-API-KEY-ID": os.environ["MICRO_ALPACA_API_KEY"].strip(),
-                "APCA-API-SECRET-KEY": os.environ["MICRO_ALPACA_SECRET_KEY"].strip(),
+            raise RuntimeError("Shared Alpaca PAPER account keys are missing")
+        return {"APCA-API-KEY-ID": os.environ["ALPACA_API_KEY"].strip(),
+                "APCA-API-SECRET-KEY": os.environ["ALPACA_SECRET_KEY"].strip(),
                 "Content-Type": "application/json"}
     engine.alpaca_headers = headers
     original_telegram = engine.telegram
@@ -128,17 +130,13 @@ def process():
     if not configured():
         if STATE_FILE.exists():
             raise RuntimeError("MICRO PAPER state exists but account keys are unavailable")
-        print("MICRO PAPER NOT CONFIGURED: set separate MICRO_ALPACA_API_KEY and MICRO_ALPACA_SECRET_KEY; virtual collection continues", flush=True)
+        print("MICRO PAPER NOT CONFIGURED: set ALPACA_API_KEY and ALPACA_SECRET_KEY; virtual collection continues", flush=True)
         return
     engine = create_engine()
     state = engine.load_state()
     account = engine.api("GET", "/account")
     if not account.get("id"):
         raise RuntimeError("MICRO PAPER account identity unavailable")
-    # Prove this is a different account before any broker mutation.
-    primary = fast.api("GET", "/account")
-    if not primary.get("id") or primary["id"] == account["id"]:
-        raise RuntimeError("MICRO must use a different PAPER account from FAST")
     if state.get("account_id") not in (None, account["id"]):
         raise RuntimeError("MICRO PAPER account changed; refusing to adopt another account")
     state["account_id"] = account["id"]
@@ -164,10 +162,10 @@ def process():
     if not allowed:
         print("MICRO PAPER daily/position guard reached", flush=True)
         return
-    signals = sorted(fast.collect_signals(), key=lambda s:(s["rel_volume"],s["breakout_percent"]), reverse=True)
+    signals = sorted(fast.collect_signals(SYMBOLS), key=lambda s:(s["rel_volume"],s["breakout_percent"]), reverse=True)
     for signal in signals:
         symbol = signal["symbol"]
-        if symbol in seen:
+        if symbol not in SYMBOLS or symbol in seen:
             continue
         # Reject stale signals from previous sessions or a delayed API response.
         bar = fast.parse_alpaca_time(signal.get("bar_key"))

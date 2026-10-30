@@ -931,11 +931,12 @@ def one_shot_already_consumed(state):
                for order in recent)
 
 
-def collect_signals():
+def collect_signals(symbols=None):
     """Analyze current IEX bars without running or persisting a simulation."""
+    symbols = tuple(SYMBOLS if symbols is None else symbols)
     samples = {}
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        futures = {pool.submit(get_bars, symbol): symbol for symbol in SYMBOLS}
+        futures = {pool.submit(get_bars, symbol): symbol for symbol in symbols}
         for future in as_completed(futures):
             symbol = futures[future]
             try:
@@ -943,7 +944,7 @@ def collect_signals():
             except Exception as exc:
                 print(f"FAST {symbol}: IEX request failed: {exc}", flush=True)
     signals = []
-    for symbol in SYMBOLS:
+    for symbol in symbols:
         if symbol not in samples:
             continue
         try:

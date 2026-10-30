@@ -182,14 +182,14 @@ class MicroTradingTests(unittest.TestCase):
             self.assertNotIn("/orders",src)
             self.assertNotIn("submit_order",src)
 
-    def test_entrypoint_uses_existing_fast_universe(self):
+    def test_entrypoint_uses_exclusive_micro_universe(self):
         with patch.object(entrypoint.fast,"market_session_today",return_value=SESSION), \
              patch.object(entrypoint.fast,"SYMBOLS",["BB"]), \
              patch.object(entrypoint.fast,"get_bars") as fetch, \
              patch.object(entrypoint.fast,"analyze_symbol") as analyze, \
              patch.object(entrypoint.micro,"process",return_value={}) as run:
             entrypoint.main(now=moment(60))
-        self.assertEqual(run.call_args.args[1],["BB"])
+        self.assertEqual(tuple(run.call_args.args[1]),entrypoint.SYMBOLS)
 
 class WorkflowTests(unittest.TestCase):
     def test_script_syntax(self):
@@ -208,7 +208,8 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("needs: first-session",w)
         self.assertNotIn("preflight",w)
         self.assertNotIn("ENABLE_FAST_TRADING",w)
-        self.assertIn("MICRO_ALPACA_SECRET_KEY",w)
+        self.assertNotIn("MICRO_ALPACA_SECRET_KEY",w)
+        self.assertIn("secrets.ALPACA_SECRET_KEY",w)
         self.assertIn("ENABLE_MICRO_PAPER_TRADING",w)
 
     def test_state_saved_each_cycle_with_no_order_secrets(self):
