@@ -223,3 +223,9 @@
 {"timestamp": "2026-10-30T19:46:09+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 20, "order_id": "9274e54a-f094-4e3a-bb7b-2b5058040e47"}
 {"timestamp": "2026-10-30T19:46:09+00:00", "action": "eod_close_submitted", "symbol": "RGTI", "qty": 21, "order_id": "8f7b013d-0034-450e-bac9-b28039e4dcd2"}
 {"timestamp": "2026-10-30T19:46:10+00:00", "action": "eod_close_submitted", "symbol": "RIOT", "qty": 18, "order_id": "c478936b-f6cf-4861-b854-1539ea414206"}
+{"timestamp": "2026-10-30T19:46:43+00:00", "action": "closed", "symbol": "AAL", "entry": 12.4, "exit": 12.49, "qty": 13.0, "side": "buy", "pnl": 1.17, "pnl_pct": 0.726, "reason": "koniec seansy", "holding_seconds": 2034}
+{"timestamp": "2026-10-30T19:46:44+00:00", "action": "closed", "symbol": "CHWY", "entry": 21.1, "exit": 21.261818, "qty": 11.0, "side": "buy", "pnl": 1.78, "pnl_pct": 0.767, "reason": "koniec seansy", "holding_seconds": 1197}
+{"timestamp": "2026-10-30T19:46:44+00:00", "action": "closed", "symbol": "DKNG", "entry": 20.6, "exit": 20.83, "qty": 11.0, "side": "buy", "pnl": 2.53, "pnl_pct": 1.117, "reason": "koniec seansy", "holding_seconds": 7818}
+{"timestamp": "2026-10-30T19:46:45+00:00", "action": "closed", "symbol": "NU", "entry": 11.49, "exit": 11.59, "qty": 20.0, "side": "sell", "pnl": -2.0, "pnl_pct": -0.87, "reason": "koniec seansy", "holding_seconds": 5080}
+{"timestamp": "2026-10-30T19:46:46+00:00", "action": "closed", "symbol": "RGTI", "entry": 11.03, "exit": 11.129524, "qty": 21.0, "side": "buy", "pnl": 2.09, "pnl_pct": 0.902, "reason": "koniec seansy", "holding_seconds": 1477}
+{"timestamp": "2026-10-30T19:46:46+00:00", "action": "closed", "symbol": "RIOT", "entry": 12.46, "exit": 12.61, "qty": 18.0, "side": "buy", "pnl": 2.7, "pnl_pct": 1.204, "reason": "koniec seansy", "holding_seconds": 1758}
