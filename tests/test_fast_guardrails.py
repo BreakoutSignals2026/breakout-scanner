@@ -74,9 +74,9 @@ class DataQualityTests(unittest.TestCase):
     def test_paper_endpoint_kept(self):
         self.assertEqual(fast.API, "https://paper-api.alpaca.markets/v2")
         self.assertEqual(fast.RISK_PER_TRADE, 3.00)
-        self.assertEqual(fast.MAX_DAILY_ENTRIES, 8)
+        self.assertIsNone(fast.MAX_DAILY_ENTRIES)
         self.assertIsNone(fast.MAX_OPEN_FAST_POSITIONS)
-        self.assertEqual(fast.DAILY_LOSS_STOP_USD, 12.00)
+        self.assertIsNone(fast.DAILY_LOSS_STOP_USD)
         self.assertEqual(fast.TRAIL_PERCENT, 1.20)
 
 
@@ -108,11 +108,11 @@ class DailyGuardTests(unittest.TestCase):
         with patch.object(fast, "api", return_value=[] if orders is None else orders):
             return fast.daily_entry_guard(self.session, state or {"trades": {}}, positions or {})
 
-    def test_eight_entries_in_persisted_journal(self):
+    def test_eight_entries_no_longer_block_new_symbol(self):
         for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY", "GME", "LUNR", "U", "QBTS")):
             self.event("entry_submitted", sym, f"order{i}")
         result = self.guard()
-        self.assertFalse(result["allowed"])
+        self.assertTrue(result["allowed"])
         self.assertEqual(result["entries"], 8)
 
     def test_no_repeat_for_closed_symbol(self):
@@ -127,17 +127,17 @@ class DailyGuardTests(unittest.TestCase):
                                        "NOK": {"unrealized_pl": "-1"}})
         self.assertTrue(result["allowed"])
 
-    def test_daily_loss_with_open_positions(self):
+    def test_daily_loss_does_not_block_new_entry(self):
         self.event("closed", "HIMS", pnl=-10.50)
         result = self.guard(positions={"GME": {"unrealized_pl": "-2"}})
-        self.assertFalse(result["allowed"])
-        self.assertEqual(result["daily_pnl"], -12.5)
+        self.assertTrue(result["allowed"])
+        self.assertIsNone(result["daily_pnl"])
 
     def test_alpaca_history_survives_missing_journal_entry(self):
         orders = [{"id": str(i), "client_order_id": f"FAST31E_{sym}_10231400000000",
                    "symbol": sym, "created_at": "2026-10-23T16:00:00Z"}
                   for i, sym in enumerate(("BB", "PTON", "NOK", "CHWY", "GME", "LUNR", "U", "QBTS"))]
-        self.assertFalse(self.guard(orders=orders)["allowed"])
+        self.assertTrue(self.guard(orders=orders)["allowed"])
 
     def test_alpaca_and_journal_do_not_double_count(self):
         self.event("entry_submitted", "BB", "same-id")
@@ -153,6 +153,18 @@ class DailyGuardTests(unittest.TestCase):
     def test_incomplete_500_order_page_blocks_new_entries(self):
         with self.assertRaises(RuntimeError):
             self.guard(orders=[{}] * 500)
+
+    def test_missing_unrealized_pnl_does_not_reinstate_loss_guard(self):
+        self.assertTrue(self.guard(positions={"BB": {}})["allowed"])
+
+    def test_more_than_eight_entries_remain_allowed(self):
+        for i in range(20):
+            self.event("entry_submitted", "SYM"+str(i), "order"+str(i))
+        self.event("closed", "SYM0", pnl=-100)
+        result = self.guard(positions={"SYM21": {"unrealized_pl": "-50"}})
+        self.assertTrue(result["allowed"])
+        self.assertEqual(result["entries"],20)
+        self.assertEqual(len(result["symbols"]),20)
 
     def test_pre_post_safety_recheck(self):
         source = inspect.getsource(fast.main)

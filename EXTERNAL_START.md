@@ -77,7 +77,7 @@ Bez nových kľúčov pokračuje virtuálny zber a v logu je `MICRO PAPER NOT CO
 - `fast_micro_paper_results_v1.csv` obsahuje iba overené skutočné Alpaca PAPER fill ceny a vypočítaný PnL pred prípadnými ďalšími poplatkami.
 - Identifikátory MICRO začínajú `MICRO1_`; nesmú sa zamieňať s FAST31 alebo B252.
 
-FAST už nemá limit dvoch súčasných pozícií. Zostáva denný limit **8 nových FAST vstupov**, jeden vstup na symbol/deň, odhadované riziko **3 USD**, trailing stop **1,2 %** a denná stratová ochrana **12 USD**. Limity brokera a buying power naďalej platia.
+FAST už nemá limit dvoch súčasných pozícií. Nemá ani celkový denný limit vstupov, ani dennú stratovú brzdu. Zostáva jeden vstup na symbol/deň (ochrana duplicitných vstupov), odhadované riziko **3 USD** a trailing stop **1,2 %**. Limity brokera a buying power naďalej platia.
 
 ## Zdroje
 

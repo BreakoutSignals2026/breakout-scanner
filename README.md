@@ -11,7 +11,7 @@ Repozitár od 28.10.2026 obsahuje iba tri vybrané skenery.
 ## Fungovanie
 
 - Klasický BREAKOUT používa päťminútové dáta Twelve Data. Odhadované riziko je 5 USD na obchod.
-- FAST používa päťminútové IEX dáta. Odhadované riziko je 3 USD na obchod, najviac 8 nových vstupov denne, bez pevného limitu počtu súčasných FAST pozícií a 1 nový vstup do symbolu denne. Pri zaznamenanom realizovanom dennom PnL plus zápornom otvorenom PnL −12 USD alebo menej blokuje nové vstupy.
+- FAST používa päťminútové IEX dáta. Odhadované riziko je 3 USD na obchod, trailing stop 1,2 %. Nemá pevný limit počtu súčasných pozícií, celkového počtu denných vstupov ani dennú stratovú brzdu. Ochrana duplicitných signálov a najviac jeden vstup do toho istého symbolu za deň ostáva zachovaná. Platia limity brokera a buying power.
 - FAST MICRO má nový PAPER modul na samostatnom účte, odhadované riziko 1 USD, brokerový bracket SL 0,50 % a TP 2,5R. Limity: 12 pokusov denne, 2 súčasné MICRO pozície, 1 pokus na symbol/deň a denná stratová ochrana 6 USD (realizovaný plus záporný otvorený PnL). Pôvodný virtuálny simulátor ostáva oddelený s vlastnými modelovými nákladmi a výsledkami. Bez nových MICRO kľúčov pokračuje len virtuálny zber.
 - `equity_candle_guard.py` je spoločná kontrola uzavretých a súvislých päťminútových sviečok. `scripts/fast_micro_session.sh` spúšťa a ukladá FAST MICRO.
 - Samostatný FAST virtuálny tracker bol odstránený. FAST analyzuje pôvodné technické signály priamo; FAST MICRO má potrebné funkcie na spracovanie sviečok vo vlastnom module.

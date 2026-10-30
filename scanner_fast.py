@@ -45,9 +45,9 @@ MIN_REL_VOLUME = 1.50
 ATR_PERIOD = 14
 RISK_PER_TRADE = 3.00
 TRAIL_PERCENT = 1.20
-MAX_DAILY_ENTRIES = 8
+MAX_DAILY_ENTRIES = None  # No total daily FAST entry cap.
 MAX_OPEN_FAST_POSITIONS = None  # No strategy-level concurrent-position cap.
-DAILY_LOSS_STOP_USD = 12.00
+DAILY_LOSS_STOP_USD = None  # No strategy-level daily FAST loss stop.
 MAX_SIGNAL_AGE_MINUTES = 8
 MAX_ENTRY_CHASE_PERCENT = 0.25
 MAX_TRADE_AGE_SECONDS = 120  # Trade feed can be sparse; quote must be fresher.
@@ -871,25 +871,27 @@ def daily_entry_guard(session, state, positions):
         if submitted and submitted.astimezone(NY).date().isoformat() == day:
             entry_ids.add(str(item.get("entry_order_id") or item.get("entry_cid") or "pending:" + symbol))
             symbols.add(symbol)
-    realized = 0.0
-    for event in events:
-        if event.get("action") == "closed":
-            pnl = float(event["pnl"])
-            if not math.isfinite(pnl):
-                raise RuntimeError("Neplatný FAST uzatvorený PnL")
-            realized += pnl
-    current_negative = 0.0
-    for symbol, pos in positions.items():
-        if "unrealized_pl" not in pos:
-            raise RuntimeError(f"Alpaca nemá unrealized_pl pre {symbol}")
-        amount = float(pos["unrealized_pl"])
-        if not math.isfinite(amount):
-            raise RuntimeError(f"Neplatný nerealizovaný PnL pre {symbol}")
-        current_negative += min(0.0, amount)
-    daily_pnl = realized + current_negative
-    if daily_pnl <= -DAILY_LOSS_STOP_USD:
+    daily_pnl = None
+    if DAILY_LOSS_STOP_USD is not None:
+        realized = 0.0
+        for event in events:
+            if event.get("action") == "closed":
+                pnl = float(event["pnl"])
+                if not math.isfinite(pnl):
+                    raise RuntimeError("Neplatný FAST uzatvorený PnL")
+                realized += pnl
+        current_negative = 0.0
+        for symbol, pos in positions.items():
+            if "unrealized_pl" not in pos:
+                raise RuntimeError(f"Alpaca nemá unrealized_pl pre {symbol}")
+            amount = float(pos["unrealized_pl"])
+            if not math.isfinite(amount):
+                raise RuntimeError(f"Neplatný nerealizovaný PnL pre {symbol}")
+            current_negative += min(0.0, amount)
+        daily_pnl = round(realized + current_negative, 2)
+    if DAILY_LOSS_STOP_USD is not None and daily_pnl <= -DAILY_LOSS_STOP_USD:
         reason = f"strata {daily_pnl:+.2f} USD dosiahla denné obmedzenie"
-    elif len(entry_ids) >= MAX_DAILY_ENTRIES:
+    elif MAX_DAILY_ENTRIES is not None and len(entry_ids) >= MAX_DAILY_ENTRIES:
         reason = f"dosiahnuté {MAX_DAILY_ENTRIES} FAST vstupy dnes"
     elif MAX_OPEN_FAST_POSITIONS is not None and len(positions) >= MAX_OPEN_FAST_POSITIONS:
         reason = f"dosiahnuté {MAX_OPEN_FAST_POSITIONS} súčasné pozície"
@@ -897,7 +899,7 @@ def daily_entry_guard(session, state, positions):
         reason = None
     return {"allowed": reason is None, "reason": reason,
             "symbols": symbols, "entries": len(entry_ids),
-            "daily_pnl": round(daily_pnl, 2)}
+            "daily_pnl": daily_pnl}
 
 
 def notify_guard_once(state, session, reason):
@@ -991,13 +993,13 @@ def main():
     try:
         daily = daily_entry_guard(session, state, positions)
     except Exception as exc:
-        notify_guard_once(state, session, f"denné limity nie je možné overiť: {exc}")
+        notify_guard_once(state, session, f"históriu vstupov nie je možné overiť: {exc}")
         return
     if not daily["allowed"]:
         notify_guard_once(state, session, daily["reason"])
         return
-    print(f"FAST daily: {daily['entries']}/{MAX_DAILY_ENTRIES} entries, "
-          f"PnL {daily['daily_pnl']:+.2f} USD, open {len(positions)}/{MAX_OPEN_FAST_POSITIONS or 'unlimited'}")
+    print(f"FAST daily entries: {daily['entries']}; total daily cap=disabled; "
+          f"daily loss stop=disabled; open positions={len(positions)} (no strategy cap)")
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
     blocked |= daily["symbols"]
@@ -1037,7 +1039,7 @@ def main():
             try:
                 fresh_guard = daily_entry_guard(session, state, fresh_positions)
             except Exception as exc:
-                notify_guard_once(state, session, f"limity pred vstupom nie je možné overiť: {exc}")
+                notify_guard_once(state, session, f"históriu pred vstupom nie je možné overiť: {exc}")
                 return
             if not fresh_guard["allowed"]:
                 notify_guard_once(state, session, fresh_guard["reason"])
