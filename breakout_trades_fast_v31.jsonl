@@ -217,3 +217,9 @@
 {"timestamp": "2026-10-30T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "a877d4db-ee3d-46ce-b715-0e94fe3f07c2"}
 {"timestamp": "2026-10-30T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "RGTI", "id": "86d0fceb-2fa9-45f6-98bd-546fb3d5cba4"}
 {"timestamp": "2026-10-30T19:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "RIOT", "id": "c7fd532a-3c6e-481d-a1aa-1cc56802f253"}
+{"timestamp": "2026-10-30T19:46:06+00:00", "action": "eod_close_submitted", "symbol": "AAL", "qty": 13, "order_id": "961cfa87-ead7-4e73-969f-c6d0f26b9c1b"}
+{"timestamp": "2026-10-30T19:46:07+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 11, "order_id": "c2b519a0-b2e9-4e27-83f9-a599da791059"}
+{"timestamp": "2026-10-30T19:46:08+00:00", "action": "eod_close_submitted", "symbol": "DKNG", "qty": 11, "order_id": "da52edef-7f38-43a1-93b0-97ea6f35d1dd"}
+{"timestamp": "2026-10-30T19:46:09+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 20, "order_id": "9274e54a-f094-4e3a-bb7b-2b5058040e47"}
+{"timestamp": "2026-10-30T19:46:09+00:00", "action": "eod_close_submitted", "symbol": "RGTI", "qty": 21, "order_id": "8f7b013d-0034-450e-bac9-b28039e4dcd2"}
+{"timestamp": "2026-10-30T19:46:10+00:00", "action": "eod_close_submitted", "symbol": "RIOT", "qty": 18, "order_id": "c478936b-f6cf-4861-b854-1539ea414206"}

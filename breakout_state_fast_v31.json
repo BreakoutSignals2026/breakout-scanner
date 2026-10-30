@@ -46,6 +46,7 @@
     "AAL": {
       "bar_key": "2026-10-30T19:05:00+00:00",
       "close_cid": "FAST31C_AAL_10301905000000",
+      "close_order_id": "961cfa87-ead7-4e73-969f-c6d0f26b9c1b",
       "entry_cid": "FAST31E_AAL_10301905000000",
       "entry_fill_price": 12.4,
       "entry_filled_at": "2026-10-30T19:12:14.661969708Z",
@@ -57,7 +58,7 @@
       "requested_qty": 18,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T19:12:12+00:00",
       "symbol": "AAL"
     },
@@ -120,6 +121,7 @@
     "CHWY": {
       "bar_key": "2026-10-30T19:20:00+00:00",
       "close_cid": "FAST31C_CHWY_10301920000000",
+      "close_order_id": "c2b519a0-b2e9-4e27-83f9-a599da791059",
       "entry_cid": "FAST31E_CHWY_10301920000000",
       "entry_fill_price": 21.1,
       "entry_filled_at": "2026-10-30T19:26:13.519443325Z",
@@ -131,7 +133,7 @@
       "requested_qty": 11,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T19:26:13+00:00",
       "symbol": "CHWY"
     },
@@ -156,6 +158,7 @@
     "DKNG": {
       "bar_key": "2026-10-30T17:30:00+00:00",
       "close_cid": "FAST31C_DKNG_10301730000000",
+      "close_order_id": "da52edef-7f38-43a1-93b0-97ea6f35d1dd",
       "entry_cid": "FAST31E_DKNG_10301730000000",
       "entry_fill_price": 20.6,
       "entry_filled_at": "2026-10-30T17:35:50.157162389Z",
@@ -167,7 +170,7 @@
       "requested_qty": 11,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T17:35:48+00:00",
       "symbol": "DKNG"
     },
@@ -302,6 +305,7 @@
     "NU": {
       "bar_key": "2026-10-30T18:15:00+00:00",
       "close_cid": "FAST31C_NU_10301815000000",
+      "close_order_id": "9274e54a-f094-4e3a-bb7b-2b5058040e47",
       "entry_cid": "FAST31E_NU_10301815000000",
       "entry_fill_price": 11.49,
       "entry_filled_at": "2026-10-30T18:21:29.515027035Z",
@@ -313,7 +317,7 @@
       "requested_qty": 20,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T18:21:28+00:00",
       "symbol": "NU"
     },
@@ -374,6 +378,7 @@
     "RGTI": {
       "bar_key": "2026-10-30T19:15:00+00:00",
       "close_cid": "FAST31C_RGTI_10301915000000",
+      "close_order_id": "8f7b013d-0034-450e-bac9-b28039e4dcd2",
       "entry_cid": "FAST31E_RGTI_10301915000000",
       "entry_fill_price": 11.03,
       "entry_filled_at": "2026-10-30T19:21:35.686830252Z",
@@ -385,13 +390,14 @@
       "requested_qty": 21,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T19:21:34+00:00",
       "symbol": "RGTI"
     },
     "RIOT": {
       "bar_key": "2026-10-30T19:10:00+00:00",
       "close_cid": "FAST31C_RIOT_10301910000000",
+      "close_order_id": "c478936b-f6cf-4861-b854-1539ea414206",
       "entry_cid": "FAST31E_RIOT_10301910000000",
       "entry_fill_price": 12.46,
       "entry_filled_at": "2026-10-30T19:16:55.366620965Z",
@@ -403,7 +409,7 @@
       "requested_qty": 18,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-10-30T19:16:53+00:00",
       "symbol": "RIOT"
     },
