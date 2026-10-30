@@ -2,6 +2,21 @@
   "account_id": "8170b7f6-0fee-4e91-b2c9-7cade87dad84",
   "cooldown": {},
   "trades": {
+    "MICRO1_AG_202610301330": {
+      "client_id": "MICRO1_AG_202610301330",
+      "entry_id": "8705d0e5-94ac-4ed8-86eb-ff44bfd2a637",
+      "planned_risk": 0.937,
+      "qty": 9,
+      "reference_entry": 14.16,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-10-30T17:30:00+00:00",
+      "status": "pending",
+      "stop": 14.24,
+      "submitted": "2026-10-30T17:35:48+00:00",
+      "symbol": "AG",
+      "tp": 13.96
+    },
     "MICRO1_LYFT_202610301250": {
       "client_id": "MICRO1_LYFT_202610301250",
       "entry_id": "d47edc4c-15c8-48a7-8256-d466315ab383",
