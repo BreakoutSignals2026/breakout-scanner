@@ -11,14 +11,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 36,
+    "scans": 37,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 38,
-      "blocked_positions": 53,
+      "bez_potvrdeneho_breakoutu": 39,
+      "blocked_positions": 54,
       "exceptions": 9,
-      "nizky_relativny_objem": 253,
+      "nizky_relativny_objem": 261,
       "submitted": 7,
-      "symbols_checked": 307,
+      "symbols_checked": 316,
       "technical_signals": 16
     }
   },
@@ -26,27 +26,27 @@
   "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 2,
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 64.6,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 73.0,
       "submitted": 0,
-      "symbols_checked": 8,
+      "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-10-30T15:00:44-04:00"
+      "time_ny": "2026-10-30T15:06:30-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "position_or_order_blocked",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "position_or_order_blocked",
+      "MSFT": "nizky_relativny_objem",
+      "NVDA": "bez_potvrdeneho_breakoutu",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -240,10 +240,10 @@
       "planned_risk": 4.385,
       "qty": 6,
       "reference_entry": 201.7,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-10-30T14:15:00-04:00",
-      "status": "open",
+      "status": "closed",
       "stop": 202.3,
       "submitted": "2026-10-30T18:21:27+00:00",
       "symbol": "NVDA",
