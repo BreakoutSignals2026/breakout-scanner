@@ -11,14 +11,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-10-30",
-    "scans": 18,
+    "scans": 19,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 17,
-      "blocked_positions": 11,
+      "bez_potvrdeneho_breakoutu": 18,
+      "blocked_positions": 13,
       "exceptions": 6,
-      "nizky_relativny_objem": 143,
+      "nizky_relativny_objem": 150,
       "submitted": 3,
-      "symbols_checked": 169,
+      "symbols_checked": 177,
       "technical_signals": 9
     }
   },
@@ -27,14 +27,14 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 73.7,
-      "submitted": 1,
-      "symbols_checked": 9,
-      "technical_signals": 2,
-      "time_ny": "2026-10-30T13:20:09-04:00"
+      "blocked_positions": 2,
+      "exceptions": 0,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 64.6,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-10-30T13:25:47-04:00"
     },
     "date": "2026-10-30",
     "symbols": {
@@ -42,12 +42,12 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "position_or_order_blocked",
-      "INTC": "INTC: cena mimo signálu (0.701%)",
+      "INTC": "nizky_relativny_objem",
       "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "order_submitted"
+      "TSLA": "position_or_order_blocked"
     }
   },
   "trades": {
@@ -247,7 +247,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-10-30T13:10:00-04:00",
-      "status": "pending",
+      "status": "open",
       "stop": 399.58,
       "submitted": "2026-10-30T17:19:44+00:00",
       "symbol": "TSLA",
