@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 0,
+    "attempts": 1,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-10-30",
   "seen": [
+    "PFE:2026-10-30T16:20:00+00:00:buy",
     "UPST:2026-10-30T15:35:00+00:00:sell",
     "UPST:2026-10-30T16:05:00+00:00:sell"
   ],
@@ -35,7 +36,26 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "watching"
+      "entry": 30.585282499999998,
+      "entry_bar": "2026-10-30T16:25:00+00:00",
+      "last_bar": "2026-10-30T16:35:00+00:00",
+      "phase": "open",
+      "qty": 5,
+      "signal": {
+        "bar_key": "2026-10-30T16:20:00+00:00",
+        "breakout_level": 30.475,
+        "breakout_percent": 0.31173092698933175,
+        "entry_close": 30.57,
+        "prior_avg_bar_notional_usd": 858117.89,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.03272786777940766,
+        "rel_volume": 2.708117158271151,
+        "side": "buy",
+        "signal_bar_notional_usd": 2336342.82,
+        "signal_bar_shares": 76426,
+        "signal_bar_trades": 211,
+        "symbol": "PFE"
+      }
     },
     "T": {
       "phase": "watching"
