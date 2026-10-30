@@ -9,40 +9,37 @@
     "TSLA": "2026-10-27T11:20:00-04:00"
   },
   "daily_diagnostics": {
-    "date": "2026-10-29",
-    "scans": 48,
+    "date": "2026-10-30",
+    "scans": 1,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 45,
-      "blocked_positions": 18,
-      "exceptions": 3,
-      "malo_5min_sviecok": 47,
-      "nizky_relativny_objem": 364,
-      "submitted": 3,
-      "symbols_checked": 462,
-      "technical_signals": 6
+      "blocked_positions": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 10,
+      "submitted": 0,
+      "symbols_checked": 10,
+      "technical_signals": 0
     }
   },
   "daily_diagnostics_notice": "2026-10-29",
-  "daily_start_notice": "2026-10-29",
+  "daily_start_notice": "2026-10-30",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 81.1,
+      "nizky_relativny_objem": 10,
+      "scan_seconds": 80.4,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-10-29T15:27:47-04:00"
+      "time_ny": "2026-10-30T11:41:16-04:00"
     },
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "bez_potvrdeneho_breakoutu",
+      "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
