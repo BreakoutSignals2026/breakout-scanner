@@ -46,7 +46,7 @@ ATR_PERIOD = 14
 RISK_PER_TRADE = 3.00
 TRAIL_PERCENT = 1.20
 MAX_DAILY_ENTRIES = 8
-MAX_OPEN_FAST_POSITIONS = 2
+MAX_OPEN_FAST_POSITIONS = None  # No strategy-level concurrent-position cap.
 DAILY_LOSS_STOP_USD = 12.00
 MAX_SIGNAL_AGE_MINUTES = 8
 MAX_ENTRY_CHASE_PERCENT = 0.25
@@ -891,7 +891,7 @@ def daily_entry_guard(session, state, positions):
         reason = f"strata {daily_pnl:+.2f} USD dosiahla denné obmedzenie"
     elif len(entry_ids) >= MAX_DAILY_ENTRIES:
         reason = f"dosiahnuté {MAX_DAILY_ENTRIES} FAST vstupy dnes"
-    elif len(positions) >= MAX_OPEN_FAST_POSITIONS:
+    elif MAX_OPEN_FAST_POSITIONS is not None and len(positions) >= MAX_OPEN_FAST_POSITIONS:
         reason = f"dosiahnuté {MAX_OPEN_FAST_POSITIONS} súčasné pozície"
     else:
         reason = None
@@ -997,7 +997,7 @@ def main():
         notify_guard_once(state, session, daily["reason"])
         return
     print(f"FAST daily: {daily['entries']}/{MAX_DAILY_ENTRIES} entries, "
-          f"PnL {daily['daily_pnl']:+.2f} USD, open {len(positions)}/{MAX_OPEN_FAST_POSITIONS}")
+          f"PnL {daily['daily_pnl']:+.2f} USD, open {len(positions)}/{MAX_OPEN_FAST_POSITIONS or 'unlimited'}")
     blocked = set(positions) | {o.get("symbol") for o in orders}
     blocked |= {symbol for symbol, t in state["trades"].items() if t.get("status") != "closed"}
     blocked |= daily["symbols"]

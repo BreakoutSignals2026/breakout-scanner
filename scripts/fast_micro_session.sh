@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Only GET US equities 5m IEX candles and Alpaca PAPER market CALENDAR.
-# NEVER pass any order API secrets to user-facing messages, NEVER create orders.
+# MICRO PAPER on its separate account, plus independent virtual collection.
+# Never print credentials; broker mutations are PAPER only.
 # First job scans 09:30-12:00 NY, second job re-checkouts latest state until EOD.
 set -euo pipefail
 phase="${MICRO_SESSION_PHASE:-}"
@@ -14,14 +14,15 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 persist_micro() {
   local files=()
   for file in fast_micro_state_v1.json fast_micro_signals_v1.jsonl \
-      fast_micro_events_v1.jsonl fast_micro_results_v1.csv; do
+      fast_micro_events_v1.jsonl fast_micro_results_v1.csv \
+      fast_micro_paper_state_v1.json fast_micro_paper_results_v1.csv; do
     [[ ! -f "$file" ]] || files+=("$file")
   done
   if (("${#files[@]}" > 0)); then
     git add -- "${files[@]}"
   fi
   if ! git diff --cached --quiet; then
-    git commit -m "Update FAST MICRO V1 virtual state and results"
+    git commit -m "Update FAST MICRO PAPER and virtual state/results"
     # Separate scanners may push their own state between our fetch and push.
     local pushed=false
     for attempt in 1 2 3 4; do
@@ -79,7 +80,7 @@ while true; do
     continue
   fi
 
-  echo "FAST MICRO virtual cycle: NY $ny_time / $(date -u '+%H:%M:%S') UTC"
+  echo "FAST MICRO PAPER + virtual cycle: NY $ny_time / $(date -u '+%H:%M:%S') UTC"
   if ! python -u scanner_fast_micro_v1.py; then
     echo "::warning::MICRO simulation/feed error; retry at next 5-minute boundary."
   fi

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""US FAST MICRO 5m virtual-only execution entrypoint, separate from FAST PAPER."""
+"""US FAST MICRO 5m: separate PAPER account plus independent virtual comparison."""
 import sys
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor
+import fast_micro_paper as paper
 
 import scanner_fast as fast
 import fast_micro_v1 as micro
@@ -14,15 +14,24 @@ def main(now=None):
     if session is None:
         print("FAST MICRO: NYSE holiday/weekend; no scan")
         return
+    paper_error = None
+    try:
+        paper.process()  # Reconciliation/EOD first, including when entries are disabled.
+    except Exception as exc:
+        paper_error = exc
+        fast.notify(f"FAST MICRO PAPER ERROR: {exc}; new entries halted this cycle")
     if now < session["open"]:
         print("FAST MICRO: NYSE not yet open; no scan")
         return
     if now > session["close"]:
         print("FAST MICRO: NYSE session closed")
         return
-    return micro.process(session, fast.SYMBOLS, fast.get_bars,
+    result = micro.process(session, fast.SYMBOLS, fast.get_bars,
                          fast.analyze_symbol, now, workers=8,
                          validate=fast.validate_live)
+    if paper_error is not None:
+        raise RuntimeError("MICRO PAPER cycle failed; virtual collection completed") from paper_error
+    return result
 
 
 if __name__ == "__main__":

@@ -2,11 +2,11 @@ name: FAST Alpaca Scanner V3.3.1 (risk-limited PAPER auto)
 
 on:
   schedule:
-    # Restore the original daily launch pair used before the recovery-cron changes.
-    # 13:10 UTC is 09:10 NY in EDT; 14:10 UTC is 09:10 NY in EST.
+    # Native GitHub fallback; external dispatcher is the primary 09:20 NY trigger.
+    # 13:20 UTC is 09:20 NY in EDT; 14:20 UTC is 09:20 NY in EST.
     # The other slot is a backup: concurrency prevents overlapping sessions.
-    - cron: "10 13 * * 1-5"
-    - cron: "10 14 * * 1-5"
+    - cron: "20 13 * * 1-5"
+    - cron: "20 14 * * 1-5"
   workflow_dispatch:
     inputs:
       one_paper_trade:

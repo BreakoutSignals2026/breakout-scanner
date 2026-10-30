@@ -28,6 +28,8 @@ from zoneinfo import ZoneInfo
 import requests
 
 VERSION = "2.5.2"
+ENTRY_PREFIX = "B252_"
+EOD_PREFIX = "B252_EOD_"
 ALPACA_API = "https://paper-api.alpaca.markets/v2"
 ALPACA_DATA = "https://data.alpaca.markets/v2/stocks"
 TWELVE_URL = "https://api.twelvedata.com/time_series"
@@ -186,7 +188,7 @@ def same_qty(a, b):
 
 
 def my_entry_client_id(signal):
-    return f"B252_{signal['symbol']}_{signal['bar_time'].astimezone(NY).strftime('%Y%m%d%H%M')}"
+    return f"{ENTRY_PREFIX}{signal['symbol']}_{signal['bar_time'].astimezone(NY).strftime('%Y%m%d%H%M')}"
 
 
 def quote(symbol):
@@ -402,7 +404,7 @@ def ensure_no_untracked_classic_orders(state):
     extras = []
     for o in records:
         cid = str(o.get("client_order_id") or "")
-        if not cid.startswith("B252_") or cid.startswith("B252_EOD_") or cid in known:
+        if not cid.startswith(ENTRY_PREFIX) or cid.startswith(EOD_PREFIX) or cid in known:
             continue
         # Query the canonical parent and its legs: historical list responses
         # can omit legs or include incomplete snapshots.
@@ -450,8 +452,8 @@ def one_shot_already_consumed(state):
     if not isinstance(records, list):
         raise RuntimeError("PAPER test: no order history available")
     return any(
-        str(order.get("client_order_id") or "").startswith("B252_")
-        and not str(order.get("client_order_id") or "").startswith("B252_EOD_")
+        str(order.get("client_order_id") or "").startswith(ENTRY_PREFIX)
+        and not str(order.get("client_order_id") or "").startswith(EOD_PREFIX)
         and not order.get("parent_order_id")
         for order in records
     )
@@ -734,7 +736,7 @@ def eod_close_trade(t, state):
     if not pos:
         return  # an exit filled during cancellation; reconcile next run
     verify_owned_position(t, pos, parent)
-    eod_client = f"B252_EOD_{symbol}_{t['client_id'].rsplit('_', 1)[-1]}"
+    eod_client = f"{EOD_PREFIX}{symbol}_{t['client_id'].rsplit('_', 1)[-1]}"
     t["eod_client_id"] = eod_client
     t["status"] = "eod_sent"
     save_state(state)  # crash recovery via client ID

@@ -1,13 +1,19 @@
-name: FAST MICRO V1.0 - US stock virtual $1 risk (NO ALPACA ORDERS)
+name: FAST MICRO V1.1 - separate Alpaca PAPER + virtual comparison
 
 on:
   schedule:
-    # Restore the original daily launch pair used before the recovery-cron changes.
-    # 13:10 UTC is 09:10 NY in EDT; 14:10 UTC is 09:10 NY in EST.
+    # Native GitHub fallback; external dispatcher is the primary 09:20 NY trigger.
+    # 13:20 UTC is 09:20 NY in EDT; 14:20 UTC is 09:20 NY in EST.
     # The other slot is a backup: concurrency prevents overlapping sessions.
-    - cron: "10 13 * * 1-5"
-    - cron: "10 14 * * 1-5"
+    - cron: "20 13 * * 1-5"
+    - cron: "20 14 * * 1-5"
   workflow_dispatch:
+    inputs:
+      full_paper_session:
+        description: "Enable MICRO entries on its separate Alpaca PAPER account"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -30,10 +36,15 @@ jobs:
           python-version: "3.12"
       - name: Install requests
         run: python -m pip install requests
-      - name: Virtual-only MICRO from 09:30 to 12:00 NY
+      - name: MICRO PAPER + virtual from 09:30 to 12:00 NY
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          MICRO_ALPACA_API_KEY: ${{ secrets.MICRO_ALPACA_API_KEY }}
+          MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          ENABLE_MICRO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.full_paper_session == true && 'true' || 'false') }}
           MICRO_SESSION_PHASE: first
         shell: bash
         run: bash scripts/fast_micro_session.sh
@@ -53,10 +64,15 @@ jobs:
           python-version: "3.12"
       - name: Install requests
         run: python -m pip install requests
-      - name: Virtual-only MICRO from 12:00 to close, including early close
+      - name: MICRO PAPER + virtual from 12:00 to close, including early close
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          MICRO_ALPACA_API_KEY: ${{ secrets.MICRO_ALPACA_API_KEY }}
+          MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          ENABLE_MICRO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.full_paper_session == true && 'true' || 'false') }}
           MICRO_SESSION_PHASE: second
         shell: bash
         run: bash scripts/fast_micro_session.sh

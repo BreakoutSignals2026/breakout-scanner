@@ -2,11 +2,11 @@ name: Breakout Scanner V2.5.2 (PAPER auto)
 
 on:
   schedule:
-    # Restore the original daily launch pair used before the recovery-cron changes.
-    # 13:10 UTC is 09:10 NY in EDT; 14:10 UTC is 09:10 NY in EST.
+    # Native GitHub fallback; external dispatcher is the primary 09:20 NY trigger.
+    # 13:20 UTC is 09:20 NY in EDT; 14:20 UTC is 09:20 NY in EST.
     # The other slot is a backup: concurrency prevents overlapping sessions.
-    - cron: "10 13 * * 1-5"
-    - cron: "10 14 * * 1-5"
+    - cron: "20 13 * * 1-5"
+    - cron: "20 14 * * 1-5"
     # Keep existing classic BREAKOUT end-of-day recovery.
     - cron: "45 19 * * 1-5"
     - cron: "45 20 * * 1-5"
