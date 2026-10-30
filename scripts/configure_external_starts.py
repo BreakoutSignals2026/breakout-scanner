@@ -30,7 +30,7 @@ def job(workflow, github_token):
                 "Authorization": f"Bearer {github_token}",
                 "Accept": "application/vnd.github+json",
                 "Content-Type": "application/json"},
-                "body": json.dumps({"ref": "main", "inputs": {"full_paper_session": True}})}}
+                "body": json.dumps({"ref": "main"})}}
 
 
 def request(method, path, token, payload=None):

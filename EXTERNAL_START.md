@@ -37,10 +37,10 @@ Content-Type: application/json
 Telo všetkých troch úloh:
 
 ```json
-{"ref":"main","inputs":{"full_paper_session":true}}
+{"ref":"main"}
 ```
 
-`one_paper_trade` neposielajte; zostáva false. Nezapínajte ukladanie odpovedí, pretože konfigurácia obsahuje citlivý token. Pri skúške použite `full_paper_session:false`, následne overte, že v GitHub Actions vznikol nový beh a spustila sa skenovacia úloha. Potom nastavte true na pravidelnú PAPER seansu.
+Workflow neprijímajú žiadne vstupné políčka. Ručný aj externý štart povoľujú bežnú PAPER seansu. Nezapínajte ukladanie odpovedí, pretože konfigurácia obsahuje citlivý token. Pri skúške overte v GitHub Actions nový beh aj spustenie skenovacej úlohy; počas otvoreného trhu môže skúška vytvoriť PAPER objednávky.
 
 ### Voliteľne automatické vytvorenie troch úloh
 
@@ -68,7 +68,7 @@ Pôvodné `ALPACA_API_KEY` a `ALPACA_SECRET_KEY` ostávajú pre FAST/BREAKOUT a 
 
 MICRO používa odhadované riziko **1 USD**, pevný SL **0,50 %**, TP **2,5R**, najviac **12 pokusov denne**, **2 súčasné MICRO pozície**, jeden pokus na symbol/deň a dennú stratovú ochranu **6 USD** (realizovaný PnL plus záporný otvorený PnL). Riziko nie je garantovaným stropom; trhový sklz a gapy ho môžu prekročiť. Objednávky sú celé akcie s brokerovým bracket SL/TP, nie trailing stop. Na konci seansy sa obsluhujú iba preukázateľne vlastnené MICRO pozície, približne 15 minút pred skutočným close.
 
-Bez nových kľúčov pokračuje virtuálny zber a v logu je `MICRO PAPER NOT CONFIGURED`. Pri manuálnom štarte nechajte `full_paper_session` vypnuté na monitorovanie, zapnite ho na povolenie nových MICRO PAPER vstupov. Automatické plánované a externé plné seansy povoľujú PAPER vstupy.
+Bez nových kľúčov pokračuje virtuálny zber a v logu je `MICRO PAPER NOT CONFIGURED`. Ručné, plánované aj externé štarty povoľujú nové MICRO PAPER vstupy, ak sú nakonfigurované samostatné kľúče.
 
 ## Oddelenie výsledkov
 

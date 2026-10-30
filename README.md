@@ -22,13 +22,13 @@ PAPER workflow používajú výhradne `https://paper-api.alpaca.markets`. Riziko
 
 Hlavný plánovaný štart je **09:20 America/New_York**, desať minút pred otvorením. Nové obchody sú povolené až od 09:30 NY. Keďže GitHub `schedule` opakovane nevytvoril beh načas, primárny spúšťač je pripravený cez externý HTTP časovač: [EXTERNAL_START.md](EXTERNAL_START.md). **Kým sa externé úlohy nevytvoria a neotestujú, externé spúšťanie nie je aktívne.**
 
-Tri externé úlohy majú časové pásmo New York a časy 09:20, 09:25 a 09:30 v pracovné dni; posielajú `workflow_dispatch` s `full_paper_session=true`. Na Slovensku hlavný štart 30.10.2026 zodpovedá 14:20, od 2.11.2026 15:20. Natívne GitHub crony 13:20/14:20 UTC zostávajú ako záloha. Workflow nemajú `preflight`; idú priamo do prvej relácie a potom do druhej. Časové, kalendárové, vstupné a EOD ochrany v programoch zostávajú zachované.
+Tri externé úlohy majú časové pásmo New York a časy 09:20, 09:25 a 09:30 v pracovné dni; posielajú `workflow_dispatch` bez vstupných polí. Na Slovensku hlavný štart 30.10.2026 zodpovedá 14:20, od 2.11.2026 15:20. Natívne GitHub crony 13:20/14:20 UTC zostávajú ako záloha. Workflow nemajú `preflight`; idú priamo do prvej relácie a potom do druhej. Časové, kalendárové, vstupné a EOD ochrany v programoch zostávajú zachované.
 
 Samostatné concurrency skupiny zabraňujú dvom súčasným behom toho istého skenera; záložný štart neruší aktívny. Žiadna úloha neprekračuje 360 minút. GitHub aj externá služba môžu meškať; ani úspešný dispatch nezaručuje okamžité pridelenie runnera.
 
 PAPER skenery zachovávajú monitorovanie, ochranu sledovaných pozícií a pokus o ich uzatvorenie približne 15 minút pred skutočným koncom seansy podľa kalendára Alpaca. Výpadok runnera alebo API môže zabrániť uzatvoreniu.
 
-Pri manuálnom spustení FAST a BREAKOUT je predvolene vypnuté otváranie nových obchodov. Voľba `one_paper_trade` povoľuje jednorazovú skúšku; `full_paper_session` povoľuje celú PAPER seansu s existujúcimi ochranami. MICRO používa `full_paper_session` rovnakým spôsobom, ale vyžaduje samostatné PAPER kľúče a odlišné ID účtu od FAST.
+Pri manuálnom spustení vyberte vetvu `main` a kliknite na **Run workflow**. Nie sú potrebné žiadne políčka: BREAKOUT, FAST aj MICRO automaticky povoľujú bežnú PAPER seansu. MICRO vyžaduje samostatné PAPER kľúče a odlišné ID účtu od FAST; bez nových kľúčov pokračuje len virtuálny zber.
 
 ## Zachované stavy a výsledky
 

@@ -8,12 +8,6 @@ on:
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
   workflow_dispatch:
-    inputs:
-      full_paper_session:
-        description: "Enable MICRO entries on its separate Alpaca PAPER account"
-        type: boolean
-        required: false
-        default: false
 
 permissions:
   contents: write
@@ -44,7 +38,7 @@ jobs:
           MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          ENABLE_MICRO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.full_paper_session == true && 'true' || 'false') }}
+          ENABLE_MICRO_PAPER_TRADING: "true"
           MICRO_SESSION_PHASE: first
         shell: bash
         run: bash scripts/fast_micro_session.sh
@@ -72,7 +66,7 @@ jobs:
           MICRO_ALPACA_SECRET_KEY: ${{ secrets.MICRO_ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          ENABLE_MICRO_PAPER_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && inputs.full_paper_session == true && 'true' || 'false') }}
+          ENABLE_MICRO_PAPER_TRADING: "true"
           MICRO_SESSION_PHASE: second
         shell: bash
         run: bash scripts/fast_micro_session.sh

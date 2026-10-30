@@ -11,17 +11,6 @@ on:
     - cron: "45 19 * * 1-5"
     - cron: "45 20 * * 1-5"
   workflow_dispatch:
-    inputs:
-      one_paper_trade:
-        description: "ONE-SHOT classic PAPER: permit max one new bracket entry attempt"
-        type: boolean
-        required: false
-        default: false
-      full_paper_session:
-        description: "MANUAL RECOVERY: full PAPER auto trading for this session"
-        type: boolean
-        required: false
-        default: false
 
 permissions:
   contents: write
@@ -52,8 +41,8 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
-          BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_BREAKOUT_TRADING: "true"
+          BREAKOUT_ONE_SHOT_PAPER_TEST: "false"
         shell: bash
         run: |
           set -euo pipefail
@@ -136,8 +125,8 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ENABLE_BREAKOUT_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
-          BREAKOUT_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_BREAKOUT_TRADING: "true"
+          BREAKOUT_ONE_SHOT_PAPER_TEST: "false"
         shell: bash
         run: |
           set -euo pipefail

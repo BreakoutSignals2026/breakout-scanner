@@ -11,13 +11,13 @@ spec.loader.exec_module(external)
 
 
 class ExternalStartTests(unittest.TestCase):
-    def test_all_three_dispatches_enable_full_session_without_one_shot(self):
+    def test_all_three_dispatches_have_no_inputs(self):
         for name in external.WORKFLOWS:
             job=external.job(name,'test-token')
             self.assertEqual(job['requestMethod'],1)
             self.assertTrue(job['url'].endswith(name+'/dispatches'))
             self.assertEqual(json.loads(job['extendedData']['body']),
-                {'ref':'main','inputs':{'full_paper_session':True}})
+                {'ref':'main'})
             self.assertFalse(job['saveResponses'])
             self.assertEqual(job['schedule']['timezone'],'America/New_York')
             self.assertEqual(job['schedule']['hours'],[9])

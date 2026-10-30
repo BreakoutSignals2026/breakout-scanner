@@ -8,17 +8,6 @@ on:
     - cron: "20 13 * * 1-5"
     - cron: "20 14 * * 1-5"
   workflow_dispatch:
-    inputs:
-      one_paper_trade:
-        description: "ONE-SHOT PAPER: allow at most one FAST entry (existing protection/EOD stays active)"
-        type: boolean
-        required: false
-        default: false
-      full_paper_session:
-        description: "MANUAL RECOVERY: resume full PAPER auto trading for this session"
-        type: boolean
-        required: false
-        default: false
 
 permissions:
   contents: write
@@ -51,9 +40,9 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          # Scheduled PAPER auto; manual runs require explicit one_paper_trade. NEVER LIVE.
-          ENABLE_FAST_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
-          FAST_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          # Manual and scheduled starts both run a normal Alpaca PAPER session.
+          ENABLE_FAST_TRADING: "true"
+          FAST_ONE_SHOT_PAPER_TEST: "false"
         run: |
           set -e
           while true; do
@@ -120,8 +109,8 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          ENABLE_FAST_TRADING: ${{ github.event_name == 'schedule' && 'true' || (github.event_name == 'workflow_dispatch' && (inputs.one_paper_trade == true || inputs.full_paper_session == true) && 'true' || 'false') }}
-          FAST_ONE_SHOT_PAPER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.one_paper_trade == true && 'true' || 'false' }}
+          ENABLE_FAST_TRADING: "true"
+          FAST_ONE_SHOT_PAPER_TEST: "false"
         run: |
           set -e
           while true; do
