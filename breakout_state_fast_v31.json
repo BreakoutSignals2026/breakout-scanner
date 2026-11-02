@@ -269,11 +269,12 @@
       "exit_cid": "FAST31X_MARA_11021920000000",
       "exit_order_id": "2b5c86cc-1859-49a0-b010-154c00fa3cca",
       "filled_qty": 27,
+      "realized_pnl": -0.81,
       "reference_price": 6.46,
       "requested_qty": 34,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-02T19:28:24+00:00",
       "symbol": "MARA"
     },
