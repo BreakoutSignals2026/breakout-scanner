@@ -240,3 +240,7 @@
 {"timestamp": "2026-11-02T20:05:01+00:00", "action": "closed", "symbol": "MARA", "entry": 6.46, "exit": 6.490000000000001, "qty": 27.0, "side": "sell", "pnl": -0.81, "pnl_pct": -0.464, "reason": "trailing stop", "holding_seconds": 2113}
 {"timestamp": "2026-11-02T20:09:37+00:00", "action": "entry_submitted", "symbol": "DKNG", "order_id": "71d1ac24-0c2e-4f62-9e79-37de75ee0855", "requested_qty": 10, "reference": 21.75, "side": "sell", "estimated_risk": 2.81, "spread_percent": 0.092, "rel_volume": 2.9430208545417527, "breakout_percent": 0.25246729400963835, "bar_notional_usd": 366454.72, "quote_age_seconds": 4.981514, "chase_percent": 0.092038656235617, "signal_age_seconds": 277}
 {"timestamp": "2026-11-02T20:09:40+00:00", "action": "exit_accepted", "symbol": "DKNG", "order_id": "2a858cdd-b080-4a4f-87be-159b9e097259", "qty": 10}
+{"timestamp": "2026-11-02T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "CCL", "id": "e61a40f7-c765-467a-af6e-557a921c805d"}
+{"timestamp": "2026-11-02T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "8b159a08-0f9a-44db-b9ba-976c5d8a8522"}
+{"timestamp": "2026-11-02T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "DKNG", "id": "2a858cdd-b080-4a4f-87be-159b9e097259"}
+{"timestamp": "2026-11-02T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "HIMS", "id": "5a873679-52ac-4a05-9eb5-1cd03e521a6a"}
