@@ -13,7 +13,11 @@
       "phase": "watching"
     },
     "CDE": {
-      "phase": "pending",
+      "entry": 13.408290000000001,
+      "entry_bar": "2026-11-02T19:10:00+00:00",
+      "last_bar": "2026-11-02T19:10:00+00:00",
+      "phase": "open",
+      "qty": 11,
       "signal": {
         "bar_key": "2026-11-02T19:05:00+00:00",
         "breakout_level": 13.445,

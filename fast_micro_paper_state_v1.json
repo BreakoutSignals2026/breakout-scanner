@@ -26,7 +26,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-02T19:05:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 13.48,
       "submitted": "2026-11-02T19:10:39+00:00",
       "symbol": "CDE",
