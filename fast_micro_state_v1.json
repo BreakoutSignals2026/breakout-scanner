@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 2,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 2,
+    "pnl_usd": 1.04
   },
   "date": "2026-11-02",
   "seen": [
@@ -21,26 +21,7 @@
       "phase": "watching"
     },
     "CDE": {
-      "entry": 13.408290000000001,
-      "entry_bar": "2026-11-02T19:10:00+00:00",
-      "last_bar": "2026-11-02T20:35:00+00:00",
-      "phase": "open",
-      "qty": 11,
-      "signal": {
-        "bar_key": "2026-11-02T19:05:00+00:00",
-        "breakout_level": 13.445,
-        "breakout_percent": 0.18594272963927375,
-        "entry_close": 13.42,
-        "prior_avg_bar_notional_usd": 126842.74,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.07454342154304724,
-        "rel_volume": 1.8604940686858629,
-        "side": "sell",
-        "signal_bar_notional_usd": 233977.7,
-        "signal_bar_shares": 17435,
-        "signal_bar_trades": 66,
-        "symbol": "CDE"
-      }
+      "phase": "closed"
     },
     "HBAN": {
       "phase": "watching"
@@ -52,26 +33,7 @@
       "phase": "watching"
     },
     "KGC": {
-      "entry": 20.6296775,
-      "entry_bar": "2026-11-02T19:20:00+00:00",
-      "last_bar": "2026-11-02T20:35:00+00:00",
-      "phase": "open",
-      "qty": 7,
-      "signal": {
-        "bar_key": "2026-11-02T19:15:00+00:00",
-        "breakout_level": 20.695,
-        "breakout_percent": 0.1691229765643882,
-        "entry_close": 20.66,
-        "prior_avg_bar_notional_usd": 128513.18,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.04846135207173038,
-        "rel_volume": 3.6665588615782667,
-        "side": "sell",
-        "signal_bar_notional_usd": 468444.84,
-        "signal_bar_shares": 22674,
-        "signal_bar_trades": 98,
-        "symbol": "KGC"
-      }
+      "phase": "closed"
     },
     "LYFT": {
       "phase": "watching"
