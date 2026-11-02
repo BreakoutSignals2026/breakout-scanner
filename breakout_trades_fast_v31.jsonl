@@ -248,3 +248,7 @@
 {"timestamp": "2026-11-02T20:46:05+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 10, "order_id": "b9bfe683-b68b-450f-8745-230a84b4470e"}
 {"timestamp": "2026-11-02T20:46:05+00:00", "action": "eod_close_submitted", "symbol": "DKNG", "qty": 10, "order_id": "63da3ca5-c727-402e-8e3b-ae6447da5e9f"}
 {"timestamp": "2026-11-02T20:46:06+00:00", "action": "eod_close_submitted", "symbol": "HIMS", "qty": 7, "order_id": "e1bee6c3-8ae4-4c0b-b54c-3460014ac884"}
+{"timestamp": "2026-11-02T20:46:39+00:00", "action": "closed", "symbol": "CCL", "entry": 29.84, "exit": 29.9, "qty": 2.0, "side": "sell", "pnl": -0.12, "pnl_pct": -0.201, "reason": "koniec seansy", "holding_seconds": 3287}
+{"timestamp": "2026-11-02T20:46:39+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.29, "exit": 22.2, "qty": 10.0, "side": "sell", "pnl": 0.9, "pnl_pct": 0.404, "reason": "koniec seansy", "holding_seconds": 4940}
+{"timestamp": "2026-11-02T20:46:40+00:00", "action": "closed", "symbol": "DKNG", "entry": 21.75, "exit": 21.85, "qty": 10.0, "side": "sell", "pnl": -1.0, "pnl_pct": -0.46, "reason": "koniec seansy", "holding_seconds": 2191}
+{"timestamp": "2026-11-02T20:46:40+00:00", "action": "closed", "symbol": "HIMS", "entry": 26.41, "exit": 25.55, "qty": 7.0, "side": "sell", "pnl": 6.02, "pnl_pct": 3.256, "reason": "koniec seansy", "holding_seconds": 3838}
