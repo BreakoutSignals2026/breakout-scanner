@@ -12,14 +12,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-02",
-    "scans": 8,
+    "scans": 9,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 19,
-      "blocked_positions": 10,
+      "bez_potvrdeneho_breakoutu": 23,
+      "blocked_positions": 12,
       "exceptions": 3,
-      "nizky_relativny_objem": 44,
+      "nizky_relativny_objem": 48,
       "submitted": 4,
-      "symbols_checked": 70,
+      "symbols_checked": 78,
       "technical_signals": 4
     }
   },
@@ -27,26 +27,26 @@
   "daily_start_notice": "2026-11-02",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 73.3,
-      "submitted": 1,
-      "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-11-02T14:51:12-05:00"
+      "bez_potvrdeneho_breakoutu": 4,
+      "blocked_positions": 2,
+      "exceptions": 0,
+      "nizky_relativny_objem": 4,
+      "scan_seconds": 64.6,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-02T14:56:50-05:00"
     },
     "date": "2026-11-02",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMZN": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
       "META": "bez_potvrdeneho_breakoutu",
-      "MRVL": "order_submitted",
-      "MSFT": "nizky_relativny_objem",
+      "MRVL": "position_or_order_blocked",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -259,7 +259,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-02T14:45:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 171.47,
       "submitted": "2026-11-02T19:50:23+00:00",
       "symbol": "MRVL",
