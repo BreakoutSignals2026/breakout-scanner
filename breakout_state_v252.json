@@ -12,14 +12,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-02",
-    "scans": 2,
+    "scans": 3,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 1,
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 2,
       "exceptions": 1,
-      "nizky_relativny_objem": 15,
+      "nizky_relativny_objem": 23,
       "submitted": 1,
-      "symbols_checked": 19,
+      "symbols_checked": 28,
       "technical_signals": 1
     }
   },
@@ -27,14 +27,15 @@
   "daily_start_notice": "2026-11-02",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 1,
-      "exceptions": 1,
+      "exceptions": 0,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 72.9,
+      "scan_seconds": 72.7,
       "submitted": 0,
       "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-02T14:16:58-05:00"
+      "time_ny": "2026-11-02T14:22:44-05:00"
     },
     "date": "2026-11-02",
     "symbols": {
@@ -43,8 +44,8 @@
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+      "META": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
