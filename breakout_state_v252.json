@@ -12,14 +12,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-02",
-    "scans": 1,
+    "scans": 2,
     "totals": {
       "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 7,
+      "blocked_positions": 1,
+      "exceptions": 1,
+      "nizky_relativny_objem": 15,
       "submitted": 1,
-      "symbols_checked": 10,
+      "symbols_checked": 19,
       "technical_signals": 1
     }
   },
@@ -27,28 +27,27 @@
   "daily_start_notice": "2026-11-02",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 81.5,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-02T14:11:11-05:00"
+      "blocked_positions": 1,
+      "exceptions": 1,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 72.9,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-02T14:16:58-05:00"
     },
     "date": "2026-11-02",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "order_submitted",
+      "AMD": "position_or_order_blocked",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "bez_potvrdeneho_breakoutu",
+      "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -91,7 +90,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-02T14:05:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 478.65,
       "submitted": "2026-11-02T19:10:07+00:00",
       "symbol": "AMD",
