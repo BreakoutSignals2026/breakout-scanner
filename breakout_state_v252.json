@@ -13,14 +13,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-03",
-    "scans": 25,
+    "scans": 26,
     "totals": {
       "bez_potvrdeneho_breakoutu": 43,
-      "blocked_positions": 20,
+      "blocked_positions": 21,
       "exceptions": 2,
-      "nizky_relativny_objem": 180,
+      "nizky_relativny_objem": 189,
       "submitted": 5,
-      "symbols_checked": 230,
+      "symbols_checked": 239,
       "technical_signals": 7
     }
   },
@@ -28,20 +28,20 @@
   "daily_start_notice": "2026-11-03",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 2,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 64.3,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 72.3,
       "submitted": 0,
-      "symbols_checked": 8,
+      "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-03T13:58:16-05:00"
+      "time_ny": "2026-11-03T14:04:38-05:00"
     },
     "date": "2026-11-03",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "position_or_order_blocked",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
@@ -133,10 +133,10 @@
       "planned_risk": 4.226,
       "qty": 5,
       "reference_entry": 250.5,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-03T13:05:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 249.87,
       "submitted": "2026-11-03T18:10:46+00:00",
       "symbol": "AMZN",
