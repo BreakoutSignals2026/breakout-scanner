@@ -32,6 +32,21 @@
       "symbol": "CDE",
       "tp": 13.23
     },
+    "MICRO1_KEY_202611031315": {
+      "client_id": "MICRO1_KEY_202611031315",
+      "entry_id": "b671aea0-28be-419b-972b-b9a27afe8d6f",
+      "planned_risk": 0.989,
+      "qty": 7,
+      "reference_entry": 21.33,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-03T18:15:00+00:00",
+      "status": "pending",
+      "stop": 21.22,
+      "submitted": "2026-11-03T18:20:47+00:00",
+      "symbol": "KEY",
+      "tp": 21.61
+    },
     "MICRO1_KGC_202610301520": {
       "client_id": "MICRO1_KGC_202610301520",
       "entry_id": "4c2065f6-9d81-4e70-a2e7-f570893744f3",
