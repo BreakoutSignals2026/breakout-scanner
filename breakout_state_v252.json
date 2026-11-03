@@ -1,6 +1,6 @@
 {
   "cooldown": {
-    "AAPL": "2026-10-30T14:05:00-04:00",
+    "AAPL": "2026-11-03T14:55:00-05:00",
     "AMD": "2026-11-02T14:05:00-05:00",
     "AMZN": "2026-11-03T13:05:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-03",
-    "scans": 34,
+    "scans": 35,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 52,
+      "bez_potvrdeneho_breakoutu": 53,
       "blocked_positions": 21,
       "exceptions": 2,
-      "nizky_relativny_objem": 260,
-      "submitted": 5,
-      "symbols_checked": 319,
-      "technical_signals": 7
+      "nizky_relativny_objem": 268,
+      "submitted": 6,
+      "symbols_checked": 329,
+      "technical_signals": 8
     }
   },
   "daily_diagnostics_notice": "2026-11-02",
@@ -31,23 +31,23 @@
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 9,
-      "scan_seconds": 80.4,
-      "submitted": 0,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.2,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-03T14:54:28-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-03T15:00:45-05:00"
     },
     "date": "2026-11-03",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "order_submitted",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -82,6 +82,21 @@
       "submitted": "2026-10-30T18:10:35+00:00",
       "symbol": "AAPL",
       "tp": 341.1
+    },
+    "B252_AAPL_202611031455": {
+      "client_id": "B252_AAPL_202611031455",
+      "entry_id": "dfb069d0-32c1-4b4c-83f5-448c5e9189b2",
+      "planned_risk": 3.909,
+      "qty": 2,
+      "reference_entry": 329.03,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-03T14:55:00-05:00",
+      "status": "pending",
+      "stop": 329.93,
+      "submitted": "2026-11-03T20:00:05+00:00",
+      "symbol": "AAPL",
+      "tp": 327.23
     },
     "B252_AMD_202611021405": {
       "client_id": "B252_AMD_202611021405",
