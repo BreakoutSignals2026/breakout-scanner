@@ -75,7 +75,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-03T16:40:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 20.19,
       "submitted": "2026-11-03T16:45:48+00:00",
       "symbol": "KGC",
