@@ -13,14 +13,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-03",
-    "scans": 14,
+    "scans": 15,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 24,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 28,
+      "blocked_positions": 1,
       "exceptions": 2,
-      "nizky_relativny_objem": 112,
+      "nizky_relativny_objem": 117,
       "submitted": 2,
-      "symbols_checked": 140,
+      "symbols_checked": 149,
       "technical_signals": 4
     }
   },
@@ -28,28 +28,28 @@
   "daily_start_notice": "2026-11-03",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 80.9,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 2,
-      "time_ny": "2026-11-03T12:52:59-05:00"
+      "bez_potvrdeneho_breakoutu": 4,
+      "blocked_positions": 1,
+      "exceptions": 0,
+      "nizky_relativny_objem": 5,
+      "scan_seconds": 72.3,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-03T12:58:55-05:00"
     },
     "date": "2026-11-03",
     "symbols": {
-      "AAPL": "AAPL: IEX spread 0.414% nad 0.3%",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "order_submitted",
+      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MSFT": "position_or_order_blocked",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -290,7 +290,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-03T12:45:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 518.39,
       "submitted": "2026-11-03T17:52:51+00:00",
       "symbol": "MSFT",
