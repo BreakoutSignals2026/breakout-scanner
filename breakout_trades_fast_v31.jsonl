@@ -262,3 +262,4 @@
 {"timestamp": "2026-11-03T17:30:13+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "86da846a-03b1-4e37-9f1f-c1039b72da4e", "qty": 20}
 {"timestamp": "2026-11-03T18:06:52+00:00", "action": "entry_submitted", "symbol": "RIOT", "order_id": "c7a7c11f-7fd8-4663-bd81-2f571db91005", "requested_qty": 17, "reference": 13.81, "side": "buy", "estimated_risk": 2.99, "spread_percent": 0.072, "rel_volume": 1.981714576108489, "breakout_percent": 0.3639010189228452, "bar_notional_usd": 483973.84, "quote_age_seconds": 1.764215, "chase_percent": 0.1450326323422868, "signal_age_seconds": 113}
 {"timestamp": "2026-11-03T18:06:58+00:00", "action": "exit_accepted", "symbol": "RIOT", "order_id": "9d72358c-8494-4637-9e05-d2cd3a4b96c7", "qty": 8}
+{"timestamp": "2026-11-03T18:25:35+00:00", "action": "closed", "symbol": "RIOT", "entry": 13.81, "exit": 13.71, "qty": 8.0, "side": "buy", "pnl": -0.8, "pnl_pct": -0.724, "reason": "trailing stop", "holding_seconds": 955}
