@@ -48,6 +48,7 @@
     "AAL": {
       "bar_key": "2026-11-03T16:30:00+00:00",
       "close_cid": "FAST31C_AAL_11031630000000",
+      "close_order_id": "83ee1c75-97f4-4384-a370-28f69d8d5170",
       "entry_cid": "FAST31E_AAL_11031630000000",
       "entry_fill_price": 12.91,
       "entry_filled_at": "2026-11-03T16:39:18.26733684Z",
@@ -59,7 +60,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-03T16:39:17+00:00",
       "symbol": "AAL"
     },
@@ -252,6 +253,7 @@
     "LUNR": {
       "bar_key": "2026-11-03T18:50:00+00:00",
       "close_cid": "FAST31C_LUNR_11031850000000",
+      "close_order_id": "771b04fb-5c35-42b5-81ad-39caf1d2cf04",
       "entry_cid": "FAST31E_LUNR_11031850000000",
       "entry_fill_price": 10.53,
       "entry_filled_at": "2026-11-03T18:58:18.68781127Z",
@@ -263,7 +265,7 @@
       "requested_qty": 22,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-03T18:58:17+00:00",
       "symbol": "LUNR"
     },
@@ -288,6 +290,7 @@
     "NOK": {
       "bar_key": "2026-11-03T18:30:00+00:00",
       "close_cid": "FAST31C_NOK_11031830000000",
+      "close_order_id": "1312c83a-c0be-46d0-8db3-2c0a0658ce44",
       "entry_cid": "FAST31E_NOK_11031830000000",
       "entry_fill_price": 8.58,
       "entry_filled_at": "2026-11-03T18:35:19.12256791Z",
@@ -299,13 +302,14 @@
       "requested_qty": 26,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-03T18:35:16+00:00",
       "symbol": "NOK"
     },
     "NU": {
       "bar_key": "2026-11-03T17:20:00+00:00",
       "close_cid": "FAST31C_NU_11031720000000",
+      "close_order_id": "79a72524-ad57-446b-b480-bef06f274057",
       "entry_cid": "FAST31E_NU_11031720000000",
       "entry_fill_price": 11.59,
       "entry_filled_at": "2026-11-03T17:30:10.301439952Z",
@@ -317,7 +321,7 @@
       "requested_qty": 20,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-03T17:30:09+00:00",
       "symbol": "NU"
     },
