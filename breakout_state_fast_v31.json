@@ -8,7 +8,8 @@
     "2026-10-28": "2026-10-28T19:45:00+00:00",
     "2026-10-29": "2026-10-29T19:45:31+00:00",
     "2026-10-30": "2026-10-30T19:45:31+00:00",
-    "2026-11-02": "2026-11-02T20:45:30+00:00"
+    "2026-11-02": "2026-11-02T20:45:30+00:00",
+    "2026-11-03": "2026-11-03T20:45:00+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -46,6 +47,7 @@
   "trades": {
     "AAL": {
       "bar_key": "2026-11-03T16:30:00+00:00",
+      "close_cid": "FAST31C_AAL_11031630000000",
       "entry_cid": "FAST31E_AAL_11031630000000",
       "entry_fill_price": 12.91,
       "entry_filled_at": "2026-11-03T16:39:18.26733684Z",
@@ -57,7 +59,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-03T16:39:17+00:00",
       "symbol": "AAL"
     },
@@ -249,6 +251,7 @@
     },
     "LUNR": {
       "bar_key": "2026-11-03T18:50:00+00:00",
+      "close_cid": "FAST31C_LUNR_11031850000000",
       "entry_cid": "FAST31E_LUNR_11031850000000",
       "entry_fill_price": 10.53,
       "entry_filled_at": "2026-11-03T18:58:18.68781127Z",
@@ -260,7 +263,7 @@
       "requested_qty": 22,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-03T18:58:17+00:00",
       "symbol": "LUNR"
     },
@@ -284,6 +287,7 @@
     },
     "NOK": {
       "bar_key": "2026-11-03T18:30:00+00:00",
+      "close_cid": "FAST31C_NOK_11031830000000",
       "entry_cid": "FAST31E_NOK_11031830000000",
       "entry_fill_price": 8.58,
       "entry_filled_at": "2026-11-03T18:35:19.12256791Z",
@@ -295,12 +299,13 @@
       "requested_qty": 26,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-03T18:35:16+00:00",
       "symbol": "NOK"
     },
     "NU": {
       "bar_key": "2026-11-03T17:20:00+00:00",
+      "close_cid": "FAST31C_NU_11031720000000",
       "entry_cid": "FAST31E_NU_11031720000000",
       "entry_fill_price": 11.59,
       "entry_filled_at": "2026-11-03T17:30:10.301439952Z",
@@ -312,7 +317,7 @@
       "requested_qty": 20,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-03T17:30:09+00:00",
       "symbol": "NU"
     },
