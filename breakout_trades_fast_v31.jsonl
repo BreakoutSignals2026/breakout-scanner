@@ -273,3 +273,7 @@
 {"timestamp": "2026-11-03T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "c1309a11-ce24-4019-a604-7ec7a8d9d94b"}
 {"timestamp": "2026-11-03T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "4a53cd47-cb45-491b-8204-35e24c75bda7"}
 {"timestamp": "2026-11-03T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "86da846a-03b1-4e37-9f1f-c1039b72da4e"}
+{"timestamp": "2026-11-03T20:45:44+00:00", "action": "eod_close_submitted", "symbol": "AAL", "qty": 7, "order_id": "83ee1c75-97f4-4384-a370-28f69d8d5170"}
+{"timestamp": "2026-11-03T20:45:47+00:00", "action": "eod_close_submitted", "symbol": "LUNR", "qty": 22, "order_id": "771b04fb-5c35-42b5-81ad-39caf1d2cf04"}
+{"timestamp": "2026-11-03T20:45:49+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 22, "order_id": "1312c83a-c0be-46d0-8db3-2c0a0658ce44"}
+{"timestamp": "2026-11-03T20:45:52+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 20, "order_id": "79a72524-ad57-446b-b480-bef06f274057"}
