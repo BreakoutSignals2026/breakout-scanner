@@ -41,7 +41,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-03T18:15:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 21.22,
       "submitted": "2026-11-03T18:20:47+00:00",
       "symbol": "KEY",
