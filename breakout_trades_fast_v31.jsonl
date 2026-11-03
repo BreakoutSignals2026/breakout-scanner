@@ -277,3 +277,7 @@
 {"timestamp": "2026-11-03T20:45:47+00:00", "action": "eod_close_submitted", "symbol": "LUNR", "qty": 22, "order_id": "771b04fb-5c35-42b5-81ad-39caf1d2cf04"}
 {"timestamp": "2026-11-03T20:45:49+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 22, "order_id": "1312c83a-c0be-46d0-8db3-2c0a0658ce44"}
 {"timestamp": "2026-11-03T20:45:52+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 20, "order_id": "79a72524-ad57-446b-b480-bef06f274057"}
+{"timestamp": "2026-11-03T20:46:27+00:00", "action": "closed", "symbol": "AAL", "entry": 12.91, "exit": 12.86, "qty": 7.0, "side": "sell", "pnl": 0.35, "pnl_pct": 0.387, "reason": "koniec seansy", "holding_seconds": 14788}
+{"timestamp": "2026-11-03T20:46:28+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.53, "exit": 10.49, "qty": 22.0, "side": "sell", "pnl": 0.88, "pnl_pct": 0.38, "reason": "koniec seansy", "holding_seconds": 6453}
+{"timestamp": "2026-11-03T20:46:30+00:00", "action": "closed", "symbol": "NOK", "entry": 8.58, "exit": 8.51, "qty": 22.0, "side": "buy", "pnl": -1.54, "pnl_pct": -0.816, "reason": "koniec seansy", "holding_seconds": 7832}
+{"timestamp": "2026-11-03T20:46:32+00:00", "action": "closed", "symbol": "NU", "entry": 11.59, "exit": 11.59, "qty": 20.0, "side": "buy", "pnl": 0.0, "pnl_pct": 0.0, "reason": "koniec seansy", "holding_seconds": 11744}
