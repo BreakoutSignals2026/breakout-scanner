@@ -269,3 +269,7 @@
 {"timestamp": "2026-11-03T18:58:22+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "c1309a11-ce24-4019-a604-7ec7a8d9d94b", "qty": 22}
 {"timestamp": "2026-11-03T20:08:41+00:00", "action": "closed", "symbol": "SNAP", "entry": 5.63, "exit": 5.57, "qty": 38.0, "side": "buy", "pnl": -2.28, "pnl_pct": -1.066, "reason": "trailing stop", "holding_seconds": 6875}
 {"timestamp": "2026-11-03T20:31:38+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.0, "exit": 22.09, "qty": 10.0, "side": "sell", "pnl": -0.9, "pnl_pct": -0.409, "reason": "trailing stop", "holding_seconds": 11795}
+{"timestamp": "2026-11-03T20:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "AAL", "id": "39d5486c-c68c-480b-a053-8c1c0e66454d"}
+{"timestamp": "2026-11-03T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "c1309a11-ce24-4019-a604-7ec7a8d9d94b"}
+{"timestamp": "2026-11-03T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "4a53cd47-cb45-491b-8204-35e24c75bda7"}
+{"timestamp": "2026-11-03T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "86da846a-03b1-4e37-9f1f-c1039b72da4e"}
