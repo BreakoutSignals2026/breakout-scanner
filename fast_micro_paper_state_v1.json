@@ -137,7 +137,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-04T20:20:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 21.35,
       "submitted": "2026-11-04T20:25:47+00:00",
       "symbol": "KGC",
