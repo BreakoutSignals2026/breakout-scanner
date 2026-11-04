@@ -47,6 +47,21 @@
       "symbol": "KEY",
       "tp": 21.61
     },
+    "MICRO1_KEY_202611041130": {
+      "client_id": "MICRO1_KEY_202611041130",
+      "entry_id": "24e8ba3e-a506-4335-96b6-2c0c9cfa0686",
+      "planned_risk": 0.989,
+      "qty": 7,
+      "reference_entry": 21.28,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-04T16:30:00+00:00",
+      "status": "pending",
+      "stop": 21.39,
+      "submitted": "2026-11-04T16:35:48+00:00",
+      "symbol": "KEY",
+      "tp": 21.0
+    },
     "MICRO1_KGC_202610301520": {
       "client_id": "MICRO1_KGC_202610301520",
       "entry_id": "4c2065f6-9d81-4e70-a2e7-f570893744f3",
