@@ -326,3 +326,12 @@
 {"timestamp": "2026-11-04T20:20:51+00:00", "action": "exit_accepted", "symbol": "F", "order_id": "21312990-939f-4a7d-8647-6adbb1857398", "qty": 18}
 {"timestamp": "2026-11-04T20:25:30+00:00", "action": "entry_submitted", "symbol": "SNAP", "order_id": "53cc8854-23e0-4017-9e46-7e8acda6cf0d", "requested_qty": 36, "reference": 6.02, "side": "buy", "estimated_risk": 2.96, "spread_percent": 0.166, "rel_volume": 2.6379298196166854, "breakout_percent": 0.8389261744966413, "bar_notional_usd": 449998.75, "quote_age_seconds": 5.715466, "chase_percent": 0.16638935108152725, "signal_age_seconds": 31}
 {"timestamp": "2026-11-04T20:25:36+00:00", "action": "exit_accepted", "symbol": "SNAP", "order_id": "bd2ce0bc-7817-4733-8d69-c85fd7a2eb0e", "qty": 36}
+{"timestamp": "2026-11-04T20:45:07+00:00", "action": "eod_stop_cancel_requested", "symbol": "AAL", "id": "adaf4e0f-59ec-46fe-affb-2f445154d92e"}
+{"timestamp": "2026-11-04T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "CCL", "id": "97a0765c-d825-40b7-b9fc-92993b1eb43a"}
+{"timestamp": "2026-11-04T20:45:10+00:00", "action": "eod_stop_cancel_requested", "symbol": "DKNG", "id": "4e4153f3-9814-4d3a-bca3-c960a67f5258"}
+{"timestamp": "2026-11-04T20:45:11+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "21312990-939f-4a7d-8647-6adbb1857398"}
+{"timestamp": "2026-11-04T20:45:12+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "f971ff90-5c2e-4900-8257-3555055ee33a"}
+{"timestamp": "2026-11-04T20:45:13+00:00", "action": "eod_stop_cancel_requested", "symbol": "NOK", "id": "c86cecd5-686a-4b9a-9696-2f198f280e85"}
+{"timestamp": "2026-11-04T20:45:14+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "dbefded3-f4a5-4f1d-acc7-f524e765f1b0"}
+{"timestamp": "2026-11-04T20:45:15+00:00", "action": "eod_stop_cancel_requested", "symbol": "SNAP", "id": "bd2ce0bc-7817-4733-8d69-c85fd7a2eb0e"}
+{"timestamp": "2026-11-04T20:45:16+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "b7d9b9a2-34c0-4575-8906-3e71818ee4e3"}
