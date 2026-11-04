@@ -1,0 +1,22 @@
+name: Cron Scheduler Connection Test (NO TRADING)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Confirm safe external trigger
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          echo "CRON_CONNECTION_TEST_OK"
+          echo "Event: $EVENT_NAME"
+          echo "Run: $RUN_ID"
+          echo "No trading scripts, broker credentials, or order operations are used."
