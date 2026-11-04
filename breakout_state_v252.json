@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-04",
-    "scans": 34,
+    "scans": 35,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 11,
-      "blocked_positions": 3,
+      "bez_potvrdeneho_breakoutu": 13,
+      "blocked_positions": 5,
       "exceptions": 3,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 145,
+      "nizky_relativny_objem": 151,
       "submitted": 3,
-      "symbols_checked": 337,
+      "symbols_checked": 345,
       "technical_signals": 3
     }
   },
@@ -30,26 +30,26 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
+      "blocked_positions": 2,
       "exceptions": 0,
       "nizky_relativny_objem": 6,
-      "scan_seconds": 83.0,
-      "submitted": 2,
-      "symbols_checked": 10,
-      "technical_signals": 2,
-      "time_ny": "2026-11-04T12:50:07-05:00"
+      "scan_seconds": 65.0,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-04T12:55:48-05:00"
     },
     "date": "2026-11-04",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "order_submitted",
+      "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
-      "META": "order_submitted",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "position_or_order_blocked",
       "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -168,7 +168,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-04T12:40:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 268.62,
       "submitted": "2026-11-04T17:49:51+00:00",
       "symbol": "AMZN",
@@ -351,7 +351,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-04T12:40:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 639.16,
       "submitted": "2026-11-04T17:49:42+00:00",
       "symbol": "META",
