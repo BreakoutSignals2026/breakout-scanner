@@ -152,7 +152,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-04T18:30:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 18.67,
       "submitted": "2026-11-04T18:35:47+00:00",
       "symbol": "LYFT",
