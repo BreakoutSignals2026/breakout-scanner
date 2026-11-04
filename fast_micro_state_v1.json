@@ -1,13 +1,14 @@
 {
   "daily": {
-    "attempts": 7,
-    "closed": 5,
-    "pnl_usd": 0.89
+    "attempts": 8,
+    "closed": 6,
+    "pnl_usd": 0.02
   },
   "date": "2026-11-04",
   "seen": [
     "AG:2026-11-04T17:30:00+00:00:buy",
     "AG:2026-11-04T18:20:00+00:00:sell",
+    "HPQ:2026-11-04T18:55:00+00:00:sell",
     "KEY:2026-11-04T16:30:00+00:00:sell",
     "LYFT:2026-11-04T18:30:00+00:00:buy",
     "NCLH:2026-11-04T16:00:00+00:00:buy",
@@ -31,7 +32,22 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-04T18:55:00+00:00",
+        "breakout_level": 30.24,
+        "breakout_percent": 0.24801587301587066,
+        "entry_close": 30.165,
+        "prior_avg_bar_notional_usd": 350446.0,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.033140016570001686,
+        "rel_volume": 2.4389811029807538,
+        "side": "sell",
+        "signal_bar_notional_usd": 842900.59,
+        "signal_bar_shares": 27943,
+        "signal_bar_trades": 260,
+        "symbol": "HPQ"
+      }
     },
     "KEY": {
       "phase": "closed"
@@ -40,26 +56,7 @@
       "phase": "watching"
     },
     "LYFT": {
-      "entry": 18.789387499999997,
-      "entry_bar": "2026-11-04T18:35:00+00:00",
-      "last_bar": "2026-11-04T18:35:00+00:00",
-      "phase": "open",
-      "qty": 8,
-      "signal": {
-        "bar_key": "2026-11-04T18:30:00+00:00",
-        "breakout_level": 18.74,
-        "breakout_percent": 0.21344717182498774,
-        "entry_close": 18.78,
-        "prior_avg_bar_notional_usd": 222806.08,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.053290700772704556,
-        "rel_volume": 1.9427248252870037,
-        "side": "buy",
-        "signal_bar_notional_usd": 435921.36,
-        "signal_bar_shares": 23212,
-        "signal_bar_trades": 155,
-        "symbol": "LYFT"
-      }
+      "phase": "closed"
     },
     "NCLH": {
       "phase": "closed"
@@ -70,7 +67,7 @@
     "T": {
       "entry": 21.804090000000002,
       "entry_bar": "2026-11-04T18:20:00+00:00",
-      "last_bar": "2026-11-04T18:35:00+00:00",
+      "last_bar": "2026-11-04T18:55:00+00:00",
       "phase": "open",
       "qty": 7,
       "signal": {
