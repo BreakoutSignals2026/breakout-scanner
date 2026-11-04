@@ -34,7 +34,11 @@
       "phase": "watching"
     },
     "NCLH": {
-      "phase": "pending",
+      "entry": 18.204095000000002,
+      "entry_bar": "2026-11-04T16:45:00+00:00",
+      "last_bar": "2026-11-04T16:45:00+00:00",
+      "phase": "open",
+      "qty": 8,
       "signal": {
         "bar_key": "2026-11-04T16:40:00+00:00",
         "breakout_level": 18.085,
