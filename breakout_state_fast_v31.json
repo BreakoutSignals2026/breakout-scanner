@@ -22,6 +22,7 @@
     "CCL": "2026-11-04T16:45:00+00:00",
     "CELH": "2026-11-04T16:55:00+00:00",
     "CHWY": "2026-11-04T15:55:00+00:00",
+    "CLF": "2026-11-04T17:40:00+00:00",
     "CLSK": "2026-10-22T19:15:00+00:00",
     "DKNG": "2026-11-02T20:00:00+00:00",
     "F": "2026-10-30T17:15:00+00:00",
@@ -133,6 +134,23 @@
       "status": "protected",
       "submitted_at": "2026-11-04T16:01:51+00:00",
       "symbol": "CHWY"
+    },
+    "CLF": {
+      "bar_key": "2026-11-04T17:40:00+00:00",
+      "entry_cid": "FAST31E_CLF_11041740000000",
+      "entry_fill_price": 13.04,
+      "entry_filled_at": "2026-11-04T17:48:11.548226427Z",
+      "entry_order_id": "758e7b00-d2e9-43e1-9bc4-7190d4893908",
+      "exit_cid": "FAST31X_CLF_11041740000000",
+      "exit_order_id": "ebbfd74d-8b5c-450a-a986-b2de2864154a",
+      "filled_qty": 18,
+      "reference_price": 13.04,
+      "requested_qty": 18,
+      "side": "sell",
+      "spread_at_entry": 0.01,
+      "status": "protected",
+      "submitted_at": "2026-11-04T17:48:08+00:00",
+      "symbol": "CLF"
     },
     "CLSK": {
       "bar_key": "2026-10-22T19:15:00+00:00",
