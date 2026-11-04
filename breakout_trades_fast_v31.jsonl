@@ -335,3 +335,12 @@
 {"timestamp": "2026-11-04T20:45:14+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "dbefded3-f4a5-4f1d-acc7-f524e765f1b0"}
 {"timestamp": "2026-11-04T20:45:15+00:00", "action": "eod_stop_cancel_requested", "symbol": "SNAP", "id": "bd2ce0bc-7817-4733-8d69-c85fd7a2eb0e"}
 {"timestamp": "2026-11-04T20:45:16+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "b7d9b9a2-34c0-4575-8906-3e71818ee4e3"}
+{"timestamp": "2026-11-04T20:45:50+00:00", "action": "eod_close_submitted", "symbol": "AAL", "qty": 12, "order_id": "c71aab2a-019b-4f0f-b58b-70e5ec6f7278"}
+{"timestamp": "2026-11-04T20:45:52+00:00", "action": "eod_close_submitted", "symbol": "CCL", "qty": 5, "order_id": "ac73afa6-1606-4bb6-a2e8-ea91d805ce62"}
+{"timestamp": "2026-11-04T20:45:53+00:00", "action": "eod_close_submitted", "symbol": "DKNG", "qty": 10, "order_id": "30c72d30-b0fd-4681-94bb-abbc508182da"}
+{"timestamp": "2026-11-04T20:45:55+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 18, "order_id": "e3cf513f-aad7-4e4a-8d8b-c64d45e92c39"}
+{"timestamp": "2026-11-04T20:45:57+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 8, "order_id": "9aa68131-1110-4db9-8c27-35e31897e8d7"}
+{"timestamp": "2026-11-04T20:45:58+00:00", "action": "eod_close_submitted", "symbol": "NOK", "qty": 6, "order_id": "b2a7f150-4b0c-4184-8b6a-a454314594f8"}
+{"timestamp": "2026-11-04T20:46:00+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 14, "order_id": "ef1d9eb7-8871-4feb-bebe-fb41ea4d2c1a"}
+{"timestamp": "2026-11-04T20:46:01+00:00", "action": "eod_close_submitted", "symbol": "SNAP", "qty": 36, "order_id": "7c6b5838-c74c-4bfe-ac14-8ef3f9f3028a"}
+{"timestamp": "2026-11-04T20:46:03+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 14, "order_id": "ce36b4b8-eb53-4b72-a4da-cbd67de3410b"}
