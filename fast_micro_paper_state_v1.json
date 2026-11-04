@@ -143,6 +143,21 @@
       "symbol": "NCLH",
       "tp": 18.45
     },
+    "MICRO1_UPST_202611041220": {
+      "client_id": "MICRO1_UPST_202611041220",
+      "entry_id": "ef5a1e8b-2203-48e7-8a81-fbf1c68db922",
+      "planned_risk": 0.981,
+      "qty": 6,
+      "reference_entry": 23.48,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-04T17:20:00+00:00",
+      "status": "pending",
+      "stop": 23.36,
+      "submitted": "2026-11-04T17:25:47+00:00",
+      "symbol": "UPST",
+      "tp": 23.78
+    },
     "MICRO1_XPEV_202611041120": {
       "client_id": "MICRO1_XPEV_202611041120",
       "entry_id": "ef2a42ee-d229-4e1b-9f4b-be99415d2c91",
