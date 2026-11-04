@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 6,
+    "attempts": 7,
     "closed": 5,
     "pnl_usd": 0.89
   },
@@ -9,6 +9,7 @@
     "AG:2026-11-04T17:30:00+00:00:buy",
     "AG:2026-11-04T18:20:00+00:00:sell",
     "KEY:2026-11-04T16:30:00+00:00:sell",
+    "LYFT:2026-11-04T18:30:00+00:00:buy",
     "NCLH:2026-11-04T16:00:00+00:00:buy",
     "NCLH:2026-11-04T16:40:00+00:00:buy",
     "NCLH:2026-11-04T16:50:00+00:00:buy",
@@ -39,7 +40,22 @@
       "phase": "watching"
     },
     "LYFT": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-04T18:30:00+00:00",
+        "breakout_level": 18.74,
+        "breakout_percent": 0.21344717182498774,
+        "entry_close": 18.78,
+        "prior_avg_bar_notional_usd": 222806.08,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.053290700772704556,
+        "rel_volume": 1.9427248252870037,
+        "side": "buy",
+        "signal_bar_notional_usd": 435921.36,
+        "signal_bar_shares": 23212,
+        "signal_bar_trades": 155,
+        "symbol": "LYFT"
+      }
     },
     "NCLH": {
       "phase": "closed"
@@ -50,7 +66,7 @@
     "T": {
       "entry": 21.804090000000002,
       "entry_bar": "2026-11-04T18:20:00+00:00",
-      "last_bar": "2026-11-04T18:25:00+00:00",
+      "last_bar": "2026-11-04T18:30:00+00:00",
       "phase": "open",
       "qty": 7,
       "signal": {
