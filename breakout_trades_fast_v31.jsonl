@@ -344,3 +344,12 @@
 {"timestamp": "2026-11-04T20:46:00+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 14, "order_id": "ef1d9eb7-8871-4feb-bebe-fb41ea4d2c1a"}
 {"timestamp": "2026-11-04T20:46:01+00:00", "action": "eod_close_submitted", "symbol": "SNAP", "qty": 36, "order_id": "7c6b5838-c74c-4bfe-ac14-8ef3f9f3028a"}
 {"timestamp": "2026-11-04T20:46:03+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 14, "order_id": "ce36b4b8-eb53-4b72-a4da-cbd67de3410b"}
+{"timestamp": "2026-11-04T20:46:37+00:00", "action": "closed", "symbol": "AAL", "entry": 13.59, "exit": 13.64, "qty": 12.0, "side": "sell", "pnl": -0.6, "pnl_pct": -0.368, "reason": "koniec seansy", "holding_seconds": 4294}
+{"timestamp": "2026-11-04T20:46:38+00:00", "action": "closed", "symbol": "CCL", "entry": 30.97, "exit": 31.192, "qty": 5.0, "side": "buy", "pnl": 1.11, "pnl_pct": 0.717, "reason": "koniec seansy", "holding_seconds": 13996}
+{"timestamp": "2026-11-04T20:46:39+00:00", "action": "closed", "symbol": "DKNG", "entry": 23.5, "exit": 23.29, "qty": 10.0, "side": "buy", "pnl": -2.1, "pnl_pct": -0.894, "reason": "koniec seansy", "holding_seconds": 3186}
+{"timestamp": "2026-11-04T20:46:40+00:00", "action": "closed", "symbol": "F", "entry": 12.63, "exit": 12.69, "qty": 18.0, "side": "sell", "pnl": -1.08, "pnl_pct": -0.475, "reason": "koniec seansy", "holding_seconds": 1510}
+{"timestamp": "2026-11-04T20:46:41+00:00", "action": "closed", "symbol": "GME", "entry": 24.92, "exit": 25.08, "qty": 8.0, "side": "sell", "pnl": -1.28, "pnl_pct": -0.642, "reason": "koniec seansy", "holding_seconds": 2072}
+{"timestamp": "2026-11-04T20:46:42+00:00", "action": "closed", "symbol": "NOK", "entry": 8.24, "exit": 8.22, "qty": 6.0, "side": "sell", "pnl": 0.12, "pnl_pct": 0.243, "reason": "koniec seansy", "holding_seconds": 7345}
+{"timestamp": "2026-11-04T20:46:43+00:00", "action": "closed", "symbol": "PATH", "entry": 13.6, "exit": 13.55, "qty": 14.0, "side": "buy", "pnl": -0.7, "pnl_pct": -0.368, "reason": "koniec seansy", "holding_seconds": 2910}
+{"timestamp": "2026-11-04T20:46:44+00:00", "action": "closed", "symbol": "SNAP", "entry": 6.02, "exit": 5.98, "qty": 36.0, "side": "buy", "pnl": -1.44, "pnl_pct": -0.664, "reason": "koniec seansy", "holding_seconds": 1232}
+{"timestamp": "2026-11-04T20:46:45+00:00", "action": "closed", "symbol": "VALE", "entry": 11.43, "exit": 11.47, "qty": 14.0, "side": "sell", "pnl": -0.56, "pnl_pct": -0.35, "reason": "koniec seansy", "holding_seconds": 7906}
