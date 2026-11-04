@@ -1,18 +1,11 @@
 {
   "daily": {
-    "attempts": 2,
-    "closed": 2,
-    "pnl_usd": 0.52
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-11-03",
-  "seen": [
-    "KEY:2026-11-03T18:15:00+00:00:buy",
-    "KGC:2026-11-03T16:40:00+00:00:sell",
-    "KGC:2026-11-03T17:45:00+00:00:sell",
-    "PFE:2026-11-03T19:55:00+00:00:sell",
-    "UPST:2026-11-03T18:45:00+00:00:sell",
-    "UPST:2026-11-03T19:50:00+00:00:sell"
-  ],
+  "date": "2026-11-04",
+  "seen": [],
   "symbols": {
     "AG": {
       "phase": "watching"
@@ -27,10 +20,10 @@
       "phase": "watching"
     },
     "KEY": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "KGC": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "LYFT": {
       "phase": "watching"
