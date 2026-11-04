@@ -475,11 +475,12 @@
       "exit_cid": "FAST31X_SOFI_11041755000000",
       "exit_order_id": "b1459893-4b8f-4ac9-9756-91e683648bf2",
       "filled_qty": 10,
+      "realized_pnl": -1.8,
       "reference_price": 17.57,
       "requested_qty": 13,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-04T18:02:02+00:00",
       "symbol": "SOFI"
     },
