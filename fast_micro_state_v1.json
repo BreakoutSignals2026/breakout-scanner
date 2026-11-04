@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 5,
-    "closed": 3,
-    "pnl_usd": 0.03
+    "closed": 4,
+    "pnl_usd": 1.69
   },
   "date": "2026-11-04",
   "seen": [
@@ -21,7 +21,7 @@
     "AG": {
       "entry": 15.302644999999998,
       "entry_bar": "2026-11-04T17:35:00+00:00",
-      "last_bar": "2026-11-04T18:00:00+00:00",
+      "last_bar": "2026-11-04T18:05:00+00:00",
       "phase": "open",
       "qty": 9,
       "signal": {
@@ -68,26 +68,7 @@
       "phase": "watching"
     },
     "UPST": {
-      "entry": 23.49674,
-      "entry_bar": "2026-11-04T17:25:00+00:00",
-      "last_bar": "2026-11-04T18:00:00+00:00",
-      "phase": "open",
-      "qty": 6,
-      "signal": {
-        "bar_key": "2026-11-04T17:20:00+00:00",
-        "breakout_level": 23.42,
-        "breakout_percent": 0.29888983774550265,
-        "entry_close": 23.49,
-        "prior_avg_bar_notional_usd": 128869.06,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.04261666311526959,
-        "rel_volume": 4.296261028700659,
-        "side": "buy",
-        "signal_bar_notional_usd": 565239.87,
-        "signal_bar_shares": 24063,
-        "signal_bar_trades": 201,
-        "symbol": "UPST"
-      }
+      "phase": "closed"
     },
     "XPEV": {
       "phase": "closed"
