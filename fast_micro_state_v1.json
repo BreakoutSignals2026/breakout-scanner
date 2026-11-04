@@ -1,12 +1,15 @@
 {
   "daily": {
-    "attempts": 0,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "attempts": 3,
+    "closed": 2,
+    "pnl_usd": -1.68
   },
   "date": "2026-11-04",
   "seen": [
-    "NCLH:2026-11-04T16:00:00+00:00:buy"
+    "KEY:2026-11-04T16:30:00+00:00:sell",
+    "NCLH:2026-11-04T16:00:00+00:00:buy",
+    "NCLH:2026-11-04T16:40:00+00:00:buy",
+    "XPEV:2026-11-04T16:20:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
@@ -22,7 +25,7 @@
       "phase": "watching"
     },
     "KEY": {
-      "phase": "watching"
+      "phase": "closed"
     },
     "KGC": {
       "phase": "watching"
@@ -31,7 +34,26 @@
       "phase": "watching"
     },
     "NCLH": {
-      "phase": "watching"
+      "entry": 18.204095000000002,
+      "entry_bar": "2026-11-04T16:45:00+00:00",
+      "last_bar": "2026-11-04T16:45:00+00:00",
+      "phase": "open",
+      "qty": 8,
+      "signal": {
+        "bar_key": "2026-11-04T16:40:00+00:00",
+        "breakout_level": 18.085,
+        "breakout_percent": 0.6082388719933615,
+        "entry_close": 18.195,
+        "prior_avg_bar_notional_usd": 276001.14,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.05492996429553179,
+        "rel_volume": 4.247808842441993,
+        "side": "buy",
+        "signal_bar_notional_usd": 1191936.26,
+        "signal_bar_shares": 65509,
+        "signal_bar_trades": 191,
+        "symbol": "NCLH"
+      }
     },
     "PFE": {
       "phase": "watching"
@@ -43,7 +65,7 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "watching"
+      "phase": "closed"
     }
   }
 }

@@ -13,13 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-04",
-    "scans": 17,
+    "scans": 24,
     "totals": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "malo_5min_sviecok": 170,
+      "exceptions": 2,
+      "malo_5min_sviecok": 175,
+      "nizky_relativny_objem": 62,
       "submitted": 0,
-      "symbols_checked": 170,
+      "symbols_checked": 240,
       "technical_signals": 0
     }
   },
@@ -29,25 +31,25 @@
     "counts": {
       "blocked_positions": 0,
       "exceptions": 0,
-      "malo_5min_sviecok": 10,
-      "scan_seconds": 81.5,
+      "nizky_relativny_objem": 10,
+      "scan_seconds": 80.7,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-04T11:09:45-05:00"
+      "time_ny": "2026-11-04T11:51:04-05:00"
     },
     "date": "2026-11-04",
     "symbols": {
-      "AAPL": "malo_5min_sviecok",
-      "AMD": "malo_5min_sviecok",
-      "AMZN": "malo_5min_sviecok",
-      "GOOGL": "malo_5min_sviecok",
-      "INTC": "malo_5min_sviecok",
-      "META": "malo_5min_sviecok",
-      "MRVL": "malo_5min_sviecok",
-      "MSFT": "malo_5min_sviecok",
-      "NVDA": "malo_5min_sviecok",
-      "TSLA": "malo_5min_sviecok"
+      "AAPL": "nizky_relativny_objem",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "nizky_relativny_objem",
+      "GOOGL": "nizky_relativny_objem",
+      "INTC": "nizky_relativny_objem",
+      "META": "nizky_relativny_objem",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "nizky_relativny_objem",
+      "NVDA": "nizky_relativny_objem",
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
