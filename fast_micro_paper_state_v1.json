@@ -112,6 +112,21 @@
       "submitted": "2026-10-30T16:55:48+00:00",
       "symbol": "LYFT",
       "tp": 15.71
+    },
+    "MICRO1_XPEV_202611041120": {
+      "client_id": "MICRO1_XPEV_202611041120",
+      "entry_id": "ef2a42ee-d229-4e1b-9f4b-be99415d2c91",
+      "planned_risk": 0.979,
+      "qty": 14,
+      "reference_entry": 9.9,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-04T16:20:00+00:00",
+      "status": "pending",
+      "stop": 9.95,
+      "submitted": "2026-11-04T16:25:48+00:00",
+      "symbol": "XPEV",
+      "tp": 9.77
     }
   },
   "version": "MICRO_PAPER_1"
