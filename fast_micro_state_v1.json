@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 4,
+    "attempts": 5,
     "closed": 3,
     "pnl_usd": 0.03
   },
   "date": "2026-11-04",
   "seen": [
+    "AG:2026-11-04T17:30:00+00:00:buy",
     "KEY:2026-11-04T16:30:00+00:00:sell",
     "NCLH:2026-11-04T16:00:00+00:00:buy",
     "NCLH:2026-11-04T16:40:00+00:00:buy",
@@ -16,7 +17,22 @@
   ],
   "symbols": {
     "AG": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-04T17:30:00+00:00",
+        "breakout_level": 15.26,
+        "breakout_percent": 0.19659239842725662,
+        "entry_close": 15.29,
+        "prior_avg_bar_notional_usd": 101480.87,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.06546644844517045,
+        "rel_volume": 1.5877973035333441,
+        "side": "buy",
+        "signal_bar_notional_usd": 162211.61,
+        "signal_bar_shares": 10609,
+        "signal_bar_trades": 45,
+        "symbol": "AG"
+      }
     },
     "CDE": {
       "phase": "watching"
@@ -48,7 +64,7 @@
     "UPST": {
       "entry": 23.49674,
       "entry_bar": "2026-11-04T17:25:00+00:00",
-      "last_bar": "2026-11-04T17:25:00+00:00",
+      "last_bar": "2026-11-04T17:30:00+00:00",
       "phase": "open",
       "qty": 6,
       "signal": {
