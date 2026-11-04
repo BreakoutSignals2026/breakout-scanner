@@ -1,12 +1,6 @@
 name: FAST MICRO V1.1 - shared Alpaca PAPER, exclusive symbols + virtual comparison
 
 on:
-  schedule:
-    # Native GitHub fallback; external dispatcher is the primary 09:20 NY trigger.
-    # 13:20 UTC is 09:20 NY in EDT; 14:20 UTC is 09:20 NY in EST.
-    # The other slot is a backup: concurrency prevents overlapping sessions.
-    - cron: "20 13 * * 1-5"
-    - cron: "20 14 * * 1-5"
   workflow_dispatch:
 
 permissions:
