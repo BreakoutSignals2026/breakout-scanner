@@ -2,10 +2,10 @@
   "cooldown": {
     "AAPL": "2026-11-03T14:55:00-05:00",
     "AMD": "2026-11-02T14:05:00-05:00",
-    "AMZN": "2026-11-03T13:05:00-05:00",
+    "AMZN": "2026-11-04T12:40:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
     "INTC": "2026-11-04T12:20:00-05:00",
-    "META": "2026-11-03T13:10:00-05:00",
+    "META": "2026-11-04T12:40:00-05:00",
     "MRVL": "2026-11-02T14:45:00-05:00",
     "MSFT": "2026-11-03T12:45:00-05:00",
     "NVDA": "2026-10-30T14:15:00-04:00",
@@ -13,43 +13,42 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-04",
-    "scans": 33,
+    "scans": 36,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 9,
-      "blocked_positions": 3,
+      "bez_potvrdeneho_breakoutu": 13,
+      "blocked_positions": 7,
       "exceptions": 3,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 139,
-      "submitted": 1,
-      "symbols_checked": 327,
-      "technical_signals": 1
+      "nizky_relativny_objem": 159,
+      "submitted": 3,
+      "symbols_checked": 353,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-03",
   "daily_start_notice": "2026-11-04",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 3,
-      "blocked_positions": 1,
+      "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 73.1,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 64.9,
       "submitted": 0,
-      "symbols_checked": 9,
+      "symbols_checked": 8,
       "technical_signals": 0,
-      "time_ny": "2026-11-04T12:44:10-05:00"
+      "time_ny": "2026-11-04T13:01:29-05:00"
     },
     "date": "2026-11-04",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "position_or_order_blocked",
-      "META": "nizky_relativny_objem",
+      "INTC": "nizky_relativny_objem",
+      "META": "position_or_order_blocked",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "MSFT": "nizky_relativny_objem",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -158,6 +157,21 @@
       "submitted": "2026-11-03T18:10:46+00:00",
       "symbol": "AMZN",
       "tp": 251.76
+    },
+    "B252_AMZN_202611041240": {
+      "client_id": "B252_AMZN_202611041240",
+      "entry_id": "f9f869dc-82e7-4990-aae5-1479174acfa2",
+      "planned_risk": 4.304,
+      "qty": 3,
+      "reference_entry": 269.63,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-04T12:40:00-05:00",
+      "status": "open",
+      "stop": 268.62,
+      "submitted": "2026-11-04T17:49:51+00:00",
+      "symbol": "AMZN",
+      "tp": 271.65
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
@@ -273,10 +287,10 @@
       "planned_risk": 4.547,
       "qty": 7,
       "reference_entry": 59.28,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-04T12:20:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 58.68,
       "submitted": "2026-11-04T17:25:35+00:00",
       "symbol": "INTC",
@@ -326,6 +340,21 @@
       "submitted": "2026-11-03T18:16:51+00:00",
       "symbol": "META",
       "tp": 627.68
+    },
+    "B252_META_202611041240": {
+      "client_id": "B252_META_202611041240",
+      "entry_id": "29313dc7-cf03-4559-b536-a5a4578cfe2b",
+      "planned_risk": 4.571,
+      "qty": 1,
+      "reference_entry": 641.76,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-04T12:40:00-05:00",
+      "status": "open",
+      "stop": 639.16,
+      "submitted": "2026-11-04T17:49:42+00:00",
+      "symbol": "META",
+      "tp": 646.96
     },
     "B252_MRVL_202610291435": {
       "client_id": "B252_MRVL_202610291435",
