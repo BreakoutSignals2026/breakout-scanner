@@ -1,17 +1,19 @@
 {
   "daily": {
-    "attempts": 5,
-    "closed": 3,
-    "pnl_usd": 0.03
+    "attempts": 6,
+    "closed": 5,
+    "pnl_usd": 0.89
   },
   "date": "2026-11-04",
   "seen": [
     "AG:2026-11-04T17:30:00+00:00:buy",
+    "AG:2026-11-04T18:20:00+00:00:sell",
     "KEY:2026-11-04T16:30:00+00:00:sell",
     "NCLH:2026-11-04T16:00:00+00:00:buy",
     "NCLH:2026-11-04T16:40:00+00:00:buy",
     "NCLH:2026-11-04T16:50:00+00:00:buy",
     "NCLH:2026-11-04T17:10:00+00:00:buy",
+    "T:2026-11-04T18:15:00+00:00:sell",
     "UPST:2026-11-04T17:20:00+00:00:buy",
     "UPST:2026-11-04T17:40:00+00:00:buy",
     "UPST:2026-11-04T17:45:00+00:00:buy",
@@ -19,26 +21,7 @@
   ],
   "symbols": {
     "AG": {
-      "entry": 15.302644999999998,
-      "entry_bar": "2026-11-04T17:35:00+00:00",
-      "last_bar": "2026-11-04T17:55:00+00:00",
-      "phase": "open",
-      "qty": 9,
-      "signal": {
-        "bar_key": "2026-11-04T17:30:00+00:00",
-        "breakout_level": 15.26,
-        "breakout_percent": 0.19659239842725662,
-        "entry_close": 15.29,
-        "prior_avg_bar_notional_usd": 101480.87,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.06546644844517045,
-        "rel_volume": 1.5877973035333441,
-        "side": "buy",
-        "signal_bar_notional_usd": 162211.61,
-        "signal_bar_shares": 10609,
-        "signal_bar_trades": 45,
-        "symbol": "AG"
-      }
+      "phase": "closed"
     },
     "CDE": {
       "phase": "watching"
@@ -65,29 +48,29 @@
       "phase": "watching"
     },
     "T": {
-      "phase": "watching"
+      "entry": 21.804090000000002,
+      "entry_bar": "2026-11-04T18:20:00+00:00",
+      "last_bar": "2026-11-04T18:20:00+00:00",
+      "phase": "open",
+      "qty": 7,
+      "signal": {
+        "bar_key": "2026-11-04T18:15:00+00:00",
+        "breakout_level": 21.88,
+        "breakout_percent": 0.2970749542961505,
+        "entry_close": 21.815,
+        "prior_avg_bar_notional_usd": 475672.29,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.045840018336014504,
+        "rel_volume": 1.8692140165700655,
+        "side": "sell",
+        "signal_bar_notional_usd": 884685.51,
+        "signal_bar_shares": 40554,
+        "signal_bar_trades": 139,
+        "symbol": "T"
+      }
     },
     "UPST": {
-      "entry": 23.49674,
-      "entry_bar": "2026-11-04T17:25:00+00:00",
-      "last_bar": "2026-11-04T17:55:00+00:00",
-      "phase": "open",
-      "qty": 6,
-      "signal": {
-        "bar_key": "2026-11-04T17:20:00+00:00",
-        "breakout_level": 23.42,
-        "breakout_percent": 0.29888983774550265,
-        "entry_close": 23.49,
-        "prior_avg_bar_notional_usd": 128869.06,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.04261666311526959,
-        "rel_volume": 4.296261028700659,
-        "side": "buy",
-        "signal_bar_notional_usd": 565239.87,
-        "signal_bar_shares": 24063,
-        "signal_bar_trades": 201,
-        "symbol": "UPST"
-      }
+      "phase": "closed"
     },
     "XPEV": {
       "phase": "closed"
