@@ -38,7 +38,11 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "pending",
+      "entry": 30.859560000000002,
+      "entry_bar": "2026-11-05T16:15:00+00:00",
+      "last_bar": "2026-11-05T16:15:00+00:00",
+      "phase": "open",
+      "qty": 5,
       "signal": {
         "bar_key": "2026-11-05T16:10:00+00:00",
         "breakout_level": 30.96,
