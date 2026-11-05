@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 3,
-    "closed": 1,
-    "pnl_usd": -0.85
+    "closed": 2,
+    "pnl_usd": -1.72
   },
   "date": "2026-11-05",
   "seen": [
@@ -30,22 +30,7 @@
       "phase": "watching"
     },
     "KGC": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-11-05T16:25:00+00:00",
-        "breakout_level": 21.53,
-        "breakout_percent": 0.18578727357175637,
-        "entry_close": 21.57,
-        "prior_avg_bar_notional_usd": 406763.19,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.046328468844111945,
-        "rel_volume": 1.5290743155149935,
-        "side": "buy",
-        "signal_bar_notional_usd": 632432.4,
-        "signal_bar_shares": 29320,
-        "signal_bar_trades": 157,
-        "symbol": "KGC"
-      }
+      "phase": "closed"
     },
     "LYFT": {
       "phase": "watching"
@@ -56,7 +41,7 @@
     "PFE": {
       "entry": 30.859560000000002,
       "entry_bar": "2026-11-05T16:15:00+00:00",
-      "last_bar": "2026-11-05T16:25:00+00:00",
+      "last_bar": "2026-11-05T16:30:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
