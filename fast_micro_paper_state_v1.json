@@ -214,7 +214,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-05T18:10:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 17.53,
       "submitted": "2026-11-05T18:15:47+00:00",
       "symbol": "NCLH",
