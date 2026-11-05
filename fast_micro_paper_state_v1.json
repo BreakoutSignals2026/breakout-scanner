@@ -47,6 +47,21 @@
       "symbol": "CDE",
       "tp": 13.23
     },
+    "MICRO1_HPQ_202611051350": {
+      "client_id": "MICRO1_HPQ_202611051350",
+      "entry_id": "35567a93-224c-4f9a-9f2b-97821e5d2ee5",
+      "planned_risk": 0.949,
+      "qty": 5,
+      "reference_entry": 29.73,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-05T18:50:00+00:00",
+      "status": "open",
+      "stop": 29.58,
+      "submitted": "2026-11-05T18:55:47+00:00",
+      "symbol": "HPQ",
+      "tp": 30.11
+    },
     "MICRO1_KEY_202611031315": {
       "client_id": "MICRO1_KEY_202611031315",
       "entry_id": "b671aea0-28be-419b-972b-b9a27afe8d6f",
@@ -204,6 +219,21 @@
       "submitted": "2026-11-04T16:45:49+00:00",
       "symbol": "NCLH",
       "tp": 18.45
+    },
+    "MICRO1_NCLH_202611051310": {
+      "client_id": "MICRO1_NCLH_202611051310",
+      "entry_id": "5a278c8c-de7c-4252-9ec1-10773a7b1821",
+      "planned_risk": 0.941,
+      "qty": 8,
+      "reference_entry": 17.62,
+      "result_logged": true,
+      "side": "BUY",
+      "signal_candle": "2026-11-05T18:10:00+00:00",
+      "status": "closed",
+      "stop": 17.53,
+      "submitted": "2026-11-05T18:15:47+00:00",
+      "symbol": "NCLH",
+      "tp": 17.85
     },
     "MICRO1_T_202611041315": {
       "client_id": "MICRO1_T_202611041315",
