@@ -47,6 +47,21 @@
       "symbol": "CDE",
       "tp": 13.23
     },
+    "MICRO1_HPQ_202611051350": {
+      "client_id": "MICRO1_HPQ_202611051350",
+      "entry_id": "35567a93-224c-4f9a-9f2b-97821e5d2ee5",
+      "planned_risk": 0.949,
+      "qty": 5,
+      "reference_entry": 29.73,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-05T18:50:00+00:00",
+      "status": "pending",
+      "stop": 29.58,
+      "submitted": "2026-11-05T18:55:47+00:00",
+      "symbol": "HPQ",
+      "tp": 30.11
+    },
     "MICRO1_KEY_202611031315": {
       "client_id": "MICRO1_KEY_202611031315",
       "entry_id": "b671aea0-28be-419b-972b-b9a27afe8d6f",
