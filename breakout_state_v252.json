@@ -4,7 +4,7 @@
     "AMD": "2026-11-02T14:05:00-05:00",
     "AMZN": "2026-11-04T12:40:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
-    "INTC": "2026-11-04T12:20:00-05:00",
+    "INTC": "2026-11-05T11:20:00-05:00",
     "META": "2026-11-04T12:40:00-05:00",
     "MRVL": "2026-11-02T14:45:00-05:00",
     "MSFT": "2026-11-03T12:45:00-05:00",
@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-05",
-    "scans": 19,
+    "scans": 20,
     "totals": {
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
       "exceptions": 1,
       "malo_5min_sviecok": 169,
-      "nizky_relativny_objem": 19,
-      "submitted": 0,
-      "symbols_checked": 190,
-      "technical_signals": 0
+      "nizky_relativny_objem": 28,
+      "submitted": 1,
+      "symbols_checked": 200,
+      "technical_signals": 1
     }
   },
   "daily_diagnostics_notice": "2026-11-04",
@@ -31,12 +31,12 @@
     "counts": {
       "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 10,
-      "scan_seconds": 80.6,
-      "submitted": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 81.5,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-05T11:22:11-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-05T11:28:05-05:00"
     },
     "date": "2026-11-05",
     "symbols": {
@@ -44,7 +44,7 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "order_submitted",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
@@ -295,6 +295,21 @@
       "submitted": "2026-11-04T17:25:35+00:00",
       "symbol": "INTC",
       "tp": 60.48
+    },
+    "B252_INTC_202611051120": {
+      "client_id": "B252_INTC_202611051120",
+      "entry_id": "aa68d5c4-47ea-483d-b818-abfb54ef9838",
+      "planned_risk": 4.861,
+      "qty": 8,
+      "reference_entry": 55.19,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-05T11:20:00-05:00",
+      "status": "pending",
+      "stop": 54.63,
+      "submitted": "2026-11-05T16:26:52+00:00",
+      "symbol": "INTC",
+      "tp": 56.31
     },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
