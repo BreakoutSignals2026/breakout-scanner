@@ -13,13 +13,13 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-05",
-    "scans": 1,
+    "scans": 2,
     "totals": {
       "blocked_positions": 0,
       "exceptions": 1,
-      "malo_5min_sviecok": 9,
+      "malo_5min_sviecok": 19,
       "submitted": 0,
-      "symbols_checked": 10,
+      "symbols_checked": 20,
       "technical_signals": 0
     }
   },
@@ -28,13 +28,13 @@
   "last_scan_diagnostics": {
     "counts": {
       "blocked_positions": 0,
-      "exceptions": 1,
-      "malo_5min_sviecok": 9,
-      "scan_seconds": 81.0,
+      "exceptions": 0,
+      "malo_5min_sviecok": 10,
+      "scan_seconds": 80.7,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-05T09:35:14-05:00"
+      "time_ny": "2026-11-05T09:41:07-05:00"
     },
     "date": "2026-11-05",
     "symbols": {
@@ -45,7 +45,7 @@
       "INTC": "malo_5min_sviecok",
       "META": "malo_5min_sviecok",
       "MRVL": "malo_5min_sviecok",
-      "MSFT": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+      "MSFT": "malo_5min_sviecok",
       "NVDA": "malo_5min_sviecok",
       "TSLA": "malo_5min_sviecok"
     }
