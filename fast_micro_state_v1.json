@@ -1,36 +1,21 @@
 {
   "daily": {
-    "attempts": 8,
-    "closed": 8,
-    "pnl_usd": -0.73
+    "attempts": 3,
+    "closed": 1,
+    "pnl_usd": -0.85
   },
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "seen": [
-    "AG:2026-11-04T17:30:00+00:00:buy",
-    "AG:2026-11-04T18:20:00+00:00:sell",
-    "HPQ:2026-11-04T18:55:00+00:00:sell",
-    "KEY:2026-11-04T16:30:00+00:00:sell",
-    "KGC:2026-11-04T20:20:00+00:00:buy",
-    "LYFT:2026-11-04T18:30:00+00:00:buy",
-    "LYFT:2026-11-04T19:50:00+00:00:sell",
-    "NCLH:2026-11-04T16:00:00+00:00:buy",
-    "NCLH:2026-11-04T16:40:00+00:00:buy",
-    "NCLH:2026-11-04T16:50:00+00:00:buy",
-    "NCLH:2026-11-04T17:10:00+00:00:buy",
-    "NCLH:2026-11-04T19:55:00+00:00:buy",
-    "PFE:2026-11-04T19:15:00+00:00:sell",
-    "T:2026-11-04T18:15:00+00:00:sell",
-    "UPST:2026-11-04T17:20:00+00:00:buy",
-    "UPST:2026-11-04T17:40:00+00:00:buy",
-    "UPST:2026-11-04T17:45:00+00:00:buy",
-    "UPST:2026-11-04T20:00:00+00:00:sell",
-    "UPST:2026-11-04T20:10:00+00:00:sell",
-    "XPEV:2026-11-04T16:20:00+00:00:sell",
-    "XPEV:2026-11-04T20:05:00+00:00:sell"
+    "AG:2026-11-05T15:50:00+00:00:sell",
+    "KEY:2026-11-05T15:50:00+00:00:sell",
+    "KGC:2026-11-05T16:25:00+00:00:buy",
+    "PFE:2026-11-05T16:10:00+00:00:sell",
+    "XPEV:2026-11-05T15:50:00+00:00:sell",
+    "XPEV:2026-11-05T16:00:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CDE": {
       "phase": "watching"
@@ -39,28 +24,62 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "KEY": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "KGC": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-05T16:25:00+00:00",
+        "breakout_level": 21.53,
+        "breakout_percent": 0.18578727357175637,
+        "entry_close": 21.57,
+        "prior_avg_bar_notional_usd": 406763.19,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.046328468844111945,
+        "rel_volume": 1.5290743155149935,
+        "side": "buy",
+        "signal_bar_notional_usd": 632432.4,
+        "signal_bar_shares": 29320,
+        "signal_bar_trades": 157,
+        "symbol": "KGC"
+      }
     },
     "LYFT": {
-      "phase": "closed"
-    },
-    "NCLH": {
-      "phase": "closed"
-    },
-    "PFE": {
       "phase": "watching"
     },
+    "NCLH": {
+      "phase": "watching"
+    },
+    "PFE": {
+      "entry": 30.859560000000002,
+      "entry_bar": "2026-11-05T16:15:00+00:00",
+      "last_bar": "2026-11-05T16:25:00+00:00",
+      "phase": "open",
+      "qty": 5,
+      "signal": {
+        "bar_key": "2026-11-05T16:10:00+00:00",
+        "breakout_level": 30.96,
+        "breakout_percent": 0.25839793281654344,
+        "entry_close": 30.88,
+        "prior_avg_bar_notional_usd": 1428719.9,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.032409658078100825,
+        "rel_volume": 2.0281668619161612,
+        "side": "sell",
+        "signal_bar_notional_usd": 2869091.68,
+        "signal_bar_shares": 92911,
+        "signal_bar_trades": 253,
+        "symbol": "PFE"
+      }
+    },
     "T": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "UPST": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "XPEV": {
       "phase": "closed"

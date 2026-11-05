@@ -145,6 +145,21 @@
       "symbol": "KGC",
       "tp": 21.74
     },
+    "MICRO1_KGC_202611051125": {
+      "client_id": "MICRO1_KGC_202611051125",
+      "entry_id": "b09ebdca-caee-46d7-bd38-2c2594f21900",
+      "planned_risk": 0.991,
+      "qty": 7,
+      "reference_entry": 21.61,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-05T16:25:00+00:00",
+      "status": "pending",
+      "stop": 21.5,
+      "submitted": "2026-11-05T16:30:49+00:00",
+      "symbol": "KGC",
+      "tp": 21.89
+    },
     "MICRO1_LYFT_202610301250": {
       "client_id": "MICRO1_LYFT_202610301250",
       "entry_id": "d47edc4c-15c8-48a7-8256-d466315ab383",
@@ -236,6 +251,21 @@
       "submitted": "2026-11-04T16:25:48+00:00",
       "symbol": "XPEV",
       "tp": 9.77
+    },
+    "MICRO1_XPEV_202611051050": {
+      "client_id": "MICRO1_XPEV_202611051050",
+      "entry_id": "b783eb7d-6512-42fb-ace9-1b463db39888",
+      "planned_risk": 0.972,
+      "qty": 14,
+      "reference_entry": 9.41,
+      "result_logged": true,
+      "side": "SELL",
+      "signal_candle": "2026-11-05T15:50:00+00:00",
+      "status": "closed",
+      "stop": 9.46,
+      "submitted": "2026-11-05T15:55:48+00:00",
+      "symbol": "XPEV",
+      "tp": 9.28
     }
   },
   "version": "MICRO_PAPER_1"
