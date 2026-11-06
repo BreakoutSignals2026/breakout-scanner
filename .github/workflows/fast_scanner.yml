@@ -62,8 +62,21 @@ jobs:
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
               git commit -m "Update FAST V3.3.1 state"
-              git pull --no-rebase -X ours origin main
-              git push origin main
+              # Other scanners also commit to main. Retry if their push wins the race.
+              PUSH_OK=false
+              for ATTEMPT in 1 2 3 4 5; do
+                git pull --no-rebase -X ours origin main
+                if git push origin main; then
+                  PUSH_OK=true
+                  break
+                fi
+                echo "::warning::FAST state push conflict (attempt $ATTEMPT/5); retrying."
+                sleep 3
+              done
+              if [ "$PUSH_OK" != "true" ]; then
+                echo "::error::FAST state could not be saved after 5 attempts."
+                exit 1
+              fi
             fi
             CLOSE_EPOCH=$(python scanner_fast.py --close-epoch)
             if [ "$CLOSE_EPOCH" -eq 0 ]; then
@@ -129,8 +142,21 @@ jobs:
             git add breakout_state_fast_v31.json breakout_trades_fast_v31.jsonl 2>/dev/null || true
             if ! git diff --cached --quiet; then
               git commit -m "Update FAST V3.3.1 state"
-              git pull --no-rebase -X ours origin main
-              git push origin main
+              # Other scanners also commit to main. Retry if their push wins the race.
+              PUSH_OK=false
+              for ATTEMPT in 1 2 3 4 5; do
+                git pull --no-rebase -X ours origin main
+                if git push origin main; then
+                  PUSH_OK=true
+                  break
+                fi
+                echo "::warning::FAST state push conflict (attempt $ATTEMPT/5); retrying."
+                sleep 3
+              done
+              if [ "$PUSH_OK" != "true" ]; then
+                echo "::error::FAST state could not be saved after 5 attempts."
+                exit 1
+              fi
             fi
             # Sleep at most 270 seconds, but wake exactly at the real
             # (possibly shortened) session close-minus-15-min threshold.
