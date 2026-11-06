@@ -4,7 +4,7 @@
     "AMD": "2026-11-02T14:05:00-05:00",
     "AMZN": "2026-11-04T12:40:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
-    "INTC": "2026-11-05T11:20:00-05:00",
+    "INTC": "2026-11-06T13:50:00-05:00",
     "META": "2026-11-04T12:40:00-05:00",
     "MRVL": "2026-11-02T14:45:00-05:00",
     "MSFT": "2026-11-03T12:45:00-05:00",
@@ -13,39 +13,38 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-06",
-    "scans": 45,
+    "scans": 47,
     "totals": {
       "bez_potvrdeneho_breakoutu": 31,
-      "blocked_positions": 10,
+      "blocked_positions": 11,
       "exceptions": 1,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 234,
-      "submitted": 1,
-      "symbols_checked": 440,
-      "technical_signals": 2
+      "nizky_relativny_objem": 252,
+      "submitted": 2,
+      "symbols_checked": 459,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-05",
   "daily_start_notice": "2026-11-06",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 81.2,
+      "blocked_positions": 1,
+      "exceptions": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 72.9,
       "submitted": 0,
-      "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-06T13:54:23-05:00"
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-06T14:06:06-05:00"
     },
     "date": "2026-11-06",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "INTC: cena mimo signálu (0.644%)",
+      "INTC": "position_or_order_blocked",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
@@ -326,6 +325,21 @@
       "submitted": "2026-11-05T16:26:52+00:00",
       "symbol": "INTC",
       "tp": 56.31
+    },
+    "B252_INTC_202611061350": {
+      "client_id": "B252_INTC_202611061350",
+      "entry_id": "6f61cd66-b772-4314-a1d3-dd879b286ba1",
+      "planned_risk": 4.948,
+      "qty": 8,
+      "reference_entry": 57.02,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-06T13:50:00-05:00",
+      "status": "open",
+      "stop": 56.45,
+      "submitted": "2026-11-06T18:59:06+00:00",
+      "symbol": "INTC",
+      "tp": 58.16
     },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
