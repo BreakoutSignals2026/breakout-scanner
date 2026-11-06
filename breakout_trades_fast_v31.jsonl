@@ -377,3 +377,6 @@
 {"timestamp": "2026-11-06T17:02:44+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "5d09d00e-c905-4ad3-b37a-2beb25803617", "qty": 22}
 {"timestamp": "2026-11-06T17:07:16+00:00", "action": "closed", "symbol": "CELH", "entry": 31.884, "exit": 32.07, "qty": 5.0, "side": "buy", "pnl": 0.93, "pnl_pct": 0.583, "reason": "trailing stop", "holding_seconds": 2673}
 {"timestamp": "2026-11-06T17:34:36+00:00", "action": "closed", "symbol": "RGTI", "entry": 11.33, "exit": 11.4965, "qty": 20.0, "side": "buy", "pnl": 3.33, "pnl_pct": 1.47, "reason": "trailing stop", "holding_seconds": 2215}
+{"timestamp": "2026-11-06T17:39:11+00:00", "action": "closed", "symbol": "CLF", "entry": 11.88, "exit": 11.808462, "qty": 13.0, "side": "buy", "pnl": -0.93, "pnl_pct": -0.602, "reason": "trailing stop", "holding_seconds": 3519}
+{"timestamp": "2026-11-06T17:39:11+00:00", "action": "closed", "symbol": "NOK", "entry": 7.72, "exit": 7.659999999999999, "qty": 5.0, "side": "buy", "pnl": -0.3, "pnl_pct": -0.777, "reason": "trailing stop", "holding_seconds": 4106}
+{"timestamp": "2026-11-06T17:39:12+00:00", "action": "closed", "symbol": "QBTS", "entry": 10.31, "exit": 10.45, "qty": 22.0, "side": "buy", "pnl": 3.08, "pnl_pct": 1.358, "reason": "trailing stop", "holding_seconds": 1980}
