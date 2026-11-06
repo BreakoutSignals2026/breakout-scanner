@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-06",
-    "scans": 55,
+    "scans": 56,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 35,
-      "blocked_positions": 19,
+      "bez_potvrdeneho_breakoutu": 39,
+      "blocked_positions": 21,
       "exceptions": 1,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 319,
+      "nizky_relativny_objem": 323,
       "submitted": 3,
-      "symbols_checked": 531,
+      "symbols_checked": 539,
       "technical_signals": 4
     }
   },
@@ -29,27 +29,28 @@
   "daily_start_notice": "2026-11-06",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 1,
+      "bez_potvrdeneho_breakoutu": 4,
+      "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 74.2,
-      "submitted": 1,
-      "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-11-06T14:52:20-05:00"
+      "nizky_relativny_objem": 4,
+      "scan_seconds": 64.9,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-06T14:58:00-05:00"
     },
     "date": "2026-11-06",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
+      "AMZN": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
       "INTC": "position_or_order_blocked",
-      "META": "order_submitted",
+      "META": "position_or_order_blocked",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -410,7 +411,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-06T14:45:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 615.71,
       "submitted": "2026-11-06T19:51:56+00:00",
       "symbol": "META",
