@@ -404,3 +404,6 @@
 {"timestamp": "2026-11-06T20:24:03+00:00", "action": "entry_submitted", "symbol": "DKNG", "order_id": "b462300a-3b27-4229-ab93-6689627d075d", "requested_qty": 12, "reference": 18.68, "side": "buy", "estimated_risk": 2.81, "spread_percent": 0.054, "rel_volume": 2.473519494129305, "breakout_percent": 0.32180209171358926, "bar_notional_usd": 1081672.74, "quote_age_seconds": 0.163263, "chase_percent": 0.13365410318096008, "signal_age_seconds": 243}
 {"timestamp": "2026-11-06T20:24:06+00:00", "action": "exit_accepted", "symbol": "DKNG", "order_id": "8ff5d5ce-d1e2-4526-b111-27814d6a04ea", "qty": 12}
 {"timestamp": "2026-11-06T20:37:43+00:00", "action": "closed", "symbol": "DKNG", "entry": 18.68, "exit": 18.58, "qty": 12.0, "side": "buy", "pnl": -1.2, "pnl_pct": -0.535, "reason": "trailing stop", "holding_seconds": 751}
+{"timestamp": "2026-11-06T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "4266c270-2c88-4d96-a5e4-ed8f5a37f79d"}
+{"timestamp": "2026-11-06T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "a2b56160-ccff-4297-b593-6bbcaee3b3e9"}
+{"timestamp": "2026-11-06T20:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "dcf3ed8a-c1b9-406e-af1d-480eb0326f7a"}
