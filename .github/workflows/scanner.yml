@@ -72,9 +72,19 @@ jobs:
                   echo "::error::BREAKOUT state rebase failed; preserve local changes and fail closed."
                   exit 1
                 fi
-                if git push origin HEAD:main; then pushed=1; break; fi
-                echo "::warning::Classic state push conflict (attempt $attempt); retrying"
-                sleep $((attempt * 2))
+                if push_output=$(git push origin HEAD:main 2>&1); then
+                  echo "$push_output"
+                  pushed=1
+                  break
+                fi
+                echo "$push_output"
+                if [[ "$push_output" == *"commit_refs_rules"* ]]; then
+                  echo "::warning::GitHub commit_refs_rules error (attempt $attempt/8); waiting 20s before retry."
+                  sleep 20
+                else
+                  echo "::warning::Classic state push conflict (attempt $attempt/8); retrying."
+                  sleep $((attempt * 2))
+                fi
               done
               if [ "$pushed" -ne 1 ]; then
                 echo "::error::BREAKOUT state failed 8 pushes; abort rather than discard a trade."
@@ -146,9 +156,19 @@ jobs:
                   echo "::error::BREAKOUT EOD state rebase failed; preserve state for manual recovery."
                   exit 1
                 fi
-                if git push origin HEAD:main; then pushed=1; break; fi
-                echo "::warning::Classic EOD push conflict (attempt $attempt); retrying"
-                sleep $((attempt * 2))
+                if push_output=$(git push origin HEAD:main 2>&1); then
+                  echo "$push_output"
+                  pushed=1
+                  break
+                fi
+                echo "$push_output"
+                if [[ "$push_output" == *"commit_refs_rules"* ]]; then
+                  echo "::warning::GitHub commit_refs_rules error (attempt $attempt/8); waiting 20s before retry."
+                  sleep 20
+                else
+                  echo "::warning::Classic EOD push conflict (attempt $attempt/8); retrying."
+                  sleep $((attempt * 2))
+                fi
               done
               if [ "$pushed" -ne 1 ]; then
                 echo "::error::BREAKOUT EOD state failed 8 pushes; abort rather than discard a trade."
