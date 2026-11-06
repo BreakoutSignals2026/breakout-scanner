@@ -56,7 +56,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-06T17:35:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 15.58,
       "submitted": "2026-11-06T17:40:49+00:00",
       "symbol": "HBAN",
