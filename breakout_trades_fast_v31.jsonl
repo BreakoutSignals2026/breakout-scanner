@@ -375,3 +375,4 @@
 {"timestamp": "2026-11-06T16:57:09+00:00", "action": "exit_accepted", "symbol": "RGTI", "order_id": "5d9c390b-b105-4553-af83-5a206fc13b1c", "qty": 20}
 {"timestamp": "2026-11-06T17:02:40+00:00", "action": "entry_submitted", "symbol": "QBTS", "order_id": "f953c9dd-25f4-415a-a2e0-a310e97a34b9", "requested_qty": 22, "reference": 10.3, "side": "buy", "estimated_risk": 2.94, "spread_percent": 0.097, "rel_volume": 1.5668167921364937, "breakout_percent": 0.2431906614786027, "bar_notional_usd": 163715.54, "quote_age_seconds": 0.042484, "chase_percent": 0.048520135856370744, "signal_age_seconds": 160}
 {"timestamp": "2026-11-06T17:02:44+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "5d09d00e-c905-4ad3-b37a-2beb25803617", "qty": 22}
+{"timestamp": "2026-11-06T17:07:16+00:00", "action": "closed", "symbol": "CELH", "entry": 31.884, "exit": 32.07, "qty": 5.0, "side": "buy", "pnl": 0.93, "pnl_pct": 0.583, "reason": "trailing stop", "holding_seconds": 2673}
