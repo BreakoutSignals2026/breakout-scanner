@@ -430,11 +430,12 @@
       "exit_cid": "FAST31X_RGTI_11061650000000",
       "exit_order_id": "5d9c390b-b105-4553-af83-5a206fc13b1c",
       "filled_qty": 20,
+      "realized_pnl": 3.33,
       "reference_price": 11.33,
       "requested_qty": 20,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-06T16:57:03+00:00",
       "symbol": "RGTI"
     },
