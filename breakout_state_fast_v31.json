@@ -187,11 +187,12 @@
       "exit_cid": "FAST31X_DKNG_11062015000000",
       "exit_order_id": "8ff5d5ce-d1e2-4526-b111-27814d6a04ea",
       "filled_qty": 12,
+      "realized_pnl": -1.2,
       "reference_price": 18.68,
       "requested_qty": 12,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-06T20:24:03+00:00",
       "symbol": "DKNG"
     },
