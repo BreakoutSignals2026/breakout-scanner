@@ -400,3 +400,4 @@
 {"timestamp": "2026-11-06T20:05:40+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "dcf3ed8a-c1b9-406e-af1d-480eb0326f7a", "qty": 18}
 {"timestamp": "2026-11-06T20:10:16+00:00", "action": "entry_submitted", "symbol": "LUNR", "order_id": "5715d0a3-e54e-4b18-8d3d-2afd4427043b", "requested_qty": 21, "reference": 10.66, "side": "buy", "estimated_risk": 2.9, "spread_percent": 0.094, "rel_volume": 1.9876611794976753, "breakout_percent": 0.5191127890514367, "bar_notional_usd": 60332.25, "quote_age_seconds": 0.61783, "chase_percent": 0.09389671361502147, "signal_age_seconds": 17}
 {"timestamp": "2026-11-06T20:10:21+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "eb572fea-6c98-4691-9cac-d50888a8d7a0", "qty": 21}
+{"timestamp": "2026-11-06T20:19:26+00:00", "action": "closed", "symbol": "LUNR", "entry": 10.66, "exit": 10.54, "qty": 21.0, "side": "buy", "pnl": -2.52, "pnl_pct": -1.126, "reason": "trailing stop", "holding_seconds": 446}
