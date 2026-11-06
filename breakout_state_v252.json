@@ -13,38 +13,39 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-06",
-    "scans": 44,
+    "scans": 45,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 30,
+      "bez_potvrdeneho_breakoutu": 31,
       "blocked_positions": 10,
-      "exceptions": 0,
+      "exceptions": 1,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 226,
+      "nizky_relativny_objem": 234,
       "submitted": 1,
-      "symbols_checked": 430,
-      "technical_signals": 1
+      "symbols_checked": 440,
+      "technical_signals": 2
     }
   },
   "daily_diagnostics_notice": "2026-11-05",
   "daily_start_notice": "2026-11-06",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 10,
-      "scan_seconds": 81.3,
+      "exceptions": 1,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.2,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-06T13:48:28-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-06T13:54:23-05:00"
     },
     "date": "2026-11-06",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "INTC: cena mimo signálu (0.644%)",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
