@@ -366,3 +366,4 @@
 {"timestamp": "2026-11-06T15:56:55+00:00", "action": "exit_accepted", "symbol": "RIVN", "order_id": "f8e425e3-c58d-4317-82f2-433e88c78b4d", "qty": 8}
 {"timestamp": "2026-11-06T16:19:51+00:00", "action": "entry_submitted", "symbol": "CELH", "order_id": "d1c4c0b6-6005-4b74-b5ff-7d86fd494c10", "requested_qty": 6, "reference": 31.9, "side": "buy", "estimated_risk": 2.72, "spread_percent": 0.22, "rel_volume": 1.8630341084446336, "breakout_percent": 0.2993540255238659, "bar_notional_usd": 278607.99, "quote_age_seconds": 0.921975, "chase_percent": 0.21991831605403794, "signal_age_seconds": 291}
 {"timestamp": "2026-11-06T16:19:58+00:00", "action": "exit_accepted", "symbol": "CELH", "order_id": "fb91cf90-93cc-4a71-ad6a-b5a24f2b13ba", "qty": 5}
+{"timestamp": "2026-11-06T16:24:33+00:00", "action": "closed", "symbol": "RIVN", "entry": 13.49, "exit": 13.38, "qty": 8.0, "side": "buy", "pnl": -0.88, "pnl_pct": -0.815, "reason": "trailing stop", "holding_seconds": 1421}
