@@ -447,3 +447,8 @@
 {"timestamp": "2026-11-09T20:23:55+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "4209c901-502e-4645-8a3c-6b3aedacf74b", "qty": 37}
 {"timestamp": "2026-11-09T20:33:06+00:00", "action": "closed", "symbol": "PTON", "entry": 5.88, "exit": 5.97, "qty": 37.0, "side": "sell", "pnl": -3.33, "pnl_pct": -1.531, "reason": "trailing stop", "holding_seconds": 371}
 {"timestamp": "2026-11-09T20:37:41+00:00", "action": "closed", "symbol": "AAL", "entry": 14.26, "exit": 14.17, "qty": 14.0, "side": "buy", "pnl": -1.26, "pnl_pct": -0.631, "reason": "trailing stop", "holding_seconds": 3315}
+{"timestamp": "2026-11-09T20:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "CELH", "id": "5c5d4bff-c650-4e8a-b3d6-7ece44c8aa4c"}
+{"timestamp": "2026-11-09T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "95408db8-c4cd-44f3-951a-e850edbce017"}
+{"timestamp": "2026-11-09T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "621719cd-acc6-4887-8944-85493f796de0"}
+{"timestamp": "2026-11-09T20:45:07+00:00", "action": "eod_stop_cancel_requested", "symbol": "RIVN", "id": "7b7ba36e-1b82-4e52-975f-cc36e09be768"}
+{"timestamp": "2026-11-09T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "8dba6520-9d74-44fe-83f0-da1e7139f393"}
