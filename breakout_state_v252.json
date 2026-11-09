@@ -2,27 +2,27 @@
   "cooldown": {
     "AAPL": "2026-11-09T14:00:00-05:00",
     "AMD": "2026-11-09T13:45:00-05:00",
-    "AMZN": "2026-11-04T12:40:00-05:00",
+    "AMZN": "2026-11-09T14:35:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
-    "INTC": "2026-11-06T13:50:00-05:00",
-    "META": "2026-11-06T14:45:00-05:00",
+    "INTC": "2026-11-09T14:35:00-05:00",
+    "META": "2026-11-09T14:35:00-05:00",
     "MRVL": "2026-11-02T14:45:00-05:00",
-    "MSFT": "2026-11-03T12:45:00-05:00",
+    "MSFT": "2026-11-09T14:35:00-05:00",
     "NVDA": "2026-11-06T12:35:00-05:00",
-    "TSLA": "2026-10-30T13:55:00-04:00"
+    "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
     "date": "2026-11-09",
-    "scans": 52,
+    "scans": 53,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 34,
+      "bez_potvrdeneho_breakoutu": 38,
       "blocked_positions": 8,
       "exceptions": 0,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 303,
-      "submitted": 2,
-      "symbols_checked": 512,
-      "technical_signals": 2
+      "nizky_relativny_objem": 304,
+      "submitted": 7,
+      "symbols_checked": 522,
+      "technical_signals": 7
     }
   },
   "daily_diagnostics_notice": "2026-11-06",
@@ -30,27 +30,27 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 4,
-      "blocked_positions": 1,
+      "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 5,
-      "scan_seconds": 72.8,
-      "submitted": 0,
-      "symbols_checked": 9,
-      "technical_signals": 0,
-      "time_ny": "2026-11-09T14:35:35-05:00"
+      "nizky_relativny_objem": 1,
+      "scan_seconds": 82.9,
+      "submitted": 5,
+      "symbols_checked": 10,
+      "technical_signals": 5,
+      "time_ny": "2026-11-09T14:41:30-05:00"
     },
     "date": "2026-11-09",
     "symbols": {
-      "AAPL": "position_or_order_blocked",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMZN": "order_submitted",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "INTC": "order_submitted",
+      "META": "order_submitted",
+      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MSFT": "order_submitted",
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "order_submitted"
     }
   },
   "trades": {
@@ -120,10 +120,10 @@
       "planned_risk": 4.423,
       "qty": 4,
       "reference_entry": 351.62,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-09T14:00:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 351.06,
       "submitted": "2026-11-09T19:06:16+00:00",
       "symbol": "AAPL",
@@ -218,6 +218,21 @@
       "submitted": "2026-11-04T17:49:51+00:00",
       "symbol": "AMZN",
       "tp": 271.65
+    },
+    "B252_AMZN_202611091435": {
+      "client_id": "B252_AMZN_202611091435",
+      "entry_id": "3d804a28-c386-44b6-b2bf-fa8bf907b723",
+      "planned_risk": 4.272,
+      "qty": 5,
+      "reference_entry": 268.96,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-09T14:35:00-05:00",
+      "status": "pending",
+      "stop": 268.4,
+      "submitted": "2026-11-09T19:41:14+00:00",
+      "symbol": "AMZN",
+      "tp": 270.08
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
@@ -372,6 +387,21 @@
       "symbol": "INTC",
       "tp": 58.16
     },
+    "B252_INTC_202611091435": {
+      "client_id": "B252_INTC_202611091435",
+      "entry_id": "9d5dceb4-a490-458c-9fd9-78fc6da010bf",
+      "planned_risk": 4.941,
+      "qty": 15,
+      "reference_entry": 58.78,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-09T14:35:00-05:00",
+      "status": "pending",
+      "stop": 58.5,
+      "submitted": "2026-11-09T19:40:16+00:00",
+      "symbol": "INTC",
+      "tp": 59.34
+    },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
       "entry_id": "9c57a021-0871-4507-8598-8af511a77e8e",
@@ -447,6 +477,21 @@
       "symbol": "META",
       "tp": 612.11
     },
+    "B252_META_202611091435": {
+      "client_id": "B252_META_202611091435",
+      "entry_id": "51a24c7e-6926-4037-82bc-0d2e18e4729c",
+      "planned_risk": 2.573,
+      "qty": 1,
+      "reference_entry": 645.4,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-09T14:35:00-05:00",
+      "status": "pending",
+      "stop": 644.07,
+      "submitted": "2026-11-09T19:41:05+00:00",
+      "symbol": "META",
+      "tp": 648.06
+    },
     "B252_MRVL_202610291435": {
       "client_id": "B252_MRVL_202610291435",
       "entry_id": "692a4d14-2ca9-474f-9240-3c2dae519626",
@@ -491,6 +536,21 @@
       "submitted": "2026-11-03T17:52:51+00:00",
       "symbol": "MSFT",
       "tp": 521.69
+    },
+    "B252_MSFT_202611091435": {
+      "client_id": "B252_MSFT_202611091435",
+      "entry_id": "be136bc7-bc3d-421c-b551-0fd82176f79a",
+      "planned_risk": 4.781,
+      "qty": 3,
+      "reference_entry": 547.56,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-09T14:35:00-05:00",
+      "status": "pending",
+      "stop": 546.5,
+      "submitted": "2026-11-09T19:41:22+00:00",
+      "symbol": "MSFT",
+      "tp": 549.68
     },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",
@@ -615,6 +675,21 @@
       "submitted": "2026-10-30T18:04:56+00:00",
       "symbol": "TSLA",
       "tp": 391.7
+    },
+    "B252_TSLA_202611091435": {
+      "client_id": "B252_TSLA_202611091435",
+      "entry_id": "b3e48a6c-e093-4610-9d59-eb6604f7e4b5",
+      "planned_risk": 4.772,
+      "qty": 3,
+      "reference_entry": 381.47,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-09T14:35:00-05:00",
+      "status": "pending",
+      "stop": 380.39,
+      "submitted": "2026-11-09T19:40:57+00:00",
+      "symbol": "TSLA",
+      "tp": 383.63
     }
   },
   "version": "2.5.2"
