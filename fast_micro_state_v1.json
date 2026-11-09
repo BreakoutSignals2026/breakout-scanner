@@ -40,22 +40,8 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-11-09T15:55:00+00:00",
-        "breakout_level": 22.36,
-        "breakout_percent": 0.26833631484795295,
-        "entry_close": 22.42,
-        "prior_avg_bar_notional_usd": 38409.74,
-        "quote_spread": 0.0400000000000027,
-        "quote_spread_pct": 0.17857142857144065,
-        "rel_volume": 2.14586741075724,
-        "side": "buy",
-        "signal_bar_notional_usd": 83335.14,
-        "signal_bar_shares": 3717,
-        "signal_bar_trades": 44,
-        "symbol": "UPST"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "XPEV": {
       "phase": "watching"
