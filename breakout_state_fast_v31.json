@@ -301,11 +301,12 @@
       "exit_cid": "FAST31X_LUNR_11091550000000",
       "exit_order_id": "85ecfa42-a19e-4ff5-b1ee-04536e797f25",
       "filled_qty": 19,
+      "realized_pnl": -0.19,
       "reference_price": 11.91,
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-09T15:56:31+00:00",
       "symbol": "LUNR"
     },
