@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-09",
-    "scans": 54,
+    "scans": 55,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 42,
-      "blocked_positions": 11,
+      "bez_potvrdeneho_breakoutu": 44,
+      "blocked_positions": 13,
       "exceptions": 0,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 307,
+      "nizky_relativny_objem": 313,
       "submitted": 7,
-      "symbols_checked": 529,
+      "symbols_checked": 537,
       "technical_signals": 7
     }
   },
@@ -29,27 +29,27 @@
   "daily_start_notice": "2026-11-09",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 4,
-      "blocked_positions": 3,
+      "bez_potvrdeneho_breakoutu": 2,
+      "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 3,
-      "scan_seconds": 56.3,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 64.3,
       "submitted": 0,
-      "symbols_checked": 7,
+      "symbols_checked": 8,
       "technical_signals": 0,
-      "time_ny": "2026-11-09T14:47:00-05:00"
+      "time_ny": "2026-11-09T14:52:38-05:00"
     },
     "date": "2026-11-09",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
-      "META": "position_or_order_blocked",
+      "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
@@ -483,10 +483,10 @@
       "planned_risk": 2.573,
       "qty": 1,
       "reference_entry": 645.4,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-09T14:35:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 644.07,
       "submitted": "2026-11-09T19:41:05+00:00",
       "symbol": "META",
