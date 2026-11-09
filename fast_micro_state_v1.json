@@ -1,18 +1,11 @@
 {
   "daily": {
-    "attempts": 3,
-    "closed": 3,
-    "pnl_usd": 0.25
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-11-06",
-  "seen": [
-    "HBAN:2026-11-06T17:35:00+00:00:sell",
-    "HPQ:2026-11-06T17:35:00+00:00:sell",
-    "PFE:2026-11-06T18:25:00+00:00:buy",
-    "T:2026-11-06T18:05:00+00:00:buy",
-    "UPST:2026-11-06T17:45:00+00:00:sell",
-    "XPEV:2026-11-06T20:15:00+00:00:sell"
-  ],
+  "date": "2026-11-09",
+  "seen": [],
   "symbols": {
     "AG": {
       "phase": "watching"
@@ -21,10 +14,10 @@
       "phase": "watching"
     },
     "HBAN": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "HPQ": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "KEY": {
       "phase": "watching"
@@ -48,7 +41,7 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "closed"
+      "phase": "watching"
     }
   }
 }
