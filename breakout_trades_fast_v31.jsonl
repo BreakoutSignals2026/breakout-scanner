@@ -431,3 +431,4 @@
 {"timestamp": "2026-11-09T18:28:02+00:00", "action": "exit_accepted", "symbol": "MARA", "order_id": "1d99dd32-db2b-44a2-af9c-9d9eb778c236", "qty": 34}
 {"timestamp": "2026-11-09T18:55:37+00:00", "action": "entry_submitted", "symbol": "VALE", "order_id": "f92a3b85-a077-4864-981a-2befd1e9a81d", "requested_qty": 19, "reference": 11.96, "side": "buy", "estimated_risk": 2.92, "spread_percent": 0.084, "rel_volume": 9.495907095312278, "breakout_percent": 0.16743407283381812, "bar_notional_usd": 1337100.72, "quote_age_seconds": 1.601068, "chase_percent": 0.041788549937308864, "signal_age_seconds": 37}
 {"timestamp": "2026-11-09T18:55:43+00:00", "action": "exit_accepted", "symbol": "VALE", "order_id": "8dba6520-9d74-44fe-83f0-da1e7139f393", "qty": 19}
+{"timestamp": "2026-11-09T19:04:53+00:00", "action": "closed", "symbol": "MARA", "entry": 6.41, "exit": 6.49, "qty": 34.0, "side": "sell", "pnl": -2.72, "pnl_pct": -1.248, "reason": "trailing stop", "holding_seconds": 2087}
