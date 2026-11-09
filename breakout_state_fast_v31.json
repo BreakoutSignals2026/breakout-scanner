@@ -386,11 +386,12 @@
       "exit_cid": "FAST31X_PTON_11092015000000",
       "exit_order_id": "4209c901-502e-4645-8a3c-6b3aedacf74b",
       "filled_qty": 37,
+      "realized_pnl": -3.33,
       "reference_price": 5.88,
       "requested_qty": 37,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-09T20:23:50+00:00",
       "symbol": "PTON"
     },
