@@ -452,3 +452,13 @@
 {"timestamp": "2026-11-09T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "621719cd-acc6-4887-8944-85493f796de0"}
 {"timestamp": "2026-11-09T20:45:07+00:00", "action": "eod_stop_cancel_requested", "symbol": "RIVN", "id": "7b7ba36e-1b82-4e52-975f-cc36e09be768"}
 {"timestamp": "2026-11-09T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "8dba6520-9d74-44fe-83f0-da1e7139f393"}
+{"timestamp": "2026-11-09T20:45:43+00:00", "action": "eod_close_submitted", "symbol": "CELH", "qty": 7, "order_id": "be5fd12a-a603-4fac-9a68-4a2056322872"}
+{"timestamp": "2026-11-09T20:45:45+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 9, "order_id": "bc798fe8-860c-4ebe-9770-113a0ed70b02"}
+{"timestamp": "2026-11-09T20:45:47+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 9, "order_id": "b69b691a-2108-4be5-bf90-abbf28df2269"}
+{"timestamp": "2026-11-09T20:45:49+00:00", "action": "eod_close_submitted", "symbol": "RIVN", "qty": 16, "order_id": "a360df49-e26e-4e50-a77c-a1b020a16118"}
+{"timestamp": "2026-11-09T20:45:51+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 19, "order_id": "310a4e21-403b-442c-9637-04bdb1002586"}
+{"timestamp": "2026-11-09T20:46:31+00:00", "action": "closed", "symbol": "CELH", "entry": 33.03, "exit": 33.2, "qty": 7.0, "side": "buy", "pnl": 1.19, "pnl_pct": 0.515, "reason": "koniec seansy", "holding_seconds": 9659}
+{"timestamp": "2026-11-09T20:46:32+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.64, "exit": 23.09, "qty": 9.0, "side": "buy", "pnl": 4.05, "pnl_pct": 1.988, "reason": "koniec seansy", "holding_seconds": 12693}
+{"timestamp": "2026-11-09T20:46:33+00:00", "action": "closed", "symbol": "GME", "entry": 25.64, "exit": 25.79, "qty": 9.0, "side": "buy", "pnl": 1.35, "pnl_pct": 0.585, "reason": "koniec seansy", "holding_seconds": 10771}
+{"timestamp": "2026-11-09T20:46:35+00:00", "action": "closed", "symbol": "RIVN", "entry": 14.1, "exit": 14.08, "qty": 16.0, "side": "buy", "pnl": -0.32, "pnl_pct": -0.142, "reason": "koniec seansy", "holding_seconds": 1603}
+{"timestamp": "2026-11-09T20:46:36+00:00", "action": "closed", "symbol": "VALE", "entry": 11.96, "exit": 11.94, "qty": 19.0, "side": "buy", "pnl": -0.38, "pnl_pct": -0.167, "reason": "koniec seansy", "holding_seconds": 6618}
