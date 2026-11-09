@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-09",
-    "scans": 59,
+    "scans": 60,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 54,
+      "bez_potvrdeneho_breakoutu": 64,
       "blocked_positions": 17,
       "exceptions": 0,
       "malo_5min_sviecok": 173,
       "nizky_relativny_objem": 339,
       "submitted": 7,
-      "symbols_checked": 573,
+      "symbols_checked": 583,
       "technical_signals": 7
     }
   },
@@ -29,28 +29,27 @@
   "daily_start_notice": "2026-11-09",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 3,
-      "blocked_positions": 1,
+      "bez_potvrdeneho_breakoutu": 10,
+      "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 72.4,
+      "scan_seconds": 80.4,
       "submitted": 0,
-      "symbols_checked": 9,
+      "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-09T15:15:38-05:00"
+      "time_ny": "2026-11-09T15:21:32-05:00"
     },
     "date": "2026-11-09",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "position_or_order_blocked",
-      "META": "nizky_relativny_objem",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "bez_potvrdeneho_breakoutu",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -393,10 +392,10 @@
       "planned_risk": 4.941,
       "qty": 15,
       "reference_entry": 58.78,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-09T14:35:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 58.5,
       "submitted": "2026-11-09T19:40:16+00:00",
       "symbol": "INTC",
