@@ -220,11 +220,12 @@
       "exit_cid": "FAST31X_FSLY_11091930000000",
       "exit_order_id": "41c2436f-5fd9-4694-b2a3-2153a76c1375",
       "filled_qty": 14,
+      "realized_pnl": -1.12,
       "reference_price": 16.16,
       "requested_qty": 14,
       "side": "buy",
       "spread_at_entry": 0.02,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-09T19:37:04+00:00",
       "symbol": "FSLY"
     },
