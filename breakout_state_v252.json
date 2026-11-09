@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-09",
-    "scans": 55,
+    "scans": 56,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 44,
-      "blocked_positions": 13,
+      "bez_potvrdeneho_breakoutu": 46,
+      "blocked_positions": 14,
       "exceptions": 0,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 313,
+      "nizky_relativny_objem": 320,
       "submitted": 7,
-      "symbols_checked": 537,
+      "symbols_checked": 546,
       "technical_signals": 7
     }
   },
@@ -30,14 +30,14 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 2,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 64.3,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 72.4,
       "submitted": 0,
-      "symbols_checked": 8,
+      "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-09T14:52:38-05:00"
+      "time_ny": "2026-11-09T14:58:23-05:00"
     },
     "date": "2026-11-09",
     "symbols": {
@@ -46,9 +46,9 @@
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
-      "META": "bez_potvrdeneho_breakoutu",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "position_or_order_blocked",
+      "META": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "bez_potvrdeneho_breakoutu"
     }
@@ -543,10 +543,10 @@
       "planned_risk": 4.781,
       "qty": 3,
       "reference_entry": 547.56,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-09T14:35:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 546.5,
       "submitted": "2026-11-09T19:41:22+00:00",
       "symbol": "MSFT",
