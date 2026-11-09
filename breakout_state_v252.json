@@ -411,7 +411,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-09T15:20:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 59.03,
       "submitted": "2026-11-09T20:26:13+00:00",
       "symbol": "INTC",
