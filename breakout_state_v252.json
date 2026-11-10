@@ -2,7 +2,7 @@
   "cooldown": {
     "AAPL": "2026-11-09T14:00:00-05:00",
     "AMD": "2026-11-09T13:45:00-05:00",
-    "AMZN": "2026-11-09T14:35:00-05:00",
+    "AMZN": "2026-11-10T12:35:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
     "INTC": "2026-11-09T15:20:00-05:00",
     "META": "2026-11-09T14:35:00-05:00",
@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-10",
-    "scans": 32,
+    "scans": 33,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 16,
+      "bez_potvrdeneho_breakoutu": 18,
       "blocked_positions": 0,
-      "exceptions": 5,
+      "exceptions": 7,
       "malo_5min_sviecok": 171,
-      "nizky_relativny_objem": 128,
-      "submitted": 0,
-      "symbols_checked": 320,
-      "technical_signals": 5
+      "nizky_relativny_objem": 133,
+      "submitted": 1,
+      "symbols_checked": 330,
+      "technical_signals": 8
     }
   },
   "daily_diagnostics_notice": "2026-11-09",
@@ -31,26 +31,26 @@
     "counts": {
       "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 80.4,
-      "submitted": 0,
+      "exceptions": 2,
+      "nizky_relativny_objem": 5,
+      "scan_seconds": 81.0,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-10T12:39:02-05:00"
+      "technical_signals": 3,
+      "time_ny": "2026-11-10T12:44:55-05:00"
     },
     "date": "2026-11-10",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AAPL": "nizky_relativny_objem",
+      "AMD": "AMD: IEX spread 0.628% nad 0.3%",
+      "AMZN": "order_submitted",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
+      "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MSFT": "MSFT: IEX spread 2.584% nad 0.3%",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -233,6 +233,21 @@
       "submitted": "2026-11-09T19:41:14+00:00",
       "symbol": "AMZN",
       "tp": 270.08
+    },
+    "B252_AMZN_202611101235": {
+      "client_id": "B252_AMZN_202611101235",
+      "entry_id": "bb6e0ee2-c2fb-43dd-bf1f-d310e32fb47f",
+      "planned_risk": 4.256,
+      "qty": 4,
+      "reference_entry": 268.11,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-10T12:35:00-05:00",
+      "status": "pending",
+      "stop": 268.94,
+      "submitted": "2026-11-10T17:44:39+00:00",
+      "symbol": "AMZN",
+      "tp": 266.45
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
