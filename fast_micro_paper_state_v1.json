@@ -62,6 +62,21 @@
       "symbol": "CDE",
       "tp": 13.23
     },
+    "MICRO1_CDE_202611101045": {
+      "client_id": "MICRO1_CDE_202611101045",
+      "entry_id": "777b4b7f-f6de-4b63-bc58-7ecd7693b43d",
+      "planned_risk": 0.948,
+      "qty": 9,
+      "reference_entry": 15.38,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-10T15:45:00+00:00",
+      "status": "pending",
+      "stop": 15.46,
+      "submitted": "2026-11-10T15:50:48+00:00",
+      "symbol": "CDE",
+      "tp": 15.18
+    },
     "MICRO1_HBAN_202611061235": {
       "client_id": "MICRO1_HBAN_202611061235",
       "entry_id": "a443b117-5cda-4e57-bbbf-abf2f426728e",
