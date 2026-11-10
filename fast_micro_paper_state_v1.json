@@ -47,6 +47,21 @@
       "symbol": "AG",
       "tp": 16.14
     },
+    "MICRO1_AG_202611101420": {
+      "client_id": "MICRO1_AG_202611101420",
+      "entry_id": "242ff1c1-ea61-4a77-ac9b-b6a47ef366e1",
+      "planned_risk": 0.945,
+      "qty": 9,
+      "reference_entry": 14.99,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-10T19:20:00+00:00",
+      "status": "pending",
+      "stop": 14.91,
+      "submitted": "2026-11-10T19:25:46+00:00",
+      "symbol": "AG",
+      "tp": 15.19
+    },
     "MICRO1_CDE_202611021405": {
       "client_id": "MICRO1_CDE_202611021405",
       "entry_id": "1be2ce1c-5a96-4f49-b0f2-737087fad179",
