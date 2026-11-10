@@ -151,11 +151,12 @@
       "exit_cid": "FAST31X_CLF_11101630000000",
       "exit_order_id": "8efe0419-9016-4999-9cf8-afdfe02ed86d",
       "filled_qty": 18,
+      "realized_pnl": -2.84,
       "reference_price": 12.95,
       "requested_qty": 18,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-10T16:38:02+00:00",
       "symbol": "CLF"
     },

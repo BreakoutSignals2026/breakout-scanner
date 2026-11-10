@@ -473,3 +473,4 @@
 {"timestamp": "2026-11-10T16:56:30+00:00", "action": "exit_accepted", "symbol": "DKNG", "order_id": "5aedeccd-2669-4a55-bec6-fd54d0e455c4", "qty": 12}
 {"timestamp": "2026-11-10T17:01:14+00:00", "action": "entry_submitted", "symbol": "BB", "order_id": "797a7ee5-d61f-43e5-8660-97df8ea135f2", "requested_qty": 25, "reference": 8.83, "side": "sell", "estimated_risk": 2.9, "spread_percent": 0.113, "rel_volume": 1.862035020225736, "breakout_percent": 0.4514672686230152, "bar_notional_usd": 241906.14, "quote_age_seconds": 0.398003, "chase_percent": 0.11337868480725381, "signal_age_seconds": 75}
 {"timestamp": "2026-11-10T17:01:19+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "338a9fd9-b51a-49bc-9d44-08739fa84a21", "qty": 23}
+{"timestamp": "2026-11-10T17:05:52+00:00", "action": "closed", "symbol": "CLF", "entry": 12.96, "exit": 12.802222, "qty": 18.0, "side": "buy", "pnl": -2.84, "pnl_pct": -1.217, "reason": "trailing stop", "holding_seconds": 1537}
