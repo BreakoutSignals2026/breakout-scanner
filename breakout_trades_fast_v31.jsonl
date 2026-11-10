@@ -489,3 +489,9 @@
 {"timestamp": "2026-11-10T19:40:29+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "d3b455f2-a706-4b9b-91b1-372685537567", "qty": 10}
 {"timestamp": "2026-11-10T20:25:49+00:00", "action": "entry_submitted", "symbol": "NU", "order_id": "57ea6e1d-29ee-4210-9242-4f5e486e38d3", "requested_qty": 19, "reference": 12.04, "side": "buy", "estimated_risk": 2.94, "spread_percent": 0.083, "rel_volume": 2.6778379763517224, "breakout_percent": 0.25010421008754596, "bar_notional_usd": 586423.18, "quote_age_seconds": 0.566267, "chase_percent": 0.12474012474011469, "signal_age_seconds": 49}
 {"timestamp": "2026-11-10T20:25:52+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "d4a69b61-cbb8-4250-adf7-7052f5554e09", "qty": 19}
+{"timestamp": "2026-11-10T20:45:05+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "d3b455f2-a706-4b9b-91b1-372685537567"}
+{"timestamp": "2026-11-10T20:45:07+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "d4a69b61-cbb8-4250-adf7-7052f5554e09"}
+{"timestamp": "2026-11-10T20:45:08+00:00", "action": "eod_stop_cancel_requested", "symbol": "RIVN", "id": "cc662e1b-1a88-4038-bff9-9cf38886c7b3"}
+{"timestamp": "2026-11-10T20:45:40+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 10, "order_id": "d6d1e258-1ba6-4a41-8a0a-977f6813a7a8"}
+{"timestamp": "2026-11-10T20:45:41+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 19, "order_id": "4f4bb623-a429-4a9e-8a1b-6297df3c35c4"}
+{"timestamp": "2026-11-10T20:45:41+00:00", "action": "eod_close_submitted", "symbol": "RIVN", "qty": 17, "order_id": "2174a51c-b28e-4d43-99ea-c0eb5e681a8c"}
