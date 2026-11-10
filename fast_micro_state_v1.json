@@ -1,32 +1,14 @@
 {
   "daily": {
-    "attempts": 4,
-    "closed": 3,
-    "pnl_usd": -1.32
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-11-09",
-  "seen": [
-    "AG:2026-11-09T16:05:00+00:00:buy",
-    "AG:2026-11-09T17:15:00+00:00:sell",
-    "AG:2026-11-09T19:35:00+00:00:buy",
-    "CDE:2026-11-09T19:35:00+00:00:buy",
-    "KGC:2026-11-09T18:30:00+00:00:buy",
-    "KGC:2026-11-09T18:35:00+00:00:buy",
-    "KGC:2026-11-09T19:35:00+00:00:buy",
-    "LYFT:2026-11-09T18:40:00+00:00:buy",
-    "NCLH:2026-11-09T19:35:00+00:00:buy",
-    "NCLH:2026-11-09T19:40:00+00:00:buy",
-    "PFE:2026-11-09T16:30:00+00:00:buy",
-    "PFE:2026-11-09T18:10:00+00:00:buy",
-    "PFE:2026-11-09T20:20:00+00:00:sell",
-    "UPST:2026-11-09T15:55:00+00:00:buy",
-    "UPST:2026-11-09T19:55:00+00:00:buy",
-    "UPST:2026-11-09T20:15:00+00:00:buy",
-    "XPEV:2026-11-09T19:35:00+00:00:buy"
-  ],
+  "date": "2026-11-10",
+  "seen": [],
   "symbols": {
     "AG": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CDE": {
       "phase": "watching"
@@ -41,7 +23,7 @@
       "phase": "watching"
     },
     "KGC": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "LYFT": {
       "phase": "watching"
@@ -50,14 +32,13 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "T": {
       "phase": "watching"
     },
     "UPST": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "XPEV": {
       "phase": "watching"
