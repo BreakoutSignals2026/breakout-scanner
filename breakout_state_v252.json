@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-10",
-    "scans": 33,
+    "scans": 35,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 18,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 21,
+      "blocked_positions": 2,
       "exceptions": 7,
       "malo_5min_sviecok": 171,
-      "nizky_relativny_objem": 133,
+      "nizky_relativny_objem": 148,
       "submitted": 1,
-      "symbols_checked": 330,
+      "symbols_checked": 348,
       "technical_signals": 8
     }
   },
@@ -29,28 +29,27 @@
   "daily_start_notice": "2026-11-10",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
-      "exceptions": 2,
-      "nizky_relativny_objem": 5,
-      "scan_seconds": 81.0,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 3,
-      "time_ny": "2026-11-10T12:44:55-05:00"
+      "blocked_positions": 1,
+      "exceptions": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 72.5,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-10T12:56:25-05:00"
     },
     "date": "2026-11-10",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "AMD: IEX spread 0.628% nad 0.3%",
-      "AMZN": "order_submitted",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "bez_potvrdeneho_breakoutu",
+      "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "MSFT: IEX spread 2.584% nad 0.3%",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -243,7 +242,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-10T12:35:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 268.94,
       "submitted": "2026-11-10T17:44:39+00:00",
       "symbol": "AMZN",
