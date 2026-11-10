@@ -12,7 +12,8 @@
     "2026-11-03": "2026-11-03T20:45:00+00:00",
     "2026-11-04": "2026-11-04T20:45:06+00:00",
     "2026-11-06": "2026-11-06T20:45:31+00:00",
-    "2026-11-09": "2026-11-09T20:45:00+00:00"
+    "2026-11-09": "2026-11-09T20:45:00+00:00",
+    "2026-11-10": "2026-11-10T20:45:04+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -126,6 +127,7 @@
     },
     "CHWY": {
       "bar_key": "2026-11-10T19:35:00+00:00",
+      "close_cid": "FAST31C_CHWY_11101935000000",
       "entry_cid": "FAST31E_CHWY_11101935000000",
       "entry_fill_price": 22.68,
       "entry_filled_at": "2026-11-10T19:40:27.434234628Z",
@@ -137,7 +139,7 @@
       "requested_qty": 10,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-10T19:40:26+00:00",
       "symbol": "CHWY"
     },
@@ -347,6 +349,7 @@
     },
     "NU": {
       "bar_key": "2026-11-10T20:20:00+00:00",
+      "close_cid": "FAST31C_NU_11102020000000",
       "entry_cid": "FAST31E_NU_11102020000000",
       "entry_fill_price": 12.04,
       "entry_filled_at": "2026-11-10T20:25:50.340822593Z",
@@ -358,7 +361,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-10T20:25:49+00:00",
       "symbol": "NU"
     },
@@ -454,6 +457,7 @@
     },
     "RIVN": {
       "bar_key": "2026-11-10T17:40:00+00:00",
+      "close_cid": "FAST31C_RIVN_11101740000000",
       "entry_cid": "FAST31E_RIVN_11101740000000",
       "entry_fill_price": 13.59,
       "entry_filled_at": "2026-11-10T17:46:55.565903554Z",
@@ -465,7 +469,7 @@
       "requested_qty": 17,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-10T17:46:54+00:00",
       "symbol": "RIVN"
     },
