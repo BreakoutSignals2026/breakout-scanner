@@ -128,6 +128,7 @@
     "CHWY": {
       "bar_key": "2026-11-10T19:35:00+00:00",
       "close_cid": "FAST31C_CHWY_11101935000000",
+      "close_order_id": "d6d1e258-1ba6-4a41-8a0a-977f6813a7a8",
       "entry_cid": "FAST31E_CHWY_11101935000000",
       "entry_fill_price": 22.68,
       "entry_filled_at": "2026-11-10T19:40:27.434234628Z",
@@ -139,7 +140,7 @@
       "requested_qty": 10,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-10T19:40:26+00:00",
       "symbol": "CHWY"
     },
@@ -350,6 +351,7 @@
     "NU": {
       "bar_key": "2026-11-10T20:20:00+00:00",
       "close_cid": "FAST31C_NU_11102020000000",
+      "close_order_id": "4f4bb623-a429-4a9e-8a1b-6297df3c35c4",
       "entry_cid": "FAST31E_NU_11102020000000",
       "entry_fill_price": 12.04,
       "entry_filled_at": "2026-11-10T20:25:50.340822593Z",
@@ -361,7 +363,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-10T20:25:49+00:00",
       "symbol": "NU"
     },
@@ -458,6 +460,7 @@
     "RIVN": {
       "bar_key": "2026-11-10T17:40:00+00:00",
       "close_cid": "FAST31C_RIVN_11101740000000",
+      "close_order_id": "2174a51c-b28e-4d43-99ea-c0eb5e681a8c",
       "entry_cid": "FAST31E_RIVN_11101740000000",
       "entry_fill_price": 13.59,
       "entry_filled_at": "2026-11-10T17:46:55.565903554Z",
@@ -469,7 +472,7 @@
       "requested_qty": 17,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-10T17:46:54+00:00",
       "symbol": "RIVN"
     },
