@@ -509,3 +509,4 @@
 {"timestamp": "2026-11-11T16:55:46+00:00", "action": "exit_accepted", "symbol": "DKNG", "order_id": "29e8c443-cdf9-4b1f-8c41-ad17b5580f28", "qty": 9}
 {"timestamp": "2026-11-11T17:00:31+00:00", "action": "entry_submitted", "symbol": "HIMS", "order_id": "2b89a60f-1a26-4ef7-9bac-99e4e2c68b9e", "requested_qty": 11, "reference": 20.19, "side": "buy", "estimated_risk": 2.89, "spread_percent": 0.099, "rel_volume": 1.7094306255045941, "breakout_percent": 0.34799900571712794, "bar_notional_usd": 224376.46, "quote_age_seconds": 1.564308, "chase_percent": 0.024770869457530632, "signal_age_seconds": 32}
 {"timestamp": "2026-11-11T17:00:37+00:00", "action": "exit_accepted", "symbol": "HIMS", "order_id": "1a94bef3-da5b-4f28-a262-612216fef91c", "qty": 5}
+{"timestamp": "2026-11-11T17:09:42+00:00", "action": "closed", "symbol": "DKNG", "entry": 19.42, "exit": 19.55, "qty": 9.0, "side": "sell", "pnl": -1.17, "pnl_pct": -0.669, "reason": "trailing stop", "holding_seconds": 831}
