@@ -542,3 +542,8 @@
 {"timestamp": "2026-11-11T20:46:06+00:00", "action": "eod_close_submitted", "symbol": "CLF", "qty": 14, "order_id": "151d1b19-7aec-4b75-a726-8001bcfe51ad"}
 {"timestamp": "2026-11-11T20:46:07+00:00", "action": "eod_close_submitted", "symbol": "FSLY", "qty": 8, "order_id": "5239d64d-4407-47ef-9db7-c99c3b953dc1"}
 {"timestamp": "2026-11-11T20:46:08+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 11, "order_id": "bac0dd23-ce5a-47ed-805d-2fadcaf8a143"}
+{"timestamp": "2026-11-11T20:46:40+00:00", "action": "closed", "symbol": "CCL", "entry": 30.95, "exit": 30.860000000000003, "qty": 5.0, "side": "buy", "pnl": -0.45, "pnl_pct": -0.291, "reason": "koniec seansy", "holding_seconds": 10778}
+{"timestamp": "2026-11-11T20:46:41+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.78, "exit": 23.12, "qty": 10.0, "side": "buy", "pnl": 3.4, "pnl_pct": 1.493, "reason": "koniec seansy", "holding_seconds": 12706}
+{"timestamp": "2026-11-11T20:46:42+00:00", "action": "closed", "symbol": "CLF", "entry": 13.14, "exit": 13.179999999999998, "qty": 14.0, "side": "buy", "pnl": 0.56, "pnl_pct": 0.304, "reason": "koniec seansy", "holding_seconds": 17390}
+{"timestamp": "2026-11-11T20:46:43+00:00", "action": "closed", "symbol": "FSLY", "entry": 17.58, "exit": 17.34, "qty": 8.0, "side": "sell", "pnl": 1.92, "pnl_pct": 1.365, "reason": "koniec seansy", "holding_seconds": 5579}
+{"timestamp": "2026-11-11T20:46:43+00:00", "action": "closed", "symbol": "NU", "entry": 12.16, "exit": 12.33, "qty": 11.0, "side": "buy", "pnl": 1.87, "pnl_pct": 1.398, "reason": "koniec seansy", "holding_seconds": 5860}
