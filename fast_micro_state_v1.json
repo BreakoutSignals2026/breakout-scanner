@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 1,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 1,
+    "pnl_usd": -0.8
   },
   "date": "2026-11-11",
   "seen": [
@@ -13,26 +13,7 @@
       "phase": "watching"
     },
     "CDE": {
-      "entry": 15.1874,
-      "entry_bar": "2026-11-11T16:10:00+00:00",
-      "last_bar": "2026-11-11T16:20:00+00:00",
-      "phase": "open",
-      "qty": 9,
-      "signal": {
-        "bar_key": "2026-11-11T16:05:00+00:00",
-        "breakout_level": 15.265,
-        "breakout_percent": 0.4258106780216264,
-        "entry_close": 15.2,
-        "prior_avg_bar_notional_usd": 166466.11,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.06576783952648184,
-        "rel_volume": 3.8533316978933487,
-        "side": "sell",
-        "signal_bar_notional_usd": 636682.4,
-        "signal_bar_shares": 41887,
-        "signal_bar_trades": 122,
-        "symbol": "CDE"
-      }
+      "phase": "closed"
     },
     "HBAN": {
       "phase": "watching"
