@@ -1,17 +1,19 @@
 {
   "daily": {
-    "attempts": 0,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "attempts": 1,
+    "closed": 1,
+    "pnl_usd": -0.8
   },
   "date": "2026-11-11",
-  "seen": [],
+  "seen": [
+    "CDE:2026-11-11T16:05:00+00:00:sell"
+  ],
   "symbols": {
     "AG": {
       "phase": "watching"
     },
     "CDE": {
-      "phase": "watching"
+      "phase": "closed"
     },
     "HBAN": {
       "phase": "watching"
