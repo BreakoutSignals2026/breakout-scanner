@@ -1,7 +1,7 @@
 {
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
-    "AMD": "2026-11-09T13:45:00-05:00",
+    "AMD": "2026-11-11T13:40:00-05:00",
     "AMZN": "2026-11-10T12:35:00-05:00",
     "GOOGL": "2026-11-11T12:30:00-05:00",
     "INTC": "2026-11-09T15:20:00-05:00",
@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-11",
-    "scans": 43,
+    "scans": 44,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 27,
-      "blocked_positions": 14,
+      "bez_potvrdeneho_breakoutu": 29,
+      "blocked_positions": 15,
       "exceptions": 3,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 211,
-      "submitted": 2,
-      "symbols_checked": 416,
-      "technical_signals": 2
+      "nizky_relativny_objem": 217,
+      "submitted": 3,
+      "symbols_checked": 425,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-10",
@@ -32,18 +32,18 @@
       "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 72.3,
-      "submitted": 0,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 73.2,
+      "submitted": 1,
       "symbols_checked": 9,
-      "technical_signals": 0,
-      "time_ny": "2026-11-11T13:41:26-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-11T13:47:12-05:00"
     },
     "date": "2026-11-11",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "nizky_relativny_objem",
+      "AMD": "order_submitted",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "position_or_order_blocked",
       "INTC": "nizky_relativny_objem",
       "META": "bez_potvrdeneho_breakoutu",
@@ -173,6 +173,21 @@
       "submitted": "2026-11-09T18:54:20+00:00",
       "symbol": "AMD",
       "tp": 513.32
+    },
+    "B252_AMD_202611111340": {
+      "client_id": "B252_AMD_202611111340",
+      "entry_id": "239065f5-9bfb-4762-aa31-ef873c19da49",
+      "planned_risk": 4.114,
+      "qty": 1,
+      "reference_entry": 567.63,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-11T13:40:00-05:00",
+      "status": "pending",
+      "stop": 565.06,
+      "submitted": "2026-11-11T18:46:16+00:00",
+      "symbol": "AMD",
+      "tp": 572.77
     },
     "B252_AMZN_202610221430": {
       "client_id": "B252_AMZN_202610221430",
