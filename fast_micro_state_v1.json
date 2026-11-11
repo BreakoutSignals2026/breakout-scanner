@@ -35,7 +35,7 @@
     "NCLH": {
       "entry": 18.9194525,
       "entry_bar": "2026-11-11T19:05:00+00:00",
-      "last_bar": "2026-11-11T19:05:00+00:00",
+      "last_bar": "2026-11-11T19:10:00+00:00",
       "phase": "open",
       "qty": 8,
       "signal": {
@@ -61,22 +61,8 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-11-11T19:05:00+00:00",
-        "breakout_level": 20.7,
-        "breakout_percent": 0.24154589371981022,
-        "entry_close": 20.65,
-        "prior_avg_bar_notional_usd": 101185.47,
-        "quote_spread": 0.029999999999997584,
-        "quote_spread_pct": 0.1453840562151567,
-        "rel_volume": 1.5363839934360097,
-        "side": "sell",
-        "signal_bar_notional_usd": 154668.5,
-        "signal_bar_shares": 7490,
-        "signal_bar_trades": 43,
-        "symbol": "UPST"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "XPEV": {
       "phase": "watching"
