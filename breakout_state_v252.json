@@ -1,6 +1,6 @@
 {
   "cooldown": {
-    "AAPL": "2026-11-09T14:00:00-05:00",
+    "AAPL": "2026-11-11T12:00:00-05:00",
     "AMD": "2026-11-09T13:45:00-05:00",
     "AMZN": "2026-11-10T12:35:00-05:00",
     "GOOGL": "2026-11-03T12:20:00-05:00",
@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-11",
-    "scans": 25,
+    "scans": 27,
     "totals": {
       "bez_potvrdeneho_breakoutu": 6,
       "blocked_positions": 0,
       "exceptions": 1,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 70,
-      "submitted": 0,
-      "symbols_checked": 250,
-      "technical_signals": 0
+      "nizky_relativny_objem": 89,
+      "submitted": 1,
+      "symbols_checked": 270,
+      "technical_signals": 1
     }
   },
   "daily_diagnostics_notice": "2026-11-10",
@@ -31,16 +31,16 @@
     "counts": {
       "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 10,
-      "scan_seconds": 80.7,
-      "submitted": 0,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 83.2,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-11T11:57:01-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-11T12:08:58-05:00"
     },
     "date": "2026-11-11",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "order_submitted",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
@@ -127,6 +127,21 @@
       "submitted": "2026-11-09T19:06:16+00:00",
       "symbol": "AAPL",
       "tp": 352.74
+    },
+    "B252_AAPL_202611111200": {
+      "client_id": "B252_AAPL_202611111200",
+      "entry_id": "c516b36e-9948-44cc-82ca-82648b668aab",
+      "planned_risk": 4.738,
+      "qty": 5,
+      "reference_entry": 355.02,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-11T12:00:00-05:00",
+      "status": "pending",
+      "stop": 354.29,
+      "submitted": "2026-11-11T17:08:18+00:00",
+      "symbol": "AAPL",
+      "tp": 356.48
     },
     "B252_AMD_202611021405": {
       "client_id": "B252_AMD_202611021405",
