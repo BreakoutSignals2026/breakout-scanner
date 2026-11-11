@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-11",
-    "scans": 27,
+    "scans": 28,
     "totals": {
       "bez_potvrdeneho_breakoutu": 6,
-      "blocked_positions": 0,
+      "blocked_positions": 1,
       "exceptions": 1,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 89,
+      "nizky_relativny_objem": 98,
       "submitted": 1,
-      "symbols_checked": 270,
+      "symbols_checked": 279,
       "technical_signals": 1
     }
   },
@@ -29,18 +29,18 @@
   "daily_start_notice": "2026-11-11",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 0,
+      "blocked_positions": 1,
       "exceptions": 0,
       "nizky_relativny_objem": 9,
-      "scan_seconds": 83.2,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-11T12:08:58-05:00"
+      "scan_seconds": 72.4,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-11T12:14:45-05:00"
     },
     "date": "2026-11-11",
     "symbols": {
-      "AAPL": "order_submitted",
+      "AAPL": "position_or_order_blocked",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
@@ -137,7 +137,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-11T12:00:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 354.29,
       "submitted": "2026-11-11T17:08:18+00:00",
       "symbol": "AAPL",
