@@ -537,3 +537,8 @@
 {"timestamp": "2026-11-11T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "CLF", "id": "3ad1cb33-99b5-4105-ab47-fbf6036e56f6"}
 {"timestamp": "2026-11-11T20:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "FSLY", "id": "671ad478-6eea-4226-9eb1-c08a95f8d28a"}
 {"timestamp": "2026-11-11T20:45:32+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "d20c39ed-55fd-40b5-ba9f-8384cf0568a7"}
+{"timestamp": "2026-11-11T20:46:04+00:00", "action": "eod_close_submitted", "symbol": "CCL", "qty": 5, "order_id": "51dfd6fd-2b1f-484a-94d2-673f888cc1de"}
+{"timestamp": "2026-11-11T20:46:05+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 10, "order_id": "58ab4500-5921-4e5b-b170-d3fc3c2821e5"}
+{"timestamp": "2026-11-11T20:46:06+00:00", "action": "eod_close_submitted", "symbol": "CLF", "qty": 14, "order_id": "151d1b19-7aec-4b75-a726-8001bcfe51ad"}
+{"timestamp": "2026-11-11T20:46:07+00:00", "action": "eod_close_submitted", "symbol": "FSLY", "qty": 8, "order_id": "5239d64d-4407-47ef-9db7-c99c3b953dc1"}
+{"timestamp": "2026-11-11T20:46:08+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 11, "order_id": "bac0dd23-ce5a-47ed-805d-2fadcaf8a143"}
