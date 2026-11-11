@@ -1,9 +1,9 @@
 {
   "cooldown": {
-    "AAPL": "2026-11-09T14:00:00-05:00",
-    "AMD": "2026-11-09T13:45:00-05:00",
+    "AAPL": "2026-11-11T12:00:00-05:00",
+    "AMD": "2026-11-11T13:40:00-05:00",
     "AMZN": "2026-11-10T12:35:00-05:00",
-    "GOOGL": "2026-11-03T12:20:00-05:00",
+    "GOOGL": "2026-11-11T12:30:00-05:00",
     "INTC": "2026-11-09T15:20:00-05:00",
     "META": "2026-11-09T14:35:00-05:00",
     "MRVL": "2026-11-02T14:45:00-05:00",
@@ -13,39 +13,40 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-11",
-    "scans": 25,
+    "scans": 47,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 6,
-      "blocked_positions": 0,
-      "exceptions": 1,
+      "bez_potvrdeneho_breakoutu": 36,
+      "blocked_positions": 18,
+      "exceptions": 3,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 70,
-      "submitted": 0,
-      "symbols_checked": 250,
-      "technical_signals": 0
+      "nizky_relativny_objem": 237,
+      "submitted": 3,
+      "symbols_checked": 452,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-10",
   "daily_start_notice": "2026-11-11",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 10,
-      "scan_seconds": 80.7,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 72.5,
       "submitted": 0,
-      "symbols_checked": 10,
+      "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-11T11:57:01-05:00"
+      "time_ny": "2026-11-11T14:04:27-05:00"
     },
     "date": "2026-11-11",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
+      "AMZN": "bez_potvrdeneho_breakoutu",
+      "GOOGL": "position_or_order_blocked",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
@@ -128,6 +129,21 @@
       "symbol": "AAPL",
       "tp": 352.74
     },
+    "B252_AAPL_202611111200": {
+      "client_id": "B252_AAPL_202611111200",
+      "entry_id": "c516b36e-9948-44cc-82ca-82648b668aab",
+      "planned_risk": 4.738,
+      "qty": 5,
+      "reference_entry": 355.02,
+      "result_logged": true,
+      "side": "BUY",
+      "signal_candle": "2026-11-11T12:00:00-05:00",
+      "status": "closed",
+      "stop": 354.29,
+      "submitted": "2026-11-11T17:08:18+00:00",
+      "symbol": "AAPL",
+      "tp": 356.48
+    },
     "B252_AMD_202611021405": {
       "client_id": "B252_AMD_202611021405",
       "entry_id": "da5271c9-4d9f-4cf7-993f-7baa5c5d19ed",
@@ -157,6 +173,21 @@
       "submitted": "2026-11-09T18:54:20+00:00",
       "symbol": "AMD",
       "tp": 513.32
+    },
+    "B252_AMD_202611111340": {
+      "client_id": "B252_AMD_202611111340",
+      "entry_id": "239065f5-9bfb-4762-aa31-ef873c19da49",
+      "planned_risk": 4.114,
+      "qty": 1,
+      "reference_entry": 567.63,
+      "result_logged": true,
+      "side": "BUY",
+      "signal_candle": "2026-11-11T13:40:00-05:00",
+      "status": "closed",
+      "stop": 565.06,
+      "submitted": "2026-11-11T18:46:16+00:00",
+      "symbol": "AMD",
+      "tp": 572.77
     },
     "B252_AMZN_202610221430": {
       "client_id": "B252_AMZN_202610221430",
@@ -277,6 +308,21 @@
       "submitted": "2026-11-03T17:29:08+00:00",
       "symbol": "GOOGL",
       "tp": 282.29
+    },
+    "B252_GOOGL_202611111230": {
+      "client_id": "B252_GOOGL_202611111230",
+      "entry_id": "215c241a-54f2-4cc6-9960-1934e44eed0e",
+      "planned_risk": 4.162,
+      "qty": 3,
+      "reference_entry": 294.34,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-11T12:30:00-05:00",
+      "status": "open",
+      "stop": 293.64,
+      "submitted": "2026-11-11T17:38:06+00:00",
+      "symbol": "GOOGL",
+      "tp": 295.74
     },
     "B252_INTC_202610221245": {
       "client_id": "B252_INTC_202610221245",
