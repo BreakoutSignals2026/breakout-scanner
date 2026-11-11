@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 4,
-    "closed": 1,
-    "pnl_usd": -0.8
+    "closed": 3,
+    "pnl_usd": -1.02
   },
   "date": "2026-11-11",
   "seen": [
@@ -29,51 +29,13 @@
       "phase": "watching"
     },
     "KGC": {
-      "entry": 21.4192825,
-      "entry_bar": "2026-11-11T19:20:00+00:00",
-      "last_bar": "2026-11-11T20:35:00+00:00",
-      "phase": "open",
-      "qty": 7,
-      "signal": {
-        "bar_key": "2026-11-11T19:15:00+00:00",
-        "breakout_level": 21.5,
-        "breakout_percent": 0.30232558139535476,
-        "entry_close": 21.435,
-        "prior_avg_bar_notional_usd": 67410.46,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.04663091629749597,
-        "rel_volume": 2.1161998082862925,
-        "side": "sell",
-        "signal_bar_notional_usd": 141964.01,
-        "signal_bar_shares": 6623,
-        "signal_bar_trades": 38,
-        "symbol": "KGC"
-      }
+      "phase": "closed"
     },
     "LYFT": {
       "phase": "watching"
     },
     "NCLH": {
-      "entry": 18.9194525,
-      "entry_bar": "2026-11-11T19:05:00+00:00",
-      "last_bar": "2026-11-11T20:35:00+00:00",
-      "phase": "open",
-      "qty": 8,
-      "signal": {
-        "bar_key": "2026-11-11T19:00:00+00:00",
-        "breakout_level": 18.86,
-        "breakout_percent": 0.23860021208908644,
-        "entry_close": 18.905,
-        "prior_avg_bar_notional_usd": 121926.77,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.05292405398252453,
-        "rel_volume": 6.377454068578922,
-        "side": "buy",
-        "signal_bar_notional_usd": 781457.08,
-        "signal_bar_shares": 41336,
-        "signal_bar_trades": 133,
-        "symbol": "NCLH"
-      }
+      "phase": "closed"
     },
     "PFE": {
       "phase": "watching"
