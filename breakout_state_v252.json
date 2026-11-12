@@ -12,45 +12,42 @@
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
-    "date": "2026-11-11",
-    "scans": 62,
+    "date": "2026-11-12",
+    "scans": 13,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 51,
-      "blocked_positions": 56,
-      "exceptions": 5,
-      "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 329,
-      "submitted": 6,
-      "symbols_checked": 564,
-      "technical_signals": 8
+      "blocked_positions": 0,
+      "exceptions": 0,
+      "malo_5min_sviecok": 130,
+      "submitted": 0,
+      "symbols_checked": 130,
+      "technical_signals": 0
     }
   },
   "daily_diagnostics_notice": "2026-11-11",
-  "daily_start_notice": "2026-11-11",
+  "daily_start_notice": "2026-11-12",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 3,
+      "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 5,
-      "scan_seconds": 56.3,
+      "malo_5min_sviecok": 10,
+      "scan_seconds": 81.1,
       "submitted": 0,
-      "symbols_checked": 7,
+      "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-11T15:27:35-05:00"
+      "time_ny": "2026-11-12T10:46:27-05:00"
     },
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "bez_potvrdeneho_breakoutu",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "position_or_order_blocked",
-      "META": "nizky_relativny_objem",
-      "MRVL": "position_or_order_blocked",
-      "MSFT": "nizky_relativny_objem",
-      "NVDA": "position_or_order_blocked",
-      "TSLA": "nizky_relativny_objem"
+      "AAPL": "malo_5min_sviecok",
+      "AMD": "malo_5min_sviecok",
+      "AMZN": "malo_5min_sviecok",
+      "GOOGL": "malo_5min_sviecok",
+      "INTC": "malo_5min_sviecok",
+      "META": "malo_5min_sviecok",
+      "MRVL": "malo_5min_sviecok",
+      "MSFT": "malo_5min_sviecok",
+      "NVDA": "malo_5min_sviecok",
+      "TSLA": "malo_5min_sviecok"
     }
   },
   "trades": {
