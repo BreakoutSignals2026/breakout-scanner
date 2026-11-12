@@ -1,13 +1,14 @@
 {
   "daily": {
-    "attempts": 1,
+    "attempts": 2,
     "closed": 1,
     "pnl_usd": -0.86
   },
   "date": "2026-11-12",
   "seen": [
     "NCLH:2026-11-12T17:30:00+00:00:buy",
-    "UPST:2026-11-12T16:10:00+00:00:buy"
+    "UPST:2026-11-12T16:10:00+00:00:buy",
+    "UPST:2026-11-12T18:20:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
@@ -41,7 +42,22 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-12T18:20:00+00:00",
+        "breakout_level": 19.525,
+        "breakout_percent": 0.20486555697822867,
+        "entry_close": 19.485,
+        "prior_avg_bar_notional_usd": 19303.35,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.051295203898443525,
+        "rel_volume": 3.141504649196957,
+        "side": "sell",
+        "signal_bar_notional_usd": 60345.04,
+        "signal_bar_shares": 3097,
+        "signal_bar_trades": 45,
+        "symbol": "UPST"
+      }
     },
     "XPEV": {
       "phase": "watching"
