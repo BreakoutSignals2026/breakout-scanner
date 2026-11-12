@@ -584,3 +584,8 @@
 {"timestamp": "2026-11-12T19:54:29+00:00", "action": "closed", "symbol": "PATH", "entry": 13.25, "exit": 13.09, "qty": 9.0, "side": "buy", "pnl": -1.44, "pnl_pct": -1.208, "reason": "trailing stop", "holding_seconds": 8249}
 {"timestamp": "2026-11-12T20:22:15+00:00", "action": "closed", "symbol": "CLSK", "entry": 6.86, "exit": 6.92, "qty": 32.0, "side": "sell", "pnl": -1.92, "pnl_pct": -0.875, "reason": "trailing stop", "holding_seconds": 2701}
 {"timestamp": "2026-11-12T20:31:32+00:00", "action": "closed", "symbol": "PTON", "entry": 5.57, "exit": 5.61, "qty": 39.0, "side": "sell", "pnl": -1.56, "pnl_pct": -0.718, "reason": "trailing stop", "holding_seconds": 2992}
+{"timestamp": "2026-11-12T20:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "AAL", "id": "317d7eb4-c71f-48ec-aa90-d9b6900911d2"}
+{"timestamp": "2026-11-12T20:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "35ad3502-8bb2-4314-9462-3045428c7d0c"}
+{"timestamp": "2026-11-12T20:45:37+00:00", "action": "eod_stop_cancel_requested", "symbol": "QBTS", "id": "a01dd083-d2d3-458c-91fc-06e62c876da6"}
+{"timestamp": "2026-11-12T20:45:39+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "28e0788f-bc0a-42a7-a9cc-a758a27461f8"}
+{"timestamp": "2026-11-12T20:45:40+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "49da8800-6da1-401f-995a-db4d5f30e5ad"}
