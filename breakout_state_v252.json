@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-12",
-    "scans": 41,
+    "scans": 42,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 27,
+      "bez_potvrdeneho_breakoutu": 28,
       "blocked_positions": 0,
       "exceptions": 1,
       "malo_5min_sviecok": 172,
-      "nizky_relativny_objem": 210,
+      "nizky_relativny_objem": 219,
       "submitted": 0,
-      "symbols_checked": 410,
+      "symbols_checked": 420,
       "technical_signals": 1
     }
   },
@@ -37,7 +37,7 @@
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-12T13:31:54-05:00"
+      "time_ny": "2026-11-12T13:37:46-05:00"
     },
     "date": "2026-11-12",
     "symbols": {
@@ -47,8 +47,8 @@
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "nizky_relativny_objem",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
