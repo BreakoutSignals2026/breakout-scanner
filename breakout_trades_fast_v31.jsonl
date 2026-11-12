@@ -571,3 +571,4 @@
 {"timestamp": "2026-11-12T17:34:33+00:00", "action": "exit_accepted", "symbol": "PATH", "order_id": "7c1cb599-7c7b-4dab-a187-997a4627cfbb", "qty": 9}
 {"timestamp": "2026-11-12T17:53:03+00:00", "action": "entry_submitted", "symbol": "VALE", "order_id": "7064a9ea-2955-45f9-b322-19bd04eef655", "requested_qty": 20, "reference": 11.41, "side": "buy", "estimated_risk": 2.94, "spread_percent": 0.088, "rel_volume": 3.700354810869243, "breakout_percent": 0.17566974088712844, "bar_notional_usd": 403417.66, "quote_age_seconds": 1.233452, "chase_percent": 0.04384042086804719, "signal_age_seconds": 184}
 {"timestamp": "2026-11-12T17:53:11+00:00", "action": "exit_accepted", "symbol": "VALE", "order_id": "49da8800-6da1-401f-995a-db4d5f30e5ad", "qty": 20}
+{"timestamp": "2026-11-12T18:11:37+00:00", "action": "closed", "symbol": "BB", "entry": 9.25, "exit": 9.26, "qty": 12.0, "side": "buy", "pnl": 0.12, "pnl_pct": 0.108, "reason": "trailing stop", "holding_seconds": 8035}
