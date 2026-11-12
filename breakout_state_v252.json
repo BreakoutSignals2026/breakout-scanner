@@ -13,45 +13,44 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-12",
-    "scans": 18,
+    "scans": 19,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 5,
       "blocked_positions": 0,
-      "exceptions": 0,
+      "exceptions": 1,
       "malo_5min_sviecok": 172,
-      "nizky_relativny_objem": 7,
+      "nizky_relativny_objem": 12,
       "submitted": 0,
-      "symbols_checked": 180,
-      "technical_signals": 0
+      "symbols_checked": 190,
+      "technical_signals": 1
     }
   },
   "daily_diagnostics_notice": "2026-11-11",
   "daily_start_notice": "2026-11-12",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 4,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "malo_5min_sviecok": 2,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 81.1,
+      "exceptions": 1,
+      "nizky_relativny_objem": 5,
+      "scan_seconds": 83.3,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-12T11:16:03-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-12T11:22:00-05:00"
     },
     "date": "2026-11-12",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "malo_5min_sviecok",
+      "AMD": "Rozpočet $5 je príliš malý (qty=0)",
       "AMZN": "bez_potvrdeneho_breakoutu",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "malo_5min_sviecok",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
