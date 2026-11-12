@@ -14,7 +14,8 @@
     "2026-11-06": "2026-11-06T20:45:31+00:00",
     "2026-11-09": "2026-11-09T20:45:00+00:00",
     "2026-11-10": "2026-11-10T20:45:04+00:00",
-    "2026-11-11": "2026-11-11T20:45:31+00:00"
+    "2026-11-11": "2026-11-11T20:45:31+00:00",
+    "2026-11-12": "2026-11-12T20:45:33+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -54,6 +55,7 @@
   "trades": {
     "AAL": {
       "bar_key": "2026-11-12T18:10:00+00:00",
+      "close_cid": "FAST31C_AAL_11121810000000",
       "entry_cid": "FAST31E_AAL_11121810000000",
       "entry_fill_price": 13.67,
       "entry_filled_at": "2026-11-12T18:16:25.058875843Z",
@@ -65,7 +67,7 @@
       "requested_qty": 17,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-12T18:16:22+00:00",
       "symbol": "AAL"
     },
@@ -241,6 +243,7 @@
     },
     "GME": {
       "bar_key": "2026-11-12T16:25:00+00:00",
+      "close_cid": "FAST31C_GME_11121625000000",
       "entry_cid": "FAST31E_GME_11121625000000",
       "entry_fill_price": 25.3,
       "entry_filled_at": "2026-11-12T16:34:12.314991951Z",
@@ -252,7 +255,7 @@
       "requested_qty": 9,
       "side": "buy",
       "spread_at_entry": 0.02,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-12T16:34:09+00:00",
       "symbol": "GME"
     },
@@ -402,6 +405,7 @@
     },
     "QBTS": {
       "bar_key": "2026-11-12T19:00:00+00:00",
+      "close_cid": "FAST31C_QBTS_11121900000000",
       "entry_cid": "FAST31E_QBTS_11121900000000",
       "entry_fill_price": 10.0,
       "entry_filled_at": "2026-11-12T19:07:33.102099739Z",
@@ -413,7 +417,7 @@
       "requested_qty": 23,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-12T19:07:30+00:00",
       "symbol": "QBTS"
     },
@@ -493,6 +497,7 @@
     },
     "SOFI": {
       "bar_key": "2026-11-12T17:00:00+00:00",
+      "close_cid": "FAST31C_SOFI_11121700000000",
       "entry_cid": "FAST31E_SOFI_11121700000000",
       "entry_fill_price": 15.86,
       "entry_filled_at": "2026-11-12T17:06:31.195671822Z",
@@ -504,7 +509,7 @@
       "requested_qty": 14,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-12T17:06:29+00:00",
       "symbol": "SOFI"
     },
@@ -528,6 +533,7 @@
     },
     "VALE": {
       "bar_key": "2026-11-12T17:45:00+00:00",
+      "close_cid": "FAST31C_VALE_11121745000000",
       "entry_cid": "FAST31E_VALE_11121745000000",
       "entry_fill_price": 11.41,
       "entry_filled_at": "2026-11-12T17:53:05.593597136Z",
@@ -539,7 +545,7 @@
       "requested_qty": 20,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-12T17:53:03+00:00",
       "symbol": "VALE"
     }
