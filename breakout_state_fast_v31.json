@@ -514,11 +514,12 @@
       "exit_cid": "FAST31X_U_11121710000000",
       "exit_order_id": "47dbb53e-20c9-4064-8c99-b8498806c4ad",
       "filled_qty": 4,
+      "realized_pnl": 1.8,
       "reference_price": 49.48,
       "requested_qty": 4,
       "side": "buy",
       "spread_at_entry": 0.1,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-12T17:15:50+00:00",
       "symbol": "U"
     },
