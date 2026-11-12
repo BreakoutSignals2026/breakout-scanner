@@ -582,3 +582,4 @@
 {"timestamp": "2026-11-12T19:40:28+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "ad60aa5a-f469-47a6-827e-7e083e931050", "qty": 39}
 {"timestamp": "2026-11-12T19:49:50+00:00", "action": "closed", "symbol": "U", "entry": 49.41, "exit": 49.86, "qty": 4.0, "side": "buy", "pnl": 1.8, "pnl_pct": 0.911, "reason": "trailing stop", "holding_seconds": 9212}
 {"timestamp": "2026-11-12T19:54:29+00:00", "action": "closed", "symbol": "PATH", "entry": 13.25, "exit": 13.09, "qty": 9.0, "side": "buy", "pnl": -1.44, "pnl_pct": -1.208, "reason": "trailing stop", "holding_seconds": 8249}
+{"timestamp": "2026-11-12T20:22:15+00:00", "action": "closed", "symbol": "CLSK", "entry": 6.86, "exit": 6.92, "qty": 32.0, "side": "sell", "pnl": -1.92, "pnl_pct": -0.875, "reason": "trailing stop", "holding_seconds": 2701}
