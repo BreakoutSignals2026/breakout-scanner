@@ -48,7 +48,7 @@
     "SNAP": "2026-11-12T16:10:00+00:00",
     "SOFI": "2026-11-12T17:00:00+00:00",
     "U": "2026-11-12T17:10:00+00:00",
-    "VALE": "2026-11-09T18:50:00+00:00"
+    "VALE": "2026-11-12T17:45:00+00:00"
   },
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
@@ -526,23 +526,20 @@
       "symbol": "U"
     },
     "VALE": {
-      "bar_key": "2026-11-09T18:50:00+00:00",
-      "close_cid": "FAST31C_VALE_11091850000000",
-      "close_order_id": "310a4e21-403b-442c-9637-04bdb1002586",
-      "entry_cid": "FAST31E_VALE_11091850000000",
-      "entry_fill_price": 11.96,
-      "entry_filled_at": "2026-11-09T18:55:39.647180912Z",
-      "entry_order_id": "f92a3b85-a077-4864-981a-2befd1e9a81d",
-      "exit_cid": "FAST31X_VALE_11091850000000",
-      "exit_order_id": "8dba6520-9d74-44fe-83f0-da1e7139f393",
-      "filled_qty": 19,
-      "realized_pnl": -0.38,
-      "reference_price": 11.96,
-      "requested_qty": 19,
+      "bar_key": "2026-11-12T17:45:00+00:00",
+      "entry_cid": "FAST31E_VALE_11121745000000",
+      "entry_fill_price": 11.41,
+      "entry_filled_at": "2026-11-12T17:53:05.593597136Z",
+      "entry_order_id": "7064a9ea-2955-45f9-b322-19bd04eef655",
+      "exit_cid": "FAST31X_VALE_11121745000000",
+      "exit_order_id": "49da8800-6da1-401f-995a-db4d5f30e5ad",
+      "filled_qty": 20,
+      "reference_price": 11.41,
+      "requested_qty": 20,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "closed",
-      "submitted_at": "2026-11-09T18:55:36+00:00",
+      "status": "protected",
+      "submitted_at": "2026-11-12T17:53:03+00:00",
       "symbol": "VALE"
     }
   },
