@@ -594,3 +594,8 @@
 {"timestamp": "2026-11-12T20:46:21+00:00", "action": "eod_close_submitted", "symbol": "QBTS", "qty": 23, "order_id": "6cb4297e-eb92-491c-95fb-500b0955fc79"}
 {"timestamp": "2026-11-12T20:46:23+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 14, "order_id": "b47e98ea-b889-4a1b-a805-b806e3c249a2"}
 {"timestamp": "2026-11-12T20:46:26+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 20, "order_id": "6430e29c-76da-4b69-af97-cac2f5dd1d8e"}
+{"timestamp": "2026-11-12T20:47:02+00:00", "action": "closed", "symbol": "AAL", "entry": 13.67, "exit": 13.4, "qty": 12.0, "side": "sell", "pnl": 3.24, "pnl_pct": 1.975, "reason": "koniec seansy", "holding_seconds": 8994}
+{"timestamp": "2026-11-12T20:47:03+00:00", "action": "closed", "symbol": "GME", "entry": 25.3, "exit": 25.61, "qty": 6.0, "side": "buy", "pnl": 1.86, "pnl_pct": 1.225, "reason": "koniec seansy", "holding_seconds": 15128}
+{"timestamp": "2026-11-12T20:47:05+00:00", "action": "closed", "symbol": "QBTS", "entry": 10.0, "exit": 9.9, "qty": 23.0, "side": "sell", "pnl": 2.3, "pnl_pct": 1.0, "reason": "koniec seansy", "holding_seconds": 5929}
+{"timestamp": "2026-11-12T20:47:07+00:00", "action": "closed", "symbol": "SOFI", "entry": 15.86, "exit": 15.654285, "qty": 14.0, "side": "sell", "pnl": 2.88, "pnl_pct": 1.297, "reason": "koniec seansy", "holding_seconds": 13201}
+{"timestamp": "2026-11-12T20:47:08+00:00", "action": "closed", "symbol": "VALE", "entry": 11.41, "exit": 11.3, "qty": 20.0, "side": "buy", "pnl": -2.2, "pnl_pct": -0.964, "reason": "koniec seansy", "holding_seconds": 10402}
