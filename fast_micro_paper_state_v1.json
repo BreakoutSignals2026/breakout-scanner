@@ -378,6 +378,21 @@
       "symbol": "NCLH",
       "tp": 19.16
     },
+    "MICRO1_NCLH_202611121230": {
+      "client_id": "MICRO1_NCLH_202611121230",
+      "entry_id": "53c8205b-218c-4687-8048-616898bce8e5",
+      "planned_risk": 0.9,
+      "qty": 7,
+      "reference_entry": 18.63,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-12T17:30:00+00:00",
+      "status": "pending",
+      "stop": 18.53,
+      "submitted": "2026-11-12T17:35:48+00:00",
+      "symbol": "NCLH",
+      "tp": 18.88
+    },
     "MICRO1_PFE_202611091130": {
       "client_id": "MICRO1_PFE_202611091130",
       "entry_id": "5c0f0987-40c3-4fd4-854f-5c1044a81a97",
