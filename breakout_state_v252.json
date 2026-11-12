@@ -13,13 +13,13 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-12",
-    "scans": 16,
+    "scans": 17,
     "totals": {
       "blocked_positions": 0,
       "exceptions": 0,
-      "malo_5min_sviecok": 160,
+      "malo_5min_sviecok": 170,
       "submitted": 0,
-      "symbols_checked": 160,
+      "symbols_checked": 170,
       "technical_signals": 0
     }
   },
@@ -30,11 +30,11 @@
       "blocked_positions": 0,
       "exceptions": 0,
       "malo_5min_sviecok": 10,
-      "scan_seconds": 81.1,
+      "scan_seconds": 81.2,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-12T11:04:13-05:00"
+      "time_ny": "2026-11-12T11:10:08-05:00"
     },
     "date": "2026-11-12",
     "symbols": {
