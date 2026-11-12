@@ -1,12 +1,14 @@
 {
   "daily": {
-    "attempts": 3,
+    "attempts": 4,
     "closed": 2,
     "pnl_usd": -1.77
   },
   "date": "2026-11-12",
   "seen": [
     "AG:2026-11-12T18:50:00+00:00:sell",
+    "AG:2026-11-12T19:00:00+00:00:sell",
+    "CDE:2026-11-12T19:00:00+00:00:sell",
     "NCLH:2026-11-12T17:30:00+00:00:buy",
     "NCLH:2026-11-12T18:45:00+00:00:sell",
     "UPST:2026-11-12T16:10:00+00:00:buy",
@@ -17,7 +19,7 @@
     "AG": {
       "entry": 14.227880000000003,
       "entry_bar": "2026-11-12T18:55:00+00:00",
-      "last_bar": "2026-11-12T18:55:00+00:00",
+      "last_bar": "2026-11-12T19:00:00+00:00",
       "phase": "open",
       "qty": 10,
       "signal": {
@@ -37,7 +39,22 @@
       }
     },
     "CDE": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-12T19:00:00+00:00",
+        "breakout_level": 14.545,
+        "breakout_percent": 0.24063251976624367,
+        "entry_close": 14.51,
+        "prior_avg_bar_notional_usd": 252551.05,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.06884681583476618,
+        "rel_volume": 4.699349616996676,
+        "side": "sell",
+        "signal_bar_notional_usd": 1179474.37,
+        "signal_bar_shares": 81287,
+        "signal_bar_trades": 249,
+        "symbol": "CDE"
+      }
     },
     "HBAN": {
       "phase": "watching"
