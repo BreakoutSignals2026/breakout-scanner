@@ -15,7 +15,11 @@
   ],
   "symbols": {
     "AG": {
-      "phase": "pending",
+      "entry": 14.227880000000003,
+      "entry_bar": "2026-11-12T18:55:00+00:00",
+      "last_bar": "2026-11-12T18:55:00+00:00",
+      "phase": "open",
+      "qty": 10,
       "signal": {
         "bar_key": "2026-11-12T18:50:00+00:00",
         "breakout_level": 14.29,
