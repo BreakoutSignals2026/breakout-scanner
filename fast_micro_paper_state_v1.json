@@ -363,6 +363,21 @@
       "symbol": "LYFT",
       "tp": 16.6
     },
+    "MICRO1_LYFT_202611131120": {
+      "client_id": "MICRO1_LYFT_202611131120",
+      "entry_id": "df044e20-18bf-405e-afcc-a59de76b1db0",
+      "planned_risk": 0.936,
+      "qty": 8,
+      "reference_entry": 17.0,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-13T16:20:00+00:00",
+      "status": "open",
+      "stop": 16.91,
+      "submitted": "2026-11-13T16:25:48+00:00",
+      "symbol": "LYFT",
+      "tp": 17.23
+    },
     "MICRO1_NCLH_202611041140": {
       "client_id": "MICRO1_NCLH_202611041140",
       "entry_id": "47133970-614c-4ec3-bc16-ae79e09f64ec",
