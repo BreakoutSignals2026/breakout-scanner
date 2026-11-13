@@ -632,3 +632,9 @@
 {"timestamp": "2026-11-13T20:29:20+00:00", "action": "entry_submitted", "symbol": "QBTS", "order_id": "80fed58a-514f-4010-8723-371106dc59dc", "requested_qty": 24, "reference": 9.56, "side": "buy", "estimated_risk": 2.99, "spread_percent": 0.105, "rel_volume": 4.288335832083958, "breakout_percent": 0.36764705882353094, "bar_notional_usd": 170814.73, "quote_age_seconds": 0.47039, "chase_percent": 0.05232862375720336, "signal_age_seconds": 261}
 {"timestamp": "2026-11-13T20:29:27+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "c81653a9-d9ea-4e36-a739-07ef54a8f631", "qty": 24}
 {"timestamp": "2026-11-13T20:38:38+00:00", "action": "closed", "symbol": "SNAP", "entry": 5.3, "exit": 5.24, "qty": 40.0, "side": "buy", "pnl": -2.4, "pnl_pct": -1.132, "reason": "trailing stop", "holding_seconds": 5295}
+{"timestamp": "2026-11-13T20:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "AAL", "id": "ec4f717d-cde6-4115-bf84-2e17be617f10"}
+{"timestamp": "2026-11-13T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "902f41d6-878d-48e1-87e5-87d4851af05c"}
+{"timestamp": "2026-11-13T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "c1e17507-cc17-43d7-8632-8684cdcd67f1"}
+{"timestamp": "2026-11-13T20:45:09+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "e7d5b841-0aff-4e44-8cea-74a77b45aa63"}
+{"timestamp": "2026-11-13T20:45:10+00:00", "action": "eod_stop_cancel_requested", "symbol": "PTON", "id": "4c8c05ec-c798-4181-9196-0602e72ffb83"}
+{"timestamp": "2026-11-13T20:45:11+00:00", "action": "eod_stop_cancel_requested", "symbol": "QBTS", "id": "c81653a9-d9ea-4e36-a739-07ef54a8f631"}
