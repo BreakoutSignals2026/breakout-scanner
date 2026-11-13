@@ -608,3 +608,4 @@
 {"timestamp": "2026-11-13T16:46:40+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "fdf90c1b-f4db-434a-8c83-b80592143528", "qty": 21}
 {"timestamp": "2026-11-13T17:00:33+00:00", "action": "entry_submitted", "symbol": "NU", "order_id": "b03cdc51-ef33-4be6-a588-57ef32adb2ef", "requested_qty": 17, "reference": 13.22, "side": "buy", "estimated_risk": 2.87, "spread_percent": 0.076, "rel_volume": 1.7231352123010897, "breakout_percent": 0.34116755117513214, "bar_notional_usd": 2947421.26, "quote_age_seconds": 0.241771, "chase_percent": 0.11333585190781105, "signal_age_seconds": 34}
 {"timestamp": "2026-11-13T17:00:42+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "50b80c32-17dd-46a7-b7c9-2b71b124f9e0", "qty": 9}
+{"timestamp": "2026-11-13T17:23:37+00:00", "action": "closed", "symbol": "BB", "entry": 8.84, "exit": 8.84, "qty": 21.0, "side": "buy", "pnl": 0.0, "pnl_pct": 0.0, "reason": "trailing stop", "holding_seconds": 2210}
