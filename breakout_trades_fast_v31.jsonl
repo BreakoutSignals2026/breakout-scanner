@@ -627,3 +627,4 @@
 {"timestamp": "2026-11-13T19:29:06+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "902f41d6-878d-48e1-87e5-87d4851af05c", "qty": 9}
 {"timestamp": "2026-11-13T19:52:12+00:00", "action": "entry_submitted", "symbol": "GME", "order_id": "754c5e1c-35b1-4052-8e00-b294f0f259d4", "requested_qty": 9, "reference": 25.94, "side": "sell", "estimated_risk": 2.98, "spread_percent": 0.077, "rel_volume": 2.7710984218335506, "breakout_percent": 0.36426380368097727, "bar_notional_usd": 133458.96, "quote_age_seconds": 0.881291, "chase_percent": 0.1731768327881399, "signal_age_seconds": 133}
 {"timestamp": "2026-11-13T19:52:18+00:00", "action": "exit_accepted", "symbol": "GME", "order_id": "c1e17507-cc17-43d7-8632-8684cdcd67f1", "qty": 9}
+{"timestamp": "2026-11-13T20:15:19+00:00", "action": "closed", "symbol": "CELH", "entry": 32.53, "exit": 32.452857, "qty": 7.0, "side": "buy", "pnl": -0.54, "pnl_pct": -0.237, "reason": "trailing stop", "holding_seconds": 13643}
