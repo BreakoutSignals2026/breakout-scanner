@@ -40,7 +40,7 @@
     "LYFT": {
       "entry": 17.018502499999997,
       "entry_bar": "2026-11-13T16:25:00+00:00",
-      "last_bar": "2026-11-13T19:05:00+00:00",
+      "last_bar": "2026-11-13T19:10:00+00:00",
       "phase": "open",
       "qty": 8,
       "signal": {
@@ -72,7 +72,11 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "pending",
+      "entry": 9.3846875,
+      "entry_bar": "2026-11-13T19:10:00+00:00",
+      "last_bar": "2026-11-13T19:10:00+00:00",
+      "phase": "open",
+      "qty": 15,
       "signal": {
         "bar_key": "2026-11-13T19:05:00+00:00",
         "breakout_level": 9.36,
