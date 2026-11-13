@@ -81,6 +81,21 @@
       "symbol": "AG",
       "tp": 14.04
     },
+    "MICRO1_AG_202611131100": {
+      "client_id": "MICRO1_AG_202611131100",
+      "entry_id": "64f36217-14ac-44d5-90cb-60f6bf4373c6",
+      "planned_risk": 0.937,
+      "qty": 10,
+      "reference_entry": 13.71,
+      "result_logged": true,
+      "side": "SELL",
+      "signal_candle": "2026-11-13T16:00:00+00:00",
+      "status": "closed",
+      "stop": 13.78,
+      "submitted": "2026-11-13T16:05:48+00:00",
+      "symbol": "AG",
+      "tp": 13.53
+    },
     "MICRO1_CDE_202611021405": {
       "client_id": "MICRO1_CDE_202611021405",
       "entry_id": "1be2ce1c-5a96-4f49-b0f2-737087fad179",
@@ -426,6 +441,21 @@
       "submitted": "2026-11-09T16:35:47+00:00",
       "symbol": "PFE",
       "tp": 29.71
+    },
+    "MICRO1_PFE_202611131050": {
+      "client_id": "MICRO1_PFE_202611131050",
+      "entry_id": "f4809174-64c9-43fd-9ee9-e97d4a2d049d",
+      "planned_risk": 0.943,
+      "qty": 5,
+      "reference_entry": 28.64,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-13T15:50:00+00:00",
+      "status": "open",
+      "stop": 28.79,
+      "submitted": "2026-11-13T15:55:48+00:00",
+      "symbol": "PFE",
+      "tp": 28.26
     },
     "MICRO1_T_202611041315": {
       "client_id": "MICRO1_T_202611041315",
