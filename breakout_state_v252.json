@@ -12,45 +12,42 @@
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
-    "date": "2026-11-12",
-    "scans": 61,
+    "date": "2026-11-13",
+    "scans": 1,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 62,
       "blocked_positions": 0,
-      "exceptions": 5,
-      "malo_5min_sviecok": 172,
-      "nizky_relativny_objem": 371,
+      "exceptions": 0,
+      "malo_5min_sviecok": 10,
       "submitted": 0,
-      "symbols_checked": 610,
-      "technical_signals": 4
+      "symbols_checked": 10,
+      "technical_signals": 0
     }
   },
   "daily_diagnostics_notice": "2026-11-12",
-  "daily_start_notice": "2026-11-12",
+  "daily_start_notice": "2026-11-13",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 80.4,
+      "exceptions": 0,
+      "malo_5min_sviecok": 10,
+      "scan_seconds": 81.2,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-12T15:29:46-05:00"
+      "technical_signals": 0,
+      "time_ny": "2026-11-13T09:35:18-05:00"
     },
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "TSLA: IEX spread 0.974% nad 0.3%"
+      "AAPL": "malo_5min_sviecok",
+      "AMD": "malo_5min_sviecok",
+      "AMZN": "malo_5min_sviecok",
+      "GOOGL": "malo_5min_sviecok",
+      "INTC": "malo_5min_sviecok",
+      "META": "malo_5min_sviecok",
+      "MRVL": "malo_5min_sviecok",
+      "MSFT": "malo_5min_sviecok",
+      "NVDA": "malo_5min_sviecok",
+      "TSLA": "malo_5min_sviecok"
     }
   },
   "trades": {
