@@ -478,11 +478,12 @@
       "exit_cid": "FAST31X_SNAP_11131900000000",
       "exit_order_id": "2a5c1dea-67fd-43a6-8035-4423b4a742f1",
       "filled_qty": 40,
+      "realized_pnl": -2.4,
       "reference_price": 5.3,
       "requested_qty": 40,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-13T19:05:48+00:00",
       "symbol": "SNAP"
     },
