@@ -1,18 +1,34 @@
 {
   "daily": {
-    "attempts": 2,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "attempts": 3,
+    "closed": 1,
+    "pnl_usd": -0.83
   },
   "date": "2026-11-13",
   "seen": [
+    "AG:2026-11-13T16:00:00+00:00:sell",
     "HPQ:2026-11-13T15:45:00+00:00:buy",
     "HPQ:2026-11-13T15:50:00+00:00:buy",
     "PFE:2026-11-13T15:50:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-13T16:00:00+00:00",
+        "breakout_level": 13.79,
+        "breakout_percent": 0.3988397389412597,
+        "entry_close": 13.735,
+        "prior_avg_bar_notional_usd": 184676.32,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.07291286912139837,
+        "rel_volume": 1.631180641474122,
+        "side": "sell",
+        "signal_bar_notional_usd": 297280.34,
+        "signal_bar_shares": 21644,
+        "signal_bar_trades": 87,
+        "symbol": "AG"
+      }
     },
     "CDE": {
       "phase": "watching"
@@ -21,26 +37,7 @@
       "phase": "watching"
     },
     "HPQ": {
-      "entry": 29.189585,
-      "entry_bar": "2026-11-13T15:55:00+00:00",
-      "last_bar": "2026-11-13T15:55:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-11-13T15:50:00+00:00",
-        "breakout_level": 29.09,
-        "breakout_percent": 0.2750085940185694,
-        "entry_close": 29.17,
-        "prior_avg_bar_notional_usd": 230380.55,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.03429943405934338,
-        "rel_volume": 1.5795886487893778,
-        "side": "buy",
-        "signal_bar_notional_usd": 368708.8,
-        "signal_bar_shares": 12640,
-        "signal_bar_trades": 138,
-        "symbol": "HPQ"
-      }
+      "phase": "closed"
     },
     "KEY": {
       "phase": "watching"
@@ -57,7 +54,7 @@
     "PFE": {
       "entry": 28.630675,
       "entry_bar": "2026-11-13T15:55:00+00:00",
-      "last_bar": "2026-11-13T15:55:00+00:00",
+      "last_bar": "2026-11-13T16:00:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
