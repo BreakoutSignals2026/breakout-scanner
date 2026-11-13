@@ -427,6 +427,21 @@
       "symbol": "PFE",
       "tp": 29.71
     },
+    "MICRO1_PFE_202611131050": {
+      "client_id": "MICRO1_PFE_202611131050",
+      "entry_id": "f4809174-64c9-43fd-9ee9-e97d4a2d049d",
+      "planned_risk": 0.943,
+      "qty": 5,
+      "reference_entry": 28.64,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-13T15:50:00+00:00",
+      "status": "pending",
+      "stop": 28.79,
+      "submitted": "2026-11-13T15:55:48+00:00",
+      "symbol": "PFE",
+      "tp": 28.26
+    },
     "MICRO1_T_202611041315": {
       "client_id": "MICRO1_T_202611041315",
       "entry_id": "249d3c52-8758-4d13-94f7-9ba8b0497920",

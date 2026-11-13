@@ -1,12 +1,14 @@
 {
   "daily": {
-    "attempts": 0,
+    "attempts": 2,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-11-13",
   "seen": [
-    "HPQ:2026-11-13T15:45:00+00:00:buy"
+    "HPQ:2026-11-13T15:45:00+00:00:buy",
+    "HPQ:2026-11-13T15:50:00+00:00:buy",
+    "PFE:2026-11-13T15:50:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
@@ -19,7 +21,22 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-13T15:50:00+00:00",
+        "breakout_level": 29.09,
+        "breakout_percent": 0.2750085940185694,
+        "entry_close": 29.17,
+        "prior_avg_bar_notional_usd": 230380.55,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.03429943405934338,
+        "rel_volume": 1.5795886487893778,
+        "side": "buy",
+        "signal_bar_notional_usd": 368708.8,
+        "signal_bar_shares": 12640,
+        "signal_bar_trades": 138,
+        "symbol": "HPQ"
+      }
     },
     "KEY": {
       "phase": "watching"
@@ -34,7 +51,22 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-13T15:50:00+00:00",
+        "breakout_level": 28.7,
+        "breakout_percent": 0.2090592334494729,
+        "entry_close": 28.64,
+        "prior_avg_bar_notional_usd": 731182.16,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.03491010647581781,
+        "rel_volume": 1.732460501058227,
+        "side": "sell",
+        "signal_bar_notional_usd": 1260102.72,
+        "signal_bar_shares": 43998,
+        "signal_bar_trades": 128,
+        "symbol": "PFE"
+      }
     },
     "T": {
       "phase": "watching"
