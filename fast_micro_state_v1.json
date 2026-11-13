@@ -21,7 +21,11 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "pending",
+      "entry": 29.189585,
+      "entry_bar": "2026-11-13T15:55:00+00:00",
+      "last_bar": "2026-11-13T15:55:00+00:00",
+      "phase": "open",
+      "qty": 5,
       "signal": {
         "bar_key": "2026-11-13T15:50:00+00:00",
         "breakout_level": 29.09,
@@ -51,7 +55,11 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "pending",
+      "entry": 28.630675,
+      "entry_bar": "2026-11-13T15:55:00+00:00",
+      "last_bar": "2026-11-13T15:55:00+00:00",
+      "phase": "open",
+      "qty": 5,
       "signal": {
         "bar_key": "2026-11-13T15:50:00+00:00",
         "breakout_level": 28.7,
