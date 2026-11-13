@@ -5,7 +5,9 @@
     "pnl_usd": 0.0
   },
   "date": "2026-11-13",
-  "seen": [],
+  "seen": [
+    "HPQ:2026-11-13T15:45:00+00:00:buy"
+  ],
   "symbols": {
     "AG": {
       "phase": "watching"
