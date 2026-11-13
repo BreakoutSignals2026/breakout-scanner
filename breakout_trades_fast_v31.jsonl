@@ -613,3 +613,4 @@
 {"timestamp": "2026-11-13T17:32:59+00:00", "action": "exit_accepted", "symbol": "CLF", "order_id": "1bc537b5-95c7-4848-bf78-06cb67a63e57", "qty": 18}
 {"timestamp": "2026-11-13T17:37:39+00:00", "action": "entry_submitted", "symbol": "AAL", "order_id": "83e84454-3727-4c0c-a96d-5d6cf67a1418", "requested_qty": 17, "reference": 13.43, "side": "sell", "estimated_risk": 2.91, "spread_percent": 0.074, "rel_volume": 5.588704840123656, "breakout_percent": 0.29673590504451725, "bar_notional_usd": 2034883.2, "quote_age_seconds": 0.110478, "chase_percent": 0.07440476190476032, "signal_age_seconds": 159}
 {"timestamp": "2026-11-13T17:37:46+00:00", "action": "exit_accepted", "symbol": "AAL", "order_id": "ec4f717d-cde6-4115-bf84-2e17be617f10", "qty": 11}
+{"timestamp": "2026-11-13T17:51:32+00:00", "action": "closed", "symbol": "NU", "entry": 13.22, "exit": 13.09, "qty": 9.0, "side": "buy", "pnl": -1.17, "pnl_pct": -0.983, "reason": "trailing stop", "holding_seconds": 2790}
