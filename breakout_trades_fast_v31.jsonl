@@ -644,3 +644,9 @@
 {"timestamp": "2026-11-13T20:45:53+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 17, "order_id": "3c764bc4-1980-4199-b8e8-3c448b1a82ba"}
 {"timestamp": "2026-11-13T20:45:55+00:00", "action": "eod_close_submitted", "symbol": "PTON", "qty": 38, "order_id": "db6c2f31-a4d6-4a36-aff4-a5fceea5d280"}
 {"timestamp": "2026-11-13T20:45:58+00:00", "action": "eod_close_submitted", "symbol": "QBTS", "qty": 24, "order_id": "d41b31ea-189e-4031-9a74-400f1ba4f58c"}
+{"timestamp": "2026-11-13T20:46:32+00:00", "action": "closed", "symbol": "AAL", "entry": 13.43, "exit": 13.340000000000002, "qty": 11.0, "side": "sell", "pnl": 0.99, "pnl_pct": 0.67, "reason": "koniec seansy", "holding_seconds": 11289}
+{"timestamp": "2026-11-13T20:46:34+00:00", "action": "closed", "symbol": "CHWY", "entry": 22.44, "exit": 22.47, "qty": 9.0, "side": "buy", "pnl": 0.27, "pnl_pct": 0.134, "reason": "koniec seansy", "holding_seconds": 4615}
+{"timestamp": "2026-11-13T20:46:35+00:00", "action": "closed", "symbol": "GME", "entry": 25.94, "exit": 25.87, "qty": 9.0, "side": "sell", "pnl": 0.63, "pnl_pct": 0.27, "reason": "koniec seansy", "holding_seconds": 3220}
+{"timestamp": "2026-11-13T20:46:36+00:00", "action": "closed", "symbol": "PATH", "entry": 13.33, "exit": 13.31, "qty": 17.0, "side": "buy", "pnl": -0.34, "pnl_pct": -0.15, "reason": "koniec seansy", "holding_seconds": 7683}
+{"timestamp": "2026-11-13T20:46:38+00:00", "action": "closed", "symbol": "PTON", "entry": 5.68, "exit": 5.67, "qty": 38.0, "side": "sell", "pnl": 0.38, "pnl_pct": 0.176, "reason": "koniec seansy", "holding_seconds": 7122}
+{"timestamp": "2026-11-13T20:46:39+00:00", "action": "closed", "symbol": "QBTS", "entry": 9.56, "exit": 9.57, "qty": 24.0, "side": "buy", "pnl": 0.24, "pnl_pct": 0.105, "reason": "koniec seansy", "holding_seconds": 998}
