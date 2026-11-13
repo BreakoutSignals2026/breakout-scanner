@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 4,
-    "closed": 2,
-    "pnl_usd": -1.63
+    "closed": 3,
+    "pnl_usd": -2.44
   },
   "date": "2026-11-13",
   "seen": [
@@ -38,7 +38,7 @@
     "LYFT": {
       "entry": 17.018502499999997,
       "entry_bar": "2026-11-13T16:25:00+00:00",
-      "last_bar": "2026-11-13T17:35:00+00:00",
+      "last_bar": "2026-11-13T17:40:00+00:00",
       "phase": "open",
       "qty": 8,
       "signal": {
@@ -61,26 +61,7 @@
       "phase": "watching"
     },
     "PFE": {
-      "entry": 28.630675,
-      "entry_bar": "2026-11-13T15:55:00+00:00",
-      "last_bar": "2026-11-13T17:35:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-11-13T15:50:00+00:00",
-        "breakout_level": 28.7,
-        "breakout_percent": 0.2090592334494729,
-        "entry_close": 28.64,
-        "prior_avg_bar_notional_usd": 731182.16,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.03491010647581781,
-        "rel_volume": 1.732460501058227,
-        "side": "sell",
-        "signal_bar_notional_usd": 1260102.72,
-        "signal_bar_shares": 43998,
-        "signal_bar_trades": 128,
-        "symbol": "PFE"
-      }
+      "phase": "closed"
     },
     "T": {
       "phase": "watching"
