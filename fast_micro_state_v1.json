@@ -1,36 +1,18 @@
 {
   "daily": {
-    "attempts": 2,
-    "closed": 1,
-    "pnl_usd": -0.81
+    "attempts": 3,
+    "closed": 2,
+    "pnl_usd": -1.64
   },
   "date": "2026-11-16",
   "seen": [
     "AG:2026-11-16T16:45:00+00:00:sell",
-    "LYFT:2026-11-16T15:55:00+00:00:buy"
+    "LYFT:2026-11-16T15:55:00+00:00:buy",
+    "UPST:2026-11-16T17:20:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
-      "entry": 12.748619999999999,
-      "entry_bar": "2026-11-16T16:50:00+00:00",
-      "last_bar": "2026-11-16T16:55:00+00:00",
-      "phase": "open",
-      "qty": 11,
-      "signal": {
-        "bar_key": "2026-11-16T16:45:00+00:00",
-        "breakout_level": 12.795,
-        "breakout_percent": 0.4298554122704159,
-        "entry_close": 12.74,
-        "prior_avg_bar_notional_usd": 164802.97,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.07840062720501598,
-        "rel_volume": 4.6130286160757885,
-        "side": "sell",
-        "signal_bar_notional_usd": 752182.34,
-        "signal_bar_shares": 59041,
-        "signal_bar_trades": 181,
-        "symbol": "AG"
-      }
+      "phase": "closed"
     },
     "CDE": {
       "phase": "watching"
@@ -60,7 +42,26 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "watching"
+      "entry": 18.985500000000002,
+      "entry_bar": "2026-11-16T17:25:00+00:00",
+      "last_bar": "2026-11-16T17:25:00+00:00",
+      "phase": "open",
+      "qty": 8,
+      "signal": {
+        "bar_key": "2026-11-16T17:20:00+00:00",
+        "breakout_level": 19.08,
+        "breakout_percent": 0.26205450733751134,
+        "entry_close": 19.03,
+        "prior_avg_bar_notional_usd": 17304.14,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.0525624178712303,
+        "rel_volume": 2.3020679468242244,
+        "side": "sell",
+        "signal_bar_notional_usd": 39544.34,
+        "signal_bar_shares": 2078,
+        "signal_bar_trades": 36,
+        "symbol": "UPST"
+      }
     },
     "XPEV": {
       "phase": "watching"
