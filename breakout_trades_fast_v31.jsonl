@@ -682,3 +682,4 @@
 {"timestamp": "2026-11-16T19:58:00+00:00", "action": "exit_accepted", "symbol": "CCL", "order_id": "a5540d75-70fe-4140-a32c-ed3466dcd192", "qty": 6}
 {"timestamp": "2026-11-16T20:02:34+00:00", "action": "entry_submitted", "symbol": "RIOT", "order_id": "7fb105a5-c0cb-4e34-b00f-f48285caf2f2", "requested_qty": 13, "reference": 17.16, "side": "buy", "estimated_risk": 2.81, "spread_percent": 0.058, "rel_volume": 2.381248912181632, "breakout_percent": 0.38011695906431414, "bar_notional_usd": 352260.13, "quote_age_seconds": 1.311747, "chase_percent": 0.029129041654523773, "signal_age_seconds": 154}
 {"timestamp": "2026-11-16T20:02:37+00:00", "action": "exit_accepted", "symbol": "RIOT", "order_id": "a17b685c-cec9-48ab-b5eb-685a4020382a", "qty": 10}
+{"timestamp": "2026-11-16T20:20:45+00:00", "action": "closed", "symbol": "RIOT", "entry": 17.16, "exit": 17.07, "qty": 10.0, "side": "buy", "pnl": -0.9, "pnl_pct": -0.524, "reason": "trailing stop", "holding_seconds": 823}
