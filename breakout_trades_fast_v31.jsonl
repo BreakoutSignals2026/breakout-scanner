@@ -684,3 +684,8 @@
 {"timestamp": "2026-11-16T20:02:37+00:00", "action": "exit_accepted", "symbol": "RIOT", "order_id": "a17b685c-cec9-48ab-b5eb-685a4020382a", "qty": 10}
 {"timestamp": "2026-11-16T20:20:45+00:00", "action": "closed", "symbol": "RIOT", "entry": 17.16, "exit": 17.07, "qty": 10.0, "side": "buy", "pnl": -0.9, "pnl_pct": -0.524, "reason": "trailing stop", "holding_seconds": 823}
 {"timestamp": "2026-11-16T20:38:52+00:00", "action": "closed", "symbol": "MARA", "entry": 6.61, "exit": 6.64, "qty": 24.0, "side": "buy", "pnl": 0.72, "pnl_pct": 0.454, "reason": "trailing stop", "holding_seconds": 6172}
+{"timestamp": "2026-11-16T20:45:30+00:00", "action": "eod_stop_cancel_requested", "symbol": "CCL", "id": "a5540d75-70fe-4140-a32c-ed3466dcd192"}
+{"timestamp": "2026-11-16T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "LUNR", "id": "10a67bc2-30fe-4699-a6bd-0696dda8ac38"}
+{"timestamp": "2026-11-16T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "956a940b-e76c-4b31-934a-cd9ca45ffd42"}
+{"timestamp": "2026-11-16T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "PTON", "id": "6eb7b1a8-228a-47a1-afc0-162d5a5fb557"}
+{"timestamp": "2026-11-16T20:45:31+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "1734d7b1-de17-42ea-8cac-f5ea9a367b58"}

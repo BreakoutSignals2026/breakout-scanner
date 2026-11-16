@@ -16,7 +16,8 @@
     "2026-11-10": "2026-11-10T20:45:04+00:00",
     "2026-11-11": "2026-11-11T20:45:31+00:00",
     "2026-11-12": "2026-11-12T20:45:33+00:00",
-    "2026-11-13": "2026-11-13T20:45:01+00:00"
+    "2026-11-13": "2026-11-13T20:45:01+00:00",
+    "2026-11-16": "2026-11-16T20:45:30+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -94,6 +95,7 @@
     },
     "CCL": {
       "bar_key": "2026-11-16T19:50:00+00:00",
+      "close_cid": "FAST31C_CCL_11161950000000",
       "entry_cid": "FAST31E_CCL_11161950000000",
       "entry_fill_price": 28.82,
       "entry_filled_at": "2026-11-16T19:57:57.101303818Z",
@@ -105,7 +107,7 @@
       "requested_qty": 8,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-16T19:57:55+00:00",
       "symbol": "CCL"
     },
@@ -299,6 +301,7 @@
     },
     "LUNR": {
       "bar_key": "2026-11-16T18:00:00+00:00",
+      "close_cid": "FAST31C_LUNR_11161800000000",
       "entry_cid": "FAST31E_LUNR_11161800000000",
       "entry_fill_price": 11.74,
       "entry_filled_at": "2026-11-16T18:08:15.814361972Z",
@@ -310,7 +313,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.02,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-16T18:08:14+00:00",
       "symbol": "LUNR"
     },
@@ -352,6 +355,7 @@
     },
     "NU": {
       "bar_key": "2026-11-16T17:35:00+00:00",
+      "close_cid": "FAST31C_NU_11161735000000",
       "entry_cid": "FAST31E_NU_11161735000000",
       "entry_fill_price": 12.72,
       "entry_filled_at": "2026-11-16T17:41:00.599919695Z",
@@ -363,7 +367,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-16T17:40:59+00:00",
       "symbol": "NU"
     },
@@ -387,6 +391,7 @@
     },
     "PTON": {
       "bar_key": "2026-11-16T18:25:00+00:00",
+      "close_cid": "FAST31C_PTON_11161825000000",
       "entry_cid": "FAST31E_PTON_11161825000000",
       "entry_fill_price": 5.54,
       "entry_filled_at": "2026-11-16T18:31:11.520208912Z",
@@ -398,7 +403,7 @@
       "requested_qty": 39,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-16T18:31:09+00:00",
       "symbol": "PTON"
     },
@@ -534,6 +539,7 @@
     },
     "VALE": {
       "bar_key": "2026-11-16T18:05:00+00:00",
+      "close_cid": "FAST31C_VALE_11161805000000",
       "entry_cid": "FAST31E_VALE_11161805000000",
       "entry_fill_price": 10.51,
       "entry_filled_at": "2026-11-16T18:12:55.648300241Z",
@@ -545,7 +551,7 @@
       "requested_qty": 22,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-16T18:12:54+00:00",
       "symbol": "VALE"
     }
