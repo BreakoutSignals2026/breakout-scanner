@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-16",
-    "scans": 44,
+    "scans": 45,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 31,
+      "bez_potvrdeneho_breakoutu": 36,
       "blocked_positions": 29,
       "exceptions": 6,
       "malo_5min_sviecok": 170,
-      "nizky_relativny_objem": 199,
+      "nizky_relativny_objem": 204,
       "submitted": 5,
-      "symbols_checked": 411,
+      "symbols_checked": 421,
       "technical_signals": 7
     }
   },
@@ -29,27 +29,27 @@
   "daily_start_notice": "2026-11-16",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 1,
+      "bez_potvrdeneho_breakoutu": 5,
+      "blocked_positions": 0,
       "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 72.7,
+      "nizky_relativny_objem": 5,
+      "scan_seconds": 80.7,
       "submitted": 0,
-      "symbols_checked": 9,
+      "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-16T13:46:30-05:00"
+      "time_ny": "2026-11-16T13:52:24-05:00"
     },
     "date": "2026-11-16",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
       "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "nizky_relativny_objem",
-      "NVDA": "position_or_order_blocked",
+      "MSFT": "bez_potvrdeneho_breakoutu",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -821,10 +821,10 @@
       "planned_risk": 4.389,
       "qty": 5,
       "reference_entry": 155.54,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-11-16T13:15:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 156.31,
       "submitted": "2026-11-16T18:23:18+00:00",
       "symbol": "NVDA",
