@@ -96,6 +96,7 @@
     "CCL": {
       "bar_key": "2026-11-16T19:50:00+00:00",
       "close_cid": "FAST31C_CCL_11161950000000",
+      "close_order_id": "cc21442c-50e8-420e-9381-59f995f4b3f3",
       "entry_cid": "FAST31E_CCL_11161950000000",
       "entry_fill_price": 28.82,
       "entry_filled_at": "2026-11-16T19:57:57.101303818Z",
@@ -107,7 +108,7 @@
       "requested_qty": 8,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-16T19:57:55+00:00",
       "symbol": "CCL"
     },
@@ -302,6 +303,7 @@
     "LUNR": {
       "bar_key": "2026-11-16T18:00:00+00:00",
       "close_cid": "FAST31C_LUNR_11161800000000",
+      "close_order_id": "c2cfc09e-022c-42ac-accb-7778a67b7182",
       "entry_cid": "FAST31E_LUNR_11161800000000",
       "entry_fill_price": 11.74,
       "entry_filled_at": "2026-11-16T18:08:15.814361972Z",
@@ -313,7 +315,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.02,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-16T18:08:14+00:00",
       "symbol": "LUNR"
     },
@@ -356,6 +358,7 @@
     "NU": {
       "bar_key": "2026-11-16T17:35:00+00:00",
       "close_cid": "FAST31C_NU_11161735000000",
+      "close_order_id": "e8d41b67-35e2-453b-bd70-a0aedbf7f66f",
       "entry_cid": "FAST31E_NU_11161735000000",
       "entry_fill_price": 12.72,
       "entry_filled_at": "2026-11-16T17:41:00.599919695Z",
@@ -367,7 +370,7 @@
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-16T17:40:59+00:00",
       "symbol": "NU"
     },
@@ -392,6 +395,7 @@
     "PTON": {
       "bar_key": "2026-11-16T18:25:00+00:00",
       "close_cid": "FAST31C_PTON_11161825000000",
+      "close_order_id": "3d598b86-ed29-4794-a6c3-7a109af2356e",
       "entry_cid": "FAST31E_PTON_11161825000000",
       "entry_fill_price": 5.54,
       "entry_filled_at": "2026-11-16T18:31:11.520208912Z",
@@ -403,7 +407,7 @@
       "requested_qty": 39,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-16T18:31:09+00:00",
       "symbol": "PTON"
     },
@@ -540,6 +544,7 @@
     "VALE": {
       "bar_key": "2026-11-16T18:05:00+00:00",
       "close_cid": "FAST31C_VALE_11161805000000",
+      "close_order_id": "478e1c77-81f6-4ea2-9130-c4204622219d",
       "entry_cid": "FAST31E_VALE_11161805000000",
       "entry_fill_price": 10.51,
       "entry_filled_at": "2026-11-16T18:12:55.648300241Z",
@@ -551,7 +556,7 @@
       "requested_qty": 22,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-16T18:12:54+00:00",
       "symbol": "VALE"
     }
