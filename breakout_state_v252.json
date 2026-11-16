@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-16",
-    "scans": 30,
+    "scans": 31,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 8,
-      "blocked_positions": 1,
-      "exceptions": 0,
+      "bez_potvrdeneho_breakoutu": 11,
+      "blocked_positions": 3,
+      "exceptions": 1,
       "malo_5min_sviecok": 170,
-      "nizky_relativny_objem": 119,
+      "nizky_relativny_objem": 123,
       "submitted": 2,
-      "symbols_checked": 299,
+      "symbols_checked": 307,
       "technical_signals": 2
     }
   },
@@ -29,27 +29,28 @@
   "daily_start_notice": "2026-11-16",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 1,
-      "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 73.1,
-      "submitted": 1,
-      "symbols_checked": 9,
-      "technical_signals": 1,
-      "time_ny": "2026-11-16T12:27:33-05:00"
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 2,
+      "exceptions": 1,
+      "nizky_relativny_objem": 4,
+      "scan_seconds": 67.9,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-16T12:33:14-05:00"
     },
     "date": "2026-11-16",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "order_submitted",
-      "INTC": "nizky_relativny_objem",
+      "GOOGL": "position_or_order_blocked",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
       "NVDA": "position_or_order_blocked",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -332,7 +333,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-16T12:20:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 287.41,
       "submitted": "2026-11-16T17:27:33+00:00",
       "symbol": "GOOGL",
