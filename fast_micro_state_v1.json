@@ -1,11 +1,13 @@
 {
   "daily": {
-    "attempts": 0,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "attempts": 1,
+    "closed": 1,
+    "pnl_usd": -0.81
   },
   "date": "2026-11-16",
-  "seen": [],
+  "seen": [
+    "LYFT:2026-11-16T15:55:00+00:00:buy"
+  ],
   "symbols": {
     "AG": {
       "phase": "watching"
@@ -26,7 +28,7 @@
       "phase": "watching"
     },
     "LYFT": {
-      "phase": "watching"
+      "phase": "closed"
     },
     "NCLH": {
       "phase": "watching"
