@@ -105,7 +105,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-16T16:45:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 12.82,
       "submitted": "2026-11-16T16:50:46+00:00",
       "symbol": "AG",
