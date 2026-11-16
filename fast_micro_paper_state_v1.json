@@ -566,6 +566,21 @@
       "symbol": "UPST",
       "tp": 19.18
     },
+    "MICRO1_UPST_202611161220": {
+      "client_id": "MICRO1_UPST_202611161220",
+      "entry_id": "d6b493f2-6d63-47b6-bfa5-b9542ba0552a",
+      "planned_risk": 0.903,
+      "qty": 7,
+      "reference_entry": 19.02,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-16T17:20:00+00:00",
+      "status": "pending",
+      "stop": 19.12,
+      "submitted": "2026-11-16T17:25:47+00:00",
+      "symbol": "UPST",
+      "tp": 18.77
+    },
     "MICRO1_XPEV_202611041120": {
       "client_id": "MICRO1_XPEV_202611041120",
       "entry_id": "ef2a42ee-d229-4e1b-9f4b-be99415d2c91",
