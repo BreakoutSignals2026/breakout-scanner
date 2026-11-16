@@ -378,11 +378,12 @@
       "exit_cid": "FAST31X_PATH_11161550000000",
       "exit_order_id": "2e956e25-3efd-4e7f-abbc-71755fc2bd2d",
       "filled_qty": 17,
+      "realized_pnl": -0.51,
       "reference_price": 13.31,
       "requested_qty": 17,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-16T15:56:16+00:00",
       "symbol": "PATH"
     },

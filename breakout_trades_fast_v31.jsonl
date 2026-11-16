@@ -662,3 +662,4 @@
 {"timestamp": "2026-11-16T18:08:19+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "10a67bc2-30fe-4699-a6bd-0696dda8ac38", "qty": 12}
 {"timestamp": "2026-11-16T18:12:54+00:00", "action": "entry_submitted", "symbol": "VALE", "order_id": "3e4c3924-b038-4c5b-9dd4-f317cd833009", "requested_qty": 22, "reference": 10.51, "side": "sell", "estimated_risk": 2.99, "spread_percent": 0.095, "rel_volume": 1.8534989768928718, "breakout_percent": 0.3786086133459456, "bar_notional_usd": 657033.65, "quote_age_seconds": 2.480195, "chase_percent": 0.14251781472684624, "signal_age_seconds": 175}
 {"timestamp": "2026-11-16T18:12:59+00:00", "action": "exit_accepted", "symbol": "VALE", "order_id": "1734d7b1-de17-42ea-8cac-f5ea9a367b58", "qty": 2}
+{"timestamp": "2026-11-16T18:26:34+00:00", "action": "closed", "symbol": "PATH", "entry": 13.31, "exit": 13.28, "qty": 17.0, "side": "buy", "pnl": -0.51, "pnl_pct": -0.225, "reason": "trailing stop", "holding_seconds": 8832}
