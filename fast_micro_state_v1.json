@@ -1,16 +1,32 @@
 {
   "daily": {
-    "attempts": 1,
+    "attempts": 2,
     "closed": 1,
     "pnl_usd": -0.81
   },
   "date": "2026-11-16",
   "seen": [
+    "AG:2026-11-16T16:45:00+00:00:sell",
     "LYFT:2026-11-16T15:55:00+00:00:buy"
   ],
   "symbols": {
     "AG": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-16T16:45:00+00:00",
+        "breakout_level": 12.795,
+        "breakout_percent": 0.4298554122704159,
+        "entry_close": 12.74,
+        "prior_avg_bar_notional_usd": 164802.97,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.07840062720501598,
+        "rel_volume": 4.6130286160757885,
+        "side": "sell",
+        "signal_bar_notional_usd": 752182.34,
+        "signal_bar_shares": 59041,
+        "signal_bar_trades": 181,
+        "symbol": "AG"
+      }
     },
     "CDE": {
       "phase": "watching"
