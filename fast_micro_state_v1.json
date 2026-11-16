@@ -1,8 +1,8 @@
 {
   "daily": {
-    "attempts": 4,
-    "closed": 2,
-    "pnl_usd": -1.64
+    "attempts": 5,
+    "closed": 3,
+    "pnl_usd": 0.03
   },
   "date": "2026-11-16",
   "seen": [
@@ -14,8 +14,10 @@
     "KEY:2026-11-16T18:30:00+00:00:sell",
     "KEY:2026-11-16T18:35:00+00:00:sell",
     "KGC:2026-11-16T17:30:00+00:00:sell",
+    "KGC:2026-11-16T20:15:00+00:00:sell",
     "LYFT:2026-11-16T15:55:00+00:00:buy",
     "NCLH:2026-11-16T18:25:00+00:00:sell",
+    "NCLH:2026-11-16T20:15:00+00:00:buy",
     "UPST:2026-11-16T17:20:00+00:00:sell",
     "UPST:2026-11-16T17:55:00+00:00:sell",
     "XPEV:2026-11-16T18:35:00+00:00:sell",
@@ -38,32 +40,32 @@
       "phase": "watching"
     },
     "KGC": {
-      "entry": 20.2598625,
-      "entry_bar": "2026-11-16T17:35:00+00:00",
-      "last_bar": "2026-11-16T20:10:00+00:00",
-      "phase": "open",
-      "qty": 7,
-      "signal": {
-        "bar_key": "2026-11-16T17:30:00+00:00",
-        "breakout_level": 20.33,
-        "breakout_percent": 0.2459419576979693,
-        "entry_close": 20.28,
-        "prior_avg_bar_notional_usd": 271098.99,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.049346163335790824,
-        "rel_volume": 1.5663660197950249,
-        "side": "sell",
-        "signal_bar_notional_usd": 422047.08,
-        "signal_bar_shares": 20811,
-        "signal_bar_trades": 76,
-        "symbol": "KGC"
-      }
+      "phase": "closed"
     },
     "LYFT": {
       "phase": "closed"
     },
     "NCLH": {
-      "phase": "watching"
+      "entry": 17.87393,
+      "entry_bar": "2026-11-16T20:20:00+00:00",
+      "last_bar": "2026-11-16T20:30:00+00:00",
+      "phase": "open",
+      "qty": 8,
+      "signal": {
+        "bar_key": "2026-11-16T20:15:00+00:00",
+        "breakout_level": 17.82,
+        "breakout_percent": 0.224466891133553,
+        "entry_close": 17.86,
+        "prior_avg_bar_notional_usd": 101416.21,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.056038105912028936,
+        "rel_volume": 4.3196714148387665,
+        "side": "buy",
+        "signal_bar_notional_usd": 441409.9,
+        "signal_bar_shares": 24715,
+        "signal_bar_trades": 116,
+        "symbol": "NCLH"
+      }
     },
     "PFE": {
       "phase": "watching"
@@ -74,7 +76,7 @@
     "UPST": {
       "entry": 18.985500000000002,
       "entry_bar": "2026-11-16T17:25:00+00:00",
-      "last_bar": "2026-11-16T20:10:00+00:00",
+      "last_bar": "2026-11-16T20:30:00+00:00",
       "phase": "open",
       "qty": 8,
       "signal": {
