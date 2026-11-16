@@ -121,11 +121,12 @@
       "exit_cid": "FAST31X_CELH_11161850000000",
       "exit_order_id": "2659b4ab-6b01-4c1d-9daf-7381352f714d",
       "filled_qty": 7,
+      "realized_pnl": -2.8,
       "reference_price": 32.08,
       "requested_qty": 7,
       "side": "buy",
       "spread_at_entry": 0.03,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-16T18:58:52+00:00",
       "symbol": "CELH"
     },
