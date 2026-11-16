@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-16",
-    "scans": 36,
+    "scans": 37,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 15,
-      "blocked_positions": 13,
-      "exceptions": 4,
+      "bez_potvrdeneho_breakoutu": 16,
+      "blocked_positions": 15,
+      "exceptions": 5,
       "malo_5min_sviecok": 170,
-      "nizky_relativny_objem": 156,
+      "nizky_relativny_objem": 162,
       "submitted": 2,
-      "symbols_checked": 347,
-      "technical_signals": 2
+      "symbols_checked": 355,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-13",
@@ -33,22 +33,22 @@
       "blocked_positions": 2,
       "exceptions": 1,
       "nizky_relativny_objem": 6,
-      "scan_seconds": 65.9,
+      "scan_seconds": 66.1,
       "submitted": 0,
       "symbols_checked": 8,
-      "technical_signals": 0,
-      "time_ny": "2026-11-16T13:01:25-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-16T13:07:03-05:00"
     },
     "date": "2026-11-16",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "position_or_order_blocked",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "MSFT: IEX spread 0.737% nad 0.3%",
       "NVDA": "position_or_order_blocked",
       "TSLA": "nizky_relativny_objem"
     }
