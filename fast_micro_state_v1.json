@@ -1,16 +1,34 @@
 {
   "daily": {
-    "attempts": 1,
+    "attempts": 2,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-11-17",
   "seen": [
-    "KEY:2026-11-17T15:40:00+00:00:sell"
+    "AG:2026-11-17T15:45:00+00:00:sell",
+    "HPQ:2026-11-17T15:45:00+00:00:sell",
+    "KEY:2026-11-17T15:40:00+00:00:sell",
+    "KEY:2026-11-17T15:45:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-17T15:45:00+00:00",
+        "breakout_level": 12.955,
+        "breakout_percent": 0.4245465071400982,
+        "entry_close": 12.9,
+        "prior_avg_bar_notional_usd": 229918.6,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.07754943776657454,
+        "rel_volume": 2.0293695630555333,
+        "side": "sell",
+        "signal_bar_notional_usd": 460684.8,
+        "signal_bar_shares": 35712,
+        "signal_bar_trades": 141,
+        "symbol": "AG"
+      }
     },
     "CDE": {
       "phase": "watching"
@@ -22,7 +40,11 @@
       "phase": "watching"
     },
     "KEY": {
-      "phase": "pending",
+      "entry": 20.839572500000003,
+      "entry_bar": "2026-11-17T15:45:00+00:00",
+      "last_bar": "2026-11-17T15:45:00+00:00",
+      "phase": "open",
+      "qty": 7,
       "signal": {
         "bar_key": "2026-11-17T15:40:00+00:00",
         "breakout_level": 20.975,
