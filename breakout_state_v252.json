@@ -13,14 +13,14 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-17",
-    "scans": 22,
+    "scans": 23,
     "totals": {
       "blocked_positions": 0,
       "exceptions": 2,
       "malo_5min_sviecok": 176,
-      "nizky_relativny_objem": 42,
+      "nizky_relativny_objem": 52,
       "submitted": 0,
-      "symbols_checked": 220,
+      "symbols_checked": 230,
       "technical_signals": 0
     }
   },
@@ -35,7 +35,7 @@
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 0,
-      "time_ny": "2026-11-17T11:38:44-05:00"
+      "time_ny": "2026-11-17T11:44:37-05:00"
     },
     "date": "2026-11-17",
     "symbols": {
