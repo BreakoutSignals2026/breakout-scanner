@@ -225,7 +225,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-17T18:30:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 28.47,
       "submitted": "2026-11-17T18:35:48+00:00",
       "symbol": "HPQ",
