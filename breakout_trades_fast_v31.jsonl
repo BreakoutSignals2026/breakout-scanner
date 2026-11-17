@@ -723,3 +723,6 @@
 {"timestamp": "2026-11-17T20:45:42+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 6, "order_id": "9aa62d9f-7f17-4471-9477-63a33bef06de"}
 {"timestamp": "2026-11-17T20:45:44+00:00", "action": "eod_close_submitted", "symbol": "GME", "qty": 8, "order_id": "7411dbf0-1a38-4449-9581-038181cdc044"}
 {"timestamp": "2026-11-17T20:45:47+00:00", "action": "eod_close_submitted", "symbol": "QBTS", "qty": 25, "order_id": "f496b454-8f52-409d-b254-f90dad6a465e"}
+{"timestamp": "2026-11-17T20:46:22+00:00", "action": "closed", "symbol": "CHWY", "entry": 20.39, "exit": 20.468333, "qty": 6.0, "side": "sell", "pnl": -0.47, "pnl_pct": -0.384, "reason": "koniec seansy", "holding_seconds": 2543}
+{"timestamp": "2026-11-17T20:46:23+00:00", "action": "closed", "symbol": "GME", "entry": 25.42, "exit": 25.33, "qty": 8.0, "side": "buy", "pnl": -0.72, "pnl_pct": -0.354, "reason": "koniec seansy", "holding_seconds": 7772}
+{"timestamp": "2026-11-17T20:46:25+00:00", "action": "closed", "symbol": "QBTS", "entry": 8.14, "exit": 8.08, "qty": 25.0, "side": "buy", "pnl": -1.5, "pnl_pct": -0.737, "reason": "koniec seansy", "holding_seconds": 1158}
