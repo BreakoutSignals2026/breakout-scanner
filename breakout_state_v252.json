@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-17",
-    "scans": 42,
+    "scans": 43,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 24,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 25,
+      "blocked_positions": 1,
       "exceptions": 5,
       "malo_5min_sviecok": 176,
-      "nizky_relativny_objem": 214,
+      "nizky_relativny_objem": 222,
       "submitted": 1,
-      "symbols_checked": 420,
+      "symbols_checked": 429,
       "technical_signals": 1
     }
   },
@@ -29,27 +29,27 @@
   "daily_start_notice": "2026-11-17",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 0,
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 81.5,
-      "submitted": 1,
-      "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-17T13:36:46-05:00"
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 72.7,
+      "submitted": 0,
+      "symbols_checked": 9,
+      "technical_signals": 0,
+      "time_ny": "2026-11-17T13:42:32-05:00"
     },
     "date": "2026-11-17",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "order_submitted",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "position_or_order_blocked",
+      "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -732,7 +732,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-17T13:30:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 503.23,
       "submitted": "2026-11-17T18:36:38+00:00",
       "symbol": "MSFT",
