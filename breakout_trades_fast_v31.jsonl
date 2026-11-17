@@ -709,3 +709,4 @@
 {"timestamp": "2026-11-17T18:17:54+00:00", "action": "exit_accepted", "symbol": "LUNR", "order_id": "ac851b12-2e0c-4808-b85d-47f73bdd8cff", "qty": 20}
 {"timestamp": "2026-11-17T18:36:13+00:00", "action": "entry_submitted", "symbol": "GME", "order_id": "f254eae3-4eb1-4939-b5be-29a168778e42", "requested_qty": 9, "reference": 25.43, "side": "buy", "estimated_risk": 2.93, "spread_percent": 0.079, "rel_volume": 3.44014401440144, "breakout_percent": 0.4149377593361012, "bar_notional_usd": 145675.53, "quote_age_seconds": 0.346486, "chase_percent": 0.07870916961825886, "signal_age_seconds": 74}
 {"timestamp": "2026-11-17T18:36:21+00:00", "action": "exit_accepted", "symbol": "GME", "order_id": "4fad4cfb-3c90-4a8d-aa23-ab5b8b876ce5", "qty": 8}
+{"timestamp": "2026-11-17T19:17:27+00:00", "action": "closed", "symbol": "LUNR", "entry": 11.15, "exit": 11.12, "qty": 20.0, "side": "sell", "pnl": 0.6, "pnl_pct": 0.269, "reason": "trailing stop", "holding_seconds": 3397}
