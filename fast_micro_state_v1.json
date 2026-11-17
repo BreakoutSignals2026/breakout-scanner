@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 3,
+    "attempts": 5,
     "closed": 3,
     "pnl_usd": -2.54
   },
@@ -10,8 +10,10 @@
     "CDE:2026-11-17T16:35:00+00:00:sell",
     "HBAN:2026-11-17T15:50:00+00:00:sell",
     "HPQ:2026-11-17T15:45:00+00:00:sell",
+    "HPQ:2026-11-17T18:30:00+00:00:buy",
     "KEY:2026-11-17T15:40:00+00:00:sell",
-    "KEY:2026-11-17T15:45:00+00:00:sell"
+    "KEY:2026-11-17T15:45:00+00:00:sell",
+    "XPEV:2026-11-17T18:25:00+00:00:buy"
   ],
   "symbols": {
     "AG": {
@@ -24,7 +26,22 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-17T18:30:00+00:00",
+        "breakout_level": 28.495,
+        "breakout_percent": 0.40357957536409345,
+        "entry_close": 28.61,
+        "prior_avg_bar_notional_usd": 151490.38,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.034946706272939235,
+        "rel_volume": 2.18881468073154,
+        "side": "buy",
+        "signal_bar_notional_usd": 334422.29,
+        "signal_bar_shares": 11689,
+        "signal_bar_trades": 123,
+        "symbol": "HPQ"
+      }
     },
     "KEY": {
       "phase": "closed"
@@ -48,7 +65,26 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "watching"
+      "entry": 10.1250575,
+      "entry_bar": "2026-11-17T18:30:00+00:00",
+      "last_bar": "2026-11-17T18:30:00+00:00",
+      "phase": "open",
+      "qty": 14,
+      "signal": {
+        "bar_key": "2026-11-17T18:25:00+00:00",
+        "breakout_level": 10.09,
+        "breakout_percent": 0.19821605550049132,
+        "entry_close": 10.11,
+        "prior_avg_bar_notional_usd": 70628.13,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.09876543209878087,
+        "rel_volume": 2.361348410194605,
+        "side": "buy",
+        "signal_bar_notional_usd": 168371.94,
+        "signal_bar_shares": 16654,
+        "signal_bar_trades": 25,
+        "symbol": "XPEV"
+      }
     }
   }
 }
