@@ -133,6 +133,7 @@
     "CHWY": {
       "bar_key": "2026-11-17T19:55:00+00:00",
       "close_cid": "FAST31C_CHWY_11171955000000",
+      "close_order_id": "9aa62d9f-7f17-4471-9477-63a33bef06de",
       "entry_cid": "FAST31E_CHWY_11171955000000",
       "entry_fill_price": 20.39,
       "entry_filled_at": "2026-11-17T20:03:24.15359542Z",
@@ -144,7 +145,7 @@
       "requested_qty": 11,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-17T20:03:20+00:00",
       "symbol": "CHWY"
     },
@@ -245,6 +246,7 @@
     "GME": {
       "bar_key": "2026-11-17T18:30:00+00:00",
       "close_cid": "FAST31C_GME_11171830000000",
+      "close_order_id": "7411dbf0-1a38-4449-9581-038181cdc044",
       "entry_cid": "FAST31E_GME_11171830000000",
       "entry_fill_price": 25.42,
       "entry_filled_at": "2026-11-17T18:36:15.927529855Z",
@@ -256,7 +258,7 @@
       "requested_qty": 9,
       "side": "buy",
       "spread_at_entry": 0.02,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-17T18:36:13+00:00",
       "symbol": "GME"
     },
@@ -411,6 +413,7 @@
     "QBTS": {
       "bar_key": "2026-11-17T20:20:00+00:00",
       "close_cid": "FAST31C_QBTS_11172020000000",
+      "close_order_id": "f496b454-8f52-409d-b254-f90dad6a465e",
       "entry_cid": "FAST31E_QBTS_11172020000000",
       "entry_fill_price": 8.14,
       "entry_filled_at": "2026-11-17T20:26:30.423760478Z",
@@ -422,7 +425,7 @@
       "requested_qty": 27,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-17T20:26:27+00:00",
       "symbol": "QBTS"
     },
