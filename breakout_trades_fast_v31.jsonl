@@ -717,3 +717,6 @@
 {"timestamp": "2026-11-17T20:17:12+00:00", "action": "closed", "symbol": "BB", "entry": 8.09, "exit": 8.17, "qty": 6.0, "side": "sell", "pnl": -0.48, "pnl_pct": -0.989, "reason": "trailing stop", "holding_seconds": 1111}
 {"timestamp": "2026-11-17T20:26:27+00:00", "action": "entry_submitted", "symbol": "QBTS", "order_id": "68e4f4c6-5207-4564-924b-14666b4cec35", "requested_qty": 27, "reference": 8.14, "side": "buy", "estimated_risk": 2.91, "spread_percent": 0.123, "rel_volume": 2.529445753144584, "breakout_percent": 0.3078817733990192, "bar_notional_usd": 77255.32, "quote_age_seconds": 0.171838, "chase_percent": 0.061387354205021546, "signal_age_seconds": 88}
 {"timestamp": "2026-11-17T20:26:36+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "ed593cc6-db6d-4545-bff0-bbaafa8cd27f", "qty": 25}
+{"timestamp": "2026-11-17T20:45:03+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "99ae4508-d286-45cf-a50d-074e1abd90a0"}
+{"timestamp": "2026-11-17T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "GME", "id": "4fad4cfb-3c90-4a8d-aa23-ab5b8b876ce5"}
+{"timestamp": "2026-11-17T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "QBTS", "id": "ed593cc6-db6d-4545-bff0-bbaafa8cd27f"}
