@@ -216,6 +216,21 @@
       "symbol": "HPQ",
       "tp": 30.11
     },
+    "MICRO1_HPQ_202611171330": {
+      "client_id": "MICRO1_HPQ_202611171330",
+      "entry_id": "25c1f5f6-1470-4507-8650-f30916a58b01",
+      "planned_risk": 0.943,
+      "qty": 5,
+      "reference_entry": 28.62,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-17T18:30:00+00:00",
+      "status": "pending",
+      "stop": 28.47,
+      "submitted": "2026-11-17T18:35:48+00:00",
+      "symbol": "HPQ",
+      "tp": 29.0
+    },
     "MICRO1_KEY_202611031315": {
       "client_id": "MICRO1_KEY_202611031315",
       "entry_id": "b671aea0-28be-419b-972b-b9a27afe8d6f",
@@ -716,7 +731,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-17T18:25:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 10.07,
       "submitted": "2026-11-17T18:30:49+00:00",
       "symbol": "XPEV",
