@@ -714,3 +714,4 @@
 {"timestamp": "2026-11-17T19:58:41+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "f0a85c82-b7f9-421e-a44c-290702d1440a", "qty": 6}
 {"timestamp": "2026-11-17T20:03:21+00:00", "action": "entry_submitted", "symbol": "CHWY", "order_id": "f5652b5f-4629-4e73-ab31-38b175444018", "requested_qty": 11, "reference": 20.39, "side": "sell", "estimated_risk": 2.8, "spread_percent": 0.049, "rel_volume": 1.5103138222849082, "breakout_percent": 0.17144256674014277, "bar_notional_usd": 116390.18, "quote_age_seconds": 1.455895, "chase_percent": 0.04906771344456116, "signal_age_seconds": 201}
 {"timestamp": "2026-11-17T20:03:29+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "99ae4508-d286-45cf-a50d-074e1abd90a0", "qty": 6}
+{"timestamp": "2026-11-17T20:17:12+00:00", "action": "closed", "symbol": "BB", "entry": 8.09, "exit": 8.17, "qty": 6.0, "side": "sell", "pnl": -0.48, "pnl_pct": -0.989, "reason": "trailing stop", "holding_seconds": 1111}
