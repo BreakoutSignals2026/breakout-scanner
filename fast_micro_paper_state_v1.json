@@ -706,6 +706,21 @@
       "submitted": "2026-11-13T19:10:48+00:00",
       "symbol": "XPEV",
       "tp": 9.51
+    },
+    "MICRO1_XPEV_202611171325": {
+      "client_id": "MICRO1_XPEV_202611171325",
+      "entry_id": "fdad2476-92f2-4664-8a8a-a7840ebaf432",
+      "planned_risk": 0.962,
+      "qty": 12,
+      "reference_entry": 10.13,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-17T18:25:00+00:00",
+      "status": "pending",
+      "stop": 10.07,
+      "submitted": "2026-11-17T18:30:49+00:00",
+      "symbol": "XPEV",
+      "tp": 10.28
     }
   },
   "version": "MICRO_PAPER_1"

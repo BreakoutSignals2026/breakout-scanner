@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 3,
+    "attempts": 4,
     "closed": 3,
     "pnl_usd": -2.54
   },
@@ -11,7 +11,8 @@
     "HBAN:2026-11-17T15:50:00+00:00:sell",
     "HPQ:2026-11-17T15:45:00+00:00:sell",
     "KEY:2026-11-17T15:40:00+00:00:sell",
-    "KEY:2026-11-17T15:45:00+00:00:sell"
+    "KEY:2026-11-17T15:45:00+00:00:sell",
+    "XPEV:2026-11-17T18:25:00+00:00:buy"
   ],
   "symbols": {
     "AG": {
@@ -48,7 +49,22 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-17T18:25:00+00:00",
+        "breakout_level": 10.09,
+        "breakout_percent": 0.19821605550049132,
+        "entry_close": 10.11,
+        "prior_avg_bar_notional_usd": 70628.13,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.09876543209878087,
+        "rel_volume": 2.361348410194605,
+        "side": "buy",
+        "signal_bar_notional_usd": 168371.94,
+        "signal_bar_shares": 16654,
+        "signal_bar_trades": 25,
+        "symbol": "XPEV"
+      }
     }
   }
 }
