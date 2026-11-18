@@ -18,7 +18,8 @@
     "2026-11-12": "2026-11-12T20:45:33+00:00",
     "2026-11-13": "2026-11-13T20:45:01+00:00",
     "2026-11-16": "2026-11-16T20:45:30+00:00",
-    "2026-11-17": "2026-11-17T20:45:00+00:00"
+    "2026-11-17": "2026-11-17T20:45:00+00:00",
+    "2026-11-18": "2026-11-18T20:45:00+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -260,6 +261,7 @@
     },
     "HIMS": {
       "bar_key": "2026-11-18T20:15:00+00:00",
+      "close_cid": "FAST31C_HIMS_11182015000000",
       "entry_cid": "FAST31E_HIMS_11182015000000",
       "entry_fill_price": 17.16,
       "entry_filled_at": "2026-11-18T20:20:27.111499669Z",
@@ -271,7 +273,7 @@
       "requested_qty": 13,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-18T20:20:25+00:00",
       "symbol": "HIMS"
     },
@@ -459,6 +461,7 @@
     },
     "RIVN": {
       "bar_key": "2026-11-18T20:20:00+00:00",
+      "close_cid": "FAST31C_RIVN_11182020000000",
       "entry_cid": "FAST31E_RIVN_11182020000000",
       "entry_fill_price": 11.86,
       "entry_filled_at": "2026-11-18T20:29:48.360291943Z",
@@ -470,7 +473,7 @@
       "requested_qty": 19,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-18T20:29:45+00:00",
       "symbol": "RIVN"
     },
@@ -494,6 +497,7 @@
     },
     "SOFI": {
       "bar_key": "2026-11-18T19:05:00+00:00",
+      "close_cid": "FAST31C_SOFI_11181905000000",
       "entry_cid": "FAST31E_SOFI_11181905000000",
       "entry_fill_price": 14.16,
       "entry_filled_at": "2026-11-18T19:11:28.193802362Z",
@@ -505,7 +509,7 @@
       "requested_qty": 16,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-18T19:11:26+00:00",
       "symbol": "SOFI"
     },
