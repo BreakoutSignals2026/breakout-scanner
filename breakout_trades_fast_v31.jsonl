@@ -765,3 +765,6 @@
 {"timestamp": "2026-11-18T20:45:03+00:00", "action": "eod_stop_cancel_requested", "symbol": "HIMS", "id": "fb2401b0-4e4d-45a9-ab07-e89d96338a2e"}
 {"timestamp": "2026-11-18T20:45:04+00:00", "action": "eod_stop_cancel_requested", "symbol": "RIVN", "id": "44dc4e45-17ea-4500-87b3-ec6217032e04"}
 {"timestamp": "2026-11-18T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "ae088354-cd77-4653-a5d7-d23f74aec9bc"}
+{"timestamp": "2026-11-18T20:45:41+00:00", "action": "eod_close_submitted", "symbol": "HIMS", "qty": 11, "order_id": "b7b4713e-0b28-4cbe-926f-a1dc5a52508a"}
+{"timestamp": "2026-11-18T20:45:44+00:00", "action": "eod_close_submitted", "symbol": "RIVN", "qty": 19, "order_id": "7957c502-1e90-43fd-8e0c-df9c338207a4"}
+{"timestamp": "2026-11-18T20:45:46+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 14, "order_id": "32f4230a-a428-40c2-981a-1c425d98e171"}
