@@ -173,11 +173,12 @@
       "exit_cid": "FAST31X_CLSK_11181720000000",
       "exit_order_id": "eb2c0bbe-95be-4eb0-914b-d6d5e49ee23b",
       "filled_qty": 32,
+      "realized_pnl": 1.6,
       "reference_price": 6.29,
       "requested_qty": 35,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-18T17:25:12+00:00",
       "symbol": "CLSK"
     },
