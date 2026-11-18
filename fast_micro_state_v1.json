@@ -27,7 +27,11 @@
       "phase": "watching"
     },
     "KEY": {
-      "phase": "pending",
+      "entry": 20.705345,
+      "entry_bar": "2026-11-18T17:25:00+00:00",
+      "last_bar": "2026-11-18T17:25:00+00:00",
+      "phase": "open",
+      "qty": 7,
       "signal": {
         "bar_key": "2026-11-18T17:20:00+00:00",
         "breakout_level": 20.65,
@@ -52,7 +56,11 @@
       "reason": "insufficient_whole_share_target"
     },
     "NCLH": {
-      "phase": "pending",
+      "entry": 18.5092475,
+      "entry_bar": "2026-11-18T17:25:00+00:00",
+      "last_bar": "2026-11-18T17:25:00+00:00",
+      "phase": "open",
+      "qty": 8,
       "signal": {
         "bar_key": "2026-11-18T17:20:00+00:00",
         "breakout_level": 18.44,
