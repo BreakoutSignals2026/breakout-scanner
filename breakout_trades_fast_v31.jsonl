@@ -751,3 +751,4 @@
 {"timestamp": "2026-11-18T18:20:56+00:00", "action": "exit_accepted", "symbol": "FSLY", "order_id": "8b13e265-b18a-4411-9abe-0da7a8c190bc", "qty": 4}
 {"timestamp": "2026-11-18T18:39:17+00:00", "action": "closed", "symbol": "FSLY", "entry": 17.74, "exit": 17.81, "qty": 4.0, "side": "sell", "pnl": -0.28, "pnl_pct": -0.395, "reason": "trailing stop", "holding_seconds": 997}
 {"timestamp": "2026-11-18T18:43:55+00:00", "action": "closed", "symbol": "GME", "entry": 26.12, "exit": 26.305, "qty": 2.0, "side": "buy", "pnl": 0.37, "pnl_pct": 0.708, "reason": "trailing stop", "holding_seconds": 7346}
+{"timestamp": "2026-11-18T18:48:32+00:00", "action": "closed", "symbol": "PTON", "entry": 5.36, "exit": 5.41, "qty": 24.0, "side": "buy", "pnl": 1.2, "pnl_pct": 0.933, "reason": "trailing stop", "holding_seconds": 5777}
