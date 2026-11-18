@@ -1,38 +1,20 @@
 {
   "daily": {
-    "attempts": 1,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "attempts": 2,
+    "closed": 1,
+    "pnl_usd": -0.86
   },
   "date": "2026-11-18",
   "seen": [
-    "CDE:2026-11-18T16:20:00+00:00:sell"
+    "CDE:2026-11-18T16:20:00+00:00:sell",
+    "XPEV:2026-11-18T17:00:00+00:00:buy"
   ],
   "symbols": {
     "AG": {
       "phase": "watching"
     },
     "CDE": {
-      "entry": 12.098945,
-      "entry_bar": "2026-11-18T16:25:00+00:00",
-      "last_bar": "2026-11-18T16:55:00+00:00",
-      "phase": "open",
-      "qty": 12,
-      "signal": {
-        "bar_key": "2026-11-18T16:20:00+00:00",
-        "breakout_level": 12.19,
-        "breakout_percent": 0.6152584085315774,
-        "entry_close": 12.115,
-        "prior_avg_bar_notional_usd": 372244.2,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.08267879288962206,
-        "rel_volume": 1.5595332795670809,
-        "side": "sell",
-        "signal_bar_notional_usd": 572009.72,
-        "signal_bar_shares": 47215,
-        "signal_bar_trades": 168,
-        "symbol": "CDE"
-      }
+      "phase": "closed"
     },
     "HBAN": {
       "phase": "watching"
@@ -62,7 +44,22 @@
       "phase": "watching"
     },
     "XPEV": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-18T17:00:00+00:00",
+        "breakout_level": 9.965,
+        "breakout_percent": 0.3512293025589578,
+        "entry_close": 10.0,
+        "prior_avg_bar_notional_usd": 55730.15,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.10015022533800487,
+        "rel_volume": 2.386191311587523,
+        "side": "buy",
+        "signal_bar_notional_usd": 133750.0,
+        "signal_bar_shares": 13375,
+        "signal_bar_trades": 26,
+        "symbol": "XPEV"
+      }
     }
   }
 }
