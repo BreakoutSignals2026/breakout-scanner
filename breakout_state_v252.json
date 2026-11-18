@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-18",
-    "scans": 42,
+    "scans": 43,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 39,
-      "blocked_positions": 0,
-      "exceptions": 5,
+      "bez_potvrdeneho_breakoutu": 42,
+      "blocked_positions": 2,
+      "exceptions": 6,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 201,
+      "nizky_relativny_objem": 205,
       "submitted": 2,
-      "symbols_checked": 420,
+      "symbols_checked": 428,
       "technical_signals": 3
     }
   },
@@ -29,28 +29,28 @@
   "daily_start_notice": "2026-11-18",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 4,
-      "blocked_positions": 0,
-      "exceptions": 0,
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 2,
+      "exceptions": 1,
       "nizky_relativny_objem": 4,
-      "scan_seconds": 81.8,
-      "submitted": 2,
-      "symbols_checked": 10,
-      "technical_signals": 2,
-      "time_ny": "2026-11-18T13:37:49-05:00"
+      "scan_seconds": 64.5,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-18T13:43:26-05:00"
     },
     "date": "2026-11-18",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "order_submitted",
-      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "AMZN": "position_or_order_blocked",
+      "GOOGL": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
       "INTC": "nizky_relativny_objem",
       "META": "bez_potvrdeneho_breakoutu",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "order_submitted",
+      "MSFT": "position_or_order_blocked",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -303,7 +303,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-18T13:30:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 267.12,
       "submitted": "2026-11-18T18:37:32+00:00",
       "symbol": "AMZN",
@@ -781,7 +781,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-18T13:30:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 507.39,
       "submitted": "2026-11-18T18:37:41+00:00",
       "symbol": "MSFT",
