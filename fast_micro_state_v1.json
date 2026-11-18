@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 2,
-    "closed": 1,
-    "pnl_usd": -0.86
+    "closed": 2,
+    "pnl_usd": -1.7
   },
   "date": "2026-11-18",
   "seen": [
@@ -44,26 +44,7 @@
       "phase": "watching"
     },
     "XPEV": {
-      "entry": 9.994992499999999,
-      "entry_bar": "2026-11-18T17:05:00+00:00",
-      "last_bar": "2026-11-18T17:05:00+00:00",
-      "phase": "open",
-      "qty": 14,
-      "signal": {
-        "bar_key": "2026-11-18T17:00:00+00:00",
-        "breakout_level": 9.965,
-        "breakout_percent": 0.3512293025589578,
-        "entry_close": 10.0,
-        "prior_avg_bar_notional_usd": 55730.15,
-        "quote_spread": 0.009999999999999787,
-        "quote_spread_pct": 0.10015022533800487,
-        "rel_volume": 2.386191311587523,
-        "side": "buy",
-        "signal_bar_notional_usd": 133750.0,
-        "signal_bar_shares": 13375,
-        "signal_bar_trades": 26,
-        "symbol": "XPEV"
-      }
+      "phase": "closed"
     }
   }
 }
