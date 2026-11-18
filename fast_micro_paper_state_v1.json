@@ -761,7 +761,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-18T17:00:00+00:00",
-      "status": "pending",
+      "status": "open",
       "stop": 9.94,
       "submitted": "2026-11-18T17:05:46+00:00",
       "symbol": "XPEV",
