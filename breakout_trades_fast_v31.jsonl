@@ -730,3 +730,4 @@
 {"timestamp": "2026-11-18T16:01:36+00:00", "action": "exit_accepted", "symbol": "SNAP", "order_id": "4bd27e9b-f688-466a-baae-b1221eab2a55", "qty": 38}
 {"timestamp": "2026-11-18T16:15:22+00:00", "action": "entry_submitted", "symbol": "NU", "order_id": "7874fb6b-5965-4159-9355-70e1b2a2860e", "requested_qty": 19, "reference": 12.12, "side": "sell", "estimated_risk": 2.95, "spread_percent": 0.082, "rel_volume": 1.5391838187833407, "breakout_percent": 0.16454134101192575, "bar_notional_usd": 1075500.78, "quote_age_seconds": 0.142795, "chase_percent": 0.12360939431397255, "signal_age_seconds": 23}
 {"timestamp": "2026-11-18T16:15:28+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "59b7e9f7-e143-47b7-810c-67bb7d520959", "qty": 19}
+{"timestamp": "2026-11-18T16:20:03+00:00", "action": "closed", "symbol": "SNAP", "entry": 5.58, "exit": 5.53, "qty": 38.0, "side": "buy", "pnl": -1.9, "pnl_pct": -0.896, "reason": "trailing stop", "holding_seconds": 900}
