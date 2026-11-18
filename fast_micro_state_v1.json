@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 5,
-    "closed": 3,
-    "pnl_usd": -2.55
+    "closed": 4,
+    "pnl_usd": -3.39
   },
   "date": "2026-11-18",
   "seen": [
@@ -27,26 +27,7 @@
       "phase": "watching"
     },
     "KEY": {
-      "entry": 20.705345,
-      "entry_bar": "2026-11-18T17:25:00+00:00",
-      "last_bar": "2026-11-18T18:05:00+00:00",
-      "phase": "open",
-      "qty": 7,
-      "signal": {
-        "bar_key": "2026-11-18T17:20:00+00:00",
-        "breakout_level": 20.65,
-        "breakout_percent": 0.16949152542372953,
-        "entry_close": 20.685,
-        "prior_avg_bar_notional_usd": 105218.74,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.048344210780766554,
-        "rel_volume": 1.870577859079476,
-        "side": "buy",
-        "signal_bar_notional_usd": 197417.64,
-        "signal_bar_shares": 9544,
-        "signal_bar_trades": 52,
-        "symbol": "KEY"
-      }
+      "phase": "closed"
     },
     "KGC": {
       "phase": "watching"
