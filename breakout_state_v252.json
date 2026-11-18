@@ -25,7 +25,7 @@
       "technical_signals": 6
     }
   },
-  "daily_diagnostics_notice": "2026-11-17",
+  "daily_diagnostics_notice": "2026-11-18",
   "daily_start_notice": "2026-11-18",
   "last_scan_diagnostics": {
     "counts": {
@@ -937,13 +937,15 @@
     "B252_NVDA_202611181435": {
       "client_id": "B252_NVDA_202611181435",
       "entry_id": "145b50d2-f829-41b1-b066-f26554a1689e",
+      "eod_client_id": "B252_EOD_NVDA_202611181435",
+      "eod_order_id": "4d4a5cb2-acdc-4049-af6e-60d95ffa5663",
       "planned_risk": 4.593,
       "qty": 6,
       "reference_entry": 150.91,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-11-18T14:35:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 151.52,
       "submitted": "2026-11-18T19:44:55+00:00",
       "symbol": "NVDA",
