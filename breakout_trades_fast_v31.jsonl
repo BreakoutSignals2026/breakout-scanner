@@ -768,3 +768,6 @@
 {"timestamp": "2026-11-18T20:45:41+00:00", "action": "eod_close_submitted", "symbol": "HIMS", "qty": 11, "order_id": "b7b4713e-0b28-4cbe-926f-a1dc5a52508a"}
 {"timestamp": "2026-11-18T20:45:44+00:00", "action": "eod_close_submitted", "symbol": "RIVN", "qty": 19, "order_id": "7957c502-1e90-43fd-8e0c-df9c338207a4"}
 {"timestamp": "2026-11-18T20:45:46+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 14, "order_id": "32f4230a-a428-40c2-981a-1c425d98e171"}
+{"timestamp": "2026-11-18T20:46:27+00:00", "action": "closed", "symbol": "HIMS", "entry": 17.16, "exit": 17.11, "qty": 11.0, "side": "sell", "pnl": 0.55, "pnl_pct": 0.291, "reason": "koniec seansy", "holding_seconds": 1515}
+{"timestamp": "2026-11-18T20:46:29+00:00", "action": "closed", "symbol": "RIVN", "entry": 11.86, "exit": 11.86, "qty": 19.0, "side": "sell", "pnl": 0.0, "pnl_pct": 0.0, "reason": "koniec seansy", "holding_seconds": 958}
+{"timestamp": "2026-11-18T20:46:31+00:00", "action": "closed", "symbol": "SOFI", "entry": 14.16, "exit": 14.09, "qty": 14.0, "side": "sell", "pnl": 0.98, "pnl_pct": 0.494, "reason": "koniec seansy", "holding_seconds": 5660}
