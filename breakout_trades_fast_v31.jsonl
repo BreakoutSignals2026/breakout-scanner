@@ -741,3 +741,4 @@
 {"timestamp": "2026-11-18T17:11:22+00:00", "action": "exit_accepted", "symbol": "PTON", "order_id": "f9655ac6-5ecf-4ac4-98ee-c86d9abc0d5e", "qty": 24}
 {"timestamp": "2026-11-18T17:25:13+00:00", "action": "entry_submitted", "symbol": "CLSK", "order_id": "9b999fba-a63b-4556-82b5-f407e3dd5bf8", "requested_qty": 35, "reference": 6.29, "side": "buy", "estimated_risk": 2.99, "spread_percent": 0.159, "rel_volume": 2.8698941376210927, "breakout_percent": 1.4539579967689797, "bar_notional_usd": 240618.2, "quote_age_seconds": 0.236496, "chase_percent": 0.15923566878980552, "signal_age_seconds": 13}
 {"timestamp": "2026-11-18T17:25:19+00:00", "action": "exit_accepted", "symbol": "CLSK", "order_id": "eb2c0bbe-95be-4eb0-914b-d6d5e49ee23b", "qty": 32}
+{"timestamp": "2026-11-18T17:34:32+00:00", "action": "closed", "symbol": "NU", "entry": 12.12, "exit": 12.24, "qty": 19.0, "side": "sell", "pnl": -2.28, "pnl_pct": -0.99, "reason": "trailing stop", "holding_seconds": 4497}
