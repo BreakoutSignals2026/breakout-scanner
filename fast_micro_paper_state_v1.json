@@ -641,6 +641,21 @@
       "symbol": "T",
       "tp": 21.99
     },
+    "MICRO1_T_202611181515": {
+      "client_id": "MICRO1_T_202611181515",
+      "entry_id": "645d8df3-30eb-42e6-9411-62616d605f88",
+      "planned_risk": 0.994,
+      "qty": 7,
+      "reference_entry": 21.97,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-18T20:15:00+00:00",
+      "status": "open",
+      "stop": 22.08,
+      "submitted": "2026-11-18T20:20:46+00:00",
+      "symbol": "T",
+      "tp": 21.69
+    },
     "MICRO1_UPST_202611041220": {
       "client_id": "MICRO1_UPST_202611041220",
       "entry_id": "ef5a1e8b-2203-48e7-8a81-fbf1c68db922",
