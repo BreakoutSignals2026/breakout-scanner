@@ -1,8 +1,8 @@
 {
   "daily": {
-    "attempts": 3,
-    "closed": 3,
-    "pnl_usd": 0.04
+    "attempts": 4,
+    "closed": 4,
+    "pnl_usd": -0.77
   },
   "date": "2026-11-19",
   "seen": [
@@ -14,6 +14,7 @@
     "KEY:2026-11-19T17:05:00+00:00:sell",
     "KGC:2026-11-19T16:55:00+00:00:sell",
     "KGC:2026-11-19T17:00:00+00:00:sell",
+    "LYFT:2026-11-19T17:30:00+00:00:buy",
     "UPST:2026-11-19T16:50:00+00:00:sell",
     "XPEV:2026-11-19T16:50:00+00:00:sell",
     "XPEV:2026-11-19T17:00:00+00:00:sell"
@@ -38,7 +39,7 @@
       "phase": "closed"
     },
     "LYFT": {
-      "phase": "watching"
+      "phase": "closed"
     },
     "NCLH": {
       "phase": "watching"
