@@ -32,7 +32,11 @@
       "phase": "watching"
     },
     "KEY": {
-      "phase": "pending",
+      "entry": 19.850065,
+      "entry_bar": "2026-11-19T17:10:00+00:00",
+      "last_bar": "2026-11-19T17:10:00+00:00",
+      "phase": "open",
+      "qty": 7,
       "signal": {
         "bar_key": "2026-11-19T17:05:00+00:00",
         "breakout_level": 19.9,
@@ -52,7 +56,7 @@
     "KGC": {
       "entry": 18.4107875,
       "entry_bar": "2026-11-19T17:00:00+00:00",
-      "last_bar": "2026-11-19T17:05:00+00:00",
+      "last_bar": "2026-11-19T17:10:00+00:00",
       "phase": "open",
       "qty": 8,
       "signal": {
