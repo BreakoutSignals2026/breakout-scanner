@@ -5,7 +5,7 @@
     "AMZN": "2026-11-19T13:15:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
     "INTC": "2026-11-16T13:30:00-05:00",
-    "META": "2026-11-13T12:45:00-05:00",
+    "META": "2026-11-19T15:10:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
     "MSFT": "2026-11-19T13:15:00-05:00",
     "NVDA": "2026-11-19T12:00:00-05:00",
@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 59,
+    "scans": 60,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 64,
-      "blocked_positions": 54,
+      "bez_potvrdeneho_breakoutu": 69,
+      "blocked_positions": 56,
       "exceptions": 13,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 279,
-      "submitted": 5,
-      "symbols_checked": 536,
-      "technical_signals": 18
+      "nizky_relativny_objem": 281,
+      "submitted": 6,
+      "symbols_checked": 544,
+      "technical_signals": 19
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
@@ -32,12 +32,12 @@
       "bez_potvrdeneho_breakoutu": 5,
       "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 3,
-      "scan_seconds": 64.8,
-      "submitted": 0,
+      "nizky_relativny_objem": 2,
+      "scan_seconds": 66.4,
+      "submitted": 1,
       "symbols_checked": 8,
-      "technical_signals": 0,
-      "time_ny": "2026-11-19T15:11:15-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-19T15:16:55-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
@@ -45,12 +45,12 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "bez_potvrdeneho_breakoutu",
-      "META": "bez_potvrdeneho_breakoutu",
+      "INTC": "nizky_relativny_objem",
+      "META": "order_submitted",
       "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -722,6 +722,21 @@
       "submitted": "2026-11-13T17:50:47+00:00",
       "symbol": "META",
       "tp": 642.79
+    },
+    "B252_META_202611191510": {
+      "client_id": "B252_META_202611191510",
+      "entry_id": "425ec10a-1a2d-40ea-aa90-29fb1cc13849",
+      "planned_risk": 4.369,
+      "qty": 1,
+      "reference_entry": 598.78,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T15:10:00-05:00",
+      "status": "pending",
+      "stop": 602.14,
+      "submitted": "2026-11-19T20:16:47+00:00",
+      "symbol": "META",
+      "tp": 592.06
     },
     "B252_MRVL_202610291435": {
       "client_id": "B252_MRVL_202610291435",
