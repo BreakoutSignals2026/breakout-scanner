@@ -2,7 +2,7 @@
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
     "AMD": "2026-11-16T13:15:00-05:00",
-    "AMZN": "2026-11-18T13:30:00-05:00",
+    "AMZN": "2026-11-19T12:15:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
     "INTC": "2026-11-16T13:30:00-05:00",
     "META": "2026-11-13T12:45:00-05:00",
@@ -13,37 +13,37 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 28,
+    "scans": 29,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 18,
-      "blocked_positions": 4,
+      "bez_potvrdeneho_breakoutu": 22,
+      "blocked_positions": 6,
       "exceptions": 9,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 72,
-      "submitted": 2,
-      "symbols_checked": 276,
-      "technical_signals": 11
+      "nizky_relativny_objem": 75,
+      "submitted": 3,
+      "symbols_checked": 284,
+      "technical_signals": 12
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 6,
+      "bez_potvrdeneho_breakoutu": 4,
       "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 2,
-      "scan_seconds": 65.4,
-      "submitted": 0,
+      "nizky_relativny_objem": 3,
+      "scan_seconds": 66.2,
+      "submitted": 1,
       "symbols_checked": 8,
-      "technical_signals": 0,
-      "time_ny": "2026-11-19T12:14:34-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-19T12:20:13-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
       "AAPL": "bez_potvrdeneho_breakoutu",
-      "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "order_submitted",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
@@ -308,6 +308,21 @@
       "submitted": "2026-11-18T18:37:32+00:00",
       "symbol": "AMZN",
       "tp": 269.46
+    },
+    "B252_AMZN_202611191215": {
+      "client_id": "B252_AMZN_202611191215",
+      "entry_id": "fdc6add7-932b-4abd-b779-9d0615146aad",
+      "planned_risk": 4.702,
+      "qty": 2,
+      "reference_entry": 262.04,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T12:15:00-05:00",
+      "status": "pending",
+      "stop": 264.11,
+      "submitted": "2026-11-19T17:20:05+00:00",
+      "symbol": "AMZN",
+      "tp": 257.9
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
