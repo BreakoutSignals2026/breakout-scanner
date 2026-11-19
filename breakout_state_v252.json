@@ -13,43 +13,44 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 47,
+    "scans": 58,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 41,
-      "blocked_positions": 30,
-      "exceptions": 10,
+      "bez_potvrdeneho_breakoutu": 59,
+      "blocked_positions": 52,
+      "exceptions": 13,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 209,
+      "nizky_relativny_objem": 276,
       "submitted": 5,
-      "symbols_checked": 440,
-      "technical_signals": 15
+      "symbols_checked": 528,
+      "technical_signals": 18
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 2,
-      "exceptions": 0,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 64.9,
+      "exceptions": 3,
+      "nizky_relativny_objem": 3,
+      "scan_seconds": 65.2,
       "submitted": 0,
       "symbols_checked": 8,
-      "technical_signals": 0,
-      "time_ny": "2026-11-19T14:03:32-05:00"
+      "technical_signals": 3,
+      "time_ny": "2026-11-19T15:05:36-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
-      "GOOGL": "nizky_relativny_objem",
+      "GOOGL": "GOOGL: cena mimo signálu (0.276%)",
       "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "META": "bez_potvrdeneho_breakoutu",
+      "MRVL": "MRVL: IEX spread 7.205% nad 0.3%",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "TSLA: IEX spread 1.440% nad 0.3%"
     }
   },
   "trades": {
