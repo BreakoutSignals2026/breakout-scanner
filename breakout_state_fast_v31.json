@@ -470,11 +470,12 @@
       "exit_cid": "FAST31X_RIVN_11191700000000",
       "exit_order_id": "6ab8ce93-02ec-4d56-90a3-67ae720ee65a",
       "filled_qty": 1,
+      "realized_pnl": -0.13,
       "reference_price": 11.29,
       "requested_qty": 20,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-19T17:08:44+00:00",
       "symbol": "RIVN"
     },

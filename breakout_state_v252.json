@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 29,
+    "scans": 30,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 22,
-      "blocked_positions": 6,
+      "bez_potvrdeneho_breakoutu": 24,
+      "blocked_positions": 8,
       "exceptions": 9,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 75,
+      "nizky_relativny_objem": 81,
       "submitted": 3,
-      "symbols_checked": 284,
+      "symbols_checked": 292,
       "technical_signals": 12
     }
   },
@@ -29,25 +29,25 @@
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 4,
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 2,
       "exceptions": 0,
-      "nizky_relativny_objem": 3,
-      "scan_seconds": 66.2,
-      "submitted": 1,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 64.9,
+      "submitted": 0,
       "symbols_checked": 8,
-      "technical_signals": 1,
-      "time_ny": "2026-11-19T12:20:13-05:00"
+      "technical_signals": 0,
+      "time_ny": "2026-11-19T12:25:53-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "order_submitted",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MRVL": "nizky_relativny_objem",
       "MSFT": "position_or_order_blocked",
       "NVDA": "position_or_order_blocked",
       "TSLA": "bez_potvrdeneho_breakoutu"
@@ -315,10 +315,10 @@
       "planned_risk": 4.702,
       "qty": 2,
       "reference_entry": 262.04,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-11-19T12:15:00-05:00",
-      "status": "pending",
+      "status": "closed",
       "stop": 264.11,
       "submitted": "2026-11-19T17:20:05+00:00",
       "symbol": "AMZN",
