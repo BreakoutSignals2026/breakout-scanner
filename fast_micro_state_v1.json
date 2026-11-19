@@ -1,12 +1,13 @@
 {
   "daily": {
-    "attempts": 4,
+    "attempts": 6,
     "closed": 4,
     "pnl_usd": -0.77
   },
   "date": "2026-11-19",
   "seen": [
     "AG:2026-11-19T17:00:00+00:00:sell",
+    "CDE:2026-11-19T20:00:00+00:00:sell",
     "HBAN:2026-11-19T16:00:00+00:00:sell",
     "HBAN:2026-11-19T16:05:00+00:00:sell",
     "HBAN:2026-11-19T16:55:00+00:00:sell",
@@ -16,6 +17,8 @@
     "KGC:2026-11-19T17:00:00+00:00:sell",
     "LYFT:2026-11-19T17:30:00+00:00:buy",
     "LYFT:2026-11-19T19:00:00+00:00:sell",
+    "NCLH:2026-11-19T20:00:00+00:00:sell",
+    "PFE:2026-11-19T20:00:00+00:00:sell",
     "UPST:2026-11-19T16:50:00+00:00:sell",
     "XPEV:2026-11-19T16:50:00+00:00:sell",
     "XPEV:2026-11-19T17:00:00+00:00:sell"
@@ -25,7 +28,22 @@
       "phase": "watching"
     },
     "CDE": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-19T20:00:00+00:00",
+        "breakout_level": 11.65,
+        "breakout_percent": 0.25751072961374366,
+        "entry_close": 11.62,
+        "prior_avg_bar_notional_usd": 249654.88,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.08609556607834515,
+        "rel_volume": 2.1575534203467783,
+        "side": "sell",
+        "signal_bar_notional_usd": 535112.62,
+        "signal_bar_shares": 46051,
+        "signal_bar_trades": 148,
+        "symbol": "CDE"
+      }
     },
     "HBAN": {
       "phase": "closed"
@@ -46,7 +64,22 @@
       "phase": "watching"
     },
     "PFE": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-19T20:00:00+00:00",
+        "breakout_level": 27.57,
+        "breakout_percent": 0.18135654697134823,
+        "entry_close": 27.52,
+        "prior_avg_bar_notional_usd": 474082.38,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.03637024913621227,
+        "rel_volume": 2.0375840882045804,
+        "side": "sell",
+        "signal_bar_notional_usd": 962071.68,
+        "signal_bar_shares": 34959,
+        "signal_bar_trades": 88,
+        "symbol": "PFE"
+      }
     },
     "T": {
       "phase": "watching"
