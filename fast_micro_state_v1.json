@@ -39,7 +39,11 @@
       "phase": "closed"
     },
     "LYFT": {
-      "phase": "pending",
+      "entry": 17.583785,
+      "entry_bar": "2026-11-19T17:35:00+00:00",
+      "last_bar": "2026-11-19T17:35:00+00:00",
+      "phase": "open",
+      "qty": 8,
       "signal": {
         "bar_key": "2026-11-19T17:30:00+00:00",
         "breakout_level": 17.52,
