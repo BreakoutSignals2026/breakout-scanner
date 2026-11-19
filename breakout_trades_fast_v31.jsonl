@@ -789,3 +789,6 @@
 {"timestamp": "2026-11-19T20:15:53+00:00", "action": "exit_accepted", "symbol": "RIOT", "order_id": "e93a8ea4-1d8e-4d4c-a136-342155c41a1d", "qty": 13}
 {"timestamp": "2026-11-19T20:20:27+00:00", "action": "closed", "symbol": "LUNR", "entry": 9.71, "exit": 9.73, "qty": 23.0, "side": "sell", "pnl": -0.46, "pnl_pct": -0.206, "reason": "trailing stop", "holding_seconds": 1438}
 {"timestamp": "2026-11-19T20:38:42+00:00", "action": "closed", "symbol": "RIOT", "entry": 17.6, "exit": 17.789231, "qty": 13.0, "side": "sell", "pnl": -2.46, "pnl_pct": -1.075, "reason": "trailing stop", "holding_seconds": 1249}
+{"timestamp": "2026-11-19T20:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "7767ecb1-0f77-498d-84ff-5d77b19aedd5"}
+{"timestamp": "2026-11-19T20:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "SNAP", "id": "3b60a5a4-b9bd-4472-9a91-df9e72f58401"}
+{"timestamp": "2026-11-19T20:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "c1b41656-7bc2-49ef-907b-c0f0d9259ca4"}
