@@ -8,49 +8,49 @@
     "META": "2026-11-13T12:45:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
     "MSFT": "2026-11-19T11:50:00-05:00",
-    "NVDA": "2026-11-18T14:35:00-05:00",
+    "NVDA": "2026-11-19T12:00:00-05:00",
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 26,
+    "scans": 27,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 11,
-      "blocked_positions": 1,
-      "exceptions": 4,
+      "bez_potvrdeneho_breakoutu": 12,
+      "blocked_positions": 2,
+      "exceptions": 9,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 68,
-      "submitted": 1,
-      "symbols_checked": 259,
-      "technical_signals": 5
+      "nizky_relativny_objem": 70,
+      "submitted": 2,
+      "symbols_checked": 268,
+      "technical_signals": 11
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 1,
-      "exceptions": 2,
-      "nizky_relativny_objem": 5,
-      "scan_seconds": 73.3,
-      "submitted": 0,
+      "exceptions": 5,
+      "nizky_relativny_objem": 2,
+      "scan_seconds": 74.8,
+      "submitted": 1,
       "symbols_checked": 9,
-      "technical_signals": 2,
-      "time_ny": "2026-11-19T12:03:06-05:00"
+      "technical_signals": 6,
+      "time_ny": "2026-11-19T12:08:54-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "AMZN: cena mimo signálu (0.660%)",
+      "AMZN": "AMZN: cena mimo signálu (0.412%)",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 8.671% nad 0.3%",
+      "INTC": "INTC: cena mimo signálu (0.253%)",
+      "META": "META: cena mimo signálu (0.444%)",
+      "MRVL": "MRVL: IEX spread 6.205% nad 0.3%",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "bez_potvrdeneho_breakoutu",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "NVDA": "order_submitted",
+      "TSLA": "TSLA: IEX spread 1.261% nad 0.3%"
     }
   },
   "trades": {
@@ -970,6 +970,21 @@
       "submitted": "2026-11-18T19:44:55+00:00",
       "symbol": "NVDA",
       "tp": 149.69
+    },
+    "B252_NVDA_202611191200": {
+      "client_id": "B252_NVDA_202611191200",
+      "entry_id": "4d7890dd-403c-4d1c-9ef3-310f15990390",
+      "planned_risk": 3.689,
+      "qty": 2,
+      "reference_entry": 148.7,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T12:00:00-05:00",
+      "status": "pending",
+      "stop": 150.19,
+      "submitted": "2026-11-19T17:08:05+00:00",
+      "symbol": "NVDA",
+      "tp": 145.72
     },
     "B252_TSLA_202610261310": {
       "client_id": "B252_TSLA_202610261310",
