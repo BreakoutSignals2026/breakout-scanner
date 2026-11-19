@@ -13,30 +13,31 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 38,
+    "scans": 39,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 30,
+      "bez_potvrdeneho_breakoutu": 31,
       "blocked_positions": 16,
-      "exceptions": 9,
+      "exceptions": 10,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 147,
+      "nizky_relativny_objem": 155,
       "submitted": 3,
-      "symbols_checked": 364,
-      "technical_signals": 12
+      "symbols_checked": 374,
+      "technical_signals": 13
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 1,
-      "exceptions": 0,
-      "nizky_relativny_objem": 9,
-      "scan_seconds": 73.0,
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 0,
+      "exceptions": 1,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.8,
       "submitted": 0,
-      "symbols_checked": 9,
-      "technical_signals": 0,
-      "time_ny": "2026-11-19T13:12:07-05:00"
+      "symbols_checked": 10,
+      "technical_signals": 1,
+      "time_ny": "2026-11-19T13:18:03-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
@@ -45,9 +46,9 @@
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "position_or_order_blocked",
+      "META": "META: IEX spread 0.543% nad 0.3%",
+      "MRVL": "bez_potvrdeneho_breakoutu",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -837,10 +838,10 @@
       "planned_risk": 3.805,
       "qty": 1,
       "reference_entry": 510.01,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-11-19T11:50:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 512.82,
       "submitted": "2026-11-19T16:56:45+00:00",
       "symbol": "MSFT",
