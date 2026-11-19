@@ -451,11 +451,12 @@
       "exit_cid": "FAST31X_RIOT_11192010000000",
       "exit_order_id": "e93a8ea4-1d8e-4d4c-a136-342155c41a1d",
       "filled_qty": 13,
+      "realized_pnl": -2.46,
       "reference_price": 17.59,
       "requested_qty": 13,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-19T20:15:50+00:00",
       "symbol": "RIOT"
     },
