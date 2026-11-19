@@ -2,27 +2,27 @@
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
     "AMD": "2026-11-16T13:15:00-05:00",
-    "AMZN": "2026-11-18T13:30:00-05:00",
+    "AMZN": "2026-11-19T12:15:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
     "INTC": "2026-11-16T13:30:00-05:00",
     "META": "2026-11-13T12:45:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
     "MSFT": "2026-11-19T11:50:00-05:00",
-    "NVDA": "2026-11-18T14:35:00-05:00",
+    "NVDA": "2026-11-19T12:00:00-05:00",
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 26,
+    "scans": 30,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 11,
-      "blocked_positions": 1,
-      "exceptions": 4,
+      "bez_potvrdeneho_breakoutu": 24,
+      "blocked_positions": 8,
+      "exceptions": 9,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 68,
-      "submitted": 1,
-      "symbols_checked": 259,
-      "technical_signals": 5
+      "nizky_relativny_objem": 81,
+      "submitted": 3,
+      "symbols_checked": 292,
+      "technical_signals": 12
     }
   },
   "daily_diagnostics_notice": "2026-11-18",
@@ -30,26 +30,26 @@
   "last_scan_diagnostics": {
     "counts": {
       "bez_potvrdeneho_breakoutu": 2,
-      "blocked_positions": 1,
-      "exceptions": 2,
-      "nizky_relativny_objem": 5,
-      "scan_seconds": 73.3,
+      "blocked_positions": 2,
+      "exceptions": 0,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 64.9,
       "submitted": 0,
-      "symbols_checked": 9,
-      "technical_signals": 2,
-      "time_ny": "2026-11-19T12:03:06-05:00"
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-19T12:25:53-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "AMZN: cena mimo signálu (0.660%)",
+      "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 8.671% nad 0.3%",
+      "MRVL": "nizky_relativny_objem",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "bez_potvrdeneho_breakoutu",
+      "NVDA": "position_or_order_blocked",
       "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
@@ -308,6 +308,21 @@
       "submitted": "2026-11-18T18:37:32+00:00",
       "symbol": "AMZN",
       "tp": 269.46
+    },
+    "B252_AMZN_202611191215": {
+      "client_id": "B252_AMZN_202611191215",
+      "entry_id": "fdc6add7-932b-4abd-b779-9d0615146aad",
+      "planned_risk": 4.702,
+      "qty": 2,
+      "reference_entry": 262.04,
+      "result_logged": true,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T12:15:00-05:00",
+      "status": "closed",
+      "stop": 264.11,
+      "submitted": "2026-11-19T17:20:05+00:00",
+      "symbol": "AMZN",
+      "tp": 257.9
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
@@ -970,6 +985,21 @@
       "submitted": "2026-11-18T19:44:55+00:00",
       "symbol": "NVDA",
       "tp": 149.69
+    },
+    "B252_NVDA_202611191200": {
+      "client_id": "B252_NVDA_202611191200",
+      "entry_id": "4d7890dd-403c-4d1c-9ef3-310f15990390",
+      "planned_risk": 3.689,
+      "qty": 2,
+      "reference_entry": 148.7,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T12:00:00-05:00",
+      "status": "open",
+      "stop": 150.19,
+      "submitted": "2026-11-19T17:08:05+00:00",
+      "symbol": "NVDA",
+      "tp": 145.72
     },
     "B252_TSLA_202610261310": {
       "client_id": "B252_TSLA_202610261310",
