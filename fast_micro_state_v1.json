@@ -1,11 +1,13 @@
 {
   "daily": {
-    "attempts": 0,
+    "attempts": 1,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-11-19",
-  "seen": [],
+  "seen": [
+    "HBAN:2026-11-19T16:00:00+00:00:sell"
+  ],
   "symbols": {
     "AG": {
       "phase": "watching"
@@ -14,7 +16,22 @@
       "phase": "watching"
     },
     "HBAN": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-19T16:00:00+00:00",
+        "breakout_level": 14.81,
+        "breakout_percent": 0.2025658338960239,
+        "entry_close": 14.78,
+        "prior_avg_bar_notional_usd": 252848.2,
+        "quote_spread": 0.009999999999999787,
+        "quote_spread_pct": 0.06768189509306118,
+        "rel_volume": 1.66090107939248,
+        "side": "sell",
+        "signal_bar_notional_usd": 417135.94,
+        "signal_bar_shares": 28223,
+        "signal_bar_trades": 37,
+        "symbol": "HBAN"
+      }
     },
     "HPQ": {
       "phase": "watching"

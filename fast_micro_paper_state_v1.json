@@ -216,6 +216,21 @@
       "symbol": "HBAN",
       "tp": 15.3
     },
+    "MICRO1_HBAN_202611191100": {
+      "client_id": "MICRO1_HBAN_202611191100",
+      "entry_id": "92df8a8e-9f8a-46a3-bc9c-2c27a684c6fb",
+      "planned_risk": 0.943,
+      "qty": 9,
+      "reference_entry": 14.77,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-19T16:00:00+00:00",
+      "status": "pending",
+      "stop": 14.85,
+      "submitted": "2026-11-19T16:05:48+00:00",
+      "symbol": "HBAN",
+      "tp": 14.57
+    },
     "MICRO1_HPQ_202611051350": {
       "client_id": "MICRO1_HPQ_202611051350",
       "entry_id": "35567a93-224c-4f9a-9f2b-97821e5d2ee5",
