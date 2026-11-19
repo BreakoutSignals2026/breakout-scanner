@@ -373,6 +373,7 @@
     "PATH": {
       "bar_key": "2026-11-19T19:05:00+00:00",
       "close_cid": "FAST31C_PATH_11191905000000",
+      "close_order_id": "a0ae476f-9614-4c22-a00e-de5e1aadf344",
       "entry_cid": "FAST31E_PATH_11191905000000",
       "entry_fill_price": 11.39,
       "entry_filled_at": "2026-11-19T19:11:37.315332242Z",
@@ -384,7 +385,7 @@
       "requested_qty": 20,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-19T19:11:35+00:00",
       "symbol": "PATH"
     },
@@ -483,6 +484,7 @@
     "SNAP": {
       "bar_key": "2026-11-19T20:05:00+00:00",
       "close_cid": "FAST31C_SNAP_11192005000000",
+      "close_order_id": "928004af-de23-4cc3-98cf-01e9dc6f1f91",
       "entry_cid": "FAST31E_SNAP_11192005000000",
       "entry_fill_price": 5.21,
       "entry_filled_at": "2026-11-19T20:11:09.25776808Z",
@@ -494,7 +496,7 @@
       "requested_qty": 41,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-19T20:11:08+00:00",
       "symbol": "SNAP"
     },
@@ -539,6 +541,7 @@
     "VALE": {
       "bar_key": "2026-11-19T20:00:00+00:00",
       "close_cid": "FAST31C_VALE_11192000000000",
+      "close_order_id": "57a34fe6-d2c5-41ba-b0a1-029883e9b7d4",
       "entry_cid": "FAST31E_VALE_11192000000000",
       "entry_fill_price": 9.82,
       "entry_filled_at": "2026-11-19T20:06:27.222367643Z",
@@ -550,7 +553,7 @@
       "requested_qty": 23,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-19T20:06:24+00:00",
       "symbol": "VALE"
     }

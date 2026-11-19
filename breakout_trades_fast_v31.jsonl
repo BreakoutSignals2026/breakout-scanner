@@ -792,3 +792,6 @@
 {"timestamp": "2026-11-19T20:45:33+00:00", "action": "eod_stop_cancel_requested", "symbol": "PATH", "id": "7767ecb1-0f77-498d-84ff-5d77b19aedd5"}
 {"timestamp": "2026-11-19T20:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "SNAP", "id": "3b60a5a4-b9bd-4472-9a91-df9e72f58401"}
 {"timestamp": "2026-11-19T20:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "VALE", "id": "c1b41656-7bc2-49ef-907b-c0f0d9259ca4"}
+{"timestamp": "2026-11-19T20:46:09+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 20, "order_id": "a0ae476f-9614-4c22-a00e-de5e1aadf344"}
+{"timestamp": "2026-11-19T20:46:10+00:00", "action": "eod_close_submitted", "symbol": "SNAP", "qty": 34, "order_id": "928004af-de23-4cc3-98cf-01e9dc6f1f91"}
+{"timestamp": "2026-11-19T20:46:12+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 16, "order_id": "57a34fe6-d2c5-41ba-b0a1-029883e9b7d4"}
