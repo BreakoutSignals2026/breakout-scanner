@@ -795,3 +795,6 @@
 {"timestamp": "2026-11-19T20:46:09+00:00", "action": "eod_close_submitted", "symbol": "PATH", "qty": 20, "order_id": "a0ae476f-9614-4c22-a00e-de5e1aadf344"}
 {"timestamp": "2026-11-19T20:46:10+00:00", "action": "eod_close_submitted", "symbol": "SNAP", "qty": 34, "order_id": "928004af-de23-4cc3-98cf-01e9dc6f1f91"}
 {"timestamp": "2026-11-19T20:46:12+00:00", "action": "eod_close_submitted", "symbol": "VALE", "qty": 16, "order_id": "57a34fe6-d2c5-41ba-b0a1-029883e9b7d4"}
+{"timestamp": "2026-11-19T20:46:46+00:00", "action": "closed", "symbol": "PATH", "entry": 11.39, "exit": 11.279, "qty": 20.0, "side": "sell", "pnl": 2.22, "pnl_pct": 0.975, "reason": "koniec seansy", "holding_seconds": 5676}
+{"timestamp": "2026-11-19T20:46:47+00:00", "action": "closed", "symbol": "SNAP", "entry": 5.21, "exit": 5.2, "qty": 34.0, "side": "sell", "pnl": 0.34, "pnl_pct": 0.192, "reason": "koniec seansy", "holding_seconds": 2104}
+{"timestamp": "2026-11-19T20:46:48+00:00", "action": "closed", "symbol": "VALE", "entry": 9.82, "exit": 9.83, "qty": 16.0, "side": "sell", "pnl": -0.16, "pnl_pct": -0.102, "reason": "koniec seansy", "holding_seconds": 2386}
