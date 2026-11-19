@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-19",
-    "scans": 27,
+    "scans": 28,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 12,
-      "blocked_positions": 2,
+      "bez_potvrdeneho_breakoutu": 18,
+      "blocked_positions": 4,
       "exceptions": 9,
       "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 70,
+      "nizky_relativny_objem": 72,
       "submitted": 2,
-      "symbols_checked": 268,
+      "symbols_checked": 276,
       "technical_signals": 11
     }
   },
@@ -29,28 +29,28 @@
   "daily_start_notice": "2026-11-19",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
-      "blocked_positions": 1,
-      "exceptions": 5,
+      "bez_potvrdeneho_breakoutu": 6,
+      "blocked_positions": 2,
+      "exceptions": 0,
       "nizky_relativny_objem": 2,
-      "scan_seconds": 74.8,
-      "submitted": 1,
-      "symbols_checked": 9,
-      "technical_signals": 6,
-      "time_ny": "2026-11-19T12:08:54-05:00"
+      "scan_seconds": 65.4,
+      "submitted": 0,
+      "symbols_checked": 8,
+      "technical_signals": 0,
+      "time_ny": "2026-11-19T12:14:34-05:00"
     },
     "date": "2026-11-19",
     "symbols": {
       "AAPL": "bez_potvrdeneho_breakoutu",
-      "AMD": "nizky_relativny_objem",
-      "AMZN": "AMZN: cena mimo signálu (0.412%)",
+      "AMD": "bez_potvrdeneho_breakoutu",
+      "AMZN": "bez_potvrdeneho_breakoutu",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "INTC: cena mimo signálu (0.253%)",
-      "META": "META: cena mimo signálu (0.444%)",
-      "MRVL": "MRVL: IEX spread 6.205% nad 0.3%",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "order_submitted",
-      "TSLA": "TSLA: IEX spread 1.261% nad 0.3%"
+      "NVDA": "position_or_order_blocked",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -980,7 +980,7 @@
       "result_logged": false,
       "side": "SELL",
       "signal_candle": "2026-11-19T12:00:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 150.19,
       "submitted": "2026-11-19T17:08:05+00:00",
       "symbol": "NVDA",
