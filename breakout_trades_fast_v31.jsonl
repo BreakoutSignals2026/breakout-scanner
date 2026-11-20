@@ -802,3 +802,4 @@
 {"timestamp": "2026-11-20T15:47:21+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "9e350932-141f-486b-817f-3d3d62f4ddba", "qty": 20}
 {"timestamp": "2026-11-20T16:10:05+00:00", "action": "entry_submitted", "symbol": "AAL", "order_id": "612f3b91-6e7b-423c-adae-2ba3e9eebef8", "requested_qty": 18, "reference": 12.34, "side": "sell", "estimated_risk": 2.85, "spread_percent": 0.081, "rel_volume": 1.8720178629180528, "breakout_percent": 0.2022653721682733, "bar_notional_usd": 868692.38, "quote_age_seconds": 0.093884, "chase_percent": 0.040535062829339316, "signal_age_seconds": 305}
 {"timestamp": "2026-11-20T16:10:08+00:00", "action": "exit_accepted", "symbol": "AAL", "order_id": "42111c75-9efd-4345-abc1-d89cdfff3ae8", "qty": 18}
+{"timestamp": "2026-11-20T16:14:41+00:00", "action": "closed", "symbol": "NU", "entry": 11.55, "exit": 11.59, "qty": 20.0, "side": "sell", "pnl": -0.8, "pnl_pct": -0.346, "reason": "trailing stop", "holding_seconds": 1517}
