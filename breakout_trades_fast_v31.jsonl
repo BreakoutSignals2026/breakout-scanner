@@ -828,3 +828,4 @@
 {"timestamp": "2026-11-20T19:23:47+00:00", "action": "exit_accepted", "symbol": "QBTS", "order_id": "8b6d29f6-ae09-4568-912c-0d4ff7413aaa", "qty": 33}
 {"timestamp": "2026-11-20T19:37:36+00:00", "action": "entry_submitted", "symbol": "SOFI", "order_id": "7e2d9703-f1b1-4e5d-9614-4e5ca3d740bc", "requested_qty": 18, "reference": 12.6, "side": "sell", "estimated_risk": 2.9, "spread_percent": 0.079, "rel_volume": 2.4717866237769734, "breakout_percent": 0.47430830039526084, "bar_notional_usd": 1277016.29, "quote_age_seconds": 0.117026, "chase_percent": 0.07942811755361229, "signal_age_seconds": 156}
 {"timestamp": "2026-11-20T19:37:40+00:00", "action": "exit_accepted", "symbol": "SOFI", "order_id": "e939c898-5f15-444a-ae32-4aa02e61cb5f", "qty": 18}
+{"timestamp": "2026-11-20T19:42:14+00:00", "action": "closed", "symbol": "QBTS", "entry": 6.59, "exit": 6.63, "qty": 33.0, "side": "sell", "pnl": -1.32, "pnl_pct": -0.607, "reason": "trailing stop", "holding_seconds": 896}

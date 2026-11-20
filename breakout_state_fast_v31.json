@@ -433,11 +433,12 @@
       "exit_cid": "FAST31X_QBTS_11201915000000",
       "exit_order_id": "8b6d29f6-ae09-4568-912c-0d4ff7413aaa",
       "filled_qty": 33,
+      "realized_pnl": -1.32,
       "reference_price": 6.59,
       "requested_qty": 33,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-20T19:23:41+00:00",
       "symbol": "QBTS"
     },
