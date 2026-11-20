@@ -28,7 +28,7 @@
     "2026-10-29": "2026-10-29:dosiahnuté 2 súčasné pozície"
   },
   "last_signal_bar": {
-    "AAL": "2026-11-17T15:45:00+00:00",
+    "AAL": "2026-11-20T16:00:00+00:00",
     "BB": "2026-11-17T19:50:00+00:00",
     "CCL": "2026-11-16T19:50:00+00:00",
     "CELH": "2026-11-18T16:55:00+00:00",
@@ -59,21 +59,20 @@
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
     "AAL": {
-      "bar_key": "2026-11-17T15:45:00+00:00",
-      "entry_cid": "FAST31E_AAL_11171545000000",
-      "entry_fill_price": 12.91,
-      "entry_filled_at": "2026-11-17T15:51:45.527462947Z",
-      "entry_order_id": "d7c30ee2-16ed-4619-87c4-8daab7f5caa6",
-      "exit_cid": "FAST31X_AAL_11171545000000",
-      "exit_order_id": "3141117d-ac67-4981-9be6-4d4f93c99249",
+      "bar_key": "2026-11-20T16:00:00+00:00",
+      "entry_cid": "FAST31E_AAL_11201600000000",
+      "entry_fill_price": 12.34,
+      "entry_filled_at": "2026-11-20T16:10:07.557321895Z",
+      "entry_order_id": "612f3b91-6e7b-423c-adae-2ba3e9eebef8",
+      "exit_cid": "FAST31X_AAL_11201600000000",
+      "exit_order_id": "42111c75-9efd-4345-abc1-d89cdfff3ae8",
       "filled_qty": 18,
-      "realized_pnl": -1.8,
-      "reference_price": 12.91,
+      "reference_price": 12.34,
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "closed",
-      "submitted_at": "2026-11-17T15:51:42+00:00",
+      "status": "protected",
+      "submitted_at": "2026-11-20T16:10:04+00:00",
       "symbol": "AAL"
     },
     "BB": {
