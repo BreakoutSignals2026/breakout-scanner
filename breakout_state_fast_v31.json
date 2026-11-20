@@ -232,11 +232,12 @@
       "exit_cid": "FAST31X_FSLY_11201645000000",
       "exit_order_id": "52513f56-722c-43a4-9b0c-8c503ffe3006",
       "filled_qty": 13,
+      "realized_pnl": 1.04,
       "reference_price": 15.53,
       "requested_qty": 13,
       "side": "sell",
       "spread_at_entry": 0.03,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-20T16:51:15+00:00",
       "symbol": "FSLY"
     },
