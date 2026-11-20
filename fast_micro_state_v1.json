@@ -1,11 +1,13 @@
 {
   "daily": {
-    "attempts": 0,
+    "attempts": 1,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-11-20",
-  "seen": [],
+  "seen": [
+    "NCLH:2026-11-20T16:35:00+00:00:sell"
+  ],
   "symbols": {
     "AG": {
       "phase": "watching"
@@ -29,7 +31,22 @@
       "phase": "watching"
     },
     "NCLH": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-20T16:35:00+00:00",
+        "breakout_level": 16.6,
+        "breakout_percent": 0.27108433734940784,
+        "entry_close": 16.555,
+        "prior_avg_bar_notional_usd": 184045.06,
+        "quote_spread": 0.010000000000001563,
+        "quote_spread_pct": 0.06044122091267188,
+        "rel_volume": 2.2911991757513315,
+        "side": "sell",
+        "signal_bar_notional_usd": 417235.66,
+        "signal_bar_shares": 25203,
+        "signal_bar_trades": 97,
+        "symbol": "NCLH"
+      }
     },
     "PFE": {
       "phase": "watching"
