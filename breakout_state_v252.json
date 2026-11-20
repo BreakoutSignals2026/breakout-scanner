@@ -12,45 +12,44 @@
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
-    "date": "2026-11-19",
-    "scans": 62,
+    "date": "2026-11-20",
+    "scans": 22,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 75,
-      "blocked_positions": 62,
-      "exceptions": 13,
-      "malo_5min_sviecok": 175,
-      "nizky_relativny_objem": 289,
-      "submitted": 6,
-      "symbols_checked": 558,
-      "technical_signals": 19
+      "bez_potvrdeneho_breakoutu": 3,
+      "blocked_positions": 0,
+      "exceptions": 2,
+      "malo_5min_sviecok": 178,
+      "nizky_relativny_objem": 37,
+      "submitted": 0,
+      "symbols_checked": 220,
+      "technical_signals": 2
     }
   },
   "daily_diagnostics_notice": "2026-11-19",
-  "daily_start_notice": "2026-11-19",
+  "daily_start_notice": "2026-11-20",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 4,
-      "blocked_positions": 3,
-      "exceptions": 0,
-      "nizky_relativny_objem": 3,
-      "scan_seconds": 56.8,
+      "blocked_positions": 0,
+      "exceptions": 1,
+      "nizky_relativny_objem": 9,
+      "scan_seconds": 80.3,
       "submitted": 0,
-      "symbols_checked": 7,
-      "technical_signals": 0,
-      "time_ny": "2026-11-19T15:27:57-05:00"
+      "symbols_checked": 10,
+      "technical_signals": 1,
+      "time_ny": "2026-11-20T11:38:40-05:00"
     },
-    "date": "2026-11-19",
+    "date": "2026-11-20",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "position_or_order_blocked",
-      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "AMZN": "nizky_relativny_objem",
+      "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "position_or_order_blocked",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "position_or_order_blocked",
+      "META": "nizky_relativny_objem",
+      "MRVL": "nizky_relativny_objem",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "TSLA: IEX spread 3.647% nad 0.3%"
     }
   },
   "trades": {
