@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 3,
+    "attempts": 4,
     "closed": 2,
     "pnl_usd": 0.93
   },
@@ -12,7 +12,8 @@
     "KGC:2026-11-20T18:55:00+00:00:buy",
     "NCLH:2026-11-20T16:35:00+00:00:sell",
     "NCLH:2026-11-20T16:40:00+00:00:sell",
-    "T:2026-11-20T18:45:00+00:00:sell"
+    "T:2026-11-20T18:45:00+00:00:sell",
+    "UPST:2026-11-20T19:15:00+00:00:sell"
   ],
   "symbols": {
     "AG": {
@@ -45,7 +46,7 @@
     "T": {
       "entry": 22.42378,
       "entry_bar": "2026-11-20T18:50:00+00:00",
-      "last_bar": "2026-11-20T19:10:00+00:00",
+      "last_bar": "2026-11-20T19:15:00+00:00",
       "phase": "open",
       "qty": 6,
       "signal": {
@@ -65,7 +66,22 @@
       }
     },
     "UPST": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-20T19:15:00+00:00",
+        "breakout_level": 16.01,
+        "breakout_percent": 0.6870705808869532,
+        "entry_close": 15.9,
+        "prior_avg_bar_notional_usd": 17724.62,
+        "quote_spread": 0.019999999999999574,
+        "quote_spread_pct": 0.1257071024512858,
+        "rel_volume": 2.601316088041752,
+        "side": "sell",
+        "signal_bar_notional_usd": 45569.4,
+        "signal_bar_shares": 2866,
+        "signal_bar_trades": 44,
+        "symbol": "UPST"
+      }
     },
     "XPEV": {
       "phase": "watching"
