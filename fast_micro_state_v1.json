@@ -42,7 +42,11 @@
       "phase": "watching"
     },
     "T": {
-      "phase": "pending",
+      "entry": 22.42378,
+      "entry_bar": "2026-11-20T18:50:00+00:00",
+      "last_bar": "2026-11-20T18:50:00+00:00",
+      "phase": "open",
+      "qty": 6,
       "signal": {
         "bar_key": "2026-11-20T18:45:00+00:00",
         "breakout_level": 22.49,
