@@ -833,3 +833,5 @@
 {"timestamp": "2026-11-20T20:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "e939c898-5f15-444a-ae32-4aa02e61cb5f"}
 {"timestamp": "2026-11-20T20:46:11+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 7, "order_id": "31f8e68e-1469-4b1b-a99f-e4a67c50b195"}
 {"timestamp": "2026-11-20T20:46:13+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 18, "order_id": "1b59ebfb-1e31-4813-8267-c109a1817854"}
+{"timestamp": "2026-11-20T20:46:48+00:00", "action": "closed", "symbol": "CHWY", "entry": 20.02, "exit": 19.71, "qty": 7.0, "side": "sell", "pnl": 2.17, "pnl_pct": 1.548, "reason": "koniec seansy", "holding_seconds": 10207}
+{"timestamp": "2026-11-20T20:46:50+00:00", "action": "closed", "symbol": "SOFI", "entry": 12.6, "exit": 12.54, "qty": 18.0, "side": "sell", "pnl": 1.08, "pnl_pct": 0.476, "reason": "koniec seansy", "holding_seconds": 4118}
