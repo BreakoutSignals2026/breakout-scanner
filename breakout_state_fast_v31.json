@@ -155,6 +155,7 @@
     "CHWY": {
       "bar_key": "2026-11-20T17:50:00+00:00",
       "close_cid": "FAST31C_CHWY_11201750000000",
+      "close_order_id": "31f8e68e-1469-4b1b-a99f-e4a67c50b195",
       "entry_cid": "FAST31E_CHWY_11201750000000",
       "entry_fill_price": 20.02,
       "entry_filled_at": "2026-11-20T17:56:07.626101546Z",
@@ -162,11 +163,12 @@
       "exit_cid": "FAST31X_CHWY_11201750000000",
       "exit_order_id": "17f0161a-d5d2-468a-b035-80d60f708d03",
       "filled_qty": 7,
+      "realized_pnl": 2.17,
       "reference_price": 20.02,
       "requested_qty": 11,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "closed",
       "submitted_at": "2026-11-20T17:56:06+00:00",
       "symbol": "CHWY"
     },
@@ -521,6 +523,7 @@
     "SOFI": {
       "bar_key": "2026-11-20T19:30:00+00:00",
       "close_cid": "FAST31C_SOFI_11201930000000",
+      "close_order_id": "1b59ebfb-1e31-4813-8267-c109a1817854",
       "entry_cid": "FAST31E_SOFI_11201930000000",
       "entry_fill_price": 12.6,
       "entry_filled_at": "2026-11-20T19:37:37.08633742Z",
@@ -528,11 +531,12 @@
       "exit_cid": "FAST31X_SOFI_11201930000000",
       "exit_order_id": "e939c898-5f15-444a-ae32-4aa02e61cb5f",
       "filled_qty": 18,
+      "realized_pnl": 1.08,
       "reference_price": 12.6,
       "requested_qty": 18,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "closed",
       "submitted_at": "2026-11-20T19:37:35+00:00",
       "symbol": "SOFI"
     },
