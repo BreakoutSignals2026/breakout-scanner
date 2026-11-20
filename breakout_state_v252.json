@@ -2,7 +2,7 @@
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
     "AMD": "2026-11-16T13:15:00-05:00",
-    "AMZN": "2026-11-19T13:15:00-05:00",
+    "AMZN": "2026-11-20T12:10:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
     "INTC": "2026-11-16T13:30:00-05:00",
     "META": "2026-11-19T15:10:00-05:00",
@@ -13,41 +13,41 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-20",
-    "scans": 28,
+    "scans": 29,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 10,
+      "bez_potvrdeneho_breakoutu": 11,
       "blocked_positions": 0,
       "exceptions": 2,
       "malo_5min_sviecok": 178,
-      "nizky_relativny_objem": 90,
-      "submitted": 0,
-      "symbols_checked": 280,
-      "technical_signals": 2
+      "nizky_relativny_objem": 98,
+      "submitted": 1,
+      "symbols_checked": 290,
+      "technical_signals": 3
     }
   },
   "daily_diagnostics_notice": "2026-11-19",
   "daily_start_notice": "2026-11-20",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
       "exceptions": 0,
       "nizky_relativny_objem": 8,
-      "scan_seconds": 81.2,
-      "submitted": 0,
+      "scan_seconds": 82.7,
+      "submitted": 1,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-20T12:14:12-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-20T12:20:08-05:00"
     },
     "date": "2026-11-20",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
-      "AMD": "bez_potvrdeneho_breakoutu",
-      "AMZN": "bez_potvrdeneho_breakoutu",
+      "AMD": "nizky_relativny_objem",
+      "AMZN": "order_submitted",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
@@ -340,6 +340,21 @@
       "submitted": "2026-11-19T18:23:43+00:00",
       "symbol": "AMZN",
       "tp": 256.11
+    },
+    "B252_AMZN_202611201210": {
+      "client_id": "B252_AMZN_202611201210",
+      "entry_id": "bfec30b8-927e-4345-829f-fb51cfd29e90",
+      "planned_risk": 4.756,
+      "qty": 3,
+      "reference_entry": 250.8,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-20T12:10:00-05:00",
+      "status": "pending",
+      "stop": 252.2,
+      "submitted": "2026-11-20T17:19:52+00:00",
+      "symbol": "AMZN",
+      "tp": 248.0
     },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
