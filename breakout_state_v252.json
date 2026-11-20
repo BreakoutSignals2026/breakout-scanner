@@ -8,47 +8,48 @@
     "META": "2026-11-19T15:10:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
     "MSFT": "2026-11-19T13:15:00-05:00",
-    "NVDA": "2026-11-19T12:00:00-05:00",
+    "NVDA": "2026-11-20T14:15:00-05:00",
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
     "date": "2026-11-20",
-    "scans": 49,
+    "scans": 50,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 35,
-      "blocked_positions": 20,
+      "bez_potvrdeneho_breakoutu": 36,
+      "blocked_positions": 21,
       "exceptions": 3,
       "malo_5min_sviecok": 178,
-      "nizky_relativny_objem": 253,
-      "submitted": 1,
-      "symbols_checked": 470,
-      "technical_signals": 4
+      "nizky_relativny_objem": 260,
+      "submitted": 2,
+      "symbols_checked": 479,
+      "technical_signals": 5
     }
   },
   "daily_diagnostics_notice": "2026-11-19",
   "daily_start_notice": "2026-11-20",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 1,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 73.3,
-      "submitted": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 74.6,
+      "submitted": 1,
       "symbols_checked": 9,
       "technical_signals": 1,
-      "time_ny": "2026-11-20T14:15:47-05:00"
+      "time_ny": "2026-11-20T14:21:36-05:00"
     },
     "date": "2026-11-20",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
-      "GOOGL": "nizky_relativny_objem",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
       "INTC": "nizky_relativny_objem",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
-      "NVDA": "NVDA: IEX spread 1.390% nad 0.3%",
+      "NVDA": "order_submitted",
       "TSLA": "nizky_relativny_objem"
     }
   },
@@ -1065,6 +1066,21 @@
       "submitted": "2026-11-19T17:08:05+00:00",
       "symbol": "NVDA",
       "tp": 145.72
+    },
+    "B252_NVDA_202611201415": {
+      "client_id": "B252_NVDA_202611201415",
+      "entry_id": "c58700cc-7c42-4acd-91cf-c5c34340a056",
+      "planned_risk": 4.337,
+      "qty": 3,
+      "reference_entry": 131.58,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-20T14:15:00-05:00",
+      "status": "pending",
+      "stop": 132.9,
+      "submitted": "2026-11-20T19:20:47+00:00",
+      "symbol": "NVDA",
+      "tp": 128.94
     },
     "B252_TSLA_202610261310": {
       "client_id": "B252_TSLA_202610261310",
