@@ -831,3 +831,5 @@
 {"timestamp": "2026-11-20T19:42:14+00:00", "action": "closed", "symbol": "QBTS", "entry": 6.59, "exit": 6.63, "qty": 33.0, "side": "sell", "pnl": -1.32, "pnl_pct": -0.607, "reason": "trailing stop", "holding_seconds": 896}
 {"timestamp": "2026-11-20T20:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "17f0161a-d5d2-468a-b035-80d60f708d03"}
 {"timestamp": "2026-11-20T20:45:35+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "e939c898-5f15-444a-ae32-4aa02e61cb5f"}
+{"timestamp": "2026-11-20T20:46:11+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 7, "order_id": "31f8e68e-1469-4b1b-a99f-e4a67c50b195"}
+{"timestamp": "2026-11-20T20:46:13+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 18, "order_id": "1b59ebfb-1e31-4813-8267-c109a1817854"}
