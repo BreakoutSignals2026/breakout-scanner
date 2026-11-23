@@ -21,7 +21,8 @@
     "2026-11-17": "2026-11-17T20:45:00+00:00",
     "2026-11-18": "2026-11-18T20:45:00+00:00",
     "2026-11-19": "2026-11-19T20:45:32+00:00",
-    "2026-11-20": "2026-11-20T20:45:33+00:00"
+    "2026-11-20": "2026-11-20T20:45:33+00:00",
+    "2026-11-23": "2026-11-23T20:45:05+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -376,6 +377,8 @@
     },
     "NU": {
       "bar_key": "2026-11-23T20:20:00+00:00",
+      "close_cid": "FAST31C_NU_11232020000000",
+      "close_order_id": "99b98599-2e64-40aa-bf3d-33c5fc978b4c",
       "entry_cid": "FAST31E_NU_11232020000000",
       "entry_fill_price": 11.85,
       "entry_filled_at": "2026-11-23T20:28:45.697844722Z",
@@ -387,7 +390,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_closing",
       "submitted_at": "2026-11-23T20:28:44+00:00",
       "symbol": "NU"
     },
@@ -521,6 +524,8 @@
     },
     "SOFI": {
       "bar_key": "2026-11-23T19:35:00+00:00",
+      "close_cid": "FAST31C_SOFI_11231935000000",
+      "close_order_id": "f427eb91-0e88-40b6-9e22-173a12de5695",
       "entry_cid": "FAST31E_SOFI_11231935000000",
       "entry_fill_price": 13.071765,
       "entry_filled_at": "2026-11-23T19:43:16.056159709Z",
@@ -532,7 +537,7 @@
       "requested_qty": 17,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_closing",
       "submitted_at": "2026-11-23T19:43:13+00:00",
       "symbol": "SOFI"
     },

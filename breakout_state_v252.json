@@ -25,7 +25,7 @@
       "technical_signals": 6
     }
   },
-  "daily_diagnostics_notice": "2026-11-20",
+  "daily_diagnostics_notice": "2026-11-23",
   "daily_start_notice": "2026-11-23",
   "last_scan_diagnostics": {
     "counts": {
@@ -668,13 +668,15 @@
     "B252_INTC_202611231515": {
       "client_id": "B252_INTC_202611231515",
       "entry_id": "1011c481-7045-4fd7-a5d7-0166e85bba7a",
+      "eod_client_id": "B252_EOD_INTC_202611231515",
+      "eod_order_id": "a9343882-9290-4a4a-9807-64b8e19c5cd5",
       "planned_risk": 4.895,
       "qty": 10,
       "reference_entry": 58.92,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-23T15:15:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 58.47,
       "submitted": "2026-11-23T20:22:20+00:00",
       "symbol": "INTC",

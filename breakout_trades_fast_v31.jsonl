@@ -857,3 +857,7 @@
 {"timestamp": "2026-11-23T20:19:38+00:00", "action": "closed", "symbol": "RGTI", "entry": 8.23, "exit": 8.3, "qty": 27.0, "side": "sell", "pnl": -1.89, "pnl_pct": -0.851, "reason": "trailing stop", "holding_seconds": 1428}
 {"timestamp": "2026-11-23T20:28:44+00:00", "action": "entry_submitted", "symbol": "NU", "order_id": "5bb244a7-bed9-46e3-87c8-504718f1a648", "requested_qty": 19, "reference": 11.85, "side": "buy", "estimated_risk": 2.89, "spread_percent": 0.084, "rel_volume": 3.2171832215832743, "breakout_percent": 0.3813559322033892, "bar_notional_usd": 938242.45, "quote_age_seconds": 1.066698, "chase_percent": 0.042211903756851035, "signal_age_seconds": 224}
 {"timestamp": "2026-11-23T20:28:47+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "75a3d5dd-301d-40ac-b03c-3b10148ed3d3", "qty": 19}
+{"timestamp": "2026-11-23T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "75a3d5dd-301d-40ac-b03c-3b10148ed3d3"}
+{"timestamp": "2026-11-23T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "65cf4562-2ed5-41c4-a5df-9314278c03be"}
+{"timestamp": "2026-11-23T20:45:39+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 19, "order_id": "99b98599-2e64-40aa-bf3d-33c5fc978b4c"}
+{"timestamp": "2026-11-23T20:45:39+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 17, "order_id": "f427eb91-0e88-40b6-9e22-173a12de5695"}
