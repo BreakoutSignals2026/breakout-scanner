@@ -859,3 +859,5 @@
 {"timestamp": "2026-11-23T20:28:47+00:00", "action": "exit_accepted", "symbol": "NU", "order_id": "75a3d5dd-301d-40ac-b03c-3b10148ed3d3", "qty": 19}
 {"timestamp": "2026-11-23T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "75a3d5dd-301d-40ac-b03c-3b10148ed3d3"}
 {"timestamp": "2026-11-23T20:45:06+00:00", "action": "eod_stop_cancel_requested", "symbol": "SOFI", "id": "65cf4562-2ed5-41c4-a5df-9314278c03be"}
+{"timestamp": "2026-11-23T20:45:39+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 19, "order_id": "99b98599-2e64-40aa-bf3d-33c5fc978b4c"}
+{"timestamp": "2026-11-23T20:45:39+00:00", "action": "eod_close_submitted", "symbol": "SOFI", "qty": 17, "order_id": "f427eb91-0e88-40b6-9e22-173a12de5695"}
