@@ -13,44 +13,44 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-23",
-    "scans": 58,
+    "scans": 59,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 48,
+      "bez_potvrdeneho_breakoutu": 55,
       "blocked_positions": 2,
-      "exceptions": 5,
+      "exceptions": 6,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 350,
+      "nizky_relativny_objem": 352,
       "submitted": 2,
-      "symbols_checked": 578,
-      "technical_signals": 4
+      "symbols_checked": 588,
+      "technical_signals": 5
     }
   },
   "daily_diagnostics_notice": "2026-11-20",
   "daily_start_notice": "2026-11-23",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 2,
+      "bez_potvrdeneho_breakoutu": 7,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 81.4,
-      "submitted": 1,
+      "exceptions": 1,
+      "nizky_relativny_objem": 2,
+      "scan_seconds": 82.1,
+      "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 1,
-      "time_ny": "2026-11-23T15:11:44-05:00"
+      "time_ny": "2026-11-23T15:17:39-05:00"
     },
     "date": "2026-11-23",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "order_submitted",
+      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
+      "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "bez_potvrdeneho_breakoutu",
-      "MSFT": "nizky_relativny_objem",
+      "MRVL": "MRVL: IEX spread 2.469% nad 0.3%",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "bez_potvrdeneho_breakoutu",
-      "TSLA": "nizky_relativny_objem"
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -210,10 +210,10 @@
       "planned_risk": 4.773,
       "qty": 1,
       "reference_entry": 445.08,
-      "result_logged": false,
+      "result_logged": true,
       "side": "SELL",
       "signal_candle": "2026-11-23T15:05:00-05:00",
-      "status": "pending",
+      "status": "closed",
       "stop": 448.94,
       "submitted": "2026-11-23T20:10:39+00:00",
       "symbol": "AMD",
