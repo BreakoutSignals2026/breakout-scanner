@@ -4,7 +4,7 @@
     "AMD": "2026-11-23T15:05:00-05:00",
     "AMZN": "2026-11-20T12:10:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
-    "INTC": "2026-11-23T12:50:00-05:00",
+    "INTC": "2026-11-23T15:15:00-05:00",
     "META": "2026-11-19T15:10:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
     "MSFT": "2026-11-19T13:15:00-05:00",
@@ -13,41 +13,41 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-23",
-    "scans": 59,
+    "scans": 60,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 55,
+      "bez_potvrdeneho_breakoutu": 61,
       "blocked_positions": 2,
       "exceptions": 6,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 352,
-      "submitted": 2,
-      "symbols_checked": 588,
-      "technical_signals": 5
+      "nizky_relativny_objem": 355,
+      "submitted": 3,
+      "symbols_checked": 598,
+      "technical_signals": 6
     }
   },
   "daily_diagnostics_notice": "2026-11-20",
   "daily_start_notice": "2026-11-23",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 7,
+      "bez_potvrdeneho_breakoutu": 6,
       "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 2,
-      "scan_seconds": 82.1,
-      "submitted": 0,
+      "exceptions": 0,
+      "nizky_relativny_objem": 3,
+      "scan_seconds": 82.5,
+      "submitted": 1,
       "symbols_checked": 10,
       "technical_signals": 1,
-      "time_ny": "2026-11-23T15:17:39-05:00"
+      "time_ny": "2026-11-23T15:23:34-05:00"
     },
     "date": "2026-11-23",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "bez_potvrdeneho_breakoutu",
-      "META": "nizky_relativny_objem",
-      "MRVL": "MRVL: IEX spread 2.469% nad 0.3%",
+      "GOOGL": "nizky_relativny_objem",
+      "INTC": "order_submitted",
+      "META": "bez_potvrdeneho_breakoutu",
+      "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "bez_potvrdeneho_breakoutu",
       "TSLA": "bez_potvrdeneho_breakoutu"
@@ -664,6 +664,21 @@
       "submitted": "2026-11-23T17:55:25+00:00",
       "symbol": "INTC",
       "tp": 59.19
+    },
+    "B252_INTC_202611231515": {
+      "client_id": "B252_INTC_202611231515",
+      "entry_id": "1011c481-7045-4fd7-a5d7-0166e85bba7a",
+      "planned_risk": 4.895,
+      "qty": 10,
+      "reference_entry": 58.92,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-23T15:15:00-05:00",
+      "status": "pending",
+      "stop": 58.47,
+      "submitted": "2026-11-23T20:22:20+00:00",
+      "symbol": "INTC",
+      "tp": 59.82
     },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
