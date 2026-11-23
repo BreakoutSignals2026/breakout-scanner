@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 3,
-    "closed": 1,
-    "pnl_usd": -0.86
+    "closed": 2,
+    "pnl_usd": -1.68
   },
   "date": "2026-11-23",
   "seen": [
@@ -22,26 +22,7 @@
       "phase": "watching"
     },
     "HPQ": {
-      "entry": 28.794387499999996,
-      "entry_bar": "2026-11-23T16:55:00+00:00",
-      "last_bar": "2026-11-23T19:00:00+00:00",
-      "phase": "open",
-      "qty": 5,
-      "signal": {
-        "bar_key": "2026-11-23T16:50:00+00:00",
-        "breakout_level": 28.735,
-        "breakout_percent": 0.156603445275802,
-        "entry_close": 28.78,
-        "prior_avg_bar_notional_usd": 315804.24,
-        "quote_spread": 0.00999999999999801,
-        "quote_spread_pct": 0.03469210754552649,
-        "rel_volume": 3.8373325682185406,
-        "side": "buy",
-        "signal_bar_notional_usd": 1218890.56,
-        "signal_bar_shares": 42352,
-        "signal_bar_trades": 286,
-        "symbol": "HPQ"
-      }
+      "phase": "closed"
     },
     "KEY": {
       "phase": "watching"
@@ -61,7 +42,7 @@
     "T": {
       "entry": 22.291137499999998,
       "entry_bar": "2026-11-23T18:25:00+00:00",
-      "last_bar": "2026-11-23T19:00:00+00:00",
+      "last_bar": "2026-11-23T19:30:00+00:00",
       "phase": "open",
       "qty": 6,
       "signal": {
