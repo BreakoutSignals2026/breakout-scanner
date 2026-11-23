@@ -1,6 +1,6 @@
 {
   "daily": {
-    "attempts": 2,
+    "attempts": 3,
     "closed": 1,
     "pnl_usd": -0.86
   },
@@ -8,6 +8,7 @@
   "seen": [
     "AG:2026-11-23T16:40:00+00:00:sell",
     "HPQ:2026-11-23T16:50:00+00:00:buy",
+    "T:2026-11-23T18:20:00+00:00:buy",
     "XPEV:2026-11-23T17:45:00+00:00:sell"
   ],
   "symbols": {
@@ -23,7 +24,7 @@
     "HPQ": {
       "entry": 28.794387499999996,
       "entry_bar": "2026-11-23T16:55:00+00:00",
-      "last_bar": "2026-11-23T18:15:00+00:00",
+      "last_bar": "2026-11-23T18:20:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
@@ -58,7 +59,22 @@
       "phase": "watching"
     },
     "T": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-23T18:20:00+00:00",
+        "breakout_level": 22.235,
+        "breakout_percent": 0.17989655947829614,
+        "entry_close": 22.275,
+        "prior_avg_bar_notional_usd": 346043.57,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.04491354143273303,
+        "rel_volume": 1.6924775574864386,
+        "side": "buy",
+        "signal_bar_notional_usd": 588995.55,
+        "signal_bar_shares": 26442,
+        "signal_bar_trades": 67,
+        "symbol": "T"
+      }
     },
     "UPST": {
       "phase": "watching"
