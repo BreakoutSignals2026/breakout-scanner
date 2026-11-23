@@ -276,6 +276,21 @@
       "symbol": "HPQ",
       "tp": 29.0
     },
+    "MICRO1_HPQ_202611231150": {
+      "client_id": "MICRO1_HPQ_202611231150",
+      "entry_id": "22ee9f8c-98a2-4ef7-a1f4-556b0c740fc8",
+      "planned_risk": 0.944,
+      "qty": 5,
+      "reference_entry": 28.82,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-23T16:50:00+00:00",
+      "status": "pending",
+      "stop": 28.67,
+      "submitted": "2026-11-23T16:55:47+00:00",
+      "symbol": "HPQ",
+      "tp": 29.2
+    },
     "MICRO1_KEY_202611031315": {
       "client_id": "MICRO1_KEY_202611031315",
       "entry_id": "b671aea0-28be-419b-972b-b9a27afe8d6f",
