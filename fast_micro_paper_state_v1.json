@@ -515,6 +515,21 @@
       "symbol": "KGC",
       "tp": 17.28
     },
+    "MICRO1_KGC_202611231505": {
+      "client_id": "MICRO1_KGC_202611231505",
+      "entry_id": "166b5a1f-4ae2-4d05-89bb-b8c0389bfa6b",
+      "planned_risk": 0.897,
+      "qty": 7,
+      "reference_entry": 18.08,
+      "result_logged": false,
+      "side": "SELL",
+      "signal_candle": "2026-11-23T20:05:00+00:00",
+      "status": "open",
+      "stop": 18.18,
+      "submitted": "2026-11-23T20:10:47+00:00",
+      "symbol": "KGC",
+      "tp": 17.83
+    },
     "MICRO1_LYFT_202610301250": {
       "client_id": "MICRO1_LYFT_202610301250",
       "entry_id": "d47edc4c-15c8-48a7-8256-d466315ab383",

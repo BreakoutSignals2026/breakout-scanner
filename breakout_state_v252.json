@@ -1,7 +1,7 @@
 {
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
-    "AMD": "2026-11-16T13:15:00-05:00",
+    "AMD": "2026-11-23T15:05:00-05:00",
     "AMZN": "2026-11-20T12:10:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
     "INTC": "2026-11-23T12:50:00-05:00",
@@ -13,44 +13,44 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-23",
-    "scans": 57,
+    "scans": 59,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 46,
+      "bez_potvrdeneho_breakoutu": 55,
       "blocked_positions": 2,
-      "exceptions": 5,
+      "exceptions": 6,
       "malo_5min_sviecok": 173,
-      "nizky_relativny_objem": 343,
-      "submitted": 1,
-      "symbols_checked": 568,
-      "technical_signals": 3
+      "nizky_relativny_objem": 352,
+      "submitted": 2,
+      "symbols_checked": 588,
+      "technical_signals": 5
     }
   },
   "daily_diagnostics_notice": "2026-11-20",
   "daily_start_notice": "2026-11-23",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 1,
+      "bez_potvrdeneho_breakoutu": 7,
       "blocked_positions": 0,
-      "exceptions": 0,
-      "nizky_relativny_objem": 9,
-      "scan_seconds": 80.3,
+      "exceptions": 1,
+      "nizky_relativny_objem": 2,
+      "scan_seconds": 82.1,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 0,
-      "time_ny": "2026-11-23T15:05:51-05:00"
+      "technical_signals": 1,
+      "time_ny": "2026-11-23T15:17:39-05:00"
     },
     "date": "2026-11-23",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AMD": "bez_potvrdeneho_breakoutu",
       "AMZN": "nizky_relativny_objem",
-      "GOOGL": "nizky_relativny_objem",
+      "GOOGL": "bez_potvrdeneho_breakoutu",
       "INTC": "bez_potvrdeneho_breakoutu",
       "META": "nizky_relativny_objem",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "MRVL": "MRVL: IEX spread 2.469% nad 0.3%",
+      "MSFT": "bez_potvrdeneho_breakoutu",
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -203,6 +203,21 @@
       "submitted": "2026-11-16T18:23:09+00:00",
       "symbol": "AMD",
       "tp": 500.34
+    },
+    "B252_AMD_202611231505": {
+      "client_id": "B252_AMD_202611231505",
+      "entry_id": "2d0e02ff-3708-4c62-af37-068feecd920e",
+      "planned_risk": 4.773,
+      "qty": 1,
+      "reference_entry": 445.08,
+      "result_logged": true,
+      "side": "SELL",
+      "signal_candle": "2026-11-23T15:05:00-05:00",
+      "status": "closed",
+      "stop": 448.94,
+      "submitted": "2026-11-23T20:10:39+00:00",
+      "symbol": "AMD",
+      "tp": 437.36
     },
     "B252_AMZN_202610221430": {
       "client_id": "B252_AMZN_202610221430",
