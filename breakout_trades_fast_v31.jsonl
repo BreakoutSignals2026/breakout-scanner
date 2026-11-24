@@ -891,3 +891,4 @@
 {"timestamp": "2026-11-24T18:01:43+00:00", "action": "exit_accepted", "symbol": "MARA", "order_id": "2f8d2947-351b-4d5d-ae2c-9b3f01f2433b", "qty": 40}
 {"timestamp": "2026-11-24T18:29:15+00:00", "action": "entry_submitted", "symbol": "CELH", "order_id": "997eedf2-7c99-40fc-b3c7-eff3a4ea48b1", "requested_qty": 7, "reference": 28.73, "side": "sell", "estimated_risk": 2.69, "spread_percent": 0.139, "rel_volume": 1.6040811247978102, "breakout_percent": 0.3465003465003391, "bar_notional_usd": 92693.48, "quote_age_seconds": 0.690017, "chase_percent": 0.10431154381085235, "signal_age_seconds": 255}
 {"timestamp": "2026-11-24T18:29:18+00:00", "action": "exit_accepted", "symbol": "CELH", "order_id": "77353421-39ee-4fda-8ea1-6f2e621467e2", "qty": 7}
+{"timestamp": "2026-11-24T18:33:54+00:00", "action": "closed", "symbol": "PATH", "entry": 12.33, "exit": 12.23, "qty": 17.0, "side": "buy", "pnl": -1.7, "pnl_pct": -0.811, "reason": "trailing stop", "holding_seconds": 2365}
