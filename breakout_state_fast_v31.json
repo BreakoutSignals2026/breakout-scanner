@@ -57,7 +57,7 @@
     "SNAP": "2026-11-19T20:05:00+00:00",
     "SOFI": "2026-11-23T19:35:00+00:00",
     "U": "2026-11-12T17:10:00+00:00",
-    "VALE": "2026-11-19T20:00:00+00:00"
+    "VALE": "2026-11-24T16:15:00+00:00"
   },
   "one_shot_paper_entry_attempted": "2026-10-21T18:02:15+00:00",
   "trades": {
@@ -439,11 +439,12 @@
       "exit_cid": "FAST31X_QBTS_11241545000000",
       "exit_order_id": "ddb42fa8-f877-466a-ab84-5ce3cfc542cd",
       "filled_qty": 33,
+      "realized_pnl": 1.32,
       "reference_price": 6.63,
       "requested_qty": 33,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-24T15:52:00+00:00",
       "symbol": "QBTS"
     },
@@ -560,23 +561,20 @@
       "symbol": "U"
     },
     "VALE": {
-      "bar_key": "2026-11-19T20:00:00+00:00",
-      "close_cid": "FAST31C_VALE_11192000000000",
-      "close_order_id": "57a34fe6-d2c5-41ba-b0a1-029883e9b7d4",
-      "entry_cid": "FAST31E_VALE_11192000000000",
-      "entry_fill_price": 9.82,
-      "entry_filled_at": "2026-11-19T20:06:27.222367643Z",
-      "entry_order_id": "f048aa74-d5e4-485f-9dac-f4a3d29ea3aa",
-      "exit_cid": "FAST31X_VALE_11192000000000",
-      "exit_order_id": "c1b41656-7bc2-49ef-907b-c0f0d9259ca4",
-      "filled_qty": 16,
-      "realized_pnl": -0.16,
-      "reference_price": 9.82,
-      "requested_qty": 23,
+      "bar_key": "2026-11-24T16:15:00+00:00",
+      "entry_cid": "FAST31E_VALE_11241615000000",
+      "entry_fill_price": 9.44,
+      "entry_filled_at": "2026-11-24T16:24:16.470288848Z",
+      "entry_order_id": "f37ddfd0-9c5d-430f-8cec-edeaa0c30cfb",
+      "exit_cid": "FAST31X_VALE_11241615000000",
+      "exit_order_id": "37c163ad-5f26-4d2e-a2a8-2576982738ff",
+      "filled_qty": 18,
+      "reference_price": 9.44,
+      "requested_qty": 24,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "closed",
-      "submitted_at": "2026-11-19T20:06:24+00:00",
+      "status": "protected",
+      "submitted_at": "2026-11-24T16:24:15+00:00",
       "symbol": "VALE"
     }
   },
