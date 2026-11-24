@@ -1,8 +1,8 @@
 {
   "daily": {
     "attempts": 2,
-    "closed": 0,
-    "pnl_usd": 0.0
+    "closed": 1,
+    "pnl_usd": -0.8
   },
   "date": "2026-11-24",
   "seen": [
@@ -27,26 +27,7 @@
       "phase": "watching"
     },
     "KEY": {
-      "entry": 19.964974999999995,
-      "entry_bar": "2026-11-24T17:10:00+00:00",
-      "last_bar": "2026-11-24T19:45:00+00:00",
-      "phase": "open",
-      "qty": 7,
-      "signal": {
-        "bar_key": "2026-11-24T17:05:00+00:00",
-        "breakout_level": 19.88,
-        "breakout_percent": 0.3018108651911583,
-        "entry_close": 19.94,
-        "prior_avg_bar_notional_usd": 274112.3,
-        "quote_spread": 0.010000000000001563,
-        "quote_spread_pct": 0.05011275369582342,
-        "rel_volume": 1.7053733678319996,
-        "side": "buy",
-        "signal_bar_notional_usd": 470942.92,
-        "signal_bar_shares": 23618,
-        "signal_bar_trades": 79,
-        "symbol": "KEY"
-      }
+      "phase": "closed"
     },
     "KGC": {
       "phase": "watching"
@@ -60,7 +41,7 @@
     "PFE": {
       "entry": 28.434207499999996,
       "entry_bar": "2026-11-24T16:25:00+00:00",
-      "last_bar": "2026-11-24T19:45:00+00:00",
+      "last_bar": "2026-11-24T19:50:00+00:00",
       "phase": "open",
       "qty": 5,
       "signal": {
