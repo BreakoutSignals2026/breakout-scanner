@@ -903,3 +903,5 @@
 {"timestamp": "2026-11-24T20:28:54+00:00", "action": "exit_accepted", "symbol": "CHWY", "order_id": "3d63eec8-3ed7-4104-b2e2-124b1f530a26", "qty": 12}
 {"timestamp": "2026-11-24T20:33:30+00:00", "action": "closed", "symbol": "MARA", "entry": 5.28, "exit": 5.45, "qty": 40.0, "side": "buy", "pnl": 6.8, "pnl_pct": 3.22, "reason": "trailing stop", "holding_seconds": 8847}
 {"timestamp": "2026-11-24T20:42:37+00:00", "action": "closed", "symbol": "GME", "entry": 27.6, "exit": 27.26, "qty": 8.0, "side": "buy", "pnl": -2.72, "pnl_pct": -1.232, "reason": "trailing stop", "holding_seconds": 4181}
+{"timestamp": "2026-11-24T20:45:03+00:00", "action": "eod_stop_cancel_requested", "symbol": "CELH", "id": "77353421-39ee-4fda-8ea1-6f2e621467e2"}
+{"timestamp": "2026-11-24T20:45:05+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "3d63eec8-3ed7-4104-b2e2-124b1f530a26"}
