@@ -907,3 +907,5 @@
 {"timestamp": "2026-11-24T20:45:05+00:00", "action": "eod_stop_cancel_requested", "symbol": "CHWY", "id": "3d63eec8-3ed7-4104-b2e2-124b1f530a26"}
 {"timestamp": "2026-11-24T20:45:39+00:00", "action": "eod_close_submitted", "symbol": "CELH", "qty": 7, "order_id": "d95a4168-5466-4393-806b-966dc90594f4"}
 {"timestamp": "2026-11-24T20:45:41+00:00", "action": "eod_close_submitted", "symbol": "CHWY", "qty": 12, "order_id": "832bfc78-6bb9-4ec1-9a00-a7fe86093b0e"}
+{"timestamp": "2026-11-24T20:46:16+00:00", "action": "closed", "symbol": "CELH", "entry": 28.73, "exit": 28.49, "qty": 7.0, "side": "sell", "pnl": 1.68, "pnl_pct": 0.835, "reason": "koniec seansy", "holding_seconds": 8186}
+{"timestamp": "2026-11-24T20:46:18+00:00", "action": "closed", "symbol": "CHWY", "entry": 19.49, "exit": 19.58, "qty": 12.0, "side": "sell", "pnl": -1.08, "pnl_pct": -0.462, "reason": "koniec seansy", "holding_seconds": 1015}
