@@ -139,6 +139,7 @@
     "CELH": {
       "bar_key": "2026-11-24T18:20:00+00:00",
       "close_cid": "FAST31C_CELH_11241820000000",
+      "close_order_id": "d95a4168-5466-4393-806b-966dc90594f4",
       "entry_cid": "FAST31E_CELH_11241820000000",
       "entry_fill_price": 28.73,
       "entry_filled_at": "2026-11-24T18:29:15.840523145Z",
@@ -150,13 +151,14 @@
       "requested_qty": 7,
       "side": "sell",
       "spread_at_entry": 0.04,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-24T18:29:14+00:00",
       "symbol": "CELH"
     },
     "CHWY": {
       "bar_key": "2026-11-24T20:20:00+00:00",
       "close_cid": "FAST31C_CHWY_11242020000000",
+      "close_order_id": "832bfc78-6bb9-4ec1-9a00-a7fe86093b0e",
       "entry_cid": "FAST31E_CHWY_11242020000000",
       "entry_fill_price": 19.49,
       "entry_filled_at": "2026-11-24T20:28:50.894402513Z",
@@ -168,7 +170,7 @@
       "requested_qty": 12,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-24T20:28:49+00:00",
       "symbol": "CHWY"
     },
