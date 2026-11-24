@@ -22,7 +22,8 @@
     "2026-11-18": "2026-11-18T20:45:00+00:00",
     "2026-11-19": "2026-11-19T20:45:32+00:00",
     "2026-11-20": "2026-11-20T20:45:33+00:00",
-    "2026-11-23": "2026-11-23T20:45:05+00:00"
+    "2026-11-23": "2026-11-23T20:45:05+00:00",
+    "2026-11-24": "2026-11-24T20:45:01+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -137,6 +138,8 @@
     },
     "CELH": {
       "bar_key": "2026-11-24T18:20:00+00:00",
+      "close_cid": "FAST31C_CELH_11241820000000",
+      "close_order_id": "d95a4168-5466-4393-806b-966dc90594f4",
       "entry_cid": "FAST31E_CELH_11241820000000",
       "entry_fill_price": 28.73,
       "entry_filled_at": "2026-11-24T18:29:15.840523145Z",
@@ -148,12 +151,14 @@
       "requested_qty": 7,
       "side": "sell",
       "spread_at_entry": 0.04,
-      "status": "protected",
+      "status": "eod_closing",
       "submitted_at": "2026-11-24T18:29:14+00:00",
       "symbol": "CELH"
     },
     "CHWY": {
       "bar_key": "2026-11-24T20:20:00+00:00",
+      "close_cid": "FAST31C_CHWY_11242020000000",
+      "close_order_id": "832bfc78-6bb9-4ec1-9a00-a7fe86093b0e",
       "entry_cid": "FAST31E_CHWY_11242020000000",
       "entry_fill_price": 19.49,
       "entry_filled_at": "2026-11-24T20:28:50.894402513Z",
@@ -165,7 +170,7 @@
       "requested_qty": 12,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_closing",
       "submitted_at": "2026-11-24T20:28:49+00:00",
       "symbol": "CHWY"
     },
@@ -270,11 +275,12 @@
       "exit_cid": "FAST31X_GME_11241920000000",
       "exit_order_id": "4785e814-dd46-48f4-ac0d-ee944ade8cc1",
       "filled_qty": 8,
+      "realized_pnl": -2.72,
       "reference_price": 27.61,
       "requested_qty": 8,
       "side": "buy",
       "spread_at_entry": 0.02,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-24T19:29:05+00:00",
       "symbol": "GME"
     },
