@@ -106,11 +106,12 @@
       "exit_cid": "FAST31X_BB_11241610000000",
       "exit_order_id": "a32929af-3f00-41cf-b7dc-24407a00fc10",
       "filled_qty": 27,
+      "realized_pnl": -2.76,
       "reference_price": 8.16,
       "requested_qty": 27,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-24T16:19:32+00:00",
       "symbol": "BB"
     },
