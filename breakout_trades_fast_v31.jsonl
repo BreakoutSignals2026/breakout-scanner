@@ -942,3 +942,6 @@
 {"timestamp": "2026-11-25T20:45:01+00:00", "action": "eod_stop_cancel_requested", "symbol": "AA", "id": "24777ec5-2e91-40e1-a734-e897e7464414"}
 {"timestamp": "2026-11-25T20:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "AAL", "id": "bf8a7f9c-82dc-4825-9175-8f5152110d36"}
 {"timestamp": "2026-11-25T20:45:02+00:00", "action": "eod_stop_cancel_requested", "symbol": "F", "id": "4bac4730-303c-44b6-b5bb-860515d6928d"}
+{"timestamp": "2026-11-25T20:45:35+00:00", "action": "eod_close_submitted", "symbol": "AA", "qty": 6, "order_id": "6ccf61df-262d-4d4c-a8a5-c3faedbed93f"}
+{"timestamp": "2026-11-25T20:45:35+00:00", "action": "eod_close_submitted", "symbol": "AAL", "qty": 18, "order_id": "3cf5d9a0-0260-4d34-be22-63128871b3bc"}
+{"timestamp": "2026-11-25T20:45:36+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 16, "order_id": "70e6478f-930f-489d-8eb6-06316613ecdb"}

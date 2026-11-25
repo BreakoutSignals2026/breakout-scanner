@@ -66,6 +66,7 @@
     "AA": {
       "bar_key": "2026-11-25T18:15:00+00:00",
       "close_cid": "FAST31C_AA_11251815000000",
+      "close_order_id": "6ccf61df-262d-4d4c-a8a5-c3faedbed93f",
       "entry_cid": "FAST31E_AA_11251815000000",
       "entry_fill_price": 34.94,
       "entry_filled_at": "2026-11-25T18:21:54.909699967Z",
@@ -77,13 +78,14 @@
       "requested_qty": 6,
       "side": "buy",
       "spread_at_entry": 0.06,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-25T18:21:53+00:00",
       "symbol": "AA"
     },
     "AAL": {
       "bar_key": "2026-11-25T19:05:00+00:00",
       "close_cid": "FAST31C_AAL_11251905000000",
+      "close_order_id": "3cf5d9a0-0260-4d34-be22-63128871b3bc",
       "entry_cid": "FAST31E_AAL_11251905000000",
       "entry_fill_price": 12.63,
       "entry_filled_at": "2026-11-25T19:11:58.185829978Z",
@@ -95,7 +97,7 @@
       "requested_qty": 18,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-25T19:11:57+00:00",
       "symbol": "AAL"
     },
@@ -232,6 +234,7 @@
     "F": {
       "bar_key": "2026-11-25T18:45:00+00:00",
       "close_cid": "FAST31C_F_11251845000000",
+      "close_order_id": "70e6478f-930f-489d-8eb6-06316613ecdb",
       "entry_cid": "FAST31E_F_11251845000000",
       "entry_fill_price": 12.16,
       "entry_filled_at": "2026-11-25T18:53:44.011849475Z",
@@ -243,7 +246,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "eod_canceling_stop",
+      "status": "eod_closing",
       "submitted_at": "2026-11-25T18:53:41+00:00",
       "symbol": "F"
     },
