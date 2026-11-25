@@ -2,27 +2,27 @@
   "cooldown": {
     "AAPL": "2026-11-11T12:00:00-05:00",
     "AMD": "2026-11-23T15:05:00-05:00",
-    "AMZN": "2026-11-20T12:10:00-05:00",
+    "AMZN": "2026-11-25T12:05:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
-    "INTC": "2026-11-23T15:15:00-05:00",
+    "INTC": "2026-11-25T12:05:00-05:00",
     "META": "2026-11-19T15:10:00-05:00",
     "MRVL": "2026-11-18T14:05:00-05:00",
-    "MSFT": "2026-11-19T13:15:00-05:00",
+    "MSFT": "2026-11-25T12:05:00-05:00",
     "NVDA": "2026-11-20T14:15:00-05:00",
     "TSLA": "2026-11-09T14:35:00-05:00"
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 27,
+    "scans": 28,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 9,
+      "bez_potvrdeneho_breakoutu": 10,
       "blocked_positions": 0,
-      "exceptions": 6,
+      "exceptions": 9,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 78,
-      "submitted": 0,
-      "symbols_checked": 270,
-      "technical_signals": 6
+      "nizky_relativny_objem": 81,
+      "submitted": 3,
+      "symbols_checked": 280,
+      "technical_signals": 12
     }
   },
   "daily_diagnostics_notice": "2026-11-24",
@@ -31,26 +31,26 @@
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
-      "exceptions": 2,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 80.3,
-      "submitted": 0,
+      "exceptions": 3,
+      "nizky_relativny_objem": 3,
+      "scan_seconds": 81.8,
+      "submitted": 3,
       "symbols_checked": 10,
-      "technical_signals": 2,
-      "time_ny": "2026-11-25T12:08:32-05:00"
+      "technical_signals": 6,
+      "time_ny": "2026-11-25T12:14:26-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
       "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "AMZN: cena mimo signálu (0.464%)",
+      "AMZN": "order_submitted",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "nizky_relativny_objem",
-      "META": "META: IEX spread 3.254% nad 0.3%",
-      "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
-      "NVDA": "nizky_relativny_objem",
-      "TSLA": "nizky_relativny_objem"
+      "INTC": "order_submitted",
+      "META": "META: IEX spread 0.672% nad 0.3%",
+      "MRVL": "MRVL: IEX spread 3.349% nad 0.3%",
+      "MSFT": "order_submitted",
+      "NVDA": "bez_potvrdeneho_breakoutu",
+      "TSLA": "TSLA: IEX spread 0.869% nad 0.3%"
     }
   },
   "trades": {
@@ -371,6 +371,21 @@
       "symbol": "AMZN",
       "tp": 248.0
     },
+    "B252_AMZN_202611251205": {
+      "client_id": "B252_AMZN_202611251205",
+      "entry_id": "f8ce303c-efba-4f9b-94c1-8e31ba7269a2",
+      "planned_risk": 4.343,
+      "qty": 2,
+      "reference_entry": 243.17,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-25T12:05:00-05:00",
+      "status": "pending",
+      "stop": 241.45,
+      "submitted": "2026-11-25T17:14:10+00:00",
+      "symbol": "AMZN",
+      "tp": 246.61
+    },
     "B252_GOOGL_202610301245": {
       "client_id": "B252_GOOGL_202610301245",
       "entry_id": "27141cdf-1638-4a8e-952c-c3440b31fe97",
@@ -682,6 +697,21 @@
       "symbol": "INTC",
       "tp": 59.82
     },
+    "B252_INTC_202611251205": {
+      "client_id": "B252_INTC_202611251205",
+      "entry_id": "1c358a16-ee2e-4a8b-94c4-b788b9f8b444",
+      "planned_risk": 4.524,
+      "qty": 8,
+      "reference_entry": 50.93,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-25T12:05:00-05:00",
+      "status": "pending",
+      "stop": 50.41,
+      "submitted": "2026-11-25T17:13:13+00:00",
+      "symbol": "INTC",
+      "tp": 51.97
+    },
     "B252_META_202610291230": {
       "client_id": "B252_META_202610291230",
       "entry_id": "9c57a021-0871-4507-8598-8af511a77e8e",
@@ -959,6 +989,21 @@
       "submitted": "2026-11-19T18:23:52+00:00",
       "symbol": "MSFT",
       "tp": 496.64
+    },
+    "B252_MSFT_202611251205": {
+      "client_id": "B252_MSFT_202611251205",
+      "entry_id": "355dfc22-eeeb-4cd2-8898-61d71d11f6c9",
+      "planned_risk": 3.233,
+      "qty": 1,
+      "reference_entry": 485.59,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-25T12:05:00-05:00",
+      "status": "pending",
+      "stop": 483.24,
+      "submitted": "2026-11-25T17:14:18+00:00",
+      "symbol": "MSFT",
+      "tp": 490.29
     },
     "B252_NVDA_202610221455": {
       "client_id": "B252_NVDA_202610221455",
