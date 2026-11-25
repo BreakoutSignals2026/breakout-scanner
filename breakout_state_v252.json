@@ -13,39 +13,40 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 25,
+    "scans": 26,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 7,
+      "bez_potvrdeneho_breakoutu": 8,
       "blocked_positions": 0,
-      "exceptions": 3,
+      "exceptions": 4,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 63,
+      "nizky_relativny_objem": 71,
       "submitted": 0,
-      "symbols_checked": 250,
-      "technical_signals": 3
+      "symbols_checked": 260,
+      "technical_signals": 4
     }
   },
   "daily_diagnostics_notice": "2026-11-24",
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
+      "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
       "exceptions": 1,
-      "nizky_relativny_objem": 9,
-      "scan_seconds": 81.1,
+      "nizky_relativny_objem": 8,
+      "scan_seconds": 81.0,
       "submitted": 0,
       "symbols_checked": 10,
       "technical_signals": 1,
-      "time_ny": "2026-11-25T11:56:28-05:00"
+      "time_ny": "2026-11-25T12:02:39-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "nizky_relativny_objem",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "META: IEX spread 0.652% nad 0.3%",
+      "META": "META: IEX spread 2.801% nad 0.3%",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
