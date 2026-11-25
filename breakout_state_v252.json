@@ -13,31 +13,31 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 57,
+    "scans": 63,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 33,
-      "blocked_positions": 70,
+      "bez_potvrdeneho_breakoutu": 39,
+      "blocked_positions": 76,
       "exceptions": 19,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 265,
+      "nizky_relativny_objem": 313,
       "submitted": 6,
-      "symbols_checked": 500,
+      "symbols_checked": 554,
       "technical_signals": 25
     }
   },
-  "daily_diagnostics_notice": "2026-11-24",
+  "daily_diagnostics_notice": "2026-11-25",
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 3,
+      "bez_potvrdeneho_breakoutu": 2,
       "blocked_positions": 1,
       "exceptions": 0,
-      "nizky_relativny_objem": 6,
-      "scan_seconds": 72.2,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 72.4,
       "submitted": 0,
       "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-25T14:55:28-05:00"
+      "time_ny": "2026-11-25T15:29:53-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
@@ -45,10 +45,10 @@
       "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "bez_potvrdeneho_breakoutu",
-      "INTC": "nizky_relativny_objem",
-      "META": "bez_potvrdeneho_breakoutu",
+      "INTC": "bez_potvrdeneho_breakoutu",
+      "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "bez_potvrdeneho_breakoutu",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -404,13 +404,15 @@
     "B252_AMZN_202611251205": {
       "client_id": "B252_AMZN_202611251205",
       "entry_id": "f8ce303c-efba-4f9b-94c1-8e31ba7269a2",
+      "eod_client_id": "B252_EOD_AMZN_202611251205",
+      "eod_order_id": "6d559d80-7097-44d2-91a1-7c37d389f01a",
       "planned_risk": 4.343,
       "qty": 2,
       "reference_entry": 243.17,
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-25T12:05:00-05:00",
-      "status": "open",
+      "status": "eod_sent",
       "stop": 241.45,
       "submitted": "2026-11-25T17:14:10+00:00",
       "symbol": "AMZN",
