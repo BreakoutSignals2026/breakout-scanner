@@ -1,6 +1,6 @@
 {
   "cooldown": {
-    "AAPL": "2026-11-11T12:00:00-05:00",
+    "AAPL": "2026-11-25T12:15:00-05:00",
     "AMD": "2026-11-23T15:05:00-05:00",
     "AMZN": "2026-11-25T12:05:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
@@ -13,44 +13,43 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 29,
+    "scans": 30,
     "totals": {
       "bez_potvrdeneho_breakoutu": 13,
-      "blocked_positions": 3,
-      "exceptions": 11,
+      "blocked_positions": 6,
+      "exceptions": 13,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 83,
-      "submitted": 3,
-      "symbols_checked": 287,
-      "technical_signals": 14
+      "nizky_relativny_objem": 87,
+      "submitted": 4,
+      "symbols_checked": 294,
+      "technical_signals": 17
     }
   },
   "daily_diagnostics_notice": "2026-11-24",
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
-      "bez_potvrdeneho_breakoutu": 3,
       "blocked_positions": 3,
       "exceptions": 2,
-      "nizky_relativny_objem": 2,
-      "scan_seconds": 56.3,
-      "submitted": 0,
+      "nizky_relativny_objem": 4,
+      "scan_seconds": 56.7,
+      "submitted": 1,
       "symbols_checked": 7,
-      "technical_signals": 2,
-      "time_ny": "2026-11-25T12:19:55-05:00"
+      "technical_signals": 3,
+      "time_ny": "2026-11-25T12:25:24-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
-      "AMD": "AMD: IEX spread 1.255% nad 0.3%",
+      "AAPL": "order_submitted",
+      "AMD": "AMD: cena mimo signálu (0.984%)",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
-      "META": "bez_potvrdeneho_breakoutu",
+      "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "NVDA: cena mimo signálu (0.518%)",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "NVDA": "NVDA: cena mimo signálu (0.781%)",
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
@@ -143,6 +142,21 @@
       "submitted": "2026-11-11T17:08:18+00:00",
       "symbol": "AAPL",
       "tp": 356.48
+    },
+    "B252_AAPL_202611251215": {
+      "client_id": "B252_AAPL_202611251215",
+      "entry_id": "60c69260-90d2-4cf3-84b9-b0691b7a3cdc",
+      "planned_risk": 3.452,
+      "qty": 2,
+      "reference_entry": 351.67,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-25T12:15:00-05:00",
+      "status": "pending",
+      "stop": 350.2,
+      "submitted": "2026-11-25T17:25:00+00:00",
+      "symbol": "AAPL",
+      "tp": 354.61
     },
     "B252_AMD_202611021405": {
       "client_id": "B252_AMD_202611021405",
