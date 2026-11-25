@@ -7,7 +7,9 @@
   "date": "2026-11-25",
   "seen": [
     "AG:2026-11-25T17:05:00+00:00:buy",
+    "AG:2026-11-25T17:10:00+00:00:buy",
     "CDE:2026-11-25T16:50:00+00:00:buy",
+    "CDE:2026-11-25T17:10:00+00:00:buy",
     "HBAN:2026-11-25T17:05:00+00:00:buy",
     "KEY:2026-11-25T17:05:00+00:00:buy",
     "KGC:2026-11-25T16:20:00+00:00:buy",
@@ -19,7 +21,11 @@
   ],
   "symbols": {
     "AG": {
-      "phase": "pending",
+      "entry": 10.57028,
+      "entry_bar": "2026-11-25T17:10:00+00:00",
+      "last_bar": "2026-11-25T17:10:00+00:00",
+      "phase": "open",
+      "qty": 13,
       "signal": {
         "bar_key": "2026-11-25T17:05:00+00:00",
         "breakout_level": 10.48,
@@ -64,22 +70,8 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-11-25T17:05:00+00:00",
-        "breakout_level": 16.67,
-        "breakout_percent": 1.139772045590868,
-        "entry_close": 16.86,
-        "prior_avg_bar_notional_usd": 12888.82,
-        "quote_spread": 0.05000000000000071,
-        "quote_spread_pct": 0.2968239833778612,
-        "rel_volume": 6.305235325224749,
-        "side": "buy",
-        "signal_bar_notional_usd": 83760.48,
-        "signal_bar_shares": 4968,
-        "signal_bar_trades": 60,
-        "symbol": "UPST"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "XPEV": {
       "phase": "watching"
