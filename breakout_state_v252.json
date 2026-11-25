@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 51,
+    "scans": 52,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 25,
-      "blocked_positions": 64,
+      "bez_potvrdeneho_breakoutu": 27,
+      "blocked_positions": 65,
       "exceptions": 19,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 219,
+      "nizky_relativny_objem": 226,
       "submitted": 6,
-      "symbols_checked": 446,
+      "symbols_checked": 455,
       "technical_signals": 25
     }
   },
@@ -33,15 +33,15 @@
       "blocked_positions": 1,
       "exceptions": 0,
       "nizky_relativny_objem": 7,
-      "scan_seconds": 72.6,
+      "scan_seconds": 72.3,
       "submitted": 0,
       "symbols_checked": 9,
       "technical_signals": 0,
-      "time_ny": "2026-11-25T14:21:02-05:00"
+      "time_ny": "2026-11-25T14:26:47-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
+      "AAPL": "bez_potvrdeneho_breakoutu",
       "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
@@ -50,7 +50,7 @@
       "MRVL": "bez_potvrdeneho_breakoutu",
       "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
-      "TSLA": "bez_potvrdeneho_breakoutu"
+      "TSLA": "nizky_relativny_objem"
     }
   },
   "trades": {
