@@ -13,15 +13,15 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 30,
+    "scans": 31,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 13,
-      "blocked_positions": 6,
+      "bez_potvrdeneho_breakoutu": 14,
+      "blocked_positions": 10,
       "exceptions": 13,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 87,
+      "nizky_relativny_objem": 92,
       "submitted": 4,
-      "symbols_checked": 294,
+      "symbols_checked": 300,
       "technical_signals": 17
     }
   },
@@ -29,27 +29,28 @@
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 3,
-      "exceptions": 2,
-      "nizky_relativny_objem": 4,
-      "scan_seconds": 56.7,
-      "submitted": 1,
-      "symbols_checked": 7,
-      "technical_signals": 3,
-      "time_ny": "2026-11-25T12:25:24-05:00"
+      "bez_potvrdeneho_breakoutu": 1,
+      "blocked_positions": 4,
+      "exceptions": 0,
+      "nizky_relativny_objem": 5,
+      "scan_seconds": 48.5,
+      "submitted": 0,
+      "symbols_checked": 6,
+      "technical_signals": 0,
+      "time_ny": "2026-11-25T12:30:45-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "order_submitted",
-      "AMD": "AMD: cena mimo signálu (0.984%)",
+      "AAPL": "position_or_order_blocked",
+      "AMD": "nizky_relativny_objem",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "position_or_order_blocked",
       "META": "nizky_relativny_objem",
       "MRVL": "nizky_relativny_objem",
       "MSFT": "position_or_order_blocked",
-      "NVDA": "NVDA: cena mimo signálu (0.781%)",
-      "TSLA": "nizky_relativny_objem"
+      "NVDA": "nizky_relativny_objem",
+      "TSLA": "bez_potvrdeneho_breakoutu"
     }
   },
   "trades": {
@@ -152,7 +153,7 @@
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-25T12:15:00-05:00",
-      "status": "pending",
+      "status": "open",
       "stop": 350.2,
       "submitted": "2026-11-25T17:25:00+00:00",
       "symbol": "AAPL",

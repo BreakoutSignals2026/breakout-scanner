@@ -292,11 +292,12 @@
       "exit_cid": "FAST31X_HIMS_11251705000000",
       "exit_order_id": "72e53682-cb17-4217-831f-9600fc982dd6",
       "filled_qty": 15,
+      "realized_pnl": -1.65,
       "reference_price": 14.29,
       "requested_qty": 15,
       "side": "buy",
       "spread_at_entry": 0.02,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-25T17:13:40+00:00",
       "symbol": "HIMS"
     },
