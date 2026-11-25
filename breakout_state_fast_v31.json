@@ -23,7 +23,8 @@
     "2026-11-19": "2026-11-19T20:45:32+00:00",
     "2026-11-20": "2026-11-20T20:45:33+00:00",
     "2026-11-23": "2026-11-23T20:45:05+00:00",
-    "2026-11-24": "2026-11-24T20:45:01+00:00"
+    "2026-11-24": "2026-11-24T20:45:01+00:00",
+    "2026-11-25": "2026-11-25T20:45:00+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -64,6 +65,7 @@
   "trades": {
     "AA": {
       "bar_key": "2026-11-25T18:15:00+00:00",
+      "close_cid": "FAST31C_AA_11251815000000",
       "entry_cid": "FAST31E_AA_11251815000000",
       "entry_fill_price": 34.94,
       "entry_filled_at": "2026-11-25T18:21:54.909699967Z",
@@ -75,12 +77,13 @@
       "requested_qty": 6,
       "side": "buy",
       "spread_at_entry": 0.06,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-25T18:21:53+00:00",
       "symbol": "AA"
     },
     "AAL": {
       "bar_key": "2026-11-25T19:05:00+00:00",
+      "close_cid": "FAST31C_AAL_11251905000000",
       "entry_cid": "FAST31E_AAL_11251905000000",
       "entry_fill_price": 12.63,
       "entry_filled_at": "2026-11-25T19:11:58.185829978Z",
@@ -92,7 +95,7 @@
       "requested_qty": 18,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-25T19:11:57+00:00",
       "symbol": "AAL"
     },
@@ -228,6 +231,7 @@
     },
     "F": {
       "bar_key": "2026-11-25T18:45:00+00:00",
+      "close_cid": "FAST31C_F_11251845000000",
       "entry_cid": "FAST31E_F_11251845000000",
       "entry_fill_price": 12.16,
       "entry_filled_at": "2026-11-25T18:53:44.011849475Z",
@@ -239,7 +243,7 @@
       "requested_qty": 19,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-25T18:53:41+00:00",
       "symbol": "F"
     },
