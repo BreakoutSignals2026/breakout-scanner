@@ -25,7 +25,7 @@
       "technical_signals": 25
     }
   },
-  "daily_diagnostics_notice": "2026-11-24",
+  "daily_diagnostics_notice": "2026-11-25",
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
@@ -404,13 +404,15 @@
     "B252_AMZN_202611251205": {
       "client_id": "B252_AMZN_202611251205",
       "entry_id": "f8ce303c-efba-4f9b-94c1-8e31ba7269a2",
+      "eod_client_id": "B252_EOD_AMZN_202611251205",
+      "eod_order_id": "6d559d80-7097-44d2-91a1-7c37d389f01a",
       "planned_risk": 4.343,
       "qty": 2,
       "reference_entry": 243.17,
       "result_logged": false,
       "side": "BUY",
       "signal_candle": "2026-11-25T12:05:00-05:00",
-      "status": "open",
+      "status": "eod_sent",
       "stop": 241.45,
       "submitted": "2026-11-25T17:14:10+00:00",
       "symbol": "AMZN",
