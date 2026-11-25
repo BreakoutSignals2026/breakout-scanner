@@ -1,11 +1,12 @@
 {
   "daily": {
-    "attempts": 1,
+    "attempts": 2,
     "closed": 0,
     "pnl_usd": 0.0
   },
   "date": "2026-11-25",
   "seen": [
+    "KGC:2026-11-25T16:20:00+00:00:buy",
     "LYFT:2026-11-25T16:00:00+00:00:buy"
   ],
   "symbols": {
@@ -25,12 +26,27 @@
       "phase": "watching"
     },
     "KGC": {
-      "phase": "watching"
+      "phase": "pending",
+      "signal": {
+        "bar_key": "2026-11-25T16:20:00+00:00",
+        "breakout_level": 17.27,
+        "breakout_percent": 0.5211349160393738,
+        "entry_close": 17.36,
+        "prior_avg_bar_notional_usd": 255621.38,
+        "quote_spread": 0.00999999999999801,
+        "quote_spread_pct": 0.0574877838459213,
+        "rel_volume": 1.817896863822856,
+        "side": "buy",
+        "signal_bar_notional_usd": 469848.4,
+        "signal_bar_shares": 27065,
+        "signal_bar_trades": 81,
+        "symbol": "KGC"
+      }
     },
     "LYFT": {
       "entry": 16.1980925,
       "entry_bar": "2026-11-25T16:05:00+00:00",
-      "last_bar": "2026-11-25T16:15:00+00:00",
+      "last_bar": "2026-11-25T16:20:00+00:00",
       "phase": "open",
       "qty": 9,
       "signal": {
