@@ -38,22 +38,8 @@
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "pending",
-      "signal": {
-        "bar_key": "2026-11-25T18:55:00+00:00",
-        "breakout_level": 31.165,
-        "breakout_percent": 0.27274185785336386,
-        "entry_close": 31.25,
-        "prior_avg_bar_notional_usd": 918416.59,
-        "quote_spread": 0.030000000000001137,
-        "quote_spread_pct": 0.09589260028768144,
-        "rel_volume": 3.834801313509789,
-        "side": "buy",
-        "signal_bar_notional_usd": 3579437.5,
-        "signal_bar_shares": 114542,
-        "signal_bar_trades": 754,
-        "symbol": "HPQ"
-      }
+      "phase": "expired",
+      "reason": "insufficient_whole_share_target"
     },
     "KEY": {
       "phase": "watching"
