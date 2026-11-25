@@ -162,11 +162,12 @@
       "exit_cid": "FAST31X_CHWY_11251645000000",
       "exit_order_id": "76f60a75-929f-4b5e-a3cd-f863a7af408d",
       "filled_qty": 11,
+      "realized_pnl": 4.07,
       "reference_price": 19.96,
       "requested_qty": 11,
       "side": "buy",
       "spread_at_entry": 0.03,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-25T16:50:34+00:00",
       "symbol": "CHWY"
     },
