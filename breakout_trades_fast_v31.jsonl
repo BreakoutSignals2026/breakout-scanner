@@ -920,3 +920,4 @@
 {"timestamp": "2026-11-25T17:13:43+00:00", "action": "exit_accepted", "symbol": "HIMS", "order_id": "72e53682-cb17-4217-831f-9600fc982dd6", "qty": 15}
 {"timestamp": "2026-11-25T17:22:48+00:00", "action": "entry_submitted", "symbol": "SOFI", "order_id": "730151d7-4f5a-48b9-8033-91c91ccd679c", "requested_qty": 18, "reference": 12.72, "side": "buy", "estimated_risk": 2.93, "spread_percent": 0.079, "rel_volume": 2.835828424123842, "breakout_percent": 0.5124162396531298, "bar_notional_usd": 1134941.25, "quote_age_seconds": 0.062138, "chase_percent": 0.23529411764705382, "signal_age_seconds": 168}
 {"timestamp": "2026-11-25T17:22:49+00:00", "action": "exit_accepted", "symbol": "SOFI", "order_id": "d7f528ba-1fba-407d-bb10-8e6b1774de48", "qty": 18}
+{"timestamp": "2026-11-25T17:27:21+00:00", "action": "closed", "symbol": "HIMS", "entry": 14.29, "exit": 14.18, "qty": 15.0, "side": "buy", "pnl": -1.65, "pnl_pct": -0.77, "reason": "trailing stop", "holding_seconds": 608}
