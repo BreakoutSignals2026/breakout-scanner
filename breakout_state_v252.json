@@ -1,6 +1,6 @@
 {
   "cooldown": {
-    "AAPL": "2026-11-25T12:15:00-05:00",
+    "AAPL": "2026-11-25T13:45:00-05:00",
     "AMD": "2026-11-23T15:05:00-05:00",
     "AMZN": "2026-11-25T12:05:00-05:00",
     "GOOGL": "2026-11-18T13:40:00-05:00",
@@ -13,41 +13,41 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 41,
+    "scans": 46,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 19,
-      "blocked_positions": 48,
-      "exceptions": 13,
+      "bez_potvrdeneho_breakoutu": 21,
+      "blocked_positions": 58,
+      "exceptions": 16,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 148,
-      "submitted": 5,
-      "symbols_checked": 362,
-      "technical_signals": 18
+      "nizky_relativny_objem": 182,
+      "submitted": 6,
+      "symbols_checked": 402,
+      "technical_signals": 22
     }
   },
   "daily_diagnostics_notice": "2026-11-24",
   "daily_start_notice": "2026-11-25",
   "last_scan_diagnostics": {
     "counts": {
-      "blocked_positions": 3,
-      "exceptions": 0,
-      "nizky_relativny_objem": 7,
-      "scan_seconds": 56.3,
-      "submitted": 0,
-      "symbols_checked": 7,
-      "technical_signals": 0,
-      "time_ny": "2026-11-25T13:24:25-05:00"
+      "blocked_positions": 1,
+      "exceptions": 2,
+      "nizky_relativny_objem": 6,
+      "scan_seconds": 72.9,
+      "submitted": 1,
+      "symbols_checked": 9,
+      "technical_signals": 3,
+      "time_ny": "2026-11-25T13:52:28-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "nizky_relativny_objem",
-      "AMD": "nizky_relativny_objem",
+      "AAPL": "order_submitted",
+      "AMD": "AMD: cena mimo signálu (0.264%)",
       "AMZN": "position_or_order_blocked",
       "GOOGL": "nizky_relativny_objem",
-      "INTC": "position_or_order_blocked",
-      "META": "nizky_relativny_objem",
+      "INTC": "nizky_relativny_objem",
+      "META": "Rozpočet $5 je príliš malý (qty=0)",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "position_or_order_blocked",
+      "MSFT": "nizky_relativny_objem",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
@@ -157,6 +157,21 @@
       "submitted": "2026-11-25T17:25:00+00:00",
       "symbol": "AAPL",
       "tp": 354.61
+    },
+    "B252_AAPL_202611251345": {
+      "client_id": "B252_AAPL_202611251345",
+      "entry_id": "7c1c8f11-29e6-45b6-ae61-7f1841ae19a0",
+      "planned_risk": 4.974,
+      "qty": 3,
+      "reference_entry": 355.75,
+      "result_logged": false,
+      "side": "BUY",
+      "signal_candle": "2026-11-25T13:45:00-05:00",
+      "status": "pending",
+      "stop": 354.51,
+      "submitted": "2026-11-25T18:51:56+00:00",
+      "symbol": "AAPL",
+      "tp": 358.23
     },
     "B252_AMD_202611021405": {
       "client_id": "B252_AMD_202611021405",
@@ -732,10 +747,10 @@
       "planned_risk": 4.688,
       "qty": 8,
       "reference_entry": 52.05,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-25T12:40:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 51.52,
       "submitted": "2026-11-25T17:46:06+00:00",
       "symbol": "INTC",
@@ -1025,10 +1040,10 @@
       "planned_risk": 3.233,
       "qty": 1,
       "reference_entry": 485.59,
-      "result_logged": false,
+      "result_logged": true,
       "side": "BUY",
       "signal_candle": "2026-11-25T12:05:00-05:00",
-      "status": "open",
+      "status": "closed",
       "stop": 483.24,
       "submitted": "2026-11-25T17:14:18+00:00",
       "symbol": "MSFT",
