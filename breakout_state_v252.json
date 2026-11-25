@@ -13,16 +13,16 @@
   },
   "daily_diagnostics": {
     "date": "2026-11-25",
-    "scans": 26,
+    "scans": 27,
     "totals": {
-      "bez_potvrdeneho_breakoutu": 8,
+      "bez_potvrdeneho_breakoutu": 9,
       "blocked_positions": 0,
-      "exceptions": 4,
+      "exceptions": 6,
       "malo_5min_sviecok": 177,
-      "nizky_relativny_objem": 71,
+      "nizky_relativny_objem": 78,
       "submitted": 0,
-      "symbols_checked": 260,
-      "technical_signals": 4
+      "symbols_checked": 270,
+      "technical_signals": 6
     }
   },
   "daily_diagnostics_notice": "2026-11-24",
@@ -31,24 +31,24 @@
     "counts": {
       "bez_potvrdeneho_breakoutu": 1,
       "blocked_positions": 0,
-      "exceptions": 1,
-      "nizky_relativny_objem": 8,
-      "scan_seconds": 81.0,
+      "exceptions": 2,
+      "nizky_relativny_objem": 7,
+      "scan_seconds": 80.3,
       "submitted": 0,
       "symbols_checked": 10,
-      "technical_signals": 1,
-      "time_ny": "2026-11-25T12:02:39-05:00"
+      "technical_signals": 2,
+      "time_ny": "2026-11-25T12:08:32-05:00"
     },
     "date": "2026-11-25",
     "symbols": {
-      "AAPL": "bez_potvrdeneho_breakoutu",
+      "AAPL": "nizky_relativny_objem",
       "AMD": "nizky_relativny_objem",
-      "AMZN": "nizky_relativny_objem",
+      "AMZN": "AMZN: cena mimo signálu (0.464%)",
       "GOOGL": "nizky_relativny_objem",
       "INTC": "nizky_relativny_objem",
-      "META": "META: IEX spread 2.801% nad 0.3%",
+      "META": "META: IEX spread 3.254% nad 0.3%",
       "MRVL": "nizky_relativny_objem",
-      "MSFT": "nizky_relativny_objem",
+      "MSFT": "bez_potvrdeneho_breakoutu",
       "NVDA": "nizky_relativny_objem",
       "TSLA": "nizky_relativny_objem"
     }
