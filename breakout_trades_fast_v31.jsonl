@@ -945,3 +945,6 @@
 {"timestamp": "2026-11-25T20:45:35+00:00", "action": "eod_close_submitted", "symbol": "AA", "qty": 6, "order_id": "6ccf61df-262d-4d4c-a8a5-c3faedbed93f"}
 {"timestamp": "2026-11-25T20:45:35+00:00", "action": "eod_close_submitted", "symbol": "AAL", "qty": 18, "order_id": "3cf5d9a0-0260-4d34-be22-63128871b3bc"}
 {"timestamp": "2026-11-25T20:45:36+00:00", "action": "eod_close_submitted", "symbol": "F", "qty": 16, "order_id": "70e6478f-930f-489d-8eb6-06316613ecdb"}
+{"timestamp": "2026-11-25T20:46:08+00:00", "action": "closed", "symbol": "AA", "entry": 34.94, "exit": 35.0, "qty": 6.0, "side": "buy", "pnl": 0.36, "pnl_pct": 0.172, "reason": "koniec seansy", "holding_seconds": 8622}
+{"timestamp": "2026-11-25T20:46:09+00:00", "action": "closed", "symbol": "AAL", "entry": 12.63, "exit": 12.55, "qty": 18.0, "side": "buy", "pnl": -1.44, "pnl_pct": -0.633, "reason": "koniec seansy", "holding_seconds": 5624}
+{"timestamp": "2026-11-25T20:46:09+00:00", "action": "closed", "symbol": "F", "entry": 12.16, "exit": 12.15, "qty": 16.0, "side": "buy", "pnl": -0.16, "pnl_pct": -0.082, "reason": "koniec seansy", "holding_seconds": 6714}
