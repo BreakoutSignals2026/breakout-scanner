@@ -24,7 +24,8 @@
     "2026-11-20": "2026-11-20T20:45:33+00:00",
     "2026-11-23": "2026-11-23T20:45:05+00:00",
     "2026-11-24": "2026-11-24T20:45:01+00:00",
-    "2026-11-25": "2026-11-25T20:45:00+00:00"
+    "2026-11-25": "2026-11-25T20:45:00+00:00",
+    "2026-11-27": "2026-11-27T17:45:32+00:00"
   },
   "guard_notice": {
     "2026-10-26": "2026-10-26:dosiahnuté 2 súčasné pozície",
@@ -105,6 +106,7 @@
     },
     "BB": {
       "bar_key": "2026-11-27T17:20:00+00:00",
+      "close_cid": "FAST31C_BB_11271720000000",
       "entry_cid": "FAST31E_BB_11271720000000",
       "entry_fill_price": 8.92,
       "entry_filled_at": "2026-11-27T17:27:57.142259717Z",
@@ -116,7 +118,7 @@
       "requested_qty": 25,
       "side": "buy",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-27T17:27:56+00:00",
       "symbol": "BB"
     },
@@ -142,6 +144,7 @@
     },
     "CELH": {
       "bar_key": "2026-11-27T15:50:00+00:00",
+      "close_cid": "FAST31C_CELH_11271550000000",
       "entry_cid": "FAST31E_CELH_11271550000000",
       "entry_fill_price": 30.23,
       "entry_filled_at": "2026-11-27T15:56:10.438339741Z",
@@ -149,11 +152,12 @@
       "exit_cid": "FAST31X_CELH_11271550000000",
       "exit_order_id": "efbe2ddb-1d6d-4329-9247-a2e4aa7c7342",
       "filled_qty": 7,
+      "realized_pnl": -2.24,
       "reference_price": 30.24,
       "requested_qty": 7,
       "side": "buy",
       "spread_at_entry": 0.04,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-27T15:56:10+00:00",
       "symbol": "CELH"
     },
@@ -377,6 +381,7 @@
     },
     "NU": {
       "bar_key": "2026-11-27T16:45:00+00:00",
+      "close_cid": "FAST31C_NU_11271645000000",
       "entry_cid": "FAST31E_NU_11271645000000",
       "entry_fill_price": 13.12,
       "entry_filled_at": "2026-11-27T16:50:54.247097747Z",
@@ -388,7 +393,7 @@
       "requested_qty": 17,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-27T16:50:51+00:00",
       "symbol": "NU"
     },
@@ -412,6 +417,7 @@
     },
     "PTON": {
       "bar_key": "2026-11-27T16:35:00+00:00",
+      "close_cid": "FAST31C_PTON_11271635000000",
       "entry_cid": "FAST31E_PTON_11271635000000",
       "entry_fill_price": 5.65,
       "entry_filled_at": "2026-11-27T16:41:44.821211215Z",
@@ -423,7 +429,7 @@
       "requested_qty": 38,
       "side": "sell",
       "spread_at_entry": 0.01,
-      "status": "protected",
+      "status": "eod_canceling_stop",
       "submitted_at": "2026-11-27T16:41:42+00:00",
       "symbol": "PTON"
     },

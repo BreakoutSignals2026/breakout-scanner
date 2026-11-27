@@ -962,3 +962,7 @@
 {"timestamp": "2026-11-27T17:27:59+00:00", "action": "exit_accepted", "symbol": "BB", "order_id": "7b79f83f-c465-4a93-b1c5-d2bc510ba871", "qty": 25}
 {"timestamp": "2026-11-27T17:37:12+00:00", "action": "closed", "symbol": "RIOT", "entry": 17.37, "exit": 17.37, "qty": 13.0, "side": "buy", "pnl": 0.0, "pnl_pct": 0.0, "reason": "trailing stop", "holding_seconds": 5500}
 {"timestamp": "2026-11-27T17:42:51+00:00", "action": "closed", "symbol": "GME", "entry": 26.29, "exit": 26.49, "qty": 7.0, "side": "sell", "pnl": -1.4, "pnl_pct": -0.761, "reason": "trailing stop", "holding_seconds": 4162}
+{"timestamp": "2026-11-27T17:45:34+00:00", "action": "eod_stop_cancel_requested", "symbol": "BB", "id": "7b79f83f-c465-4a93-b1c5-d2bc510ba871"}
+{"timestamp": "2026-11-27T17:45:35+00:00", "action": "closed", "symbol": "CELH", "entry": 30.23, "exit": 29.91, "qty": 7.0, "side": "buy", "pnl": -2.24, "pnl_pct": -1.059, "reason": "trailing stop", "holding_seconds": 6533}
+{"timestamp": "2026-11-27T17:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "49afd8b6-2e25-4e8d-b760-938abbf7ea6a"}
+{"timestamp": "2026-11-27T17:45:38+00:00", "action": "eod_stop_cancel_requested", "symbol": "PTON", "id": "a82289c2-706a-4087-961b-447bea544e03"}
