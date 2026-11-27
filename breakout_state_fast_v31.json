@@ -276,11 +276,12 @@
       "exit_cid": "FAST31X_GME_11271625000000",
       "exit_order_id": "ce4d8bda-8717-457d-8cfd-72e87b28ddfb",
       "filled_qty": 7,
+      "realized_pnl": -1.4,
       "reference_price": 26.27,
       "requested_qty": 8,
       "side": "sell",
       "spread_at_entry": 0.03,
-      "status": "protected",
+      "status": "closed",
       "submitted_at": "2026-11-27T16:32:31+00:00",
       "symbol": "GME"
     },
