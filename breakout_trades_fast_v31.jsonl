@@ -966,3 +966,6 @@
 {"timestamp": "2026-11-27T17:45:35+00:00", "action": "closed", "symbol": "CELH", "entry": 30.23, "exit": 29.91, "qty": 7.0, "side": "buy", "pnl": -2.24, "pnl_pct": -1.059, "reason": "trailing stop", "holding_seconds": 6533}
 {"timestamp": "2026-11-27T17:45:36+00:00", "action": "eod_stop_cancel_requested", "symbol": "NU", "id": "49afd8b6-2e25-4e8d-b760-938abbf7ea6a"}
 {"timestamp": "2026-11-27T17:45:38+00:00", "action": "eod_stop_cancel_requested", "symbol": "PTON", "id": "a82289c2-706a-4087-961b-447bea544e03"}
+{"timestamp": "2026-11-27T17:46:14+00:00", "action": "eod_close_submitted", "symbol": "BB", "qty": 25, "order_id": "b80b21cb-60cb-4a9f-a13b-981e9c4b265e"}
+{"timestamp": "2026-11-27T17:46:16+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 17, "order_id": "2c0d1b4a-f189-4f30-a8d1-b2c1dcabcc49"}
+{"timestamp": "2026-11-27T17:46:19+00:00", "action": "eod_close_submitted", "symbol": "PTON", "qty": 38, "order_id": "7768d74d-2199-4a5e-96c3-3dfd7fac4d47"}
