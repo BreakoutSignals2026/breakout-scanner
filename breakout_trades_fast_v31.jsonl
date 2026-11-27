@@ -969,3 +969,6 @@
 {"timestamp": "2026-11-27T17:46:14+00:00", "action": "eod_close_submitted", "symbol": "BB", "qty": 25, "order_id": "b80b21cb-60cb-4a9f-a13b-981e9c4b265e"}
 {"timestamp": "2026-11-27T17:46:16+00:00", "action": "eod_close_submitted", "symbol": "NU", "qty": 17, "order_id": "2c0d1b4a-f189-4f30-a8d1-b2c1dcabcc49"}
 {"timestamp": "2026-11-27T17:46:19+00:00", "action": "eod_close_submitted", "symbol": "PTON", "qty": 38, "order_id": "7768d74d-2199-4a5e-96c3-3dfd7fac4d47"}
+{"timestamp": "2026-11-27T17:46:54+00:00", "action": "closed", "symbol": "BB", "entry": 8.92, "exit": 8.96, "qty": 25.0, "side": "buy", "pnl": 1.0, "pnl_pct": 0.448, "reason": "koniec seansy", "holding_seconds": 1099}
+{"timestamp": "2026-11-27T17:46:55+00:00", "action": "closed", "symbol": "NU", "entry": 13.12, "exit": 12.96, "qty": 17.0, "side": "sell", "pnl": 2.72, "pnl_pct": 1.22, "reason": "koniec seansy", "holding_seconds": 3323}
+{"timestamp": "2026-11-27T17:46:57+00:00", "action": "closed", "symbol": "PTON", "entry": 5.65, "exit": 5.63, "qty": 38.0, "side": "sell", "pnl": 0.76, "pnl_pct": 0.354, "reason": "koniec seansy", "holding_seconds": 3876}
