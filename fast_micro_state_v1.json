@@ -1,59 +1,35 @@
 {
   "daily": {
-    "attempts": 7,
-    "closed": 5,
-    "pnl_usd": 3.32
+    "attempts": 0,
+    "closed": 0,
+    "pnl_usd": 0.0
   },
-  "date": "2026-11-25",
-  "seen": [
-    "AG:2026-11-25T17:05:00+00:00:buy",
-    "AG:2026-11-25T17:10:00+00:00:buy",
-    "AG:2026-11-25T18:15:00+00:00:buy",
-    "CDE:2026-11-25T16:50:00+00:00:buy",
-    "CDE:2026-11-25T17:10:00+00:00:buy",
-    "HBAN:2026-11-25T17:05:00+00:00:buy",
-    "HPQ:2026-11-25T17:50:00+00:00:sell",
-    "HPQ:2026-11-25T18:55:00+00:00:buy",
-    "HPQ:2026-11-25T19:50:00+00:00:sell",
-    "KEY:2026-11-25T17:05:00+00:00:buy",
-    "KGC:2026-11-25T16:20:00+00:00:buy",
-    "KGC:2026-11-25T17:00:00+00:00:buy",
-    "KGC:2026-11-25T17:15:00+00:00:buy",
-    "KGC:2026-11-25T19:05:00+00:00:buy",
-    "LYFT:2026-11-25T16:00:00+00:00:buy",
-    "NCLH:2026-11-25T16:30:00+00:00:sell",
-    "NCLH:2026-11-25T18:45:00+00:00:buy",
-    "UPST:2026-11-25T16:50:00+00:00:buy",
-    "UPST:2026-11-25T17:05:00+00:00:buy",
-    "UPST:2026-11-25T17:35:00+00:00:buy",
-    "UPST:2026-11-25T17:40:00+00:00:buy",
-    "UPST:2026-11-25T17:50:00+00:00:buy"
-  ],
+  "date": "2026-11-27",
+  "seen": [],
   "symbols": {
     "AG": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "CDE": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "HBAN": {
       "phase": "watching"
     },
     "HPQ": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "KEY": {
       "phase": "watching"
     },
     "KGC": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "LYFT": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "NCLH": {
-      "phase": "closed"
+      "phase": "watching"
     },
     "PFE": {
       "phase": "watching"
@@ -62,8 +38,7 @@
       "phase": "watching"
     },
     "UPST": {
-      "phase": "expired",
-      "reason": "insufficient_whole_share_target"
+      "phase": "watching"
     },
     "XPEV": {
       "phase": "watching"
